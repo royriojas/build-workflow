@@ -24,6 +24,9 @@
     "url": "https://github.com/royriojas/build-workflow/issues"
   },
   "homepage": "https://github.com/royriojas/build-workflow",
+  "dependencies": {
+
+  },
   "devDependencies": {
     "grunt": "~0.4.5",
     "grunt-bump": "0.0.15",
@@ -45,13 +48,10 @@
     "grunt-jscs-checker": "0.2.6",
     "grunt-jsvalidate": "~0.2.2",
     "grunt-newer": "~0.6.1",
-
     "lodash": "~2.4.1",
     "codepainter": "~0.3.27",
-
     "marked": "~0.3.1",
     "cheerio": "~0.13.1",
-
     "grunt-karma": "~0.8.3",
     "grunt-contrib-csslint": "~0.2.0",
     "html-entities": "~1.0.10",
@@ -83,6 +83,17 @@
     "jshint-stylish": "~0.4.0",
     "grunt-jsbeautifier": "https://github.com/royriojas/grunt-jsbeautifier/tarball/e69f6ef",
     "docco-husky": "https://github.com/royriojas/docco-husky/tarball/d3aaec2",
-    "karma-react-jsx-preprocessor": "https://github.com/royriojas/karma-react-jsx-preprocessor/tarball/1824de4"
+    "karma-react-jsx-preprocessor": "https://github.com/royriojas/karma-react-jsx-preprocessor/tarball/1824de4",
+    "yuidocjs": "https://github.com/royriojas/yuidoc/tarball/exampleurl",
+    "yuidoc-theme-blue": "https://github.com/royriojas/yuidoc-theme-blue/tarball/master"
+  },
+  "docco_husky": {
+    "content_dir": "./docs",
+    "output_dir": "./documentation",
+    "sources": [
+      "Gruntfile.js"
+    ],
+    "project_name": "Build Workflow",
+    "show_timestamp": true
   }
 }

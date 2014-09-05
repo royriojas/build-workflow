@@ -21,11 +21,15 @@ module.exports = function ( grunt, pkg, options ) {
     // then the documentation will be generated only for this file.
     docs: {
       command: function ( file ) {
-        var doccoHusky = commonConfig.docco_husky || {};
-        var filesOrFolders = doccoHusky.sources;
+        var doccoHusky = pkg.docco_husky || {};
+        var filesOrFolders = doccoHusky.sources || [];
 
         if ( file ) {
           filesOrFolders = [ file ];
+        }
+
+        if (filesOrFolders.length === 0) {
+          grunt.fail.warn('No files to process');
         }
 
         return lib.format( 'node_modules/docco-husky/bin/generate {0}', filesOrFolders.join( ' ' ));
@@ -126,7 +130,7 @@ module.exports = function ( grunt, pkg, options ) {
         var files = glob.split( ',' );
         var yuidoc = commonConfig.yuidoc || {};
         var pathToConfig = yuidoc.config || path.resolve( __dirname, '../resources/json-configs/yuidoc.json' );
-        return lib.format( 'node_modules/yuidocjs/lib/cli.js {0} --config-file={1} --server', files, pathToConfig );
+        return lib.format( 'node_modules/yuidocjs/lib/cli.js {0} --configfile={1} --server', files, pathToConfig );
       }
     },
 

@@ -13,24 +13,26 @@ module.exports = function ( grunt ) {
       "urlForBugId": "https://github.com/royriojas/build-workflow/issues/{0}"
     },
 
-    "docco_husky": {
-      "content_dir": "documentation/docs-source",
-      "output_dir": "documentation/docs",
-      "sources": [
-        "Gruntfile.js",
-        "./"
-      ],
-      "project_name": "Build workflow",
-      "show_timestamp": true
-    },
+//    "docco_husky": {
+//      "content_dir": "documentation/docs-source",
+//      "output_dir": "documentation/docs",
+//      "sources": [
+//        "Gruntfile.js",
+//        "./"
+//      ],
+//      "project_name": "Build workflow",
+//      "show_timestamp": true
+//    },
 
     "codepainter": {
-      "sources": prepushFiles
+      "sources": [
+        "**/*.js, !resources/hooks/*.js, !node_modules/**/*.*"
+      ]
     },
 
-    "yuidoc": {
-      "config": "./grunt-deps/yuidoc/yuidoc.json"
-    },
+//    "yuidoc": {
+//      "config": "./grunt-deps/yuidoc/yuidoc.json"
+//    },
 
     "filesToValidate": {
       "jsbeautifier": prepushFiles,
