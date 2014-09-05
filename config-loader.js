@@ -1,3 +1,15 @@
+/**
+ * @module build-workflow
+ *
+ * @class config-loader
+ * @static
+ **/
+
+/**
+ * Loads the now separated grunt configuration files
+ *
+ * @method config-loader
+ **/
 module.exports = function ( grunt, args ) {
   'use strict';
 
