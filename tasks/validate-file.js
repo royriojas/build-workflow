@@ -11,14 +11,16 @@ module.exports = function ( grunt, pkg, options ) {
       var jsFiles = [];
       var jsonFiles = [];
 
+      fileGlob = fileGlob.split( ',' );
+
       var filesExpanded = grunt.file.expand( fileGlob );
 
       filesExpanded.forEach(function ( file ) {
         var extname = path.extname( file );
 
-        if ( file.indexOf( 'node_modules' ) > -1 ) {
-          return;
-        }
+        //        if ( file.indexOf( 'node_modules' ) > -1 ) {
+        //          return;
+        //        }
 
         var f = file; //path.relative( './', file );
         if ( extname === '.js' ) {

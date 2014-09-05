@@ -1,9 +1,9 @@
 module.exports = function ( grunt, pkg, options ) {
   'use strict';
-  var path = require('path');
+  var path = require( 'path' );
 
   var gruntTaskUtils = options.gruntTaskUtils;
-  var licenseLocation = path.resolve(__dirname, '../resources/license/license.txt');
+  var licenseLocation = path.resolve( __dirname, '../resources/license/license.txt' );
 
   //console.log('license location', licenseLocation);
 

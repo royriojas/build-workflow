@@ -1,17 +1,17 @@
 var grunt = require( 'grunt' );
 var path = require( 'path' );
 
-var lib = require('grunt-ez-frontend/lib/lib');
+var lib = require( 'grunt-ez-frontend/lib/lib' );
 
-module.exports = function (cfg) {
+module.exports = function ( cfg ) {
   var opts = {
-    suitesFolder : path.resolve('./frontend-app/e2e/suites/'),
+    suitesFolder: path.resolve( './frontend-app/e2e/suites/' ),
     specGlobs: '**/*spec.js'
   };
 
-  lib.extend(opts, cfg);
+  lib.extend( opts, cfg );
 
-  var protractorPath = path.resolve( path.dirname(require.resolve('protractor')), '../');
+  var protractorPath = path.resolve( path.dirname( require.resolve( 'protractor' )), '../' );
 
   // An example configuration file.
   var config = {
@@ -23,13 +23,13 @@ module.exports = function (cfg) {
     //    'version': '11'
     //  },
     chromeOnly: true,
-    chromeDriver: path.join( protractorPath, '/selenium/chromedriver'),
+    chromeDriver: path.join( protractorPath, '/selenium/chromedriver' ),
     // Capabilities to be passed to the webdriver instance.
     capabilities: {
       'browserName': 'chrome'
     },
     suites: {
-      hack: path.resolve( __dirname, './reporter-hack.js') // hack to remove the dot reporter
+      hack: path.resolve( __dirname, './reporter-hack.js' ) // hack to remove the dot reporter
     },
 
     onPrepare: function () {
@@ -47,11 +47,11 @@ module.exports = function (cfg) {
     }
   };
 
-  var specsFiles = path.join(opts.suitesFolder, opts.specGlobs);
+  var specsFiles = path.join( opts.suitesFolder, opts.specGlobs );
 
   var files = grunt.file.expand( specsFiles );
 
-  console.log('files',specsFiles, files);
+  console.log( 'files', specsFiles, files );
 
   var getDirectoryNameOfFile = function ( file ) {
     var name = path.dirname( file );
@@ -68,11 +68,10 @@ module.exports = function (cfg) {
   files.forEach(function ( file ) {
     var dName = getDirectoryNameOfFile( file );
 
-    config.suites[ dName ] = config.suites[ dName ] || path.join( path.dirname(file), opts.specGlobs);
+    config.suites[ dName ] = config.suites[ dName ] || path.join( path.dirname( file ), opts.specGlobs );
 
   } );
 
   return config;
 
 };
-

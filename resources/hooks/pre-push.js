@@ -2,7 +2,7 @@
 
 var exec = require( 'child_process' ).exec;
 var utils = require( './lib/util.js' );
-var prepushCfg = require('./lib/prepush-cfg.json');
+var prepushCfg = require( './lib/prepush-cfg.json' );
 var path = require( 'path' );
 
 var createStream = utils.createStream;
@@ -31,18 +31,18 @@ var cp = exec( 'grunt prepush', function ( err, stdout, stderr ) {
 
   showSuccessBlock( 'Validation Hook Completed!.' );
 
-//  var cp2 = exec( 'grunt jshint:js-check jscs:js-check jsvalidate:js-check', function ( err, stdout, stderr ) {
-//    if ( err ) {
-//
-//      showErrorBlock( 'Review your errors and try again', 'VALIDATION FAILED :' );
-//      process.exit( 1 );
-//    }
-//
-//    showSuccessBlock( 'Validation Hook Completed!.' );
-//
-//  } );
-//
-//  cp2.stdout.pipe( createStream());
+  //  var cp2 = exec( 'grunt jshint:js-check jscs:js-check jsvalidate:js-check', function ( err, stdout, stderr ) {
+  //    if ( err ) {
+  //
+  //      showErrorBlock( 'Review your errors and try again', 'VALIDATION FAILED :' );
+  //      process.exit( 1 );
+  //    }
+  //
+  //    showSuccessBlock( 'Validation Hook Completed!.' );
+  //
+  //  } );
+  //
+  //  cp2.stdout.pipe( createStream());
 } );
 
 cp.stdout.pipe( createStream());

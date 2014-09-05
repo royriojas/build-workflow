@@ -8,7 +8,7 @@ module.exports = function ( grunt, pkg, options ) {
   //
   // this module include some utilities, like `lib.format`, `lib.isNullOrEmpty`, `lib.isNull`, `lib.extend`, etc
   var lib = require( 'grunt-ez-frontend/lib/lib.js' );
-  var path = require('path');
+  var path = require( 'path' );
 
   return {
     // ## exec:docs
@@ -101,7 +101,7 @@ module.exports = function ( grunt, pkg, options ) {
     // have the js extension.
     codepainter: {
       command: function ( glob ) {
-        var codepainterJSON = path.resolve(__dirname, '../resources/json-configs/codepainter.json');
+        var codepainterJSON = path.resolve( __dirname, '../resources/json-configs/codepainter.json' );
         if ( glob ) {
           return lib.format( 'node_modules/codepainter/bin/codepaint xform -j {0} "{1}"',
             codepainterJSON, glob );
@@ -121,12 +121,12 @@ module.exports = function ( grunt, pkg, options ) {
     },
 
     yuidoc: {
-      command: function (glob) {
+      command: function ( glob ) {
         glob = glob || './src/';
-        var files =  glob.split(',');
+        var files = glob.split( ',' );
         var yuidoc = commonConfig.yuidoc || {};
-        var pathToConfig = yuidoc.config || path.resolve( __dirname, '../resources/json-configs/yuidoc.json');
-        return lib.format('node_modules/yuidocjs/lib/cli.js {0} --config-file={1} --server', files, pathToConfig);
+        var pathToConfig = yuidoc.config || path.resolve( __dirname, '../resources/json-configs/yuidoc.json' );
+        return lib.format( 'node_modules/yuidocjs/lib/cli.js {0} --config-file={1} --server', files, pathToConfig );
       }
     },
 
@@ -143,11 +143,11 @@ module.exports = function ( grunt, pkg, options ) {
         var protractor = commonConfig.protractor || {};
         var pathToProtractorConfig = protractor.config;
 
-        if (!pathToProtractorConfig) {
-          grunt.fail.warn('Missing protractor config file: ', pathToProtractorConfig);
+        if ( !pathToProtractorConfig ) {
+          grunt.fail.warn( 'Missing protractor config file: ', pathToProtractorConfig );
         }
 
-        commands.push( lib.format('./node_modules/protractor/bin/protractor {0}', pathToProtractorConfig ));
+        commands.push( lib.format( './node_modules/protractor/bin/protractor {0}', pathToProtractorConfig ));
 
         return commands.join( '\n' );
       }

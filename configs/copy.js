@@ -4,6 +4,19 @@ module.exports = function ( grunt, pkg, options ) {
   var gruntTaskUtils = options.gruntTaskUtils;
 
   return {
+    //    lib: {
+    //      files: [ {
+    //        src: [ '**/*.*' ],
+    //        dest: common.DEPLOY_FOLDER + 'vendor/',
+    //        cwd: common.VENDOR_FOLDER,
+    //        expand: true
+    //      }, {
+    //        src: [ '**/*.*' ],
+    //        dest: common.READER_DEPLOY_FOLDER + 'img/',
+    //        cwd: common.READER_REFRESH_SOURCE_FOLDER + 'img/',
+    //        expand: true
+    //      } ]
+    //    },
     options: {
       // copy will try to process the content of the files as text. This behavior
       // could **potentially corrupt some binary files** as described

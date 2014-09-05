@@ -17,6 +17,11 @@ module.exports = function ( grunt, pkg, options ) {
   var changeLogConfig = commonConfig.changelog || {};
 
   return {
+
+    //    'changelog': {
+    //      dest: './report/changelog/changelog.html'
+    //    },
+
     options: {
 
       filterTags: function ( tags ) {
@@ -61,7 +66,7 @@ module.exports = function ( grunt, pkg, options ) {
           },
           gitUrlForCommit: me.gitUrlForCommit || changeLogConfig.gitUrlForCommit, //'http://git.kno.com/?p=cloud/kno-reader-ui.git;a=commit;h={0}',
           gitAuthorUrl: me.gitAuthorUrl || changeLogConfig.gitAuthorUrl, // 'http://git.kno.com/?p=cloud/kno-reader-ui.git;a=search;s={0};st=author',
-          rallySearchUrl: me.rallySearchUrl || changeLogConfig.rallySearchUrl, // 'https://rally1.rallydev.com/#/search?keywords={0}',
+          urlForBugId: me.urlForBugId || changeLogConfig.urlForBugId, // 'https://rally1.rallydev.com/#/search?keywords={0}',
           projectName: me.projectName || pkg.name, // pkg.name,
           projectVersion: me.projectVersion || pkg.version, //pkg.version,
           renderDescription: function ( log ) {
@@ -71,9 +76,11 @@ module.exports = function ( grunt, pkg, options ) {
 
             shortDescription = shortDescription.substr( 0, 70 );
 
-            shortDescription = shortDescription.replace( me.format( '[{0}]', commit.rallyId ), '{RALLY_ID}' );
-            shortDescription = shortDescription.replace( /\b[A-Z][A-Z]\d+\b/g, '{RALLY_ID}' );
-            shortDescription = shortDescription.replace( /\{RALLY_ID\}/g, me.format( '<a target="_blank" class="info-link" href="{0}"><span>{1}</span></a>', me.format( me.rallySearchUrl, commit.rallyId ), commit.rallyId ));
+            shortDescription = shortDescription.replace( me.format( '[{0}]', commit.bugId ), '{BUG_ID}' );
+
+            shortDescription = shortDescription.replace( /\b[A-Z][A-Z]\d+\b/g, '{BUG_ID}' );
+
+            shortDescription = shortDescription.replace( /\{BUG_ID\}/g, me.format( '<a target="_blank" class="info-link" href="{0}"><span>{1}</span></a>', me.format( me.urlForBugId, commit.bugId ), commit.bugId ));
 
             return marked( capitalize( shortDescription )).replace( /<(\/)*p>/g, '' );
           },

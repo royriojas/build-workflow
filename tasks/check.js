@@ -6,7 +6,7 @@ module.exports = function ( grunt, pkg, options ) {
   var path = require( 'path' );
 
   gruntTaskUtils.registerTasks( {
-    'prepush': function ( jsTasks ) {
+    'check-valid': function ( jsTasks ) {
 
       var key = 'js-check';
 
@@ -26,15 +26,6 @@ module.exports = function ( grunt, pkg, options ) {
             src: files
           };
 
-          if ( task === 'jsbeautifier' && !grunt.option( 'pp-force-beautify' )) {
-            tConfig.options = {
-              mode: 'VERIFY_ONLY',
-              onVerificationFailed: function ( result, opts ) {
-                grunt.fail.fatal( 'File needed beautification: ' + opts.file );
-              }
-            };
-          }
-
           grunt.config.set( [ task, key ], tConfig );
           tasksToRun.push( task );
         }
@@ -49,6 +40,8 @@ module.exports = function ( grunt, pkg, options ) {
       }
 
       console.log( 'tasks to run', tasksToRun );
+
+      grunt.log.ok( 'all validated!' );
     }
   } );
 };

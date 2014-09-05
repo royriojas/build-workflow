@@ -21,22 +21,22 @@ module.exports = function ( content ) {
     var tagId = ( matches[ 1 ] || 'NC' );
     var foundTag = tagNames[ tagId ];
 
-    var rallyIdMatcher = /\[(.*)\]/;
+    var bugIdMatcher = /\[(.*)\]/;
 
-    var rallyMatches = subject.match( rallyIdMatcher ) || [];
-    var rallyId = rallyMatches[ 1 ];
+    var rallyMatches = subject.match( bugIdMatcher ) || [];
+    var bugId = rallyMatches[ 1 ];
 
-    if ( !rallyId ) {
-      rallyIdMatcher = /\b([A-Z][A-Z]\d+)\b/;
-      rallyMatches = subject.match( rallyIdMatcher ) || [];
-      rallyId = rallyMatches[ 1 ];
+    if ( !bugId ) {
+      bugIdMatcher = /\b([A-Z][A-Z]\d+)\b/;
+      rallyMatches = subject.match( bugIdMatcher ) || [];
+      bugId = rallyMatches[ 1 ];
     }
 
     var parsedSubject = {
       tagId: tagId,
       tagName: foundTag,
       shortDescription: subject.replace( regexp, '' ),
-      rallyId: rallyId
+      bugId: bugId
     };
 
     //console.log('parsed subject', parsedSubject);

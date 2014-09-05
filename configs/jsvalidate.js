@@ -1,7 +1,7 @@
 module.exports = function ( grunt, pkg, options ) {
   'use strict';
 
-  var path = require('path');
+  var path = require( 'path' );
   var gruntTaskUtils = options.gruntTaskUtils;
   var commonConfig = options.commonConfig;
   var prepush = commonConfig.prepush || {};
@@ -14,11 +14,11 @@ module.exports = function ( grunt, pkg, options ) {
       esprimaOptions: {},
       verbose: false
     }
-//    'js-check': {
-//      files: {
-//        src: prepush.jsvalidate
-//      }
-//    }
+    //    'js-check': {
+    //      files: {
+    //        src: prepush.jsvalidate
+    //      }
+    //    }
   };
   // endregion
 };

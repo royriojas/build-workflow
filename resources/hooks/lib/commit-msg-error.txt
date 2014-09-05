@@ -44,8 +44,4 @@ Example:
 
   $ git commit -m "BUG: Fix Bamboo Build [DE1012]"
 
-More info:
-
-  http://wiki/display/cloud/Cloud+projects+workflow+with+GIT#CloudprojectsworkflowwithGIT-Commits
-
 ===============

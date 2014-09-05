@@ -4,6 +4,8 @@ module.exports = function ( grunt, pkg, options ) {
   var gruntTaskUtils = options.gruntTaskUtils;
 
   return {
-
+    //    hooks: {
+    //      gitHooksDirectory: '../.git/hooks/'
+    //    }
   };
 };
