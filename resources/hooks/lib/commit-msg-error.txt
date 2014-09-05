@@ -1,0 +1,51 @@
+Make sure your commit message looks like:
+
+  {TAG} {SHORT_DESCRIPTION} [{RALLY_ID}]
+
+  {LONG_DESCRIPTION}
+
+Where:
+
+  {TAG}               => Any of the following :
+                         - BLD: change related to build scripts
+                         - BUG: bug fix, hotfixes
+                         - DOC: documentation
+                         - FEAT: features new features
+                         - ENH: Performance enhancements, not captured in features
+                         - REF: maintenance commit (refactoring, etc.)
+                         - STY: style fix (whitespaces, typos)
+                         - TST: addition or modification of tests
+
+  {SHORT_DESCRIPTION} => A very short description
+
+  {RALLY_ID}          => (Optional). Provide one if
+                         you have it, between brackets...
+                         example [DE12121]
+
+  {LONG_DESCRIPTION}  => (Optional). A longer description
+                         of the commit. You can use markdown
+                         to provide some nice formatting
+
+IMPORTANT:
+
+  The maximum length of the message should never be more than 70 characters
+
+Example:
+
+  $ git commit
+
+  BUG: Fix Bamboo Build [DE1012]
+
+  Bug on build while installing
+
+  == OR ==
+
+  In one line
+
+  $ git commit -m "BUG: Fix Bamboo Build [DE1012]"
+
+More info:
+
+  http://wiki/display/cloud/Cloud+projects+workflow+with+GIT#CloudprojectsworkflowwithGIT-Commits
+
+===============

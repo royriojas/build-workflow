@@ -1,0 +1,27 @@
+{
+  "name": "build-workflow",
+  "version": "0.0.1",
+  "description": "Simple gruntfile helper to  define build workflows",
+  "main": "config-loader.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/royriojas/build-workflow.git"
+  },
+  "keywords": [
+    "grunt",
+    "workflow",
+    "build",
+    "tasks",
+    "management",
+    "gruntfile"
+  ],
+  "author": "royriojas",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/royriojas/build-workflow/issues"
+  },
+  "homepage": "https://github.com/royriojas/build-workflow"
+}
