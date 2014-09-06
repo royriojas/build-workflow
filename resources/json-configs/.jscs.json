@@ -1,15 +1,52 @@
 {
-  "requireCurlyBraces": [ "if", "else", "for", "while", "do" ],
-  "requireSpaceAfterKeywords": [ "if", "else", "for", "while", "do", "switch", "return", "function" ],
+  "requireCurlyBraces": [
+    "if",
+    "else",
+    "for",
+    "while",
+    "do"
+  ],
+  "requireSpaceAfterKeywords": [
+    "if",
+    "else",
+    "for",
+    "while",
+    "do",
+    "switch",
+    "return",
+    "function"
+  ],
   "requireSpacesInFunctionExpression": {
     "beforeOpeningCurlyBrace": true
   },
   "requireSpacesInsideObjectBrackets": "all",
 
-  "disallowLeftStickedOperators": [ "?", "-", "/", "*", "=", "==", "===", "!=", "!==", ">", ">=", "<", "<=" ],
-  "disallowRightStickedOperators": [ "?", "/", "*", ":", "=", "==", "===", "!=", "!==", ">", ">=", "<", "<="],
-  "requireRightStickedOperators": [ "!" ],
-  "requireLeftStickedOperators": [ "," ],
+
+
+  "requireSpaceBeforeBinaryOperators": [
+    "=",
+    "+",
+    "-",
+    "/",
+    "*",
+    "==",
+    "===",
+    "!=",
+    "!=="
+  ],
+  "requireSpaceAfterBinaryOperators": [
+    "=",
+    ",",
+    "+",
+    "-",
+    "/",
+    "*",
+    "==",
+    "===",
+    "!=",
+    "!=="
+  ],
+
   "disallowKeywords": [ "with" ],
   "disallowMultipleLineBreaks": true,
   "disallowKeywordsOnNewLine": [ "else" ],
