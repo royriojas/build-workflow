@@ -28,8 +28,8 @@ module.exports = function ( grunt, pkg, options ) {
           filesOrFolders = [ file ];
         }
 
-        if (filesOrFolders.length === 0) {
-          grunt.fail.warn('No files to process');
+        if ( filesOrFolders.length === 0 ) {
+          grunt.fail.warn( 'No files to process' );
         }
 
         return lib.format( 'node_modules/docco-husky/bin/generate {0}', filesOrFolders.join( ' ' ));
