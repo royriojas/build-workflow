@@ -19,7 +19,9 @@ module.exports = function ( grunt ) {
 
     "codepainter": {
       "sources": [
-        "**/*.js, !resources/hooks/*.js, !node_modules/**/*.*"
+        "**/*.js",
+        "!resources/hooks/*.js",
+        "!node_modules/**/*.*"
       ]
     },
 
