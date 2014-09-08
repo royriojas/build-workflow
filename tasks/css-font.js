@@ -7,7 +7,7 @@ module.exports = function ( grunt, pkg, options ) {
   var lib = require( 'grunt-ez-frontend/lib/lib.js' );
 
   gruntTaskUtils.registerTasks( {
-    "css-font": {
+    'css-font': {
       description: 'creates a css font css from the selection.json info file',
       multiTask: function () {
         var me = this;

@@ -115,7 +115,7 @@ module.exports = function ( grunt, pkg, options ) {
         //
         // globs to point to all the source files in this project
         var codepainter = commonConfig.codepainter || {};
-        var sourceFilesGlobs = codepainter.sources;
+        var sourceFilesGlobs = grunt.file.expand( codepainter.sources );
 
         return sourceFilesGlobs.map(function ( glob ) {
           return lib.format( 'node_modules/codepainter/bin/codepaint xform -j {0} "{1}"',

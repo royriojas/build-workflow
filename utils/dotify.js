@@ -3,7 +3,7 @@ var path = require( 'path' );
 var dotCompiler = require( './dot-compiler' );
 
 var options = {
-  excludeExtensions: [ ".json" ]
+  excludeExtensions: [ '.json' ]
 };
 
 module.exports = transformTools.makeStringTransform( 'dotify', options,

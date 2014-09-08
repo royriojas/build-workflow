@@ -16,7 +16,7 @@ module.exports = function ( grunt, pkg, options ) {
   var gitHelper = {
     getTags: function () {
       return new Promise(function ( resolve, reject ) {
-        exec( "git for-each-ref --sort='-*authordate' --format='%(tag)' refs/tags", function ( err, stdout, stderr ) {
+        exec( 'git for-each-ref --sort=\'-*authordate\' --format=\'%(tag)\' refs/tags', function ( err, stdout, stderr ) {
           if ( !err ) {
             var tags = stdout.split( '\n' ).filter(function ( entry ) {
               return !!entry;
@@ -38,7 +38,7 @@ module.exports = function ( grunt, pkg, options ) {
         from: '',
         to: '',
         name: '',
-        args: "--pretty=format:'%h$|$%s$|$%b$|$%ct$|$%an$-$-$' --no-merges"
+        args: '--pretty=format:\'%h$|$%s$|$%b$|$%ct$|$%an$-$-$\' --no-merges'
       };
 
       lib.extend( opts, options );
