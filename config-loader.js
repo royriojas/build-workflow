@@ -53,18 +53,17 @@ module.exports = function ( grunt, args ) {
   lib.extend( opts, args );
 
   var filterMethod = opts.filterDevOnly ? 'filterDev' : 'filterAll';
+  // the base path relative to the location of this file
+  // when called from within the gruntfile.js
+  var basePath = opts.gruntFileDirectory;
 
   // **load all grunt tasks without specifying them by name**.
   //
   // This is handy because it is not longer required
   // to register a task calling grunt.loadNmpTasks('grunt-name-of-task');
-  var gruntDeps = require( 'matchdep' )[ filterMethod ]( 'grunt-*', opts.appPkgJSONPath );
+  var gruntDeps = require( 'matchdep' )[ filterMethod ]( 'grunt-*', path.join( basePath, opts.appPkgJSONPath ));
 
   gruntDeps.forEach( grunt.loadNpmTasks );
-
-  // the base path relative to the location of this file
-  // when called from within the gruntfile.js
-  var basePath = opts.gruntFileDirectory;
 
   grunt.verbose.writeln( 'cfg-ldr: basePath', basePath );
 
