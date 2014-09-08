@@ -17,10 +17,6 @@ module.exports = function ( grunt ) {
       ]
     },
 
-    'codepainter': {
-      'sources': prepushFiles
-    },
-
     //    "yuidoc": {
     //      "config": "./grunt-deps/yuidoc/yuidoc.json"
     //    },
@@ -29,7 +25,8 @@ module.exports = function ( grunt ) {
       'jsbeautifier': prepushFiles,
       'jscs': prepushFiles,
       'jshint': prepushFiles,
-      'jsvalidate': prepushFiles
+      'jsvalidate': prepushFiles,
+      'codepainter': prepushFiles
     }
   };
 };

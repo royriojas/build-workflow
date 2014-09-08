@@ -2,6 +2,7 @@ module.exports = function ( grunt, pkg, options ) {
   'use strict';
 
   var gruntTaskUtils = options.gruntTaskUtils;
+  var commonConfig = options.commonConfig;
 
   var getRenderer = require( '../utils/get-renderer' );
   var capitalize = require( '../utils/capitalize' );
@@ -11,8 +12,6 @@ module.exports = function ( grunt, pkg, options ) {
 
   var lib = require( 'grunt-ez-frontend/lib/lib.js' );
   var moment = require( 'moment' );
-
-  var commonConfig = options.commonConfig;
 
   var changeLogConfig = commonConfig.changelog || {};
 

@@ -43,7 +43,8 @@
     "docco-husky": "https://github.com/royriojas/docco-husky/tarball/f02aff8",
     "grunt-exec": "~0.4.6",
     "grunt-bump": "0.0.15",
-    "grunt-jsonlint": "~1.0.4"
+    "grunt-jsonlint": "~1.0.4",
+    "grunt-codepainter": "~1.1.0"
   },
   "docco_husky": {
     "content_dir": "docs",
