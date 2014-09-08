@@ -58,7 +58,7 @@ module.exports = function ( grunt, args ) {
   //
   // This is handy because it is not longer required
   // to register a task calling grunt.loadNmpTasks('grunt-name-of-task');
-  var gruntDeps = require( 'matchdep' )[ filterMethod ]( 'grunt-*' );
+  var gruntDeps = require( 'matchdep' )[ filterMethod ]( 'grunt-*', opts.appPkgJSONPath );
 
   gruntDeps.forEach( grunt.loadNpmTasks );
 
