@@ -8,13 +8,18 @@ module.exports = {
       scope.stubFn = require( './stub-fn' );
       var overrider = require( './overrider' );
 
-      scope.equal = function ( actual, expected ) {
-        expect( actual ).to.equal( expected );
-      };
+      var qunitMethods = [
+        'equal',
+        'strictEqual',
+        'deepEqual',
+        'ok'
+      ];
 
-      scope.ok = function ( actual ) {
-        expect( actual ).to.be.true;
-      };
+      qunitMethods.forEach(function ( method ) {
+        scope[ method ] = function () {
+          assert[ method ].apply( assert, arguments );
+        };
+      } );
 
       scope.getOverrider = function ( obj ) {
         var me = this;

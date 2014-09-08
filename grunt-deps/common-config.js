@@ -9,22 +9,13 @@ module.exports = function ( grunt ) {
   ];
 
   return {
-    changelog: {
-      "gitUrlForCommit": "https://github.com/royriojas/build-workflow/commit/{0}",
-      "gitAuthorUrl": "https://github.com/{0}",
-      "urlForBugId": "https://github.com/royriojas/build-workflow/issues/{0}"
-    },
 
-    //    "docco_husky": {
-    //      "content_dir": "documentation/docs-source",
-    //      "output_dir": "documentation/docs",
-    //      "sources": [
-    //        "Gruntfile.js",
-    //        "./"
-    //      ],
-    //      "project_name": "Build workflow",
-    //      "show_timestamp": true
-    //    },
+    "docco_husky": {
+      "sources": [
+        "Gruntfile.js",
+        "tasks/"
+      ]
+    },
 
     "codepainter": {
       "sources": [

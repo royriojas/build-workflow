@@ -21,7 +21,7 @@ module.exports = function ( grunt, pkg, options ) {
     // then the documentation will be generated only for this file.
     docs: {
       command: function ( file ) {
-        var doccoHusky = pkg.docco_husky || {};
+        var doccoHusky = commonConfig.docco_husky || {};
         var filesOrFolders = doccoHusky.sources || [];
 
         if ( file ) {
