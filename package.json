@@ -41,7 +41,8 @@
     "grunt-jsvalidate": "~0.2.2",
     "jsonlint": "~1.6.2",
     "docco-husky": "https://github.com/royriojas/docco-husky/tarball/f02aff8",
-    "grunt-exec": "~0.4.6"
+    "grunt-exec": "~0.4.6",
+    "grunt-bump": "0.0.15"
   },
   "docco_husky": {
     "content_dir": "docs",
