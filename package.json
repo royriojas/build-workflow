@@ -1,6 +1,6 @@
 {
   "name": "build-workflow",
-  "version": "0.0.19",
+  "version": "0.0.20",
   "description": "Simple gruntfile helper to  define build workflows",
   "main": "config-loader.js",
   "scripts": {
@@ -76,7 +76,8 @@
     "karma-chai-sinon": "~0.1.3",
     "grunt-autoprefixer": "~1.0.1",
     "browserify": "~5.11.1",
-    "browserify-shim": "~3.7.0"
+    "browserify-shim": "~3.7.0",
+    "grunt-bump": "0.0.15"
   },
   "docco_husky": {
     "content_dir": "docs",
