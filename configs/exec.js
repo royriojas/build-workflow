@@ -127,10 +127,17 @@ module.exports = function ( grunt, pkg, options ) {
     yuidoc: {
       command: function ( glob ) {
         glob = glob || './';
-        var files = glob.split( ',' );
+
         var yuidoc = commonConfig.yuidoc || {};
         var pathToConfig = yuidoc.config || path.resolve( __dirname, '../resources/json-configs/yuidoc.json' );
-        return lib.format( 'node_modules/yuidocjs/lib/cli.js {0} -c {1}', files, pathToConfig );
+        var projectName = pkg.name;
+        var projectVersion = pkg.version;
+
+        var files = yuidoc.files || glob.split( ',' );
+
+        var cmd = lib.format( 'node_modules/yuidocjs/lib/cli.js {0} -c {1} --project-name {2} --project-version {3}', files.join( ' ' ), pathToConfig, projectName, projectVersion );
+
+        return cmd;
       }
     },
 
