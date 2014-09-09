@@ -44,7 +44,8 @@
     "grunt-jscs": "~0.7.1",
     "grunt": "~0.4.5",
     "grunt-ez-frontend": "~0.2.21",
-    "yuidocjs": "https://github.com/royriojas/yuidoc/tarball/exampleurl"
+    "yuidocjs": "https://github.com/royriojas/yuidoc/tarball/exampleurl",
+    "grunt-exec": "~0.4.6"
   },
   "docco_husky": {
     "content_dir": "docs",

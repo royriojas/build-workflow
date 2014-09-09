@@ -8,7 +8,7 @@ npm i -D grunt
 npm i -D build-workflow
 
 # then install deps
-npm i -D time-grunt matchdep es6-promise twig marked dot moment 
+npm i -D time-grunt matchdep es6-promise twig marked dot moment grunt-exec
 npm i -D jshint-stylish grunt-contrib-jshint grunt-jscs grunt-jsvalidate 
 npm i -D grunt-ez-frontend grunt-jsonlint yuidoc-theme-blue 
 npm i -D https://github.com/royriojas/karma-react-jsx-preprocessor/tarball/1824de4 
