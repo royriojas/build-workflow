@@ -8,11 +8,14 @@ npm i -D grunt
 npm i -D build-workflow
 
 # then install deps
-npm i -D time-grunt matchdep es6-promise twig marked dot moment grunt-exec
-npm i -D jshint-stylish grunt-contrib-jshint grunt-jscs grunt-jsvalidate 
-npm i -D grunt-ez-frontend grunt-jsonlint yuidoc-theme-blue 
-npm i -D https://github.com/royriojas/karma-react-jsx-preprocessor/tarball/1824de4 
-npm i -D https://github.com/royriojas/yuidoc/tarball/exampleurl 
-npm i -D https://github.com/royriojas/grunt-jsbeautifier/tarball/e69f6ef 
-npm i -D https://github.com/royriojas/docco-husky/tarball/f02aff8
+time-grunt matchdep es6-promise twig marked dot moment grunt-exec
+jshint-stylish grunt-contrib-jshint grunt-jscs grunt-jsvalidate 
+grunt-ez-frontend grunt-jsonlint yuidoc-theme-blue 
+grunt-contrib-clean grunt-contrib-copy grunt-contrib-uglify
+grunt-csso grunt-autoprefixer stringformat browserify-shim grunt-contrib-watch
+grunt-karma karma-coverage 
+https://github.com/royriojas/karma-react-jsx-preprocessor/tarball/1824de4 
+https://github.com/royriojas/yuidoc/tarball/exampleurl 
+https://github.com/royriojas/grunt-jsbeautifier/tarball/e69f6ef 
+https://github.com/royriojas/docco-husky/tarball/f02aff8
 ```
