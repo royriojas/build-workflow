@@ -21,7 +21,7 @@ showTitleBlock( 'Validation Hook Started' );
 var cp = exec( 'grunt prepush', function ( err, stdout, stderr ) {
   if ( err ) {
 
-    var regex = /was\snot\sbeautified/g;
+    console.error( err );
 
     showErrorBlock( 'Review your errors and try again', 'VALIDATION FAILED :' );
 

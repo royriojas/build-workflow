@@ -21,8 +21,6 @@
   },
   "requireSpacesInsideObjectBrackets": "all",
 
-
-
   "requireSpaceBeforeBinaryOperators": [
     "=",
     "+",

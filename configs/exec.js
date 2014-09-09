@@ -86,43 +86,43 @@ module.exports = function ( grunt, pkg, options ) {
 
       }
     },
-    // ## exec:codepainter
-    // Codepainter is a utility similar to jsbeautifier it format the code to
-    // follow a given set of styles. It is similar to jsbeautifier. It actually
-    // complements it, since we're using it to make sure we always use single
-    // quotes in our strings in javascript.
-    //
-    // Call it executing `grunt exec:codepainter` or `grunt exec:codepainter:glob`
-    //
-    // The first call beautify all the source files, by application group
-    // to avoid an issue with opening too many file descriptors. The second one will
-    // beautify all the files that match the passed glob only.
-    //
-    // **Note**:
-    //
-    // a glob is a string that represent a set of files or directories
-    // something like: `some/path/**/*.js` which will match all files inside some path that
-    // have the js extension.
-    codepainter: {
-      command: function ( glob ) {
-        var codepainterJSON = path.resolve( __dirname, '../resources/json-configs/codepainter.json' );
-        if ( glob ) {
-          return lib.format( 'node_modules/codepainter/bin/codepaint xform -j {0} "{1}"',
-            codepainterJSON, glob );
-        }
-
-        // ** sourceFilesGlobs**
-        //
-        // globs to point to all the source files in this project
-        var codepainter = commonConfig.codepainter || {};
-        var sourceFilesGlobs = grunt.file.expand( codepainter.sources );
-
-        return sourceFilesGlobs.map(function ( glob ) {
-          return lib.format( 'node_modules/codepainter/bin/codepaint xform -j {0} "{1}"',
-            codepainterJSON, glob );
-        } ).join( ' && ' );
-      }
-    },
+//    // ## exec:codepainter
+//    // Codepainter is a utility similar to jsbeautifier it format the code to
+//    // follow a given set of styles. It is similar to jsbeautifier. It actually
+//    // complements it, since we're using it to make sure we always use single
+//    // quotes in our strings in javascript.
+//    //
+//    // Call it executing `grunt exec:codepainter` or `grunt exec:codepainter:glob`
+//    //
+//    // The first call beautify all the source files, by application group
+//    // to avoid an issue with opening too many file descriptors. The second one will
+//    // beautify all the files that match the passed glob only.
+//    //
+//    // **Note**:
+//    //
+//    // a glob is a string that represent a set of files or directories
+//    // something like: `some/path/**/*.js` which will match all files inside some path that
+//    // have the js extension.
+//    codepainter: {
+//      command: function ( glob ) {
+//        var codepainterJSON = path.resolve( __dirname, '../resources/json-configs/codepainter.json' );
+//        if ( glob ) {
+//          return lib.format( 'node_modules/codepainter/bin/codepaint xform -j {0} "{1}"',
+//            codepainterJSON, glob );
+//        }
+//
+//        // ** sourceFilesGlobs**
+//        //
+//        // globs to point to all the source files in this project
+//        var codepainter = commonConfig.codepainter || {};
+//        var sourceFilesGlobs = grunt.file.expand( codepainter.sources );
+//
+//        return sourceFilesGlobs.map(function ( glob ) {
+//          return lib.format( 'node_modules/codepainter/bin/codepaint xform -j {0} "{1}"',
+//            codepainterJSON, glob );
+//        } ).join( ' && ' );
+//      }
+//    },
 
     yuidoc: {
       command: function ( glob ) {

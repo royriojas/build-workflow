@@ -56,7 +56,8 @@
     "chrome": true,
     "TEMPORARY": true,
     "PERSISTENT": true,
-    "FileError": true
+    "FileError": true,
+    "Modernizr": true
   }
 }
 
