@@ -44,7 +44,7 @@ var deps = [
   'jasmine-spec-reporter',
   'jshint-stylish',
   'https://github.com/royriojas/karma-react-jsx-preprocessor/tarball/1824de4',
-  'https://github.com/royriojas/yuidoc/tarball/exampleurl',
+  'https://github.com/royriojas/yuidoc/tarball/ed6e335',
   'https://github.com/royriojas/grunt-jsbeautifier/tarball/e69f6ef',
   'https://github.com/royriojas/docco-husky/tarball/f02aff8'
 ];
