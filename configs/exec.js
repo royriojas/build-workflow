@@ -32,7 +32,7 @@ module.exports = function ( grunt, pkg, options ) {
           grunt.fail.warn( 'No files to process' );
         }
 
-        return lib.format( 'node_modules/docco-husky/bin/generate {0}', filesOrFolders.join( ' ' ));
+        return lib.format( 'node_modules/docco-husky-plus/bin/generate {0}', filesOrFolders.join( ' ' ));
       }
     },
 
@@ -126,17 +126,22 @@ module.exports = function ( grunt, pkg, options ) {
 
     yuidoc: {
       command: function ( glob ) {
-        glob = glob || './';
+
+        var server = glob === 'server';
 
         var yuidoc = commonConfig.yuidoc || {};
         var pathToConfig = yuidoc.config || path.resolve( __dirname, '../resources/json-configs/yuidoc.json' );
         var projectName = pkg.name;
         var projectVersion = pkg.version;
 
-        var files = yuidoc.files || glob.split( ',' );
+        var files = yuidoc.files || [];
 
-        var cmd = lib.format( 'node_modules/yuidocjs/lib/cli.js {0} -c {1} --project-name {2} --project-version {3}', files.join( ' ' ), pathToConfig, projectName, projectVersion );
+        if ( files.length === 0 ) {
+          grunt.fail.warn( 'No files provided. please add them to your common-config.js file to the yuidoc.files property' );
+        }
 
+        var cmd = lib.format( 'node_modules/yuidocjs/lib/cli.js {0} -c {1} --project-name {2} --project-version {3} {4}', files.join( ' ' ), pathToConfig, projectName, projectVersion, server ? '--server' : '' );
+        grunt.verbose.writeln( cmd );
         return cmd;
       }
     },
@@ -160,7 +165,9 @@ module.exports = function ( grunt, pkg, options ) {
 
         commands.push( lib.format( './node_modules/protractor/bin/protractor {0}', pathToProtractorConfig ));
 
-        return commands.join( '\n' );
+        var cmd = commands.join( '\n' );
+        grunt.verbose.writeln( cmd );
+        return cmd;
       }
     }
   };

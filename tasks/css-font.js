@@ -98,8 +98,10 @@ module.exports = function ( grunt, pkg, options ) {
             grunt.file.write( dest, lessText );
             grunt.log.ok( 'Less File created: ' + dest );
 
-            opts.jsonCodesOuput && grunt.file.write( opts.jsonCodesOuput, lib.format( 'var fontData = {0}', JSON.stringify( fontData )) );
-            grunt.log.ok( 'JSON Metadata File created: ' + opts.jsonCodesOuput );
+            if ( opts.jsonCodesOuput ) {
+              grunt.file.write( opts.jsonCodesOuput, lib.format( 'var fontData = {0}', JSON.stringify( fontData )) );
+              grunt.log.ok( 'JSON Metadata File created: ' + opts.jsonCodesOuput );
+            }
           } );
 
         } );

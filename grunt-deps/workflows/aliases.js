@@ -4,7 +4,9 @@ module.exports = function ( grunt, pkg, opts ) {
   var gruntTaksUtils = opts.gruntTaskUtils;
 
   var aliases = {
-    'default': [ 'jshint' ]
+    'default': function () {
+      console.log( 'default task!' );
+    }
   };
 
   gruntTaksUtils.registerTasks( aliases );

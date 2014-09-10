@@ -1,4 +1,4 @@
-module.exports = function ( grunt ) {
+module.exports = function ( grunt, pkg ) {
 
   var prepushFiles = [
     '**/*.js',
@@ -8,18 +8,26 @@ module.exports = function ( grunt ) {
     '!apidocs/**/*.js'
   ];
 
+  var sourcesForDocs = [
+    'Gruntfile.js',
+    'tasks/',
+    'configs/',
+    'grunt-deps/',
+    'test-helpers/',
+    'utils/',
+    './*.js'
+  ];
+
   return {
 
     'docco_husky': {
-      'sources': [
-        'Gruntfile.js',
-        'tasks/'
-      ]
+      'sources': sourcesForDocs
     },
 
-    //    "yuidoc": {
-    //      "config": "./grunt-deps/yuidoc/yuidoc.json"
-    //    },
+    "yuidoc": {
+      //"config": "./grunt-deps/yuidoc/yuidoc.json",
+      files: sourcesForDocs
+    },
 
     'filesToValidate': {
       'jsbeautifier': prepushFiles,
