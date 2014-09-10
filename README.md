@@ -40,4 +40,4 @@ So, This module will
 
 ## Usage
 
-check usage [here](./docs/usage.md.html) 
+[check usage here](docs/usage.md) 

@@ -41,7 +41,7 @@
     "jshint-stylish": "~0.4.0",
     "grunt-codepainter": "~1.1.0",
     "grunt-exec": "~0.4.6",
-    "docco-husky-plus": "~0.4.1",
+    "docco-husky-plus": "~0.4.3",
     "yuidoc-theme-blue": "~0.1.8",
     "yuidocjs": "https://github.com/royriojas/yuidoc/tarball/ed6e335",
     "grunt-bump": "0.0.15",
