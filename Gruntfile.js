@@ -6,7 +6,7 @@ module.exports = function ( grunt ) {
 
   // load the config-loader function and pass the grunt object
   require( './config-loader' )( grunt, {
-    //loadBaseTasksAndConfigs : false
+    // loadBaseTasksAndConfigs : false
   } );
 
 };

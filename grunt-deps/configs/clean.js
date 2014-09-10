@@ -1,11 +1,13 @@
 module.exports = function ( grunt, pkg, opts ) {
   'use strict';
-
   var gruntTaksUtils = opts.gruntTaskUtils;
 
-  var aliases = {
-    'default': [ 'clean', 'check-valid', 'exec:docs' ]
+  return {
+    foldersToclean: {
+      src: [
+        'apidocs',
+        'documentation'
+      ]
+    }
   };
-
-  gruntTaksUtils.registerTasks( aliases );
 };
