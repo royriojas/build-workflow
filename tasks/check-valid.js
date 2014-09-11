@@ -4,53 +4,25 @@ module.exports = function ( grunt, pkg, options ) {
   var gruntTaskUtils = options.gruntTaskUtils;
 
   var path = require( 'path' );
+  var checkFiles = require( '../utils/check-files' );
 
   gruntTaskUtils.registerTasks( {
     'check-valid': function ( jsTasks ) {
 
       var opts = this.options( {
         useNewer: true,
-        tasksToRun: 'jsbeautifier,jscs,jshint,jsvalidate'
+        tasksToRun: 'jsbeautifier,jscs,jshint,jsvalidate',
+        filesToValidate: options.commonConfig.filesToValidate,
+        forceBeautify: true
       } );
 
-      var key = 'js-check';
-
-      jsTasks = jsTasks || opts.tasksToRun;
-
-      jsTasks = jsTasks.split( ',' );
-
-      var tasksToRun = [];
-
-      var prepush = options.commonConfig.filesToValidate || {};
-
-      jsTasks.forEach(function ( task ) {
-        var files = prepush[ task ] || [];
-
-        if ( files.length > 0 ) {
-          var tConfig = {
-            src: files
-          };
-
-          grunt.config.set( [ task, key ], tConfig );
-          tasksToRun.push( task );
-        }
-      } );
-
-      var useNewer = opts.useNewer;
-      if ( grunt.option( 'check-valid-use-newer' ) === false ) {
-        useNewer = false;
-      }
-
-      tasksToRun = tasksToRun.map(function ( task ) {
-
-        return ( useNewer ? 'newer:' : '' ) + task + ':' + key;
-      } );
+      var tasksToRun = checkFiles.doCheck( grunt, jsTasks, opts );
 
       if ( tasksToRun.length > 0 ) {
         grunt.task.run( tasksToRun );
       }
 
-      grunt.log.ok( 'tasks to run', tasksToRun );
+      grunt.log.ok( 'check-valid: tasks to run', tasksToRun );
     }
   } );
 };

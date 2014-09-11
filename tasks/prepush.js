@@ -4,51 +4,25 @@ module.exports = function ( grunt, pkg, options ) {
   var gruntTaskUtils = options.gruntTaskUtils;
 
   var path = require( 'path' );
+  var checkFiles = require( '../utils/check-files' );
 
   gruntTaskUtils.registerTasks( {
     'prepush': function ( jsTasks ) {
 
-      var key = 'js-check';
-
-      jsTasks = jsTasks || 'jsbeautifier,jscs,jshint,jsvalidate';
-
-      jsTasks = jsTasks.split( ',' );
-
-      var tasksToRun = [];
-
-      var prepush = options.commonConfig.filesToValidate || {};
-
-      jsTasks.forEach(function ( task ) {
-        var files = prepush[ task ] || [];
-
-        if ( files.length > 0 ) {
-          var tConfig = {
-            src: files
-          };
-
-          if ( task === 'jsbeautifier' && !grunt.option( 'pp-force-beautify' )) {
-            tConfig.options = {
-              mode: 'VERIFY_ONLY',
-              onVerificationFailed: function ( result, opts ) {
-                grunt.fail.fatal( 'File needed beautification: ' + opts.file );
-              }
-            };
-          }
-
-          grunt.config.set( [ task, key ], tConfig );
-          tasksToRun.push( task );
-        }
+      var opts = this.options( {
+        useNewer: false,
+        tasksToRun: 'jsbeautifier,jscs,jshint,jsvalidate',
+        filesToValidate: options.commonConfig.filesToValidate,
+        forceBeautify: false
       } );
 
-      tasksToRun = tasksToRun.map(function ( task ) {
-        return task + ':' + key;
-      } );
+      var tasksToRun = checkFiles.doCheck( grunt, jsTasks, opts );
 
       if ( tasksToRun.length > 0 ) {
         grunt.task.run( tasksToRun );
       }
 
-      console.log( 'tasks to run', tasksToRun );
+      grunt.log.ok( 'prepush: tasks to run', tasksToRun );
     }
   } );
 };
