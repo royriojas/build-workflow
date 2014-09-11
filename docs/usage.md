@@ -17,7 +17,7 @@ npm i -D moment dot marked es6-promise
 
 ```sh
 # install the check-valid tasks
-npm i -D grunt-contrib-jshint grunt-jscs grunt-jsvalidate https://github.com/royriojas/grunt-jsbeautifier/tarball/e69f6ef
+npm i -D grunt-newer grunt-contrib-jshint grunt-jscs grunt-jsvalidate https://github.com/royriojas/grunt-jsbeautifier/tarball/e69f6ef
 
 # optional to enable a nice reporter that group errors per file
 npm i -D jshint-stylish

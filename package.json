@@ -46,7 +46,8 @@
     "yuidocjs": "https://github.com/royriojas/yuidoc/tarball/ed6e335",
     "grunt-bump": "0.0.15",
     "grunt-jsonlint": "~1.0.4",
-    "grunt-contrib-clean": "~0.6.0"
+    "grunt-contrib-clean": "~0.6.0",
+    "grunt-newer": "~0.7.0"
   },
   "docco_husky": {
     "content_dir": "docs",

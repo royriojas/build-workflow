@@ -8,9 +8,14 @@ module.exports = function ( grunt, pkg, options ) {
   gruntTaskUtils.registerTasks( {
     'check-valid': function ( jsTasks ) {
 
+      var opts = this.options({
+        useNewer: true,
+        tasksToRun: 'jsbeautifier,jscs,jshint,jsvalidate'
+      });
+
       var key = 'js-check';
 
-      jsTasks = jsTasks || 'jsbeautifier,jscs,jshint,jsvalidate';
+      jsTasks = jsTasks || opts.tasksToRun;
 
       jsTasks = jsTasks.split( ',' );
 
@@ -32,7 +37,7 @@ module.exports = function ( grunt, pkg, options ) {
       } );
 
       tasksToRun = tasksToRun.map(function ( task ) {
-        return task + ':' + key;
+        return (opts.useNewer ? 'newer:' : '') +  task + ':' + key;
       } );
 
       if ( tasksToRun.length > 0 ) {
