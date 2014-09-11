@@ -8,10 +8,10 @@ module.exports = function ( grunt, pkg, options ) {
   gruntTaskUtils.registerTasks( {
     'check-valid': function ( jsTasks ) {
 
-      var opts = this.options({
+      var opts = this.options( {
         useNewer: true,
         tasksToRun: 'jsbeautifier,jscs,jshint,jsvalidate'
-      });
+      } );
 
       var key = 'js-check';
 
@@ -36,17 +36,21 @@ module.exports = function ( grunt, pkg, options ) {
         }
       } );
 
+      var useNewer = opts.useNewer;
+      if ( grunt.option( 'check-valid-use-newer' ) === false ) {
+        useNewer = false;
+      }
+
       tasksToRun = tasksToRun.map(function ( task ) {
-        return (opts.useNewer ? 'newer:' : '') +  task + ':' + key;
+
+        return ( useNewer ? 'newer:' : '' ) + task + ':' + key;
       } );
 
       if ( tasksToRun.length > 0 ) {
         grunt.task.run( tasksToRun );
       }
 
-      console.log( 'tasks to run', tasksToRun );
-
-      grunt.log.ok( 'all validated!' );
+      grunt.log.ok( 'tasks to run', tasksToRun );
     }
   } );
 };
