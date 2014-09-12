@@ -28,12 +28,6 @@ module.exports = {
         return ov;
       };
 
-      var kno = require( 'kno' );
-      if ( kno.app.moduleManager ) {
-        scope.mManager = Object.create( kno.app.moduleManager );
-        scope.mManager.__init();
-      }
-
       scope.clearScope = function () {
         var me = this;
         me.$fixture.remove();
@@ -44,8 +38,6 @@ module.exports = {
         }
         me.overriders = null;
         me.stubFn = null;
-        me.mManager && me.mManager.__destroy();
-        me.mManager = null;
       };
 
       scope.tojEqual = scope.checkEqual = function ( actual, expected, msg ) {
