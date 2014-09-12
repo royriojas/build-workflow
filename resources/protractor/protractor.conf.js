@@ -5,7 +5,7 @@ var lib = require( 'grunt-ez-frontend/lib/lib' );
 
 module.exports = function ( cfg ) {
   var opts = {
-    suitesFolder: path.resolve( './frontend-app/e2e/suites/' ),
+    suitesFolder: './e2e/suites/',
     specGlobs: '**/*spec.js'
   };
 
