@@ -29,6 +29,8 @@ module.exports = function ( grunt, pkg ) {
       files: sourcesForDocs
     },
 
+    prepushTasks: [ 'jsonlint' ],
+
     'filesToValidate': {
       'jsbeautifier': prepushFiles,
       'jscs': prepushFiles,

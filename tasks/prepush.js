@@ -13,10 +13,17 @@ module.exports = function ( grunt, pkg, options ) {
         useNewer: false,
         tasksToRun: 'jsbeautifier,jscs,jshint,jsvalidate',
         filesToValidate: options.commonConfig.filesToValidate,
-        forceBeautify: false
+        forceBeautify: false,
+        prepushTasks: options.commonConfig.prepushTasks || []
       } );
 
       var tasksToRun = checkFiles.doCheck( grunt, jsTasks, opts );
+
+      tasksToRun = tasksToRun || [];
+
+      if ( opts.prepushTasks ) {
+        tasksToRun = tasksToRun.concat( opts.prepushTasks );
+      }
 
       if ( tasksToRun.length > 0 ) {
         grunt.task.run( tasksToRun );
