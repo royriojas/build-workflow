@@ -38,6 +38,12 @@ npm i -D docco-husky-plus
 # yuidoc
 npm i -D yuidoc-theme-blue https://github.com/royriojas/yuidoc/tarball/ed6e335
 ```
+
+### ez-frontend dependencies
+
+```sh
+npm i -D grunt-contrib-uglify grunt-csso  grunt-autoprefixer grunt-jscs
+```
  
 ## Create a Gruntfile (or replace the one you have with)
 
