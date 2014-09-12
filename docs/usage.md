@@ -121,3 +121,52 @@ Grunt configs are set on the config object in grunt, but this could easily becom
 will look for the tasks configs inside the `configs` folder, execute the exported function and set the value of 
 the config in the `grunt.config` object. If the base tasks were loaded the configurations described here will 
 override the base ones.
+
+### common-config.js file
+
+A `common-config.js` file looks like the one below
+
+```javascript
+module.exports = function ( grunt, pkg ) {
+
+  var prepushFiles = [
+    '**/*.js',
+    '!resources/hooks/*.js',
+    '!node_modules/**/*.*',
+    '!documentation/**/*.js',
+    '!apidocs/**/*.js'
+  ];
+
+  var sourcesForDocs = [
+    'Gruntfile.js',
+    'tasks/',
+    'configs/',
+    'grunt-deps/',
+    'test-helpers/',
+    'utils/',
+    './*.js'
+  ];
+
+  return {
+
+    'docco_husky': {
+      'sources': sourcesForDocs
+    },
+
+    "yuidoc": {
+      //"config": "./grunt-deps/yuidoc/yuidoc.json",
+      files: sourcesForDocs
+    },
+
+    prepushTasks: [ 'karma:one' ],
+
+    'filesToValidate': {
+      'jsbeautifier': prepushFiles,
+      'jscs': prepushFiles,
+      'jshint': prepushFiles,
+      'jsvalidate': prepushFiles,
+      'codepainter': prepushFiles
+    }
+  };
+};
+```
