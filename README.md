@@ -37,7 +37,11 @@ So, This module will
     file obtained from the [icomoon app](https://icomoon.io/app/#/select)
   - **target, js-target, css-target**: tasks to run `ez-frontend` targets.
   - **validate-files**: a custom task to validate files passed as parameters. Useful to beautify the code from within an IDE.
+  - **twig**: a simple twig template renderer
 
+__TODO: at some point all this tasks should be moved to their own repos in order to leave `build-workflow` a simple grunt 
+management module__
+  
 ## Usage
 
 [check usage here](docs/usage.md) 

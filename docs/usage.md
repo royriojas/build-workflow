@@ -148,18 +148,47 @@ module.exports = function ( grunt, pkg ) {
   ];
 
   return {
-
+    
+    // this files are going to generate annotated docs using docco-husky-plus
+    // for docco to work properly the package json also need to have some configuration
+    // values. TODO: move the docco-husky config to this file too.
+    // the `package.json` values to add are
+    //
+    // "docco_husky": {
+    //    // do not add `./` at the beginning or a `/` at the end. Docco is kinda picky 
+    //    "content_dir": "docs", 
+    //    "output_dir": "documentation",
+    //    "project_name": "Build Workflow",
+    //    "show_timestamp": true
+    //  }
+    //
+    // to execute the documentation task run
+    // grunt exec:docs
     'docco_husky': {
       'sources': sourcesForDocs
     },
 
+    // this section controls the generation of the apidocs
+    // you can provide a custom configuration object for yuidoc
+    // or use the default one configured to use yuidoc-theme-blue
+    // the documentation files can be specified using the files property
     "yuidoc": {
       //"config": "./grunt-deps/yuidoc/yuidoc.json",
       files: sourcesForDocs
     },
 
+    // by default the prepush task is executed by the prepush hook, if installed
+    // the default prepush task will only execute the tasks under the filesToValidate
+    // section. If other tasks are required to be executed during the 
+    // prepush you can specify them here. i.e. if you want to make the prepush to also
+    // validate the tests are run you can add karma:one (assuming you have configured that task)
+    // this will execute the validation tasks and the karma:one and fail if the task fail
+    // preventing the push of code with untested paths
     prepushTasks: [ 'karma:one' ],
 
+    // filesToValidate specify the tasks that are going to be executed when 
+    // running the `prepush` hook and `check-valid` task
+    // to validate the files simply run `grunt check-valid`
     'filesToValidate': {
       'jsbeautifier': prepushFiles,
       'jscs': prepushFiles,
