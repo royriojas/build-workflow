@@ -5,12 +5,13 @@ module.exports = function ( grunt, pkg, options ) {
 
   var parseLog = require( '../resources/changelog/log-parser' );
 
-  var lib = require( 'grunt-ez-frontend/lib/lib.js' );
-
   gruntTaskUtils.registerTasks( {
     'changelog': {
       description: 'automate the generation of a changelog using git',
       multiTask: function () {
+
+        var lib = require( 'grunt-ez-frontend/lib/lib.js' );
+
         var me = this,
           done = me.async();
         var Promise = require( 'es6-promise' ).Promise;

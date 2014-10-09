@@ -4,15 +4,13 @@ module.exports = function ( grunt, pkg, options ) {
   var gruntTaskUtils = options.gruntTaskUtils;
   var path = require( 'path' );
 
-  // **lib module**
-  //
-  // this module include some utilities, like `lib.format`, `lib.isNullOrEmpty`, `lib.isNull`, `lib.extend`, etc
-  var lib = require( 'grunt-ez-frontend/lib/lib.js' );
-
   gruntTaskUtils.registerTasks( {
     'install-hooks': {
       description: 'install the hooks into the git subdirectory',
       multiTask: function () {
+
+        var lib = require( 'grunt-ez-frontend/lib/lib.js' );
+
         var me = this;
         var gruntWorkingDirectory = process.cwd();
 

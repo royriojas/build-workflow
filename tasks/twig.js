@@ -1,15 +1,17 @@
 module.exports = function ( grunt, pkg ) {
   'use strict';
   var gruntTaskUtils = require( 'grunt-ez-frontend/lib/grunt-task-utils' )( grunt );
-  var lib = require( 'grunt-ez-frontend/lib/lib' );
-  var path = require( 'path' );
-  var Twig = require( 'twig' );
-  var twig = Twig.twig;
 
   gruntTaskUtils.registerTasks( {
     'twig': {
       description: 'render twig templates',
       multiTask: function () {
+
+        var lib = require( 'grunt-ez-frontend/lib/lib' );
+        var path = require( 'path' );
+        var Twig = require( 'twig' );
+        var twig = Twig.twig;
+
         var me = this;
         var opts = me.options( {
           extRegex: /\.twig$/,

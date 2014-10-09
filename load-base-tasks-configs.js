@@ -5,10 +5,17 @@ module.exports = function ( grunt, opts, pkg, helperOptions ) {
   var baseConfigs = {};
 
   var baseTasksConfigs = grunt.file.expand( path.join( __dirname, './configs/**/*.js' ));
+  var tryCatch = require( './utils/try-catch' );
 
   baseTasksConfigs.forEach(function ( entry ) {
     var entryName = path.basename( entry, '.js' );
-    baseConfigs[ entryName ] = require( entry )( grunt, pkg, helperOptions );
+
+    tryCatch(function () {
+      baseConfigs[ entryName ] = require( entry )( grunt, pkg, helperOptions );
+    }, function ( err ) {
+      console.err( 'err loading a base configuration... some of the tasks might not work' );
+      console.err( '>>> ', err );
+    } );
   } );
 
   return baseConfigs;
