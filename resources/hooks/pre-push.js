@@ -2,7 +2,7 @@
 
 var exec = require( 'child_process' ).exec;
 var utils = require( './lib/util.js' );
-var prepushCfg = require( './lib/prepush-cfg.json' );
+var cfg = require( './lib/hooks-cfg.json' );
 var path = require( 'path' );
 
 var createStream = utils.createStream;
@@ -12,11 +12,13 @@ var showSuccessBlock = utils.showSuccessBlock;
 
 // hooks are always executed from the root
 // directory of the git repo (the one where .git/ lives in)
-process.chdir( prepushCfg.pathToSource );
+process.chdir( cfg.pathToSource );
 
-console.log( prepushCfg.pathToSource );
+console.log( cfg.pathToSource );
 
 showTitleBlock( 'Validation Hook Started' );
+
+console.log('arguments: ', process.args);
 
 var cp = exec( 'grunt prepush', function ( err, stdout, stderr ) {
   if ( err ) {
@@ -46,3 +48,4 @@ var cp = exec( 'grunt prepush', function ( err, stdout, stderr ) {
 } );
 
 cp.stdout.pipe( createStream());
+

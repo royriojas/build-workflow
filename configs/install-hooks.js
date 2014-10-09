@@ -5,7 +5,8 @@ module.exports = function ( grunt, pkg, options ) {
 
   return {
     //    hooks: {
-    //      gitHooksDirectory: '../.git/hooks/'
+    //      gitHooksDirectory: '../.git/hooks/',
+    //      commitTitleMaxLength: 140
     //    }
   };
 };

@@ -16,14 +16,17 @@ module.exports = function ( grunt, pkg, options ) {
         var me = this;
         var gruntWorkingDirectory = process.cwd();
 
+        var data = me.data || {};
+
         var prepushHookConfig = {
-          pathToSource: path.resolve( gruntWorkingDirectory )
+          pathToSource: path.resolve( gruntWorkingDirectory ),
+          commitTitleMaxLength: data.commitTitleMaxLength || 140
         };
 
         var hooksSourceDirectory = path.resolve( __dirname, '../resources/hooks/' );
 
         var hooks = grunt.file.expand( path.join( hooksSourceDirectory, '*.js' ));
-        var gitHooksDir = me.data.gitHooksDirectory;
+        var gitHooksDir = data.gitHooksDirectory;
 
         hooks.forEach(function ( file ) {
           var destName = path.basename( file, '.js' );
@@ -68,7 +71,7 @@ module.exports = function ( grunt, pkg, options ) {
           grunt.log.ok( 'Copy file from ', file, ' to ', targetLocation );
         } );
 
-        grunt.file.write( path.resolve( gitHooksDir + '/lib/prepush-cfg.json' ), JSON.stringify( prepushHookConfig ));
+        grunt.file.write( path.resolve( gitHooksDir + '/lib/hooks-cfg.json' ), JSON.stringify( prepushHookConfig ));
 
       }
     }

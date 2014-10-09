@@ -9,10 +9,13 @@ module.exports = function ( grunt, pkg, options ) {
   gruntTaskUtils.registerTasks( {
     'check-valid': function ( jsTasks ) {
 
+      var commonConfig = options.commonConfig || {};
+      var filesToValidate = commonConfig.filesToValidate || {};
+
       var opts = this.options( {
         useNewer: true,
         tasksToRun: 'jsbeautifier,jscs,jshint,jsvalidate',
-        filesToValidate: options.commonConfig.filesToValidate,
+        filesToValidate: filesToValidate,
         forceBeautify: true
       } );
 

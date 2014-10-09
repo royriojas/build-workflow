@@ -12,11 +12,15 @@ var commitMessageFile = process.argv[ 2 ];
 
 showTitleBlock( 'Checking commit message' );
 
+var cfg = require( './lib/hooks-cfg.json' );
+
 var content = fs.readFileSync( commitMessageFile, {
   encoding: 'utf8'
 } );
 
 var checkMessage = function ( lines ) {
+
+  var commitTitleMaxLength = cfg.commitTitleMaxLength;
 
   var line = lines[ 0 ];
   var line1 = lines[ 1 ] || '';
@@ -35,9 +39,9 @@ var checkMessage = function ( lines ) {
       console.log( line );
     } );
   }
-  if ( line.length > 70 ) {
+  if ( line.length > commitTitleMaxLength ) {
     errorFns.push(function () {
-      utils.showError( 'Please make sure the first line of your message is less than 70 characters long.' );
+      utils.showError( 'Please make sure the first line of your message is less than 140 characters long.' );
       console.log( '>>> length:', line.length, line, '\n' );
     } );
   }
