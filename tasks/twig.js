@@ -3,20 +3,21 @@ module.exports = function ( grunt, pkg ) {
   var gruntTaskUtils = require( 'grunt-ez-frontend/lib/grunt-task-utils' )( grunt );
   var lib = require( 'grunt-ez-frontend/lib/lib' );
   var path = require( 'path' );
+  var Twig = require( 'twig' );
+  var twig = Twig.twig;
 
   gruntTaskUtils.registerTasks( {
     'twig': {
       description: 'render twig templates',
       multiTask: function () {
-        var Twig = require( 'twig' );
-        var twig = Twig.twig;
-
         var me = this;
         var opts = me.options( {
-          data: {},
           extRegex: /\.twig$/,
           replaceExt: '.html'
         } );
+
+        var jsonData = {};
+        opts.getData && ( jsonData = opts.getData());
 
         var src = me.data.src;
         var dest = me.data.dest;
@@ -33,7 +34,9 @@ module.exports = function ( grunt, pkg ) {
           var page = twig( {
             path: file,
             async: false
-          } ).render( opts.data );
+          } ).render( {
+            data: jsonData
+          } );
 
           grunt.file.write( outputDest, page );
           grunt.log.ok( 'file created', outputDest );
