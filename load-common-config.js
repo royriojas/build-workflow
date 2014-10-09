@@ -6,7 +6,8 @@ module.exports = function ( grunt, opts ) {
   try {
     commonConfig = require( path.join( basePath, opts.commonConfig ))( grunt );
   } catch ( ex ) {
-    grunt.verbose.writeln( 'Could not found commonConfig', opts.commonConfig );
+    console.error( '>>> Could not load commonConfig', ex );
+    grunt.verbose.writeln( 'Could not load commonConfig', opts.commonConfig );
   }
   return commonConfig;
 };
