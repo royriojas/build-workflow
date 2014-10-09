@@ -70,7 +70,16 @@ module.exports = function ( grunt, args ) {
 
     // ### filterDevOnly
     // should only load the `grunt-*` tasks from the `devDependencies`
-    filterDevOnly: true
+    filterDevOnly: true,
+
+    // ### replaceVersionWithBuildNumber
+    // when true the pkg.version will be replaced by the passed `--build-number` grunt option
+    replaceVersionWithBuildNumber: true,
+
+    // ### defaultVersionWhenNoBuildNumber
+    // what value to use as the version when no `--build-number` has being passed
+    defaultVersionWhenNoBuildNumber: 'dev'
+
   };
 
   var lib = require( 'grunt-ez-frontend/lib/lib.js' );
@@ -138,12 +147,15 @@ module.exports = function ( grunt, args ) {
   // will override the value of the pkg.version and will be used by all the other tasks
   // like `changelog`, `ez-frontend`, `yuidoc` and `docco-husky`
   var pkg = grunt.file.readJSON( file );
-  var optionBuildNumber = grunt.option( 'build-number' ) || 'dev';
+  var optionBuildNumber = grunt.option( 'build-number' ) || opts.defaultVersionWhenNoBuildNumber;
 
-  // just in case make sure the `grunt.option` is set so if from other configuration files
-  // this options is used will have the right value
-  pkg.version = optionBuildNumber || pkg.version;
-  grunt.option( 'build-number', pkg.version );
+  optionBuildNumber && grunt.option( 'build-number', optionBuildNumber );
+
+  if ( opts.replaceVersionWithBuildNumber ) {
+    // just in case make sure the `grunt.option` is set so if from other configuration files
+    // this options is used will have the right value
+    pkg.version = optionBuildNumber || pkg.version;
+  }
 
   // helper options are a set of arguments that are going to be passed to all the `base tasks` and `local tasks` definitions
   var helperOptions = {
