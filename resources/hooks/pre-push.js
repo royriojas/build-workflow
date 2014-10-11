@@ -18,7 +18,7 @@ console.log( cfg.pathToSource );
 
 showTitleBlock( 'Validation Hook Started' );
 
-console.log('arguments: ', process.args);
+console.log('arguments: ', process.argv);
 
 var cp = exec( 'grunt prepush', function ( err, stdout, stderr ) {
   if ( err ) {
