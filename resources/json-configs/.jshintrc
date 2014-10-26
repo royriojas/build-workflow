@@ -57,7 +57,9 @@
     "TEMPORARY": true,
     "PERSISTENT": true,
     "FileError": true,
-    "Modernizr": true
+    "Modernizr": true,
+    "requireArr": true,
+    "iit": true
   }
 }
 
