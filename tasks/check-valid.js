@@ -3,23 +3,25 @@ module.exports = function ( grunt, pkg, options ) {
 
   var gruntTaskUtils = options.gruntTaskUtils;
 
-  var path = require( 'path' );
   var checkFiles = require( '../utils/check-files' );
 
   gruntTaskUtils.registerTasks( {
     'check-valid': function ( jsTasks ) {
 
-      var commonConfig = options.commonConfig || {};
-      var filesToValidate = commonConfig.filesToValidate || {};
+      var buildWorkflowConfig = grunt.config( 'build-workflow' );
+
+      if ( !buildWorkflowConfig ) {
+        return grunt.fail.warn( 'missing build-workflow config. Did you provide a build-workflow.js config inside grunt-deps/configs?' );
+      }
 
       var opts = this.options( {
         useNewer: true,
-        tasksToRun: 'jsbeautifier,jscs,jshint,jsvalidate',
-        filesToValidate: filesToValidate,
+        tasksToRun: jsTasks || 'jsbeautifier,jscs,jshint,jsvalidate',
+        filesToValidate: buildWorkflowConfig.filesToValidate,
         forceBeautify: true
       } );
 
-      var tasksToRun = checkFiles.doCheck( grunt, jsTasks, opts );
+      var tasksToRun = checkFiles.doCheck( grunt, opts );
 
       if ( tasksToRun.length > 0 ) {
         grunt.task.run( tasksToRun );

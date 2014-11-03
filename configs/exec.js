@@ -2,7 +2,6 @@ module.exports = function ( grunt, pkg, options ) {
   'use strict';
 
   var gruntTaskUtils = options.gruntTaskUtils;
-  var commonConfig = options.commonConfig;
 
   // **lib module**
   //
@@ -19,22 +18,22 @@ module.exports = function ( grunt, pkg, options ) {
     //
     // if a file is passed when calling `grunt exec:docs:[fileOrFolder]`
     // then the documentation will be generated only for this file.
-    docs: {
-      command: function ( file ) {
-        var doccoHusky = commonConfig.docco_husky || {};
-        var filesOrFolders = doccoHusky.sources || [];
-
-        if ( file ) {
-          filesOrFolders = [ file ];
-        }
-
-        if ( filesOrFolders.length === 0 ) {
-          grunt.fail.warn( 'No files to process' );
-        }
-
-        return lib.format( 'node_modules/docco-husky-plus/bin/generate {0}', filesOrFolders.join( ' ' ));
-      }
-    },
+    //    docs: {
+    //      command: function ( file ) {
+    //        var doccoHusky = commonConfig.docco_husky || {};
+    //        var filesOrFolders = doccoHusky.sources || [];
+    //
+    //        if ( file ) {
+    //          filesOrFolders = [ file ];
+    //        }
+    //
+    //        if ( filesOrFolders.length === 0 ) {
+    //          grunt.fail.warn( 'No files to process' );
+    //        }
+    //
+    //        return lib.format( 'node_modules/docco-husky-plus/bin/generate {0}', filesOrFolders.join( ' ' ));
+    //      }
+    //    },
 
     // ## exec:phptests
     // Run the php unit tests
@@ -85,7 +84,7 @@ module.exports = function ( grunt, pkg, options ) {
         }
 
       }
-    },
+    }
     //    // ## exec:codepainter
     //    // Codepainter is a utility similar to jsbeautifier it format the code to
     //    // follow a given set of styles. It is similar to jsbeautifier. It actually
@@ -124,51 +123,50 @@ module.exports = function ( grunt, pkg, options ) {
     //      }
     //    },
 
-    yuidoc: {
-      command: function ( glob ) {
-
-        var server = glob === 'server';
-
-        var yuidoc = commonConfig.yuidoc || {};
-        var pathToConfig = yuidoc.config || path.resolve( __dirname, '../resources/json-configs/yuidoc.json' );
-        var projectName = pkg.name;
-        var projectVersion = pkg.version;
-
-        var files = yuidoc.files || [];
-
-        if ( files.length === 0 ) {
-          grunt.fail.warn( 'No files provided. please add them to your common-config.js file to the yuidoc.files property' );
-        }
-
-        var cmd = lib.format( 'node_modules/yuidocjs/lib/cli.js {0} -c {1} --project-name {2} --project-version {3} {4}', files.join( ' ' ), pathToConfig, projectName, projectVersion, server ? '--server' : '' );
-        grunt.verbose.writeln( cmd );
-        return cmd;
-      }
-    },
-
-    protractor: {
-      command: function () {
-        var commands = [];
-        if ( !grunt.file.exists( './node_modules/protractor/' )) {
-          commands.push( 'npm i protractor' );
-        }
-        if ( !grunt.file.exists( './node_modules/protractor/selenium/' )) {
-          commands.push( './node_modules/protractor/bin/webdriver-manager update' );
-        }
-
-        var protractor = commonConfig.protractor || {};
-        var pathToProtractorConfig = protractor.config;
-
-        if ( !pathToProtractorConfig ) {
-          grunt.fail.warn( 'Missing protractor config file: ', pathToProtractorConfig );
-        }
-
-        commands.push( lib.format( './node_modules/protractor/bin/protractor {0}', pathToProtractorConfig ));
-
-        var cmd = commands.join( '\n' );
-        grunt.verbose.writeln( cmd );
-        return cmd;
-      }
-    }
+    //    yuidoc: {
+    //      command: function ( glob ) {
+    //
+    //        var server = glob === 'server';
+    //
+    //        var yuidoc = commonConfig.yuidoc || {};
+    //        var pathToConfig = yuidoc.config || path.resolve( __dirname, '../resources/json-configs/yuidoc.json' );
+    //        var projectName = pkg.name;
+    //        var projectVersion = pkg.version;
+    //
+    //        var files = yuidoc.files || [];
+    //
+    //        if ( files.length === 0 ) {
+    //          grunt.fail.warn( 'No files provided. please add them to your common-config.js file to the yuidoc.files property' );
+    //        }
+    //
+    //        var cmd = lib.format( 'node_modules/yuidocjs/lib/cli.js {0} -c {1} --project-name {2} --project-version {3} {4}', files.join( ' ' ), pathToConfig, projectName, projectVersion, server ? '--server' : '' );
+    //        grunt.verbose.writeln( cmd );
+    //        return cmd;
+    //      }
+    //    }
+    //    protractor: {
+    //      command: function () {
+    //        var commands = [];
+    //        if ( !grunt.file.exists( './node_modules/protractor/' )) {
+    //          commands.push( 'npm i protractor' );
+    //        }
+    //        if ( !grunt.file.exists( './node_modules/protractor/selenium/' )) {
+    //          commands.push( './node_modules/protractor/bin/webdriver-manager update' );
+    //        }
+    //
+    //        var protractor = commonConfig.protractor || {};
+    //        var pathToProtractorConfig = protractor.config;
+    //
+    //        if ( !pathToProtractorConfig ) {
+    //          grunt.fail.warn( 'Missing protractor config file: ', pathToProtractorConfig );
+    //        }
+    //
+    //        commands.push( lib.format( './node_modules/protractor/bin/protractor {0}', pathToProtractorConfig ));
+    //
+    //        var cmd = commands.join( '\n' );
+    //        grunt.verbose.writeln( cmd );
+    //        return cmd;
+    //      }
+    //    }
   };
 };

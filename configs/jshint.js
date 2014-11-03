@@ -2,11 +2,7 @@ module.exports = function ( grunt, pkg, options ) {
   'use strict';
 
   var path = require( 'path' );
-  var gruntTaskUtils = options.gruntTaskUtils;
-  var commonConfig = options.commonConfig;
-  var prepush = commonConfig.prepush || {};
   var tryCatch = require( '../utils/try-catch' );
-
   var config = path.resolve( __dirname, '../resources/json-configs/.jshintrc' );
 
   var getReporter = function () {

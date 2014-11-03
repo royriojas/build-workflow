@@ -1,8 +1,8 @@
 module.exports = {
-  doCheck: function ( grunt, jsTasks, opts ) {
+  doCheck: function ( grunt, opts ) {
     var key = 'js-check';
 
-    jsTasks = jsTasks || opts.tasksToRun;
+    var jsTasks = opts.tasksToRun;
 
     jsTasks = jsTasks.split( ',' );
 

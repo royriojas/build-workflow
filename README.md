@@ -12,7 +12,6 @@ This module is inspired by this blog post [supercharging your gruntfile](http://
 The main differences are:
 
 - config files exports a function that return an object. All the config objects receive the `grunt` object, the `pkg` object and `options` object.
-  The options object contains a `commonConfig` object that can be used to share some config info between task configurations.
 - allows load custom grunt tasks.
 - do not use yaml, so the aliases should be defined in javascript
 - provide some base common tasks described below

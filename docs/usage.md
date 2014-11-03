@@ -66,13 +66,11 @@ module.exports = function ( grunt ) {
     +--configs/
     +--tasks/
     +--workflows/
-    |--common-config.js
 ```
 
 ### grunt-deps 
 
-Contains the folders for custom `tasks`, `configs`, `workflows` and `common-config.js`
-
+Contains the folders for custom `tasks`, `configs`, `workflows`
 
 ### file common format
 
@@ -83,7 +81,6 @@ Contains the folders for custom `tasks`, `configs`, `workflows` and `common-conf
 * @param grunt {Object} the grunt object
 * @param pkg {Object} the package json object for the current project
 * @param opts {Object} the options object
-* @param opts.commonConfig {Object} the result of calling the exported function from `common-config.js`
 * @param opts.gruntTaskUtils {Object} the gruntTasksUtils module from `grunt-ez-frontend`
 */
 module.exports = function (grunt, pkg, opts) {
@@ -91,7 +88,7 @@ module.exports = function (grunt, pkg, opts) {
   var gruntTaskUtils = opts.gruntTaskUtils;
 
   // configs files should return an object with the configuration to be set
-  // tasks and workflows do not need to do this
+  // tasks and workflows do not need to do this just the files inside configs/
   return {};
 };
 ```

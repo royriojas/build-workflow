@@ -61,12 +61,6 @@ module.exports = function ( grunt, args ) {
     // That file is usually called `aliases.js`
     workflows: './grunt-deps/workflows/**/*.js',
 
-    // ### common-config
-    // This is a file that contains the common configuration for:
-    // - docco-husky
-    // - yuidoc
-    // - filesToValidate (which are used by the check-valid and prepush tasks)
-    commonConfig: './grunt-deps/common-config.js',
 
     // ### filterDevOnly
     // should only load the `grunt-*` tasks from the `devDependencies`
@@ -123,18 +117,6 @@ module.exports = function ( grunt, args ) {
 
   var file = opts.appPkgJSONPath;
 
-  // ### load the commonConfig module.
-  // The common config module has the configuration values for
-  // - docco-husky
-  // - yuidoc
-  // - check-valid. Which includes
-  //   - jshint
-  //   - jsvalidate
-  //   - jscs
-  //   - jsbeautifier
-  //   - codepainter (optional)
-  var commonConfig = require( './load-common-config' )( grunt, opts );
-
   // ### the build number
   // the build number is set passing the `--build-number` flag to grunt. if this flag is not used. the version
   // number will be replaced by `dev`
@@ -159,8 +141,7 @@ module.exports = function ( grunt, args ) {
 
   // helper options are a set of arguments that are going to be passed to all the `base tasks` and `local tasks` definitions
   var helperOptions = {
-    gruntTaskUtils: gruntTaskUtils,
-    commonConfig: commonConfig
+    gruntTaskUtils: gruntTaskUtils
   };
 
   // base tasks will only be loaded if the flag `opts.loadBaseTasksAndConfigs` is set to true.

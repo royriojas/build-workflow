@@ -9,15 +9,20 @@ module.exports = function ( grunt, pkg, options ) {
   gruntTaskUtils.registerTasks( {
     'prepush': function ( jsTasks ) {
 
+      var buildWorkflowConfig = grunt.config( 'build-workflow' );
+      if ( !buildWorkflowConfig ) {
+        return grunt.fail( 'missing build-workflow config. Did you provide a build-workflow.js config inside grunt-deps/configs?' );
+      }
+
       var opts = this.options( {
         useNewer: false,
-        tasksToRun: 'jsbeautifier,jscs,jshint,jsvalidate',
-        filesToValidate: options.commonConfig.filesToValidate,
+        tasksToRun: jsTasks || 'jsbeautifier,jscs,jshint,jsvalidate',
+        filesToValidate: buildWorkflowConfig.filesToValidate,
         forceBeautify: false,
-        prepushTasks: options.commonConfig.prepushTasks || []
+        prepushTasks: buildWorkflowConfig.prepushTasks || []
       } );
 
-      var tasksToRun = checkFiles.doCheck( grunt, jsTasks, opts );
+      var tasksToRun = checkFiles.doCheck( grunt, opts );
 
       tasksToRun = tasksToRun || [];
 

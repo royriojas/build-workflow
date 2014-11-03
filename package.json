@@ -24,7 +24,9 @@
     "url": "https://github.com/royriojas/build-workflow/issues"
   },
   "homepage": "https://github.com/royriojas/build-workflow",
-  "dependencies": {},
+  "dependencies": {
+    "minimist": "~1.1.0"
+  },
   "devDependencies": {
     "es6-promise": "~1.0.0",
     "time-grunt": "~1.0.0",

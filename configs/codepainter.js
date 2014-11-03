@@ -1,6 +1,5 @@
 module.exports = function ( grunt, pkg, options ) {
-  var gruntTaskUtils = options.gruntTaskUtils;
-  var commonConfig = options.commonConfig;
+
   var path = require( 'path' );
 
   return {

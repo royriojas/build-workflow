@@ -2,7 +2,6 @@ module.exports = function ( grunt, pkg, options ) {
   'use strict';
 
   var gruntTaskUtils = options.gruntTaskUtils;
-  var commonConfig = options.commonConfig;
 
   var getRenderer = require( '../utils/get-renderer' );
   var capitalize = require( '../utils/capitalize' );
@@ -12,8 +11,6 @@ module.exports = function ( grunt, pkg, options ) {
 
   var lib = require( 'grunt-ez-frontend/lib/lib.js' );
   var moment = require( 'moment' );
-
-  var changeLogConfig = commonConfig.changelog || {};
 
   return {
 
@@ -63,9 +60,9 @@ module.exports = function ( grunt, pkg, options ) {
             }
             return hasCommits;
           },
-          gitUrlForCommit: me.gitUrlForCommit || changeLogConfig.gitUrlForCommit, //'http://git.kno.com/?p=cloud/kno-reader-ui.git;a=commit;h={0}',
-          gitAuthorUrl: me.gitAuthorUrl || changeLogConfig.gitAuthorUrl, // 'http://git.kno.com/?p=cloud/kno-reader-ui.git;a=search;s={0};st=author',
-          urlForBugId: me.urlForBugId || changeLogConfig.urlForBugId, // 'https://rally1.rallydev.com/#/search?keywords={0}',
+          gitUrlForCommit: me.gitUrlForCommit, //|| changeLogConfig.gitUrlForCommit, //'http://git.kno.com/?p=cloud/kno-reader-ui.git;a=commit;h={0}',
+          gitAuthorUrl: me.gitAuthorUrl, // || changeLogConfig.gitAuthorUrl, // 'http://git.kno.com/?p=cloud/kno-reader-ui.git;a=search;s={0};st=author',
+          urlForBugId: me.urlForBugId, // || changeLogConfig.urlForBugId, // 'https://rally1.rallydev.com/#/search?keywords={0}',
           projectName: me.projectName || pkg.name, // pkg.name,
           projectVersion: me.projectVersion || pkg.version, //pkg.version,
           renderDescription: function ( log ) {

@@ -54,64 +54,67 @@
  "docco-husky-plus": "~0.4.1"
  */
 
-var deps = [
-  'time-grunt',
-  'matchdep',
-  'es6-promise',
-  'twig',
-  'marked',
-  'dot',
-  'moment',
-  'grunt-exec',
-  'jshint-stylish',
-  'grunt-contrib-jshint',
-  'grunt-jscs',
-  'grunt-jsvalidate',
-  'grunt-ez-frontend',
-  'grunt-jsonlint',
-  'yuidoc-theme-blue',
-  'grunt-contrib-clean',
-  'grunt-contrib-copy',
-  'grunt-contrib-uglify',
-  'grunt-codepainter',
-  'grunt-csso',
-  'grunt-autoprefixer',
-  'stringformat',
-  'browserify-shim',
-  'grunt-contrib-watch',
-  'grunt-karma',
-  'karma-coverage',
-  'karma-junit-reporter',
-  'karma-jasmine',
-  'karma-phantomjs-launcher',
-  'karma-osx-reporter',
-  'karma-spec-reporter',
-  'karma-chrome-launcher',
-  'reactify',
-  'browserify-transform-tools',
-  'esprima',
-  'react',
-  'karma-commonjs-plus',
-  'karma-mocha',
-  'sinon-chai',
-  'chai',
-  'sinon',
-  'karma-chai-sinon',
-  'jasmine-spec-reporter',
-  'jshint-stylish',
-  'https://github.com/royriojas/karma-react-jsx-preprocessor/tarball/1824de4',
-  'https://github.com/royriojas/yuidoc/tarball/ed6e335',
-  'https://github.com/royriojas/grunt-jsbeautifier/tarball/e69f6ef',
-  'docco-husky-plus'
-];
+var deps = {
+  'default': [
+    'time-grunt',
+    'matchdep',
+    'grunt-ez-frontend',
+    'moment',
+    'dot',
+    'marked',
+    'es6-promise',
+    'grunt-newer',
+    'grunt-contrib-jshint',
+    'grunt-jscs',
+    'grunt-jsvalidate',
+    'https://github.com/royriojas/grunt-jsbeautifier/tarball/e69f6ef',
+    'jshint-stylish',
+    'grunt-codepainter',
+    'grunt-exec',
+    'grunt-contrib-uglify',
+    'grunt-csso',
+    'grunt-autoprefixer',
+    'grunt-jscs'
+  ],
 
-var exec = require( 'child_process' ).exec;
+  'browserify': [
+    'grunt-browserify',
+    'browserify-shim'
+  ],
 
-exec( 'npm i -D ' + deps.join( ' ' ), function ( err, stdout, stderr ) {
-  if ( err ) {
-    console.error( err );
-    process.exit( 1 );
-  }
+  'doc-tools': [
+    'docco-husky-plus',
+    'yuidoc-theme-blue',
+    'yuidocjs'
+  ],
 
-  console.log( stdout );
-} );
+  'protractor': [
+    'grunt-protractor'
+  ],
+
+  'karma': [
+    'karma-phantomjs-launcher',
+    "karma-coverage",
+    'karma-osx-reporter',
+    'karma-spec-reporter',
+    "karma-junit-reporter",
+    'karma-commonjs-plus',
+    'karma-mocha',
+    'sinon-chai',
+    'chai',
+    'sinon',
+    'karma-chai-sinon'
+  ]
+};
+
+//var spawn = require( 'child_process' ).spawn;
+//
+//var child = spawn('npm', ['i', '-D'].concat( deps ), { stdio: 'inherit' });
+//
+//child.on('close', function (code) {
+//  if (code !== 0) {
+//    console.error('Error installing dev dependencies ', code);
+//    return;
+//  }
+//  console.log('done!');
+//});
