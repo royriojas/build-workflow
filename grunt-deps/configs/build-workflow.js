@@ -10,7 +10,7 @@ module.exports = function ( grunt, pkg ) {
 
   return {
 
-    prepushTasks: [ 'jsonlint' ],
+    prepushTasks: [ 'jsonlint', 'check-valid:codepainter' ],
 
     'filesToValidate': {
       'jsbeautifier': prepushFiles,
