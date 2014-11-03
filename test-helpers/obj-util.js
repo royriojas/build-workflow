@@ -1,3 +1,14 @@
+/**
+ * The `build-workflow` module
+ * @module build-workflow
+ */
+
+/**
+ *
+ * Module with utilities to set and retrieve values on an object using a `path`
+ * @class objUtil
+ * @static
+ */
 var objUtil = {
   /**
    * Returns the value from the given object which matches the passed key
@@ -9,13 +20,15 @@ var objUtil = {
    * @returns {Mixed} the value of the given key in the passed obj
    * @example
    * ```javascript
+   * var objUtil = require('obj-util');
+   *
    * var obj = {
    *   some: {
    *     key: 'some value'
    *   }
    * };
    *
-   * kno.objUtil.getKeyValue(obj, 'some.key'); // 'some value'
+   * objUtil.getKeyValue(obj, 'some.key'); // 'some value'
    *
    * ```
    */
@@ -46,9 +59,11 @@ var objUtil = {
    * @param val the value to be set in the object
    * @example
    * ```javascript
+   * var objUtil = require('obj-util');
+   *
    * var obj = {
    * };
-   * kno.objUtil.setKeyValue(obj, 'some.key', 'some value');
+   * objUtil.setKeyValue(obj, 'some.key', 'some value');
    * obj.some.key === 'some value' //==> true
    * ```
    */

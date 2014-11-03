@@ -8,26 +8,7 @@ module.exports = function ( grunt, pkg ) {
     '!apidocs/**/*.js'
   ];
 
-  //  var sourcesForDocs = [
-  //    'Gruntfile.js',
-  //    'tasks/',
-  //    'configs/',
-  //    'grunt-deps/',
-  //    'test-helpers/',
-  //    'utils/',
-  //    './*.js'
-  //  ];
-
   return {
-
-    //    'docco_husky': {
-    //      'sources': sourcesForDocs
-    //    },
-    //
-    //    "yuidoc": {
-    //      //"config": "./grunt-deps/yuidoc/yuidoc.json",
-    //      files: sourcesForDocs
-    //    },
 
     prepushTasks: [ 'jsonlint' ],
 
