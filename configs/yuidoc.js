@@ -18,8 +18,8 @@ module.exports = function ( grunt, pkg, opts ) {
         //          'utils/',
         //          './*.js'
         //        ],
-        outdir: "./apidocs/",
-        themedir: "./node_modules/yuidoc-theme-blue"
+        outdir: './apidocs/',
+        themedir: './node_modules/yuidoc-theme-blue'
       }
     }
   };

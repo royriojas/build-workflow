@@ -12,7 +12,7 @@ module.exports = function ( grunt, pkg, opts ) {
         var options = me.options( {
           show_timestamp: true,
           output_dir: data.dest,
-          project_name: "Unknown Project",
+          project_name: 'Unknown Project',
           sources: grunt.file.expand( data.src )
         } );
 

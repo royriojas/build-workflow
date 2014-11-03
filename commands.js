@@ -43,10 +43,10 @@ var deps = {
 
   'karma': [
     'karma-phantomjs-launcher',
-    "karma-coverage",
+    'karma-coverage',
     'karma-osx-reporter',
     'karma-spec-reporter',
-    "karma-junit-reporter",
+    'karma-junit-reporter',
     'karma-commonjs-plus',
     'karma-mocha',
     'sinon-chai',

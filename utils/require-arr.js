@@ -4,7 +4,7 @@ var path = require( 'path' );
 var options = {};
 var grunt = require( 'grunt' );
 
-module.exports = transformTools.makeFalafelTransform( "require-arr", options,
+module.exports = transformTools.makeFalafelTransform( 'require-arr', options,
   function ( node, transformOptions, done ) {
     var callee = node.callee;
     if ( node.type === 'CallExpression' && callee.type === 'Identifier' && callee.name === 'requireArr' ) {
@@ -18,11 +18,11 @@ module.exports = transformTools.makeFalafelTransform( "require-arr", options,
       var files = grunt.file.expand( args ).map(function ( f ) {
 
         f = './' + path.relative( filePath, f );
-        return "require(" + JSON.stringify( f ) + ")";
+        return 'require(' + JSON.stringify( f ) + ')';
 
       } );
 
-      node.update( '[' + files.join( ", " ) + ']' );
+      node.update( '[' + files.join( ', ' ) + ']' );
     }
     done();
   }
