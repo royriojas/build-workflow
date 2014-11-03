@@ -61,7 +61,6 @@ module.exports = function ( grunt, args ) {
     // That file is usually called `aliases.js`
     workflows: './grunt-deps/workflows/**/*.js',
 
-
     // ### filterDevOnly
     // should only load the `grunt-*` tasks from the `devDependencies`
     filterDevOnly: true,
