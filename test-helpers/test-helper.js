@@ -1,4 +1,5 @@
 (function ( global ) {
+  require('./bind');
 
   var objUtil = require( './obj-util' );
 
@@ -8,8 +9,6 @@
     var me = this;
     var sandbox = sinon.sandbox.create();
     me.sandbox = sandbox;
-
-    require( './custom-matchers' ).init( me );
 
     var methods = [ 'stub', 'spy' ];
 
@@ -57,13 +56,12 @@
   } );
 
   afterEach(function ( done ) {
-
     var me = this;
 
-    me.clearScope();
-    me.sandbox.restore && me.sandbox.restore();
     global.__clearMocks && global.__clearMocks();
     global.__cjs__clearCachedModules && global.__cjs__clearCachedModules();
+
+    me.sandbox.restore && me.sandbox.restore();
     done && done();
   } );
 
