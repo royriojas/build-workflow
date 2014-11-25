@@ -1,6 +1,6 @@
 var launcher = module.exports = {
   init: function () {
-    require('./app').start();
+    require( './app' ).start();
   }
 };
 

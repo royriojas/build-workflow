@@ -1,5 +1,5 @@
 (function ( global ) {
-  require('./bind');
+  require( './bind' );
 
   var objUtil = require( './obj-util' );
 

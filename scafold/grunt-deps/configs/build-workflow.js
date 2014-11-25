@@ -9,10 +9,10 @@ module.exports = function ( grunt ) {
 
   return {
 
-//    prepushTasks: [
-//      'jsonlint',
-//      'check-valid:codepainter'
-//    ],
+    //    prepushTasks: [
+    //      'jsonlint',
+    //      'check-valid:codepainter'
+    //    ],
 
     // **filesToValidate**
     //

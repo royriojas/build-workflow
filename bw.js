@@ -17,4 +17,4 @@ if ( !method ) {
   showHelp();
 }
 
-method.apply( commands, [argv] );
+method.apply( commands, [ argv ] );

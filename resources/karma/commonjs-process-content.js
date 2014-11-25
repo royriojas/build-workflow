@@ -1,7 +1,7 @@
 var dotCompiler = require( '../../utils/dot-compiler' );
-var falafel = require('falafel');
-var grunt = require('grunt');
-var path = require('path');
+var falafel = require( 'falafel' );
+var grunt = require( 'grunt' );
+var path = require( 'path' );
 
 module.exports = function ( content, file ) {
   var filePath = file.path;
@@ -15,7 +15,7 @@ module.exports = function ( content, file ) {
     // make sure content is executed in stricter mode during testing
     content = '\'use strict\';\n' + content;
 
-    content = falafel(content, function ( node ){
+    content = falafel( content, function ( node ) {
       var callee = node.callee;
       if ( node.type === 'CallExpression' && callee.type === 'Identifier' && callee.name === 'requireArr' ) {
 
@@ -34,8 +34,7 @@ module.exports = function ( content, file ) {
 
         node.update( '[' + files.join( ', ' ) + ']' );
       }
-    });
+    } );
   }
   return content;
 };
-

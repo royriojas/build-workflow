@@ -1,4 +1,4 @@
-var Promise = require('es6-promise').Promise;
+var Promise = require( 'es6-promise' ).Promise;
 
 var deps = {
   'default': [
@@ -72,26 +72,25 @@ var deps = {
 var commands = {
   'install-deps': function ( args ) {
 
-    return new Promise(function (resolve, reject) {
+    return new Promise(function ( resolve, reject ) {
       var dependencies;
 
       var group = args.group;
 
-      console.log('...here...', args);
+      console.log( '...here...', args );
 
-      if (group) {
-        dependencies = deps[group] || [];
-      }
-      else {
+      if ( group ) {
+        dependencies = deps[ group ] || [];
+      } else {
         dependencies = Object.keys( deps ).reduce(function ( seq, key ) {
           return seq.concat( deps[ key ] );
         }, [] );
       }
 
-      if (dependencies.length === 0) {
-        reject({
+      if ( dependencies.length === 0 ) {
+        reject( {
           message: 'no deps found for group ' + group
-        });
+        } );
       }
 
       var spawn = require( 'child_process' ).spawn;
@@ -108,7 +107,7 @@ var commands = {
         }
         resolve();
       } );
-    });
+    } );
   }
 };
 

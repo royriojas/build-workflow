@@ -5,9 +5,9 @@ module.exports = function ( grunt, pkg, opts ) {
     options: {
       methods: [ 'log', 'debug' ]
     }
-//    ,
-//    dist: {
-//      src: "./dest/js/*.js" // Each file will be overwritten with the output!,
-//    }
+    //    ,
+    //    dist: {
+    //      src: "./dest/js/*.js" // Each file will be overwritten with the output!,
+    //    }
   };
 };
