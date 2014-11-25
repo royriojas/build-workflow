@@ -1,3 +1,5 @@
+var Promise = require('es6-promise').Promise;
+
 var deps = {
   'default': [
     'time-grunt',
@@ -21,12 +23,14 @@ var deps = {
     'grunt-jscs',
     'twig',
     'grunt-jsonlint',
-    'grunt-contrib-clean'
+    'grunt-contrib-clean',
+    'grunt-remove-logging'
   ],
 
   'browserify': [
     'grunt-browserify',
-    'browserify-shim'
+    'browserify-shim',
+    'browserify-transform-tools'
   ],
 
   'doc-tools': [
@@ -38,10 +42,11 @@ var deps = {
 
   'protractor': [
     'protractor',
-    'grunt-protractor'
+    'grunt-protractor-runner'
   ],
 
   'karma': [
+    'karma-chrome-launcher',
     'karma-phantomjs-launcher',
     'karma-coverage',
     'karma-osx-reporter',
@@ -52,31 +57,58 @@ var deps = {
     'sinon-chai',
     'chai',
     'sinon',
-    'karma-chai-sinon'
+    'karma-chai-sinon',
+    'grunt-karma'
+  ],
+
+  'react': [
+    'react',
+    'react-tools',
+    'reactify',
+    'karma-react-preprocessor'
   ]
 };
 
 var commands = {
-  'install-deps': function ( opts, cb ) {
+  'install-deps': function ( args ) {
 
-    var dependencies = Object.keys( deps ).reduce(function ( seq, key ) {
-      return seq.concat( deps[ key ] );
-    }, [] );
+    return new Promise(function (resolve, reject) {
+      var dependencies;
 
-    var spawn = require( 'child_process' ).spawn;
+      var group = args.group;
 
-    var child = spawn( 'npm', [ 'i', '-D' ].concat( dependencies ), {
-      stdio: 'inherit'
-    } );
+      console.log('...here...', args);
 
-    child.on( 'close', function ( code ) {
-      if ( code !== 0 ) {
-        console.error( 'Error installing dev dependencies ', code );
-        return;
+      if (group) {
+        dependencies = deps[group] || [];
       }
-      console.log( 'done with dependencies!' );
-      cb && cb();
-    } );
+      else {
+        dependencies = Object.keys( deps ).reduce(function ( seq, key ) {
+          return seq.concat( deps[ key ] );
+        }, [] );
+      }
+
+      if (dependencies.length === 0) {
+        reject({
+          message: 'no deps found for group ' + group
+        });
+      }
+
+      var spawn = require( 'child_process' ).spawn;
+
+      var child = spawn( 'npm', [ 'i', '-D' ].concat( dependencies ), {
+        stdio: 'inherit'
+      } );
+
+      child.on( 'close', function ( code ) {
+        if ( code !== 0 ) {
+          console.error( 'Error installing dev dependencies ', code );
+        } else {
+          console.log( 'done with dependencies!' );
+        }
+        resolve();
+      } );
+    });
   }
 };
 

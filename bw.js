@@ -2,13 +2,19 @@ var commands = require( './commands' );
 
 var argv = require( 'minimist' )( process.argv.slice( 2 ));
 
-if ( !argv.cmd ) {
+var showHelp = function () {
   console.error( 'Please tell me something to do: \n' );
   console.log( 'Usage: bw.js --cmd=[SOME_ACTION]\n\nWhere [SOME_ACTION] could be:\n\n- install-deps:   To install all the npm dependencies\n- init-structure: To create the folder structure required for this module\n\nExample\n\nnode bw.js --cmd=install-deps\n\n\n' );
+};
+
+if ( !argv.cmd ) {
+  showHelp();
 }
 
 var method = commands[ argv.cmd ];
 
-if ( method ) {
-  method.apply( commands, argv );
+if ( !method ) {
+  showHelp();
 }
+
+method.apply( commands, [argv] );
