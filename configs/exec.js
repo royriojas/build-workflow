@@ -84,7 +84,7 @@ module.exports = function ( grunt, pkg, options ) {
         }
 
       }
-    }
+    },
     //    // ## exec:codepainter
     //    // Codepainter is a utility similar to jsbeautifier it format the code to
     //    // follow a given set of styles. It is similar to jsbeautifier. It actually
@@ -144,29 +144,29 @@ module.exports = function ( grunt, pkg, options ) {
     //        return cmd;
     //      }
     //    }
-    //    protractor: {
-    //      command: function () {
-    //        var commands = [];
-    //        if ( !grunt.file.exists( './node_modules/protractor/' )) {
-    //          commands.push( 'npm i protractor' );
-    //        }
-    //        if ( !grunt.file.exists( './node_modules/protractor/selenium/' )) {
-    //          commands.push( './node_modules/protractor/bin/webdriver-manager update' );
-    //        }
-    //
-    //        var protractor = commonConfig.protractor || {};
-    //        var pathToProtractorConfig = protractor.config;
-    //
-    //        if ( !pathToProtractorConfig ) {
-    //          grunt.fail.warn( 'Missing protractor config file: ', pathToProtractorConfig );
-    //        }
-    //
-    //        commands.push( lib.format( './node_modules/protractor/bin/protractor {0}', pathToProtractorConfig ));
-    //
-    //        var cmd = commands.join( '\n' );
-    //        grunt.verbose.writeln( cmd );
-    //        return cmd;
-    //      }
-    //    }
+    'protractor-prepare': {
+      command: function () {
+        var commands = [];
+        if ( !grunt.file.exists( './node_modules/protractor/' )) {
+          commands.push( 'npm i protractor' );
+        }
+        if ( !grunt.file.exists( './node_modules/protractor/selenium/' )) {
+          commands.push( './node_modules/protractor/bin/webdriver-manager update' );
+        }
+
+        //        var protractor = commonConfig.protractor || {};
+        //        var pathToProtractorConfig = protractor.config;
+        //
+        //        if ( !pathToProtractorConfig ) {
+        //          grunt.fail.warn( 'Missing protractor config file: ', pathToProtractorConfig );
+        //        }
+        //
+        //        commands.push( lib.format( './node_modules/protractor/bin/protractor {0}', pathToProtractorConfig ));
+
+        var cmd = commands.join( '\n' );
+        grunt.verbose.writeln( cmd );
+        return cmd;
+      }
+    }
   };
 };

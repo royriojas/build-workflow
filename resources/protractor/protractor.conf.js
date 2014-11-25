@@ -22,8 +22,9 @@ module.exports = function ( cfg ) {
     //    'platform': 'ANY',
     //    'version': '11'
     //  },
-    chromeOnly: true,
+    //chromeOnly: true,
     chromeDriver: path.join( protractorPath, '/selenium/chromedriver' ),
+    directConnect: true,
     // Capabilities to be passed to the webdriver instance.
     capabilities: {
       'browserName': 'chrome'
@@ -33,9 +34,9 @@ module.exports = function ( cfg ) {
     },
 
     onPrepare: function () {
-      require( 'jasmine-spec-reporter' );
+      var SpecReporter = require( 'jasmine-spec-reporter' );
       // add jasmine spec reporter
-      jasmine.getEnv().addReporter( new jasmine.SpecReporter( {
+      jasmine.getEnv().addReporter( new SpecReporter( {
         displayStacktrace: true,
         displaySpecDuration: true
       } ));

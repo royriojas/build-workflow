@@ -42,7 +42,8 @@ var deps = {
 
   'protractor': [
     'protractor',
-    'grunt-protractor-runner'
+    'grunt-protractor-runner',
+    'jasmine-spec-reporter'
   ],
 
   'karma': [
