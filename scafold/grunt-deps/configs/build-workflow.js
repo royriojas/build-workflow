@@ -9,6 +9,11 @@ module.exports = function ( grunt ) {
 
   return {
 
+//    prepushTasks: [
+//      'jsonlint',
+//      'check-valid:codepainter'
+//    ],
+
     // **filesToValidate**
     //
     // This json object controls which files are passed to each task.

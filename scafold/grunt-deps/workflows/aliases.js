@@ -3,6 +3,6 @@ module.exports = function ( grunt, pkg, opts ) {
   var gtu = opts.gruntTaskUtils;
 
   gtu.registerTasks( {
-    'default': [ 'demo-task' ]
+    'default': [ 'check-valid', 'demo-task' ]
   } );
 };
