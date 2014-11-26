@@ -20,14 +20,14 @@
   cp -rv node_modules/build-workflow/demo-structure/ .
   ```
 
-4. **Rename the *.demo.* files if required.
+4. **Rename the `.demo.` files if required**.
 
-  If you already have some of them, just make sure they have the same content as the demo ones.
+  If you already have some of the files with `.demo.` in the filename, just make sure they have the same content as the `.demo ones`.
   
   For example:
   ```sh
   mv Gruntfile.demo.js Gruntfile.js
-  ``
+  ```
 
   **Make sure the browserify-shim section is added to your package.json**:
   
