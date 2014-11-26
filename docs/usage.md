@@ -14,7 +14,7 @@
 
 3. **Create the folder structure**. 
   
-  **Please note**: _If you already have some code, maybe you just need to copy the `grunt-deps` folder._
+  **Please note**: _If you already have some code, maybe you just need to copy the `demo-structure/grunt-deps` folder._
   
   ```sh
   cp -rv node_modules/build-workflow/demo-structure/ .
