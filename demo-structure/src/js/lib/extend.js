@@ -20,7 +20,7 @@ module.exports = function extend() {
     deep = false;
 
   // Handle a deep copy situation
-  if ( typeof target === "boolean" ) {
+  if ( typeof target === 'boolean' ) {
     deep = target;
     target = arguments[ 1 ] || {};
     // skip the boolean and the target
@@ -28,7 +28,7 @@ module.exports = function extend() {
   }
 
   // Handle case when target is a string or something (possible in deep copy)
-  if ( typeof target !== "object" && type( target ) !== "function" ) {
+  if ( typeof target !== 'object' && type( target ) !== 'function' ) {
     target = {};
   }
 
@@ -52,10 +52,10 @@ module.exports = function extend() {
         }
 
         // Recurse if we're merging plain objects or arrays
-        if ( deep && copy && ( isPlainObject( copy ) || ( copyIsArray = type( copy ) === "array" )) ) {
+        if ( deep && copy && ( isPlainObject( copy ) || ( copyIsArray = type( copy ) === 'array' )) ) {
           if ( copyIsArray ) {
             copyIsArray = false;
-            clone = src && type( src ) === "array" ? src : [];
+            clone = src && type( src ) === 'array' ? src : [];
 
           } else {
             clone = src && isPlainObject( src ) ? src : {};
