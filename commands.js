@@ -28,6 +28,7 @@ var deps = {
   ],
 
   'browserify': [
+    'stringformat',
     'grunt-browserify',
     'browserify-shim',
     'browserify-transform-tools'
