@@ -1,5 +1,7 @@
 # Usage
 
+0. Navigate to the folder where your source code will be saved, and make sure it is under a working git repo. With a valid package.json file on the root.
+
 1. **install the module**. Execute the following command
 
   ```sh
@@ -19,10 +21,12 @@
   ```sh
   cp -rv node_modules/build-workflow/demo-structure/ .
   ```  
+
 4  **Install deps** 
   ```sh
   npm i -D grunt-http-server
   ```
+
 5. **Run grunt** 
 
   ```sh
