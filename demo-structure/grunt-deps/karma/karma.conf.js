@@ -16,13 +16,12 @@ module.exports = function ( config ) {
     ],
     files: [
       // vendor dependencies
-      'node_modules/build-workflow/test-helpers/**/*.js',
       'node_modules/es6-promise/dist/es6-promise.js',
+      'node_modules/build-workflow/test-helpers/**/*.js',
       // your code
       'src/js/**/*.js',
 
       // your specs
-      'src/specs/helper.js', //make sure the helper runs first
       'src/specs/**/*.js'
     ],
     reporters: [
@@ -42,8 +41,8 @@ module.exports = function ( config ) {
     }, {
       order: [ 'commonjs' ],
       files: [
-        'node_modules/build-workflow/test-helpers/**/*.js',
         'node_modules/es6-promise/dist/es6-promise.js',
+        'node_modules/build-workflow/test-helpers/**/*.js',
         'src/specs/**/*.js'
       ]
     }, {

@@ -1,5 +1,8 @@
 (function ( global ) {
+  global.__TEST_ENV__ = true;
+
   require( './bind' );
+  require( 'es6-promise/dist/es6-promise' ).polyfill();
 
   var objUtil = require( './obj-util' );
 
