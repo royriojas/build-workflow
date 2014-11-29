@@ -4,7 +4,7 @@ module.exports = function ( grunt, pkg, opts ) {
   var gruntTaksUtils = opts.gruntTaskUtils;
 
   var aliases = {
-    'default': [ 'clean', 'check-valid' ]
+    'default': [ 'clean', 'check-valid', 'check-valid:codepainter' ]
   };
 
   gruntTaksUtils.registerTasks( aliases );

@@ -13,9 +13,11 @@ module.exports = function ( grunt, pkg, opts ) {
   return {
     options: {
       preBundleCB: function ( b ) {
+
+        b.transform( require( 'build-workflow/utils/strictify' ));
+
         var transforms = [
           require( 'build-workflow/utils/shimify' ).configure( deps ),
-          require( 'build-workflow/utils/strictify' ),
           require( 'build-workflow/utils/consoleify' ),
           require( 'build-workflow/utils/dotify' ),
           require( 'build-workflow/utils/require-arr' )

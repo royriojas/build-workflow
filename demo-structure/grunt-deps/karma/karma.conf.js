@@ -3,7 +3,11 @@ module.exports = function ( config ) {
   var path = require( 'path' );
 
   var formatPreprocessors = require( 'build-workflow/resources/karma/format-preprocessors' );
-  var commonJSProcessContent = require( 'build-workflow/resources/karma/commonjs-process-content' );
+  var commonJSProcessContent = require( 'build-workflow/resources/karma/commonjs-process-content-wrapper' )( {
+    strictify: function ( filePath ) {
+      return filePath.indexOf( 'node_modules/' ) === -1; // only strictify modules in the current app
+    }
+  } );
 
   config.set( {
     basePath: '../../',
