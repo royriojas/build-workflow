@@ -7,7 +7,7 @@ var options = {
   evaluateArguments: true
 };
 
-module.exports = transformTools.makeRequireTransform( "requireTransform", options, function ( args, opts, cb ) {
+module.exports = transformTools.makeRequireTransform( 'requireTransform', options, function ( args, opts, cb ) {
   var configData = opts.configData || {};
   var config = configData.config || {};
 
