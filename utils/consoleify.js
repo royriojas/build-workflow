@@ -12,7 +12,7 @@ module.exports = transformTools.makeStringTransform( 'consoleify', options,
     var file = transformOptions.file;
 
     var usesConsole = content.indexOf( 'console' ) > -1;
-    if ( usesConsole && content.indexOf( '/** NO_OVERRIDE_CONSOLE **/' ) === -1  ) {
+    if ( usesConsole && content.indexOf( '/** NO_OVERRIDE_CONSOLE **/' ) === -1 ) {
       content = sFormat( customConsole, path.basename( file ).replace( /\.js(x)*$/, '' )) + content;
     }
 

@@ -36,7 +36,7 @@ var consoleWrapper = {
         return;
       }
 
-      consoleObj[ method ] =  moduleName ? methodFound.bind( oldConsole, moduleName + ':' ) : methodFound.bind( oldConsole );
+      consoleObj[ method ] = moduleName ? methodFound.bind( oldConsole, moduleName + ':' ) : methodFound.bind( oldConsole );
     } );
     return consoleObj;
   },
@@ -45,7 +45,7 @@ var consoleWrapper = {
     global.console = oldConsole;
   },
 
-  getOriginalConsoleObject: function() {
+  getOriginalConsoleObject: function () {
     return oldConsole;
   },
 

@@ -7,17 +7,17 @@ var options = {
   evaluateArguments: true
 };
 
-module.exports = transformTools.makeRequireTransform("requireTransform", options, function(args, opts, cb) {
+module.exports = transformTools.makeRequireTransform( "requireTransform", options, function ( args, opts, cb ) {
   var configData = opts.configData || {};
   var config = configData.config || {};
 
-  var key = args[0];
+  var key = args[ 0 ];
 
-  var foundDep = config[key];
+  var foundDep = config[ key ];
 
-  if (foundDep) {
-    return cb(null, sFormat('({0})', foundDep));
+  if ( foundDep ) {
+    return cb( null, sFormat( '({0})', foundDep ));
   }
 
   cb();
-});
+} );

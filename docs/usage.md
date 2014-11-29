@@ -14,36 +14,15 @@
 
 3. **Create the folder structure**. 
   
-  **Please note**: _If you already have some code, maybe you just need to copy the `demo-structure/grunt-deps` folder._
+  **Please note**: _If you already have some code, maybe you just need to copy the `node_modules/build-workflow/demo-structure/grunt-deps` folder._
   
   ```sh
   cp -rv node_modules/build-workflow/demo-structure/ .
-  ```
-
-4. **Rename the *.demo.* files if required.
-
-  If you already have some of them, just make sure they have the same content as the demo ones.
-  
-  For example:
+  ```  
+4  **Install deps** 
   ```sh
-  mv Gruntfile.demo.js Gruntfile.js
-  ``
-
-  **Make sure the browserify-shim section is added to your package.json**:
-  
-  ```json
-  "browserify-shim": {
-      "window": "global:window",
-      "jQuery": "global:jQuery",
-      "chrome": "global:chrome",
-      "screen": "global:screen",
-      "document": "global:document",
-      "Worker": "global:Worker",
-      "Promise": "global:Promise",
-      "self": "global:self"
-    }
+  npm i -D grunt-http-server
   ```
-  
 5. **Run grunt** 
 
   ```sh
