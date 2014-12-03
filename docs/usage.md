@@ -19,11 +19,14 @@
   **Please note**: _If you already have some code, maybe you just need to copy the `node_modules/build-workflow/demo-structure/grunt-deps` folder._
   
   ```sh
+  # from the folder the folder where you have your package.json do:
   cp -rv node_modules/build-workflow/demo-structure/ .
   ```  
 
-4  **Install deps** 
+4  **Install demo deps** 
   ```sh
+  # this is only required for running the demo project
+  # you can ignore it if you want
   npm i -D grunt-http-server
   ```
 
