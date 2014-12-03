@@ -1,6 +1,6 @@
 # `changelog` task
 
-The `changelog` grunt task allows you to generate changelog in html format like this one: [changelog.html](report/changelog.html).
+The `changelog` grunt task allows you to generate changelog in html format like this one: [changelog.html](report-demo/changelog.html).
 
 It depends on the git metadata in order to achieve this. In some sense it is pretty similar to [conventional-changelog](https://github.com/ajoslin/conventional-changelog),
 so if your project is not using git, this task might not be useful for you.
