@@ -70,7 +70,7 @@ module.exports = function ( grunt, pkg, options ) {
             var commit = log.commit;
             var shortDescription = commit.shortDescription;
 
-            shortDescription = shortDescription.substr( 0, 70 );
+            shortDescription = shortDescription.substr( 0, 140 );
 
             shortDescription = shortDescription.replace( me.format( '[{0}]', commit.bugId ), '{BUG_ID}' );
 

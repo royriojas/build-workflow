@@ -1,25 +1,30 @@
 # Build Workflow
 
-Simple helper to create grunt build workflows that are easy to configure and use. 
+Simple helper to create **build workflows**, using grunt, that are both easy to use and maintain. 
 
-## what is it?
+## Overview
 
-This is a simple module that aims to make simpler to create workflows based on grunt. This module helps you break 
-a grunt file in several modules that are easier to maintain and to reason about. 
+This is a small module that aims to simplify the creation of workflows based on grunt. In order to achieve this
+some conventions are followed, i.e. do not use a gigantic `Gruntfile.js` that is soon harder to maintain, preventing
+a lot of spaghetti code by breaking it into different modules, one per each grunt task config, keeping things small
+and focused.
 
 This module is inspired by this blog post [supercharging your gruntfile](http://www.html5rocks.com/en/tutorials/tooling/supercharging-your-gruntfile/)
 
 The main differences are:
 
-- config files exports a function that return an object. All the config objects receive the `grunt` object, the `pkg` object and `options` object.
-- allows load custom grunt tasks.
-- do not use yaml, so the aliases should be defined in javascript
-- provide some base common tasks described below
+- **config files** always export a function that return an object. All the config exported functions receive 
+  the `grunt` object, the `pkg`, `package.json` parsed object, and an `options` object, which has some helpers 
+  that will be described later.
+- Custom grunt tasks can be placed inside the `grunt-deps/tasks` folder they will be loaded automatically.
+- It does not use `yaml`, so the aliases for tasks are defined in javascript. This is to keep it simple and avoid 
+  leaving the javascript realm.
+- provide some base common tasks configs, described in the next section.
 
 So, This module will 
 
-- help you break your gigantic grunt file
-- provide some (optional) base tasks and tasks configurations like: 
+- help you break your gigantic grunt file into small modules that are easy to reason about.
+- provide some (optional) **base tasks** and **tasks configurations** like: 
   - **changelog**: Create a changelog from the git log info. For more info check the changelog section.
   - **check-valid**: Beautify (with `jsbeautify`) and validate the javascript files with `jshint`, `jscs` and `jsvalidate`.
   - **install-hooks**: Install `commit-msg` and `prepush` hooks for git. To enforce the rules for commit messages
@@ -40,4 +45,8 @@ management module__
   
 ## Usage
 
-[check usage here](docs/usage.md) 
+For usage info please [read this document](docs/usage.md) 
+
+## Grunt configs/tasks provided by this package
+
+For info about the common configs and tasks please [check this document](docs/grunt.md)

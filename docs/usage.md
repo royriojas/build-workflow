@@ -42,7 +42,7 @@
 
   If everything went fine you should have a repo with the following tasks already configured:
   
-  - **browserify**. So you can write your code in commonJS style, including a couple of useful transforms like `browserify-shim` and `require-arr`
+  - **browserify**. So you can write your code in commonJS style, including a couple of useful transforms `require-arr`
   - **build-workflow**. (files to format, validate and tasks to be executed during prepush hook)
   - **bump**. To increase the version number
   - **changelog**. To generate a nice changelog in html format, from git commits.
