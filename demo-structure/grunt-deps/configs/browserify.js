@@ -29,6 +29,14 @@ module.exports = function ( grunt, pkg, opts ) {
           }, dep );
         } );
 
+        var filter = grunt.option( 'console-filter' );
+
+        if ( filter ) {
+          b.transform( require( 'build-workflow/utils/console-filter' ).configure( {
+            'filter': filter
+          } ));
+        }
+
         return b;
       }
     },
