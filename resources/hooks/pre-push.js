@@ -14,38 +14,33 @@ var showSuccessBlock = utils.showSuccessBlock;
 // directory of the git repo (the one where .git/ lives in)
 process.chdir( cfg.pathToSource );
 
-console.log( cfg.pathToSource );
 
-showTitleBlock( 'Validation Hook Started' );
 
-//console.log('arguments: ', process.argv);
+exec('which grunt', function (err, stdout, stderr) {
+  if (stdout && stdout.length > 0) { // grunt exits
 
-var cp = exec( 'grunt prepush', function ( err, stdout, stderr ) {
-  if ( err ) {
+    showTitleBlock( 'Validation Hook Started' );
 
-    console.error( err );
+    var cp = exec( 'grunt prepush', function ( err, stdout, stderr ) {
+      if ( err ) {
 
-    showErrorBlock( 'Review your errors and try again', 'VALIDATION FAILED :' );
+        console.error( err );
 
-    process.exit( 1 );
-    return;
+        showErrorBlock( 'Review your errors and try again', 'VALIDATION FAILED :' );
+
+        process.exit( 1 );
+        return;
+      }
+
+      showSuccessBlock( 'Validation Hook Completed!.' );
+    } );
+
+    cp.stdout.pipe( createStream());
   }
+  else {
+    console.log("It seems you don't have `grunt` in your system. No checks will be done. Pray you don't break things, and the build goes green");
+  }
+});
 
-  showSuccessBlock( 'Validation Hook Completed!.' );
 
-  //  var cp2 = exec( 'grunt jshint:js-check jscs:js-check jsvalidate:js-check', function ( err, stdout, stderr ) {
-  //    if ( err ) {
-  //
-  //      showErrorBlock( 'Review your errors and try again', 'VALIDATION FAILED :' );
-  //      process.exit( 1 );
-  //    }
-  //
-  //    showSuccessBlock( 'Validation Hook Completed!.' );
-  //
-  //  } );
-  //
-  //  cp2.stdout.pipe( createStream());
-} );
-
-cp.stdout.pipe( createStream());
 
