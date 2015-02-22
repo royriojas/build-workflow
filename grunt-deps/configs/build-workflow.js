@@ -2,6 +2,7 @@ module.exports = function ( grunt, pkg ) {
 
   var prepushFiles = [
     '**/*.js',
+    '!coverage/**/*.js',
     '!resources/hooks/*.js',
     '!node_modules/**/*.*',
     '!documentation/**/*.js',
