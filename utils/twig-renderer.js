@@ -8,7 +8,7 @@ module.exports = function ( file ) {
   } );
 
   return {
-    render: function (data) {
+    render: function ( data ) {
       return page.render( {
         it: data
       } );

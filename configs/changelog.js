@@ -3,23 +3,21 @@ module.exports = function ( grunt, pkg, options ) {
 
   var gruntTaskUtils = options.gruntTaskUtils;
 
-  var getRenderer = require( '../utils/get-renderer' );
+  var twigRenderer = require( '../utils/twig-renderer' );
   var capitalize = require( '../utils/capitalize' );
 
   var path = require( 'path' );
-  var changeLogRenderer = getRenderer( path.resolve( __dirname, '../resources/changelog/changelog.dot' ));
+  var changeLogRenderer = twigRenderer( path.resolve( __dirname, '../resources/changelog/changelog.twig' ));
 
   var lib = require( 'grunt-ez-frontend/lib/lib.js' );
   var moment = require( 'moment' );
 
   return {
-
     //    'changelog': {
     //      dest: './report/changelog/changelog.html'
     //    },
-
     options: {
-
+      issueIDRegex: /\b([A-Z][A-Z]\d{4,})\b/g,
       filterTags: function ( tags ) {
         var prefix = grunt.option( 'tag-prefix' );
 
@@ -47,14 +45,20 @@ module.exports = function ( grunt, pkg, options ) {
         var marked = require( 'marked' );
         return changeLogRenderer.render( {
           hasCommits: function ( group ) {
-            var keys = Object.keys( group.commits );
+            var groupCommits = group.commits;
+            var keys = Object.keys( groupCommits );
             var hasCommits = false;
+
             if ( keys.length > 0 ) {
               for ( var i = 0; i < keys.length; i++ ) {
-                var commits = group.commits[ keys[ i ] ];
-                if ( commits.length > 0 ) {
-                  hasCommits = true;
-                  break;
+                var feature = groupCommits[ keys[ i ] ];
+                var subkeys = Object.keys( feature );
+                for ( var idx = 0; idx < subkeys.length; i++ ) {
+                  var commits = feature[ subkeys[ idx ] ];
+                  if ( commits.length > 0 ) {
+                    hasCommits = true;
+                    break;
+                  }
                 }
               }
             }
@@ -65,24 +69,40 @@ module.exports = function ( grunt, pkg, options ) {
           urlForBugId: me.urlForBugId, // || changeLogConfig.urlForBugId, // 'https://rally1.rallydev.com/#/search?keywords={0}',
           projectName: me.projectName || pkg.name, // pkg.name,
           projectVersion: me.projectVersion || pkg.version, //pkg.version,
+          renderBody: function ( body ) {
+            var me = this;
+
+            body = body.replace( me.issueIDRegex, function ( a, b1 ) {
+              return lib.format( '<a target="_blank" class="info-link" href="{0}"><span>{1}</span></a>', lib.format( me.urlForBugId, b1 ), b1 );
+            } );
+
+            return marked( body );
+          },
+          renderDate: function ( timestamp ) {
+            var dateStr = moment.unix( timestamp ).format( 'DD/MM/YYYY HH:mm:ss' );
+            return dateStr;
+          },
+
+          renderFeature: function ( feature ) {
+            feature = feature.replace( me.issueIDRegex, function ( a, b1 ) {
+              return lib.format( '<a target="_blank" class="info-link" href="{0}"><span>{1}</span></a>', lib.format( me.urlForBugId, b1 ), b1 );
+            } );
+
+            return marked( capitalize( feature )).replace( /<(\/)*p>/g, '' );
+          },
+
           renderDescription: function ( log ) {
             var me = this;
             var commit = log.commit;
             var shortDescription = commit.shortDescription;
 
-            shortDescription = shortDescription.substr( 0, 140 );
-
-            shortDescription = shortDescription.replace( me.format( '[{0}]', commit.bugId ), '{BUG_ID}' );
-
-            shortDescription = shortDescription.replace( /\b[A-Z][A-Z]\d+\b/g, '{BUG_ID}' );
-
-            shortDescription = shortDescription.replace( /\{BUG_ID\}/g, me.format( '<a target="_blank" class="info-link" href="{0}"><span>{1}</span></a>', me.format( me.urlForBugId, commit.bugId ), commit.bugId ));
+            shortDescription = shortDescription.replace( me.issueIDRegex, function ( a, b1 ) {
+              return lib.format( '<a target="_blank" class="info-link" href="{0}"><span>{1}</span></a>', lib.format( me.urlForBugId, b1 ), b1 );
+            } );
 
             return marked( capitalize( shortDescription )).replace( /<(\/)*p>/g, '' );
           },
           groups: groups,
-          marked: marked,
-          moment: moment,
           format: lib.format.bind( lib )
         } );
       }

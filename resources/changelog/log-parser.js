@@ -11,35 +11,30 @@ module.exports = function ( content ) {
     STY: 'Cosmetic fixes',
     TST: 'Tests Related fixes',
     ENH: 'Enhancements',
-    NC: 'Other changes'
+    NC: 'Other changes',
+    FIX: 'Bug Fixes'
   };
 
   var parseSubject = function ( subject ) {
-    subject = subject || '';
-    var regexp = /^(BLD|BUG|DOC|FEAT|REF|STY|TST|ENH)\:\s/;
-    var matches = subject.match( regexp ) || [];
-    var tagId = ( matches[ 1 ] || 'NC' );
-    var foundTag = tagNames[ tagId ];
 
-    var bugIdMatcher = /\[(.*)\]/;
+    var subj = require( '../../resources/hooks/lib/parse-commit' )( subject );
 
-    var rallyMatches = subject.match( bugIdMatcher ) || [];
-    var bugId = rallyMatches[ 1 ];
+    var tag = subj.tag || 'NC';
 
-    if ( !bugId ) {
-      bugIdMatcher = /\b([A-Z][A-Z]\d+)\b/;
-      rallyMatches = subject.match( bugIdMatcher ) || [];
-      bugId = rallyMatches[ 1 ];
+    // FIX is a better prefix than bug. But since we were currently using
+    // BUG as a prefix, this fix is required to support both
+    if ( tag === 'FIX' ) {
+      tag = 'BUG';
     }
 
-    var parsedSubject = {
-      tagId: tagId,
-      tagName: foundTag,
-      shortDescription: subject.replace( regexp, '' ),
-      bugId: bugId
-    };
+    var foundTag = tagNames[ tag ];
 
-    //console.log('parsed subject', parsedSubject);
+    var parsedSubject = {
+      tagId: tag,
+      tagName: foundTag,
+      feature: subj.feature,
+      shortDescription: subj.subject
+    };
 
     return parsedSubject;
   };
@@ -62,9 +57,15 @@ module.exports = function ( content ) {
       author: parts[ 4 ]
     };
 
-    groups[ entry.commit.tagId ] = groups[ entry.commit.tagId ] || [];
+    var entryCommit = entry.commit;
+    var feature = entryCommit.feature || 'Uncategorized';
 
-    sha1 && groups[ entry.commit.tagId ].push( entry );
+    if ( sha1 ) {
+      var featureGroup = groups[ feature ] = groups[ feature ] || {};
+      var tagGroup = featureGroup[ entryCommit.tagName ] = featureGroup[ entryCommit.tagName ] || [];
+      tagGroup.push( entry );
+    }
+
   } );
 
   return groups;

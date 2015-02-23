@@ -66,4 +66,17 @@ describe( 'parse-commit', function () {
     } );
   } );
 
+  it('should parse a commit with tag FEATURE', function () {
+
+    var result = parseCommit( 'FEAT: (install-hooks) better parsing of the commit messages' );
+
+    expect( result ).to.be.like( {
+      emptyLineAfterSubject: true,
+      tag: 'FEAT',
+      feature: 'install-hooks',
+      subject: 'better parsing of the commit messages',
+      body: ''
+    } );
+  });
+
 } );

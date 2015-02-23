@@ -10,8 +10,6 @@ module.exports = function ( grunt, pkg, options ) {
       description: 'automate the generation of a changelog using git',
       multiTask: function () {
 
-        var lib = require( 'grunt-ez-frontend/lib/lib.js' );
-
         var me = this,
           done = me.async();
         var Promise = require( 'es6-promise' ).Promise;
