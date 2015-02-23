@@ -66,7 +66,7 @@ describe( 'parse-commit', function () {
     } );
   } );
 
-  it('should parse a commit with tag FEATURE', function () {
+  it( 'should parse a commit with tag FEATURE', function () {
 
     var result = parseCommit( 'FEAT: (install-hooks) better parsing of the commit messages' );
 
@@ -77,6 +77,6 @@ describe( 'parse-commit', function () {
       subject: 'better parsing of the commit messages',
       body: ''
     } );
-  });
+  } );
 
 } );

@@ -17,7 +17,9 @@ module.exports = function ( grunt, pkg, options ) {
     //      dest: './report/changelog/changelog.html'
     //    },
     options: {
-      issueIDRegex: /\b([A-Z][A-Z]\d{4,})\b/g,
+      issueIDRegex: function () {
+        return /\b([A-Z][A-Z]\d{4,})\b/g;
+      },
       filterTags: function ( tags ) {
         var prefix = grunt.option( 'tag-prefix' );
 
@@ -69,11 +71,12 @@ module.exports = function ( grunt, pkg, options ) {
           urlForBugId: me.urlForBugId, // || changeLogConfig.urlForBugId, // 'https://rally1.rallydev.com/#/search?keywords={0}',
           projectName: me.projectName || pkg.name, // pkg.name,
           projectVersion: me.projectVersion || pkg.version, //pkg.version,
+          issueIDRegex: me.issueIDRegex,
           renderBody: function ( body ) {
             var me = this;
 
-            body = body.replace( me.issueIDRegex, function ( a, b1 ) {
-              return lib.format( '<a target="_blank" class="info-link" href="{0}"><span>{1}</span></a>', lib.format( me.urlForBugId, b1 ), b1 );
+            body = body.replace( me.issueIDRegex(), function ( a, b1 ) {
+              return lib.format( '<a target="_blank" class="info-link" href="{0}"><span>{1}</span></a>', lib.format( me.urlForBugId, b1 ), a );
             } );
 
             return marked( body );
@@ -84,8 +87,8 @@ module.exports = function ( grunt, pkg, options ) {
           },
 
           renderFeature: function ( feature ) {
-            feature = feature.replace( me.issueIDRegex, function ( a, b1 ) {
-              return lib.format( '<a target="_blank" class="info-link" href="{0}"><span>{1}</span></a>', lib.format( me.urlForBugId, b1 ), b1 );
+            feature = feature.replace( me.issueIDRegex(), function ( a, b1 ) {
+              return lib.format( '<a target="_blank" class="info-link" href="{0}"><span>{1}</span></a>', lib.format( me.urlForBugId, b1 ), a );
             } );
 
             return marked( capitalize( feature )).replace( /<(\/)*p>/g, '' );
@@ -96,8 +99,8 @@ module.exports = function ( grunt, pkg, options ) {
             var commit = log.commit;
             var shortDescription = commit.shortDescription;
 
-            shortDescription = shortDescription.replace( me.issueIDRegex, function ( a, b1 ) {
-              return lib.format( '<a target="_blank" class="info-link" href="{0}"><span>{1}</span></a>', lib.format( me.urlForBugId, b1 ), b1 );
+            shortDescription = shortDescription.replace( me.issueIDRegex(), function ( a, b1 ) {
+              return lib.format( '<a target="_blank" class="info-link" href="{0}"><span>{1}</span></a>', lib.format( me.urlForBugId, b1 ), a );
             } );
 
             return marked( capitalize( shortDescription )).replace( /<(\/)*p>/g, '' );

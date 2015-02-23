@@ -3,8 +3,10 @@ module.exports = function () {
     'changelog': {
       dest: './report/changelog/changelog.html',
       options: {
-        issueIDRegex: /#\b(\d*)\b/g,
-        gitUrlForCommit : 'https://github.com/royriojas/build-workflow/commit/{0}',
+        issueIDRegex: function () {
+          return /#(\d+)/g;
+        },
+        gitUrlForCommit: 'https://github.com/royriojas/build-workflow/commit/{0}',
         gitAuthorUrl: 'https://github.com/{0}',
         urlForBugId: 'https://github.com/royriojas/build-workflow/issues/{0}'
       }
