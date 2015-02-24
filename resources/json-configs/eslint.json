@@ -1,19 +1,17 @@
 {
-  "curly": true,
-  "eqeqeq": true,
-  "immed": true,
-  "latedef": true,
-  "newcap": true,
-  "noarg": true,
-  "sub": true,
-  "undef": true,
-  "boss": true,
-  "eqnull": true,
-  "browser": true,
-  "expr": true,
-  "laxcomma": true,
-  "multistr": true,
-  "node": true,
+  "rules": {
+    "eqeqeq": 0,
+    "curly": 2,
+    "quotes": [2, "single"],
+    "strict": 0
+  },
+  "env": {
+    "browser": true,
+    "node": true
+  },
+  "ecmaFeatures": {
+    "jsx" : true
+  },
   "globals": {
     "assert": true,
     "it": true,
@@ -62,4 +60,3 @@
     "iit": true
   }
 }
-

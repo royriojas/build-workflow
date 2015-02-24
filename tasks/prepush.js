@@ -16,7 +16,7 @@ module.exports = function ( grunt, pkg, options ) {
 
       var opts = this.options( {
         useNewer: false,
-        tasksToRun: jsTasks || 'jsbeautifier,jscs,jshint,jsvalidate',
+        tasksToRun: jsTasks || 'esformatter,jscs,',
         filesToValidate: buildWorkflowConfig.filesToValidate,
         forceBeautify: false,
         prepushTasks: buildWorkflowConfig.prepushTasks || []

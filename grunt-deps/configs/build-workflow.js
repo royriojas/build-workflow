@@ -13,12 +13,12 @@ module.exports = function ( grunt, pkg ) {
 
     prepushTasks: [ 'jsonlint' ],
 
-    'filesToValidate': {
-      'jsbeautifier': prepushFiles,
-      'jscs': prepushFiles,
-      'jshint': prepushFiles,
-      'jsvalidate': prepushFiles,
-      'codepainter': prepushFiles
+    validationTasks: {
+      jsbeautifier: prepushFiles,
+      jscs: prepushFiles,
+      jshint: prepushFiles,
+      jsvalidate: prepushFiles,
+      codepainter: prepushFiles
     }
   };
 };
