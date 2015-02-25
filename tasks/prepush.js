@@ -5,6 +5,7 @@ module.exports = function ( grunt, pkg, options ) {
 
   var path = require( 'path' );
   var checkFiles = require( '../utils/check-files' );
+  var createValidationTasks = require('../utils/create-validation-tasks');
 
   gruntTaskUtils.registerTasks( {
     'prepush': function ( jsTasks ) {
@@ -13,16 +14,25 @@ module.exports = function ( grunt, pkg, options ) {
       if ( !buildWorkflowConfig ) {
         return grunt.fail( 'missing build-workflow config. Did you provide a build-workflow.js config inside grunt-deps/configs?' );
       }
+      var tasksToRun;
+      if (buildWorkflowConfig.validationTasks) {
+        tasksToRun = createValidationTasks(grunt, buildWorkflowConfig.validationTasks, function (name, tConfig) {
+          if (name === 'esformatter') {
+            tConfig.reportOnly = true;
+          }
+        });
+      }
+      else {
+        var opts = this.options( {
+          useNewer: false,
+          tasksToRun: jsTasks || 'esformatter,jscs,',
+          filesToValidate: buildWorkflowConfig.filesToValidate,
+          forceBeautify: false,
+          prepushTasks: buildWorkflowConfig.prepushTasks || []
+        } );
 
-      var opts = this.options( {
-        useNewer: false,
-        tasksToRun: jsTasks || 'esformatter,jscs,',
-        filesToValidate: buildWorkflowConfig.filesToValidate,
-        forceBeautify: false,
-        prepushTasks: buildWorkflowConfig.prepushTasks || []
-      } );
-
-      var tasksToRun = checkFiles.doCheck( grunt, opts );
+        tasksToRun = checkFiles.doCheck( grunt, opts );
+      }
 
       tasksToRun = tasksToRun || [];
 

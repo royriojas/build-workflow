@@ -19,12 +19,13 @@ module.exports = function (grunt, pkg, opts) {
 
         var opts = me.options({
           esformatterOpts: {},
-          beforeStart: null
+          beforeStart: null,
+          reportOnly: false
         });
 
         var cfg = {};
-        if (opts.config) {
-          cfg = grunt.file.readJSON(path.resolve(opts.config));
+        if (opts.configFile) {
+          cfg = grunt.file.readJSON(path.resolve(opts.configFile));
         }
 
         var extend = require('../utils/extend');
@@ -52,11 +53,25 @@ module.exports = function (grunt, pkg, opts) {
           opts.beforeStart(esformatter);
         }
 
+        var noBeautifiedFiles = [];
+
         me.filesSrc.forEach(function (fIn) {
-          var output = esformatter.format(grunt.file.read(fIn), cfg);
-          grunt.file.write(fIn, output);
-          grunt.log.ok('formatted file ' + fIn);
+          var sourceIn = grunt.file.read(fIn);
+          var output = esformatter.format(sourceIn, cfg);
+          if (!opts.reportOnly) {
+            grunt.file.write(fIn, output);
+            grunt.log.ok('formatted file ' + fIn);
+          }
+          else {
+            if (sourceIn !== output) {
+              noBeautifiedFiles.push(fIn);
+            }
+          }
         });
+
+        if (opts.reportOnly && noBeautifiedFiles.length > 0) {
+          grunt.fail.warn('The following files need beautification: \n' + noBeautifiedFiles.join('\n') );
+        }
       }
     }
   });

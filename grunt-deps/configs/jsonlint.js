@@ -6,10 +6,7 @@ module.exports = function ( grunt ) {
     all: {
       src: [
         'package.json',
-        'resources/json-configs/.jscs.json',
-        'resources/json-configs/.jshintrc',
-        'resources/json-configs/beautify-config.json',
-        'resources/json-configs/codepainter.json'
+        'resources/json-configs/*.json'
       ]
     }
   };
