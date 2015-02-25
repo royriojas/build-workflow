@@ -5,7 +5,7 @@ module.exports = function ( grunt, pkg, options ) {
 
   var path = require( 'path' );
 
-  gruntTaskUtils.registerTasks( {
+  gruntTaskUtils.registerTasks({
     'css-font': {
       description: 'creates a css font css from the selection.json info file',
       multiTask: function () {
@@ -17,16 +17,16 @@ module.exports = function ( grunt, pkg, options ) {
         //var src = data.src;
         var files = me.files || [];
 
-        var opts = me.options( {
+        var opts = me.options({
           fontLessTemplate: 'grunt-deps/kwl-font.less.tpl',
           fontCodesTemplate: 'grunt-deps/font-codes.mixins.tpl', // the template for the less for this font
           fontsFolder: 'fonts', // the folder where the fonts are located
           processIconName: function ( name ) {
             return name;
           }
-        } );
+        });
 
-        files.forEach(function ( dataEntry ) {
+        files.forEach( function ( dataEntry ) {
           var src = dataEntry.src;
           if ( !src || src.length === 0 ) {
             grunt.log.ok( 'Nothing to process' );
@@ -37,7 +37,7 @@ module.exports = function ( grunt, pkg, options ) {
           var mixinsDest = dest.replace( /\.less$/g, '.mixins.less' );
           var destDir = path.dirname( mixinsDest );
 
-          src.forEach(function ( jsonFontDescriptor ) {
+          src.forEach( function ( jsonFontDescriptor ) {
 
             var rawData = grunt.file.readJSON( jsonFontDescriptor );
 
@@ -45,12 +45,12 @@ module.exports = function ( grunt, pkg, options ) {
             var fontData = {
               name: rawData.metadata.name,
               prefix: prefix,
-              icons: rawData.icons.map(function ( icon ) {
+              icons: rawData.icons.map( function ( icon ) {
                 var name = icon.properties.name;
                 var iconName = opts.processIconName( name );
                 return {
                   name: iconName,
-                  hexCode: '\\' + ( icon.properties.code ).toString( 16 ),
+                  hexCode: '\\' + (icon.properties.code).toString( 16 ),
                   className: prefix + iconName
                 };
               } )
@@ -61,11 +61,11 @@ module.exports = function ( grunt, pkg, options ) {
 
             grunt.verbose.writeln( 'processing ', filesToProcess );
 
-            filesToProcess.forEach(function ( entry ) {
+            filesToProcess.forEach( function ( entry ) {
               var baseName = path.basename( entry );
 
               // convert filename to lowercase to allow consistency
-              var outputFileName = path.join( destDir, opts.fontsFolder, baseName.toLowerCase());
+              var outputFileName = path.join( destDir, opts.fontsFolder, baseName.toLowerCase() );
               grunt.file.copy( entry, outputFileName );
               grunt.log.ok( 'File created: ' + outputFileName );
             } );
@@ -83,7 +83,7 @@ module.exports = function ( grunt, pkg, options ) {
             // completely override the defaults, so we need to extend from the default options and override
             // the one we want to change!...
             // again... why dot why?
-            var templateSettings = lib.extend( {}, dot.templateSettings, compileOptions );
+            var templateSettings = lib.extend({}, dot.templateSettings, compileOptions );
             var renderCodeFonts = dot.template( grunt.file.read( opts.fontCodesTemplate ), templateSettings );
             var renderFontsLess = dot.template( grunt.file.read( opts.fontLessTemplate ), templateSettings );
 
@@ -101,7 +101,7 @@ module.exports = function ( grunt, pkg, options ) {
             grunt.log.ok( 'Less File created: ' + dest );
 
             if ( opts.jsonCodesOuput ) {
-              grunt.file.write( opts.jsonCodesOuput, lib.format( 'var fontData = {0}', JSON.stringify( fontData )) );
+              grunt.file.write( opts.jsonCodesOuput, lib.format( 'var fontData = {0}', JSON.stringify( fontData ) ) );
               grunt.log.ok( 'JSON Metadata File created: ' + opts.jsonCodesOuput );
             }
           } );
@@ -109,5 +109,5 @@ module.exports = function ( grunt, pkg, options ) {
         } );
       }
     }
-  } );
+  });
 };

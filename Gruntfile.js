@@ -8,6 +8,6 @@ module.exports = function ( grunt ) {
   require( './config-loader' )( grunt, {
     // loadBaseTasksAndConfigs : false
     replaceVersionWithBuildNumber: false
-  } );
+  });
 
 };

@@ -1,4 +1,4 @@
-(function ( global ) {
+( function ( global ) {
   global.__TEST_ENV__ = true;
 
   require( './bind' );
@@ -6,32 +6,32 @@
 
   var objUtil = require( './obj-util' );
 
-  beforeEach(function ( done ) {
+  beforeEach( function ( done ) {
     global.__cjs__clearCachedModules && global.__cjs__clearCachedModules();
     var sinon = require( 'sinon' );
     var me = this;
     var sandbox = sinon.sandbox.create();
     me.sandbox = sandbox;
 
-    var methods = [ 'stub', 'spy' ];
+    var methodsToAdd = [ 'stub', 'spy' ];
 
     var many = function ( type, obj, methods ) {
 
       var doubles = {};
       methods = [].concat( methods );
 
-      for ( var m = 0; m < methods.length; m++ ) {
+      for (var m = 0; m < methods.length; m++) {
         var method = methods[ m ];
 
         // Sinon requires doubling target to exist.
-        if ( !objUtil.getKeyValue( obj, method )) {
+        if ( !objUtil.getKeyValue( obj, method ) ) {
           objUtil.setKeyValue( obj, method, Function.prototype );
         }
 
-        if ( /\./.test( method )) { // Ex. 'a.b.c'
+        if ( /\./.test( method ) ) { // Ex. 'a.b.c'
           var methodsParts = method.split( '.' );
           doubles[ method ] = sandbox[ type ](
-            objUtil.getKeyValue( obj, methodsParts.slice( 0, -1 ).join( '.' )), // Ex. 'a.b'
+            objUtil.getKeyValue( obj, methodsParts.slice( 0, -1 ).join( '.' ) ), // Ex. 'a.b'
             methodsParts.slice( -1 ) // Ex. 'c'
           );
         } else {
@@ -42,7 +42,7 @@
       return doubles;
     };
 
-    methods.forEach(function ( type ) {
+    methodsToAdd.forEach( function ( type ) {
       sandbox[ type + 'Many' ] = function ( obj, methods ) {
         return many( type, obj, methods );
       };
@@ -58,7 +58,7 @@
     done && done();
   } );
 
-  afterEach(function ( done ) {
+  afterEach( function ( done ) {
     var me = this;
 
     global.__clearMocks && global.__clearMocks();

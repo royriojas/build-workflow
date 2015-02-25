@@ -3,7 +3,7 @@ module.exports = function () {
   var utils = require( './util.js' );
   var cfg = require( './hooks-cfg.json' );
   var path = require( 'path' );
-  var process = require( './process' );
+  var nodeProcess = require( './process' );
   var console = require( './console' );
 
   var createStream = utils.createStream;
@@ -13,9 +13,13 @@ module.exports = function () {
 
   // hooks are always executed from the root
   // directory of the git repo (the one where .git/ lives in)
-  process.chdir( cfg.pathToSource );
+  nodeProcess.chdir( cfg.pathToSource );
 
   exec( 'which grunt', function ( err, stdout, stderr ) {
+    if ( err ) {
+      console.log( 'grunt not found. Prepush hook will be ignored', err );
+      return;
+    }
     if ( stdout && stdout.length > 0 ) { // grunt exits
 
       showTitleBlock( 'Validation Hook Started' );
@@ -27,16 +31,16 @@ module.exports = function () {
 
           showErrorBlock( 'Review your errors and try again', 'VALIDATION FAILED :' );
 
-          process.exit( 1 );
+          nodeProcess.exit( 1 );
           return;
         }
 
         showSuccessBlock( 'Validation Hook Completed!.' );
       } );
 
-      cp.stdout.pipe( createStream());
+      cp.stdout.pipe( createStream() );
     } else {
-      console.log( "It seems you don't have `grunt` in your system. No checks will be done. Pray you don't break things, and the build goes green" );
+      console.log( 'It seems you don\'t have `grunt` in your system. No checks will be done. Pray you don\'t break things, and the build goes green' );
     }
   } );
 };

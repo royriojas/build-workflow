@@ -2,8 +2,8 @@ module.exports = function parseCommit( commit ) {
 
   commit = commit || '';
 
-  var lines = commit.split( '\n' ).filter(function ( line ) {
-    return ( line[ 0 ] !== '#' );
+  var lines = commit.split( '\n' ).filter( function ( line ) {
+    return (line[ 0 ] !== '#');
   } );
 
   var regex = /^(.*)\:\s(.+)/;
@@ -36,7 +36,7 @@ module.exports = function parseCommit( commit ) {
       empty = true;
     }
     if ( lines.length > 1 ) {
-      empty = ( lines[ 1 ] || '' ).trim() === '';
+      empty = (lines[ 1 ] || '').trim() === '';
     }
   }
 

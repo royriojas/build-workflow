@@ -1,21 +1,27 @@
-module.exports = function (grunt, pkg, opts) {
+module.exports = function ( grunt, pkg, options ) {
   'use strict';
 
-  var gruntTaskUtils = opts.gruntTaskUtils;
+  var gruntTaskUtils = options.gruntTaskUtils;
+  var fs = require( 'fs' );
+
+  var filterFiles = function ( files, cache ) {
+    files = files || [];
+
+    return files.filter( function ( file ) {
+      var fstatStored = cache.getKey( file );
+      var fstat = fs.statSync( file );
+      return !fstatStored || (fstat.mtime.getTime() !== fstatStored.mtime || fstat.size !== fstatStored.size);
+    } );
+  };
 
   gruntTaskUtils.registerTasks({
-    'esformatter': {
+    esformatter: {
       description: 'automate the generation of a changelog using git',
       multiTask: function () {
-        var path = require('path');
-        var esformatter = require('esformatter');
+        var path = require( 'path' );
+        var esformatter = require( 'esformatter' );
 
         var me = this;
-
-        if (!me.filesSrc.length) {
-          grunt.log.ok('No files to format');
-          return;
-        }
 
         var opts = me.options({
           esformatterOpts: {},
@@ -23,55 +29,91 @@ module.exports = function (grunt, pkg, opts) {
           reportOnly: false
         });
 
-        var cfg = {};
-        if (opts.configFile) {
-          cfg = grunt.file.readJSON(path.resolve(opts.configFile));
+        var cache = require( '../utils/cache' ).load( 'esformatter-cache' + (opts.reportOnly ? '_report' : '') );
+
+        var filesSrc = filterFiles( me.filesSrc, cache );
+
+        if ( filesSrc.length === 0 ) {
+          grunt.log.ok( 'No files to format' );
+          return;
         }
 
-        var extend = require('../utils/extend');
-        cfg = extend(true, cfg, opts.esformatterOpts);
+        var cfg = {};
+        if ( opts.configFile ) {
+          cfg = grunt.file.readJSON( path.resolve( opts.configFile ) );
+          //grunt.verbose.writeln( 'cfg', cfg );
+        }
+
+        var extend = require( '../utils/extend' );
+        cfg = extend( true, cfg, opts.esformatterOpts );
 
         var plugins = cfg.plugins;
 
-        if (plugins && plugins.length > 0) {
+        if ( plugins && plugins.length > 0 ) {
           // plugins will be auto register again, during transform,
           // setting them here will fix this issue in esformatter
           // https://github.com/millermedeiros/esformatter/issues/245
-          var tryCatch = require('../utils/try-catch');
-          plugins.forEach(function (plugin) {
-            tryCatch(function () {
-              esformatter.register(require(plugin));
-            }, function (ex) {
-              grunt.verbose.writeln('\nError: ' + ex.message);
-              grunt.fail.warn('Error loading esformatter plugin : ' + plugin);
-            });
-          });
+          var tryCatch = require( '../utils/try-catch' );
+          plugins.forEach( function ( plugin ) {
+            tryCatch( function () {
+              esformatter.register( require( plugin ) );
+              grunt.log.ok( 'registering plugin', plugin );
+            }, function ( ex ) {
+                grunt.verbose.writeln( '\nError: ' + ex.message );
+                grunt.fail.warn( 'Error loading esformatter plugin : ' + plugin );
+              } );
+          } );
+          // do not load it inside the module
+          cfg.plugins = [];
         }
 
-        if (opts.beforeStart) {
+        if ( opts.beforeStart ) {
           // handy to add more plugins programatically if required
-          opts.beforeStart(esformatter);
+          opts.beforeStart( esformatter );
         }
 
         var noBeautifiedFiles = [];
+        var beautifiedFiles = [];
 
-        me.filesSrc.forEach(function (fIn) {
-          var sourceIn = grunt.file.read(fIn);
-          var output = esformatter.format(sourceIn, cfg);
-          if (!opts.reportOnly) {
-            grunt.file.write(fIn, output);
-            grunt.log.ok('formatted file ' + fIn);
-          }
-          else {
-            if (sourceIn !== output) {
-              noBeautifiedFiles.push(fIn);
+        filesSrc.forEach( function ( fIn ) {
+          var sourceIn = grunt.file.read( fIn );
+          var output = esformatter.format( sourceIn, cfg );
+          var sourceRequiredBeautification = sourceIn !== output;
+
+          if ( !opts.reportOnly ) {
+            if ( sourceRequiredBeautification ) {
+              grunt.file.write( fIn, output );
+              beautifiedFiles.push( fIn );
+              grunt.log.ok( 'formatted file ' + fIn );
+            } else {
+              grunt.verbose.writeln( 'file is ok: ', fIn );
+            }
+          } else {
+            if ( sourceRequiredBeautification ) {
+              noBeautifiedFiles.push( fIn );
             }
           }
-        });
 
-        if (opts.reportOnly && noBeautifiedFiles.length > 0) {
-          grunt.fail.warn('The following files need beautification: \n' + noBeautifiedFiles.join('\n') );
+          var stat = fs.statSync( fIn );
+          cache.setKey( fIn, {
+            size: stat.size,
+            mtime: stat.mtime.getTime()
+          });
+
+        } );
+
+        if ( opts.reportOnly ) {
+          if ( noBeautifiedFiles.length > 0 ) {
+            grunt.fail.warn( 'The following files need beautification: \n\n - ' + noBeautifiedFiles.join( '\n - ' ) + '\n\n' );
+          }
+        } else {
+          if ( beautifiedFiles.length > 0 ) {
+            grunt.log.ok( 'Files beautified: ' + beautifiedFiles.length );
+          } else {
+            grunt.log.ok( 'No files to be beautified. Total processed : ' + filesSrc.length + ' file(s)' );
+          }
         }
+        cache.save();
       }
     }
   });

@@ -27,7 +27,7 @@ var deps = {
     'grunt-remove-logging'
   ],
 
-  'browserify': [
+  browserify: [
     'stringformat',
     'grunt-browserify',
     'browserify-transform-tools'
@@ -40,13 +40,13 @@ var deps = {
     'grunt-contrib-yuidoc'
   ],
 
-  'protractor': [
+  protractor: [
     'protractor',
     'grunt-protractor-runner',
     'jasmine-spec-reporter'
   ],
 
-  'karma': [
+  karma: [
     'karma-chrome-launcher',
     'karma-phantomjs-launcher',
     'karma-coverage',
@@ -62,7 +62,7 @@ var deps = {
     'grunt-karma'
   ],
 
-  'react': [
+  react: [
     'react',
     'react-tools',
     'reactify',
@@ -73,7 +73,7 @@ var deps = {
 var commands = {
   'install-deps': function ( args ) {
 
-    return new Promise(function ( resolve, reject ) {
+    return new Promise( function ( resolve, reject ) {
       var dependencies;
 
       var group = args.group;
@@ -83,22 +83,22 @@ var commands = {
       if ( group ) {
         dependencies = deps[ group ] || [];
       } else {
-        dependencies = Object.keys( deps ).reduce(function ( seq, key ) {
+        dependencies = Object.keys( deps ).reduce( function ( seq, key ) {
           return seq.concat( deps[ key ] );
         }, [] );
       }
 
       if ( dependencies.length === 0 ) {
-        reject( {
+        reject({
           message: 'no deps found for group ' + group
-        } );
+        });
       }
 
       var spawn = require( 'child_process' ).spawn;
 
       var child = spawn( 'npm', [ 'i', '-D' ].concat( dependencies ), {
         stdio: 'inherit'
-      } );
+      });
 
       child.on( 'close', function ( code ) {
         if ( code !== 0 ) {

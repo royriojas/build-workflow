@@ -13,7 +13,7 @@
 module.exports = function tryCatch( cb, err, finallyFn ) {
   try {
     cb && cb();
-  } catch ( ex ) {
+  } catch (ex) {
     err && err( ex );
   } finally {
     finallyFn && finallyFn();

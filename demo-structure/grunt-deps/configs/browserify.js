@@ -2,19 +2,19 @@ module.exports = function ( grunt, pkg, opts ) {
   'use strict';
 
   var deps = {
-    'window': 'global.window',
-    'jQuery': 'global.jQuery',
-    'screen': 'global.screen',
-    'Worker': 'global.Worker',
-    'Promise': 'global.Promise',
-    'self': 'global.self'
+    window: 'global.window',
+    jQuery: 'global.jQuery',
+    screen: 'global.screen',
+    Worker: 'global.Worker',
+    Promise: 'global.Promise',
+    self: 'global.self'
   };
 
   return {
     options: {
       preBundleCB: function ( b ) {
 
-        b.transform( require( 'build-workflow/utils/strictify' ));
+        b.transform( require( 'build-workflow/utils/strictify' ) );
 
         var transforms = [
           require( 'build-workflow/utils/shimify' ).configure( deps ),
@@ -23,8 +23,8 @@ module.exports = function ( grunt, pkg, opts ) {
           require( 'build-workflow/utils/require-arr' )
         ];
 
-        transforms.forEach(function ( dep ) {
-          b.transform( {
+        transforms.forEach( function ( dep ) {
+          b.transform({
             global: true
           }, dep );
         } );
@@ -32,9 +32,9 @@ module.exports = function ( grunt, pkg, opts ) {
         var filter = grunt.option( 'console-filter' );
 
         if ( filter ) {
-          b.transform( require( 'build-workflow/utils/console-filter' ).configure( {
-            'filter': filter
-          } ));
+          b.transform( require( 'build-workflow/utils/console-filter' ).configure({
+            filter: filter
+          }) );
         }
 
         return b;

@@ -1,7 +1,5 @@
-module.exports = function ( grunt, pkg, options ) {
+module.exports = function ( /* grunt, pkg, options */ ) {
   'use strict';
-
-  var path = require( 'path' );
 
   // region ### jsvalidate
   // validate the javascript files looking for syntax errors. It complements jshint and it is based on Esprima.

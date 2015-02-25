@@ -1,4 +1,4 @@
-module.exports = function ( grunt, pkg, options ) {
+module.exports = function ( /* grunt, pkg, options */ ) {
   'use strict';
 
   var path = require( 'path' );
@@ -8,7 +8,7 @@ module.exports = function ( grunt, pkg, options ) {
   var getReporter = function () {
     var reporter;
 
-    tryCatch(function () {
+    tryCatch( function () {
       reporter = require( 'jshint-stylish' );
     } );
 

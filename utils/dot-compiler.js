@@ -6,6 +6,6 @@ module.exports = {
     var settings = dot.templateSettings || {};
     settings.strip = false;
     var dotFn = dot.template( str, settings );
-    return rendererObject.replace( '[[RENDER_FUNCTION]]', dotFn.toString().replace( 'function anonymous', 'function ' ));
+    return rendererObject.replace( '[[RENDER_FUNCTION]]', dotFn.toString().replace( 'function anonymous', 'function ' ) );
   }
 };

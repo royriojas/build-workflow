@@ -10,11 +10,11 @@ module.exports = function ( grunt, opts, pkg, helperOptions, baseConfigs ) {
   var config = {};
 
   // iterate over them and register them in the config
-  localConfig.forEach(function ( entry ) {
+  localConfig.forEach( function ( entry ) {
     var entryName = path.basename( entry, '.js' );
     //var baseConfig = baseConfigs[ entryName ] || {};
 
-    var lConfig = require( path.join( basePath, entry ))( grunt, pkg, helperOptions );
+    var lConfig = require( path.join( basePath, entry ) )( grunt, pkg, helperOptions );
     config[ entryName ] = lConfig;
     //var outCfg = lib.extend( true, baseConfig, lConfig );
     //grunt.config.set( entryName, outCfg );
@@ -23,7 +23,7 @@ module.exports = function ( grunt, opts, pkg, helperOptions, baseConfigs ) {
 
   var finalConfig = lib.extend( true, baseConfigs, config );
 
-  Object.keys( finalConfig ).forEach(function ( key ) {
+  Object.keys( finalConfig ).forEach( function ( key ) {
     grunt.config.set( key, finalConfig[ key ] );
   } );
 

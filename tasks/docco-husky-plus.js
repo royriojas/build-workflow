@@ -2,19 +2,21 @@ module.exports = function ( grunt, pkg, opts ) {
   'use strict';
   var gruntTaksUtils = opts.gruntTaskUtils;
 
-  gruntTaksUtils.registerTasks( {
+  gruntTaksUtils.registerTasks({
     'docco-husky-plus': {
       description: '',
       multiTask: function () {
         var me = this;
         var data = me.data;
 
-        var options = me.options( {
+        var options = me.options({
+          /*eslint-disable*/
           show_timestamp: true,
           output_dir: data.dest,
           project_name: 'Unknown Project',
+          /*eslint-enable*/
           sources: grunt.file.expand( data.src )
-        } );
+        });
 
         options.docFiles = grunt.file.expand( data.docFiles );
 
@@ -24,11 +26,11 @@ module.exports = function ( grunt, pkg, opts ) {
 
         try {
           doccoHuskyPlus.generateDocs( options, done );
-        } catch ( ex ) {
+        } catch (ex) {
           grunt.fail.warn( 'cannot generate the docs' );
           done( false );
         }
       }
     }
-  } );
+  });
 };

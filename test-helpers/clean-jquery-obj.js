@@ -1,7 +1,7 @@
 module.exports = function cleanJQueryObjects( obj ) {
   var $ = require( 'jQuery' );
 
-  var isObject = ( $.type( obj ) === 'object' ) && !$.isEmptyObject( obj );
+  var isObject = ($.type( obj ) === 'object') && !$.isEmptyObject( obj );
 
   if ( isObject ) {
     if ( Object.getPrototypeOf( obj ) === $.fn ) {
@@ -10,7 +10,7 @@ module.exports = function cleanJQueryObjects( obj ) {
       }
       return null;
     }
-    Object.keys( obj ).forEach(function ( key ) {
+    Object.keys( obj ).forEach( function ( key ) {
       obj[ key ] = cleanJQueryObjects( obj[ key ] );
     } );
   }

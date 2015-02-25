@@ -10,22 +10,22 @@
 var class2type = {};
 
 var types = [
-  "Boolean",
-  "Number",
-  "String",
-  "Function",
-  "Array",
-  "Date",
-  "RegExp",
-  "Object"
+  'Boolean',
+  'Number',
+  'String',
+  'Function',
+  'Array',
+  'Date',
+  'RegExp',
+  'Object'
 ];
 
 var objProto = Object.prototype;
 var hasOwn = objProto.hasOwnProperty;
-var toString = objProto.toString;
+var _toString = objProto.toString;
 
-types.forEach(function ( name ) {
-  class2type[ "[object " + name + "]" ] = name.toLowerCase();
+types.forEach( function ( name ) {
+  class2type[ '[object ' + name + ']' ] = name.toLowerCase();
 } );
 
 var chk = {
@@ -37,7 +37,7 @@ var chk = {
    * @return {Boolean} true if it is null (or undefined)
    */
   isNull: function ( val ) {
-    return typeof val === "undefined" || val === null;
+    return typeof val === 'undefined' || val === null;
   },
   /**
    * Checks if a value is an empty string, null or undefined.
@@ -60,7 +60,7 @@ var chk = {
   typeOf: function ( obj ) {
     return obj === null ?
       String( obj ) :
-      class2type[ toString.call( obj ) ] || "object";
+      class2type[ _toString.call( obj ) ] || 'object';
   },
   /**
    * Returns true if an object is a plain object
@@ -71,12 +71,12 @@ var chk = {
    */
   isPlainObject: function ( obj ) {
     var me = this;
-    if ( !obj || me.typeOf( obj ) !== "object" ) {
+    if ( !obj || me.typeOf( obj ) !== 'object' ) {
       return false;
     }
 
     // Not own constructor property must be Object
-    if ( obj.constructor && !hasOwn.call( obj, "constructor" ) && !hasOwn.call( obj.constructor.prototype, "isPrototypeOf" )) {
+    if ( obj.constructor && !hasOwn.call( obj, 'constructor' ) && !hasOwn.call( obj.constructor.prototype, 'isPrototypeOf' ) ) {
       return false;
     }
 
@@ -84,7 +84,10 @@ var chk = {
     // if last one is own, then all properties are own.
 
     var key;
-    for ( key in obj ) {}
+    /*eslint-disable*/
+    for (key in obj)
+    {}
+    /*eslint-enable*/
 
     return key === undefined || hasOwn.call( obj, key );
   }

@@ -10,7 +10,7 @@ module.exports = {
 
     var prepush = opts.filesToValidate || {};
 
-    jsTasks.forEach(function ( task ) {
+    jsTasks.forEach( function ( task ) {
       var files = prepush[ task ] || [];
 
       if ( files.length > 0 ) {
@@ -19,17 +19,17 @@ module.exports = {
         };
 
         if ( !opts.forceBeautify &&
-          ( task === 'jsbeautifier' && !grunt.option( 'pp-force-beautify' ))
+          (task === 'jsbeautifier' && !grunt.option( 'pp-force-beautify' ))
         ) {
           tConfig.options = {
             mode: 'VERIFY_ONLY',
-            onVerificationFailed: function ( result, opts ) {
-              grunt.fail.fatal( 'File needed beautification: ' + opts.file );
+            onVerificationFailed: function ( result, args ) {
+              grunt.fail.fatal( 'File needed beautification: ' + args.file );
             }
           };
         }
 
-        grunt.config.set( [ task, key ], tConfig );
+        grunt.config.set([ task, key ], tConfig );
         tasksToRun.push( task );
       }
     } );
@@ -39,8 +39,8 @@ module.exports = {
       useNewer = false;
     }
 
-    tasksToRun = tasksToRun.map(function ( task ) {
-      return ( useNewer ? 'newer:' : '' ) + task + ':' + key;
+    tasksToRun = tasksToRun.map( function ( task ) {
+      return (useNewer ? 'newer:' : '') + task + ':' + key;
     } );
 
     return tasksToRun;

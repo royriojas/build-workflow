@@ -1,4 +1,4 @@
-module.exports = function ( grunt, pkg, options ) {
+module.exports = function () {
 
   var path = require( 'path' );
 

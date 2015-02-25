@@ -5,8 +5,8 @@ module.exports = function ( grunt, pkg, options ) {
 
   var parseLog = require( '../resources/changelog/log-parser' );
 
-  gruntTaskUtils.registerTasks( {
-    'changelog': {
+  gruntTaskUtils.registerTasks({
+    changelog: {
       description: 'automate the generation of a changelog using git',
       multiTask: function () {
 
@@ -16,7 +16,7 @@ module.exports = function ( grunt, pkg, options ) {
 
         var gitHelper = require( '../utils/git-helper' )( grunt );
 
-        var opts = this.options( {
+        var opts = this.options({
           renderer: function ( data ) {
             return JSON.stringify( data, null, 2 );
           },
@@ -27,11 +27,11 @@ module.exports = function ( grunt, pkg, options ) {
             return tags;
           },
           parseLog: parseLog
-        } );
+        });
 
         gitHelper.parseLog = opts.parseLog;
 
-        gitHelper.getTags().then(function ( response ) {
+        gitHelper.getTags().then( function ( response ) {
           var tags = response.tags;
 
           grunt.verbose.write( 'all tags', tags );
@@ -49,17 +49,16 @@ module.exports = function ( grunt, pkg, options ) {
 
           grunt.verbose.write( 'groups', groups );
 
-          var promise = groups.reduce(function ( seq, group ) {
+          var groupsPromise = groups.reduce( function ( seq, group ) {
 
-            return seq.then(function () {
+            return seq.then( function () {
               return gitHelper.getCommits( group );
-            } ).then(function ( response ) {
-              group.commits = response.commits;
+            } ).then( function ( res ) {
+              group.commits = res.commits;
             } );
+          }, Promise.resolve() );
 
-          }, Promise.resolve());
-
-          promise.then(function () {
+          groupsPromise.then( function groupCallback() {
             grunt.verbose.write( 'groups with commits', groups );
 
             var str = opts.renderer( groups );
@@ -67,12 +66,12 @@ module.exports = function ( grunt, pkg, options ) {
             grunt.file.write( me.data.dest, str );
             grunt.log.ok( 'file created', me.data.dest );
             done();
-          } ).
-          catch (function ( failResponse ) {
+          } ).catch ( function ( failResponse ) {
             console.error( failResponse );
           } );
+
         } );
       }
     }
-  } );
+  });
 };

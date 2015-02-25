@@ -2,7 +2,7 @@ module.exports = function ( grunt, pkg, opts ) {
   'use strict';
 
   return {
-    'dev': {
+    dev: {
       // the server root directory
       root: './demo/',
       port: 8282,
@@ -16,8 +16,6 @@ module.exports = function ( grunt, pkg, opts ) {
 
       // run in parallel with other tasks
       runInBackground: true
-
     }
-
   };
 };

@@ -2,13 +2,13 @@ module.exports = function ( grunt, pkg, opts ) {
   'use strict';
   var gruntTaksUtils = opts.gruntTaskUtils;
 
-  gruntTaksUtils.registerTasks( {
+  gruntTaksUtils.registerTasks({
     'run-i18n-targets': function () {
 
       var ezFrontend = grunt.config.get( 'ez-frontend' );
 
       var tasks = [];
-      Object.keys( ezFrontend ).forEach(function ( key ) {
+      Object.keys( ezFrontend ).forEach( function ( key ) {
         var isi18nTask = /^i18n/.test( key );
         if ( isi18nTask ) {
           tasks.push( 'js-target:' + key );
@@ -19,5 +19,5 @@ module.exports = function ( grunt, pkg, opts ) {
         grunt.task.run( tasks );
       }
     }
-  } );
+  });
 };

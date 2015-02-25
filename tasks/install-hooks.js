@@ -4,12 +4,10 @@ module.exports = function ( grunt, pkg, options ) {
   var gruntTaskUtils = options.gruntTaskUtils;
   var path = require( 'path' );
 
-  gruntTaskUtils.registerTasks( {
+  gruntTaskUtils.registerTasks({
     'install-hooks': {
       description: 'install the hooks into the git subdirectory',
       multiTask: function () {
-
-        var lib = require( 'grunt-ez-frontend/lib/lib.js' );
 
         var me = this;
         var gruntWorkingDirectory = process.cwd();
@@ -23,24 +21,22 @@ module.exports = function ( grunt, pkg, options ) {
 
         var hooksSourceDirectory = path.resolve( __dirname, '../resources/hooks/' );
 
-        var hooks = grunt.file.expand( path.join( hooksSourceDirectory, '*.js' ));
+        var hooks = grunt.file.expand( path.join( hooksSourceDirectory, '*.js' ) );
         var gitHooksDir = data.gitHooksDirectory;
 
-        hooks.forEach(function ( file ) {
+        hooks.forEach( function ( file ) {
           var destName = path.basename( file, '.js' );
           var targetLocation = path.resolve( gitHooksDir, destName );
           try {
             grunt.file.delete( targetLocation, {
               force: true
-            } );
-          } catch ( ex ) {
-
-          }
+            });
+          } catch (ex) {}
 
           grunt.file.copy( file, targetLocation, {
             encoding: null,
             noProcess: true
-          } );
+          });
 
           var fs = require( 'fs' );
 
@@ -49,29 +45,27 @@ module.exports = function ( grunt, pkg, options ) {
           grunt.log.ok( 'Copy file from ', file, ' to ', targetLocation );
         } );
 
-        var libs = grunt.file.expand( path.join( hooksSourceDirectory, 'lib/**/*.*' ));
-        libs.forEach(function ( file ) {
+        var libs = grunt.file.expand( path.join( hooksSourceDirectory, 'lib/**/*.*' ) );
+        libs.forEach( function ( file ) {
           var destName = path.basename( file );
           var targetLocation = path.resolve( gitHooksDir + '/lib/', destName );
           try {
             grunt.file.delete( targetLocation, {
               force: true
-            } );
-          } catch ( ex ) {
-
-          }
+            });
+          } catch (ex) {}
 
           grunt.file.copy( file, targetLocation, {
             encoding: null,
             noProcess: true
-          } );
+          });
 
           grunt.log.ok( 'Copy file from ', file, ' to ', targetLocation );
         } );
 
-        grunt.file.write( path.resolve( gitHooksDir + '/lib/hooks-cfg.json' ), JSON.stringify( prepushHookConfig ));
+        grunt.file.write( path.resolve( gitHooksDir + '/lib/hooks-cfg.json' ), JSON.stringify( prepushHookConfig ) );
 
       }
     }
-  } );
+  });
 };

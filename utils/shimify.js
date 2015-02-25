@@ -1,6 +1,5 @@
 var sFormat = require( 'stringformat' );
 var transformTools = require( 'browserify-transform-tools' );
-var path = require( 'path' );
 
 var options = {
   excludeExtensions: [ '.json' ],
@@ -16,7 +15,7 @@ module.exports = transformTools.makeRequireTransform( 'requireTransform', option
   var foundDep = config[ key ];
 
   if ( foundDep ) {
-    return cb( null, sFormat( '({0})', foundDep ));
+    return cb( null, sFormat( '({0})', foundDep ) );
   }
 
   cb();

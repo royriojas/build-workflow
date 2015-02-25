@@ -41,7 +41,7 @@ module.exports = function ( content ) {
 
   var groups = {};
 
-  lines.forEach(function ( line ) {
+  lines.forEach( function ( line ) {
     var parts = line.split( '$|$' );
 
     var sha1 = parts[ 0 ] || '';

@@ -27,7 +27,7 @@ var consoleWrapper = {
     var consoleObj = {};
     var me = this;
 
-    consoleKeys.forEach(function ( method ) {
+    consoleKeys.forEach( function ( method ) {
 
       var methodFound = oldConsole[ method ];
 

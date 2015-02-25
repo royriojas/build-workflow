@@ -1,9 +1,8 @@
 describe( 'reader', function () {
-  var ptor;
 
-  beforeEach(function () {
+  beforeEach( function () {
     browser.ignoreSynchronization = true;
-    ptor = protractor.getInstance();
+    //ptor = protractor.getInstance();
   } );
 
   it( 'should convert markdown into proper html', function () {

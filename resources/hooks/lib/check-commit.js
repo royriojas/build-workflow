@@ -1,3 +1,1 @@
-module.exports = function checkCommit( parsedCommit ) {
-
-};
+module.exports = function checkCommit( parsedCommit ) {};

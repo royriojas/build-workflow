@@ -7,11 +7,11 @@ require( '../../../mocha-helpers/test-helpers' );
 var loadFileSync = function ( file ) {
   return fs.readFileSync( file, {
     encoding: 'utf8'
-  } );
+  });
 };
 
 describe( 'commit-msg', function () {
-  beforeEach(function () {
+  beforeEach( function () {
 
     var me = this;
     me.mockProcess = me.sandbox.createSpyObj( 'process', [ 'exit' ] );
@@ -20,7 +20,7 @@ describe( 'commit-msg', function () {
 
   } );
 
-  afterEach(function () {
+  afterEach( function () {
     var me = this;
 
   } );
@@ -30,7 +30,7 @@ describe( 'commit-msg', function () {
     var mockFs = {
       readFileSync: function ( file, opts ) {
         if ( file === 'commitFile' ) {
-          return loadFileSync( path.resolve( __dirname, '../../fixtures/commits/good-commit-feature.txt' ));
+          return loadFileSync( path.resolve( __dirname, '../../fixtures/commits/good-commit-feature.txt' ) );
         }
       }
     };
@@ -43,7 +43,7 @@ describe( 'commit-msg', function () {
       './process': me.mockProcess,
       './console': me.mockLog,
       './util': me.mockUtil
-    } );
+    });
 
     commitMessage( 'commitFile' );
 
@@ -56,7 +56,7 @@ describe( 'commit-msg', function () {
     var mockFs = {
       readFileSync: function ( file, opts ) {
         if ( file === 'commitFile' ) {
-          return loadFileSync( path.resolve( __dirname, '../../fixtures/commits/good-commit-no-feature.txt' ));
+          return loadFileSync( path.resolve( __dirname, '../../fixtures/commits/good-commit-no-feature.txt' ) );
         }
       }
     };
@@ -68,7 +68,7 @@ describe( 'commit-msg', function () {
       './process': me.mockProcess,
       './console': me.mockLog,
       './util': me.mockUtil
-    } );
+    });
 
     commitMessage( 'commitFile' );
 
@@ -81,7 +81,7 @@ describe( 'commit-msg', function () {
     var mockFs = {
       readFileSync: function ( file, opts ) {
         if ( file === 'commitFile' ) {
-          return loadFileSync( path.resolve( __dirname, '../../fixtures/commits/bad-commit-no-tag.txt' ));
+          return loadFileSync( path.resolve( __dirname, '../../fixtures/commits/bad-commit-no-tag.txt' ) );
         }
       }
     };
@@ -93,7 +93,7 @@ describe( 'commit-msg', function () {
       './process': me.mockProcess,
       './console': me.mockLog,
       './util': me.mockUtil
-    } );
+    });
 
     commitMessage( 'commitFile' );
 
@@ -106,7 +106,7 @@ describe( 'commit-msg', function () {
     var mockFs = {
       readFileSync: function ( file, opts ) {
         if ( file === 'commitFile' ) {
-          return loadFileSync( path.resolve( __dirname, '../../fixtures/commits/bad-commit-too-long.txt' ));
+          return loadFileSync( path.resolve( __dirname, '../../fixtures/commits/bad-commit-too-long.txt' ) );
         }
       }
     };
@@ -118,7 +118,7 @@ describe( 'commit-msg', function () {
       './process': me.mockProcess,
       './console': me.mockLog,
       './util': me.mockUtil
-    } );
+    });
 
     commitMessage( 'commitFile' );
 
@@ -131,7 +131,7 @@ describe( 'commit-msg', function () {
     var mockFs = {
       readFileSync: function ( file, opts ) {
         if ( file === 'commitFile' ) {
-          return loadFileSync( path.resolve( __dirname, '../../fixtures/commits/bad-commit-invalid-tag.txt' ));
+          return loadFileSync( path.resolve( __dirname, '../../fixtures/commits/bad-commit-invalid-tag.txt' ) );
         }
       }
     };
@@ -143,7 +143,7 @@ describe( 'commit-msg', function () {
       './process': me.mockProcess,
       './console': me.mockLog,
       './util': me.mockUtil
-    } );
+    });
 
     commitMessage( 'commitFile' );
 
@@ -156,7 +156,7 @@ describe( 'commit-msg', function () {
     var mockFs = {
       readFileSync: function ( file, opts ) {
         if ( file === 'commitFile' ) {
-          return loadFileSync( path.resolve( __dirname, '../../fixtures/commits/bad-commit-no-new-line.txt' ));
+          return loadFileSync( path.resolve( __dirname, '../../fixtures/commits/bad-commit-no-new-line.txt' ) );
         } else {
           return fs.readFileSync( file, opts );
         }
@@ -170,7 +170,7 @@ describe( 'commit-msg', function () {
       './process': me.mockProcess,
       './console': me.mockLog,
       './util': me.mockUtil
-    } );
+    });
 
     commitMessage( 'commitFile' );
     expect( me.mockProcess.exit ).to.have.been.calledWith( 1 );

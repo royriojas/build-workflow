@@ -1,5 +1,5 @@
 var Stream = require( 'stream' );
-var process = require( './process' );
+var nodeProcess = require( './process' );
 var console = require( './console' );
 
 module.exports = {
@@ -15,7 +15,7 @@ module.exports = {
       }
 
       data = data.replace( /\n/g, '\n  ' );
-      process.stdout.write( data );
+      nodeProcess.stdout.write( data );
 
     };
     stream.end = function () {
@@ -39,7 +39,7 @@ module.exports = {
   },
   showErrorBlock: function ( message, prefix ) {
     message = message || '';
-    prefix = ( typeof prefix === 'undefined' || prefix === null ) ? 'ERROR: ' : prefix;
+    prefix = (typeof prefix === 'undefined' || prefix === null) ? 'ERROR: ' : prefix;
 
     var messageLength = message.trim().length;
     if ( messageLength > 0 ) {

@@ -1,6 +1,6 @@
 module.exports = function () {
   return {
-    'changelog': {
+    changelog: {
       dest: './report/changelog/changelog.html',
       options: {
         issueIDRegex: function () {

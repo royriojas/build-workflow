@@ -1,5 +1,6 @@
 if ( !Function.prototype.bind ) {
-  Function.prototype.bind = function ( oThis ) {
+
+  var bind = function ( oThis ) {
     if ( typeof this !== 'function' ) {
       // closest thing possible to the ECMAScript 5
       // internal IsCallable function
@@ -11,7 +12,7 @@ if ( !Function.prototype.bind ) {
       FNoop = function () {},
       fBound = function () {
         return fToBind.apply( this instanceof FNoop && oThis ? this : oThis,
-          aArgs.concat( Array.prototype.slice.call( arguments )) );
+          aArgs.concat( Array.prototype.slice.call( arguments ) ) );
       };
 
     FNoop.prototype = this.prototype;
@@ -19,4 +20,8 @@ if ( !Function.prototype.bind ) {
 
     return fBound;
   };
+
+  /*eslint-disable*/
+  Function.prototype.bind = bind;
+  /*eslint-enable*/
 }

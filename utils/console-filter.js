@@ -17,7 +17,7 @@ var parseRegExp = function ( regexAsString ) {
   var matches = regexAsString.match( /(\/?)(.+)\1([a-z]*)/i );
   var flags = matches[ 3 ];
 
-  if ( flags && !/^(?!.*?(.).*?\1)[gmixXsuUAJ]+$/.test( flags )) {
+  if ( flags && !/^(?!.*?(.).*?\1)[gmixXsuUAJ]+$/.test( flags ) ) {
     return new RegExp( regexAsString );
   }
 
@@ -25,26 +25,25 @@ var parseRegExp = function ( regexAsString ) {
   return new RegExp( expression, flags );
 };
 
-module.exports = transformTools.makeFalafelTransform( 'console-filter', options,
-  function ( node, transformOptions, done ) {
-    if ( node.type === 'CallExpression' ) {
-      if ( node.callee && node.callee.source().indexOf( 'console.' ) === 0 ) {
+module.exports = transformTools.makeFalafelTransform( 'console-filter', options, function ( node, transformOptions, done ) {
+  if ( node.type === 'CallExpression' ) {
+    if ( node.callee && node.callee.source().indexOf( 'console.' ) === 0 ) {
 
-        var filter = transformOptions.config.filter;
+      var filter = transformOptions.config.filter;
 
-        var regex = parseRegExp( filter );
-        var source = node.source();
+      var regex = parseRegExp( filter );
+      var source = node.source();
 
-        var matchOnFile = transformOptions.file.match( regex );
-        var matchOnSource = source.match( regex );
-        if ( matchOnSource || matchOnFile ) {
-          console.log( '>>> ', path.basename( transformOptions.file, '.js' ), source );
-          done();
-          return;
-        }
-
-        node.update( '' );
+      var matchOnFile = transformOptions.file.match( regex );
+      var matchOnSource = source.match( regex );
+      if ( matchOnSource || matchOnFile ) {
+        console.log( '>>> ', path.basename( transformOptions.file, '.js' ), source );
+        done();
+        return;
       }
+
+      node.update( '' );
     }
-    done();
-  } );
+  }
+  done();
+} );

@@ -1,7 +1,5 @@
-module.exports = function ( grunt, pkg, options ) {
+module.exports = function ( /* grunt, pkg, options */ ) {
   'use strict';
-
-  var gruntTaskUtils = options.gruntTaskUtils;
 
   var path = require( 'path' );
   var config = path.resolve( __dirname, '../resources/json-configs/beautify-config.json' );

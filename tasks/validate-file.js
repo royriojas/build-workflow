@@ -5,7 +5,7 @@ module.exports = function ( grunt, pkg, options ) {
 
   var path = require( 'path' );
 
-  gruntTaskUtils.registerTasks( {
+  gruntTaskUtils.registerTasks({
     'validate-file': function ( fileGlob ) {
 
       var jsFiles = [];
@@ -15,14 +15,10 @@ module.exports = function ( grunt, pkg, options ) {
 
       var filesExpanded = grunt.file.expand( fileGlob );
 
-      filesExpanded.forEach(function ( file ) {
+      filesExpanded.forEach( function ( file ) {
         var extname = path.extname( file );
 
-        //        if ( file.indexOf( 'node_modules' ) > -1 ) {
-        //          return;
-        //        }
-
-        var f = file; //path.relative( './', file );
+        var f = file;
         if ( extname === '.js' ) {
           jsFiles.push( f );
         }
@@ -31,31 +27,31 @@ module.exports = function ( grunt, pkg, options ) {
         }
       } );
 
-      console.log( jsonFiles, jsFiles );
+      grunt.log.ok( 'files to process ', jsonFiles.concat( jsFiles ) );
 
       var tasksToRun = [];
       var key = 'modified';
       if ( jsonFiles.length > 0 ) {
         tasksToRun.push( 'jsonlint' );
-        grunt.config.set( [ 'jsonlint', key ], {
+        grunt.config.set([ 'jsonlint', key ], {
           src: jsonFiles
-        } );
+        });
       }
 
       var jsFilesEntry = {
         src: jsFiles
       };
 
-      var jsTasks = [ 'jsbeautifier', 'jscs', 'jshint', 'jsvalidate' ];
+      var jsTasks = [ 'esformatter', 'jscs' ];
 
-      jsTasks.forEach(function ( task ) {
+      jsTasks.forEach( function ( task ) {
         if ( jsFiles.length > 0 ) {
           tasksToRun.push( task );
-          grunt.config.set( [ task, key ], jsFilesEntry );
+          grunt.config.set([ task, key ], jsFilesEntry );
         }
       } );
 
-      tasksToRun = tasksToRun.map(function ( task ) {
+      tasksToRun = tasksToRun.map( function ( task ) {
         return task + ':' + key;
       } );
 
@@ -63,9 +59,9 @@ module.exports = function ( grunt, pkg, options ) {
         grunt.task.run( tasksToRun );
       }
 
-      console.log( 'tasks to run', tasksToRun );
+      grunt.log.ok( 'tasks to run', tasksToRun );
 
       grunt.log.ok( 'all validated!' );
     }
-  } );
+  });
 };

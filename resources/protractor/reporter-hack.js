@@ -1,6 +1,6 @@
 var reporters = jasmine.getEnv().reporter.subReporters_;
 var jasmineSpecReporter, minijasmineReporter;
-for ( var i = 0; i < reporters.length; i++ ) {
+for (var i = 0; i < reporters.length; i++) {
   if ( reporters[ i ].callback_ !== undefined ) {
     minijasmineReporter = reporters[ i ];
   }

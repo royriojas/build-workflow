@@ -1,28 +1,38 @@
-module.exports = function (grunt, validationTasksConfig, onSet) {
-  var jsTasks = validationTasksConfig.tasks || [];
-  var check = require('./check');
+module.exports = function ( parameters ) {
+  var grunt = require( 'grunt' );
+
+  var validationTasks = parameters.validationTasks;
+  var onSet = parameters.beforeSetConfiguration;
+  var filter = parameters.filter;
+
+  var jsTasks = filter || validationTasks.tasks || [];
+
+  var check = require( './check' );
   var tasksToRun = [];
 
-  jsTasks.forEach(function ( task ) {
+  jsTasks.forEach( function ( task ) {
 
     var name, src;
 
-    if (check.typeOf(task) === 'string') {
+    if ( check.typeOf( task ) === 'string' ) {
       name = task;
-      src = validationTasksConfig.src || [];
-    }
-    else {
+      src = validationTasks.src || [];
+    } else {
       name = task.name;
-      src =  task.src || validationTasksConfig.src
+      src = task.src || validationTasks.src;
     }
 
     if ( src.length > 0 ) {
       var tConfig = {
         src: src
       };
-      onSet && onSet(tConfig);
-      grunt.config.set( [ task, name ], tConfig );
-      tasksToRun.push( task );
+      onSet && onSet( name, tConfig );
+
+      var target = 'validation';
+
+      grunt.config.set([ name, target ], tConfig );
+
+      tasksToRun.push( task + ':' + target );
     }
   } );
 

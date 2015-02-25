@@ -15,7 +15,7 @@ module.exports = {
         'ok'
       ];
 
-      qunitMethods.forEach(function ( method ) {
+      qunitMethods.forEach( function ( method ) {
         scope[ method ] = function () {
           assert[ method ].apply( assert, arguments );
         };
@@ -32,7 +32,7 @@ module.exports = {
         var me = this;
         me.$fixture.remove();
         if ( me.overriders && me.overriders.length > 0 ) {
-          me.overriders.forEach(function ( ov ) {
+          me.overriders.forEach( function ( ov ) {
             ov.restore();
           } );
         }
@@ -50,8 +50,8 @@ module.exports = {
       scope.toHaveProperties = function ( instance, args ) {
         var notFoundProps = [];
 
-        args.forEach(function ( key ) {
-          if ( !( key in instance )) {
+        args.forEach( function ( key ) {
+          if ( !(key in instance) ) {
             notFoundProps.push( key );
           }
         } );
@@ -63,7 +63,7 @@ module.exports = {
 
       scope.toHaveMethods = function ( obj, methods ) {
 
-        if ( !( typeof obj !== 'undefined' && obj !== null )) {
+        if ( !(typeof obj !== 'undefined' && obj !== null) ) {
           throw new Error( 'You need an object to check if it provides the required methods' );
         }
 
@@ -72,7 +72,7 @@ module.exports = {
         }
 
         var notFoundMethods = [];
-        methods.forEach(function ( fn ) {
+        methods.forEach( function ( fn ) {
           if ( typeof obj[ fn ] !== 'function' ) {
             notFoundMethods.push( fn );
           }
@@ -86,8 +86,8 @@ module.exports = {
 
         var notFoundProps = [];
 
-        args.forEach(function ( key ) {
-          if ( !( key in instance )) {
+        args.forEach( function ( key ) {
+          if ( !(key in instance) ) {
             notFoundProps.push( key );
             return;
           }

@@ -1,7 +1,5 @@
-module.exports = function ( grunt, pkg, options ) {
+module.exports = function () {
   'use strict';
-
-  var gruntTaskUtils = options.gruntTaskUtils;
 
   return {
 

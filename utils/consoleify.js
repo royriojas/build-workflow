@@ -7,14 +7,13 @@ var options = {
 };
 var customConsole = '\n/*wrapping console start!*/\n var console = require(\'build-workflow/utils/console-wrapper\').create("{0}");\n/*wrapping console end!*/\n\n';
 
-module.exports = transformTools.makeStringTransform( 'consoleify', options,
-  function ( content, transformOptions, done ) {
-    var file = transformOptions.file;
+module.exports = transformTools.makeStringTransform( 'consoleify', options, function ( content, transformOptions, done ) {
+  var file = transformOptions.file;
 
-    var usesConsole = content.indexOf( 'console' ) > -1;
-    if ( usesConsole && content.indexOf( '/** NO_OVERRIDE_CONSOLE **/' ) === -1 ) {
-      content = sFormat( customConsole, path.basename( file ).replace( /\.js(x)*$/, '' )) + content;
-    }
+  var usesConsole = content.indexOf( 'console' ) > -1;
+  if ( usesConsole && content.indexOf( '/** NO_OVERRIDE_CONSOLE **/' ) === -1 ) {
+    content = sFormat( customConsole, path.basename( file ).replace( /\.js(x)*$/, '' ) ) + content;
+  }
 
-    done( null, content );
-  } );
+  done( null, content );
+} );

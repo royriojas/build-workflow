@@ -11,7 +11,6 @@ module.exports = {
   create: function ( obj ) {
     var originals = {};
     return {
-
       /**
        * Stub all the methods on the current object instance
        *
@@ -22,7 +21,7 @@ module.exports = {
         var keys = Object.keys( obj );
         var me = this;
 
-        var fns = keys.filter(function ( key ) {
+        var fns = keys.filter( function ( key ) {
           return $.type( obj[ key ] ) === 'function';
         } );
 
@@ -39,7 +38,7 @@ module.exports = {
       stubFns: function ( methods, callThrough ) {
         var me = this;
         methods = methods || [];
-        methods.forEach(function ( method ) {
+        methods.forEach( function ( method ) {
           if ( $.type( obj[ method ] ) === 'function' ) {
             var oMethod = me.override( method );
             callThrough && oMethod.callThrough();
@@ -119,7 +118,7 @@ module.exports = {
        */
       restore: function () {
         var keys = Object.keys( originals );
-        keys.forEach(function ( key ) {
+        keys.forEach( function ( key ) {
           obj[ key ] = originals[ key ];
         } );
       }

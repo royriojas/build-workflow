@@ -1,6 +1,6 @@
 var commands = require( './commands' );
 
-var argv = require( 'minimist' )( process.argv.slice( 2 ));
+var argv = require( 'minimist' )( process.argv.slice( 2 ) );
 
 var showHelp = function () {
   console.error( 'Please tell me something to do: \n' );

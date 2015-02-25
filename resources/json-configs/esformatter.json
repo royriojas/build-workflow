@@ -2,7 +2,9 @@
   "plugins": [
     "esformatter-shebang-ignore",
     "esformatter-jsx-ignore",
-    "esformatter-quotes"
+    "esformatter-quotes",
+    "esformatter-quote-props",
+    "esformatter-eol-last"
   ],
   "quotes": {
     "type": "single",

@@ -1,7 +1,5 @@
-module.exports = function ( grunt, pkg, options ) {
+module.exports = function ( /* grunt, pkg, options */ ) {
   'use strict';
-
-  var gruntTaskUtils = options.gruntTaskUtils;
 
   return {
     options: {
@@ -11,7 +9,7 @@ module.exports = function ( grunt, pkg, options ) {
       // TODO: consider reviewing this https://github.com/CSSLint/csslint/wiki/Disallow-unqualified-attribute-selectors
       'unqualified-attributes': false,
       'compatible-vendor-prefixes': false,
-      'gradients': false,
+      gradients: false,
       'known-properties': false,
       'box-model': false,
       'fallback-colors': false,

@@ -8,9 +8,9 @@ module.exports = function ( grunt, opts, pkg, helperOptions ) {
   var customTasks = grunt.file.expand( opts.customTasks );
 
   // iterate over them and execute them
-  customTasks.forEach(function ( entry ) {
+  customTasks.forEach( function ( entry ) {
     //console.log('loading custom tasks', entry );
-    require( path.join( basePath, entry ))( grunt, pkg, helperOptions );
+    require( path.join( basePath, entry ) )( grunt, pkg, helperOptions );
   } );
 
 };

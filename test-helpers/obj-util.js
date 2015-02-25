@@ -40,7 +40,7 @@ var objUtil = {
     var temp = obj,
       keys = key.split( '.' );
 
-    for ( var ix = 0; ix < keys.length; ix++ ) {
+    for (var ix = 0; ix < keys.length; ix++) {
       var theKey = keys[ ix ];
       temp = temp[ theKey ];
       if ( typeof temp === 'undefined' || temp === null ) {
@@ -75,12 +75,12 @@ var objUtil = {
     var temp = obj,
       keys = key.split( '.' );
 
-    for ( var ix = 0, len = keys.length; ix < len; ix++ ) {
+    for (var ix = 0, len = keys.length; ix < len; ix++) {
       var theKey = keys[ ix ],
         t = temp[ theKey ];
 
       if ( typeof t === 'undefined' || t === null ) {
-        var isPrevLast = ( ix < len - 1 );
+        var isPrevLast = (ix < len - 1);
 
         temp[ theKey ] = isPrevLast ? {} : val;
 

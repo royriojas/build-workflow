@@ -38,11 +38,11 @@ module.exports = function extend() {
     --i;
   }
 
-  for ( ; i < length; i++ ) {
+  for (; i < length; i++) {
     // Only deal with non-null/undefined values
-    if ( ( options = arguments[ i ] ) != null ) {
+    if ( (options = arguments[ i ]) != null ) {
       // Extend the base object
-      for ( name in options ) {
+      for (name in options) {
         src = target[ name ];
         copy = options[ name ];
 
@@ -52,7 +52,7 @@ module.exports = function extend() {
         }
 
         // Recurse if we're merging plain objects or arrays
-        if ( deep && copy && ( isPlainObject( copy ) || ( copyIsArray = type( copy ) === 'array' )) ) {
+        if ( deep && copy && (isPlainObject( copy ) || (copyIsArray = type( copy ) === 'array')) ) {
           if ( copyIsArray ) {
             copyIsArray = false;
             clone = src && type( src ) === 'array' ? src : [];
@@ -64,7 +64,7 @@ module.exports = function extend() {
           // Never move original objects, clone them
           target[ name ] = extend( deep, clone, copy );
 
-          // Don't bring in undefined values
+        // Don't bring in undefined values
         } else if ( copy !== undefined ) {
           target[ name ] = copy;
         }

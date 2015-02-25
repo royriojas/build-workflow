@@ -13,4 +13,4 @@ module.exports = inherit( electricPart, {
     ins.init();
     return ins;
   }
-} );
+});

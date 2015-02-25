@@ -18,7 +18,7 @@
  * @returns {string} The capitalized string
  */
 module.exports = function ( str, forceLowerCase ) {
-  str = ( str || '' ).trim();
+  str = (str || '').trim();
 
   if ( str === '' ) {
     return '';
@@ -26,7 +26,7 @@ module.exports = function ( str, forceLowerCase ) {
 
   var last = str.substr( 1 );
 
-  forceLowerCase && ( last = last.toLowerCase());
+  forceLowerCase && (last = last.toLowerCase());
 
   return str.charAt( 0 ).toUpperCase() + last;
 };

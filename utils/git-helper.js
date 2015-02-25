@@ -5,23 +5,22 @@ module.exports = function ( grunt ) {
 
   return {
     getTags: function () {
-      return new Promise(function ( resolve, reject ) {
-        exec( 'git for-each-ref --sort=\'-*authordate\' --format=\'%(tag)\' refs/tags', function ( err, stdout, stderr ) {
+      return new Promise( function ( resolve, reject ) {
+        exec( 'git for-each-ref --sort=\'-*authordate\' --format=\'%(tag)\' refs/tags', function ( err, stdout /*, stderr */ ) {
           if ( !err ) {
-            var tags = stdout.split( '\n' ).filter(function ( entry ) {
+            var tags = stdout.split( '\n' ).filter( function ( entry ) {
               return !!entry;
             } );
-            resolve( {
+            resolve({
               tags: tags
-            } );
+            });
             return;
           }
-          reject( {
+          reject({
             error: err
-          } );
+          });
         } );
       } );
-
     },
     getCommits: function ( options ) {
       var opts = {
@@ -42,24 +41,24 @@ module.exports = function ( grunt ) {
 
       var me = this;
 
-      return new Promise(function ( resolve, reject ) {
+      return new Promise( function ( resolve, reject ) {
         exec( gitCmd, function ( err, stdout ) {
           if ( !err ) {
             var commits = me.parseLog( stdout );
-            resolve( {
+            resolve({
               commits: commits
-            } );
+            });
             return;
           }
-          reject( {
+          reject({
             error: err
-          } );
+          });
         } );
       } );
     },
     getCommitGroups: function ( tags ) {
       var groups = [];
-      for ( var i = 0; i < tags.length; i++ ) {
+      for (var i = 0; i < tags.length; i++) {
         var tagNext = tags[ i + 1 ];
         var currentTag = tags[ i ];
         var group = {
@@ -67,7 +66,7 @@ module.exports = function ( grunt ) {
           from: tagNext,
           to: currentTag
         };
-        ( typeof tagNext !== 'undefined' ) && groups.push( group );
+        (typeof tagNext !== 'undefined') && groups.push( group );
       }
       return groups;
     }

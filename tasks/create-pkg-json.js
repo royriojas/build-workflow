@@ -3,7 +3,6 @@ module.exports = function ( grunt, pkg, options ) {
 
   var gruntTaskUtils = options.gruntTaskUtils;
 
-  var path = require( 'path' );
   var gruntFile = grunt.file;
   // region ## Grunt Tasks Definitions
   // This object defines the tasks to be registered in grunt.
@@ -19,11 +18,11 @@ module.exports = function ( grunt, pkg, options ) {
           version: data.version
         };
 
-        data.main && ( thePackage.main = data.main );
+        data.main && (thePackage.main = data.main);
 
         var outputPath = data.dest;
 
-        gruntFile.write( outputPath, JSON.stringify( thePackage, null, 2 ));
+        gruntFile.write( outputPath, JSON.stringify( thePackage, null, 2 ) );
 
         grunt.log.ok( 'Created package.json for distribution: ' + outputPath );
       }

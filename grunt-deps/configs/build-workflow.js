@@ -1,21 +1,28 @@
 module.exports = function ( grunt, pkg ) {
 
   var prepushFiles = [
-    '**/*.js',
-    '!coverage/**/*.js',
-    //'!resources/hooks/*.js',
-    '!node_modules/**/*.*',
-    '!documentation/**/*.js',
-    '!apidocs/**/*.js'
+    'configs/**/*.js',
+    'demo-structure/**/*.js',
+    'grunt-deps/**/*.js',
+    'mocha-helpers/**/*.js',
+    'resources/**/*.js',
+    'specs/**/*.js',
+    'tasks/**/*.js',
+    'test-helpers/**/*.js',
+    'utils/**/*.js',
+    '*.js'
   ];
 
   return {
-
     prepushTasks: [ 'jsonlint' ],
 
     validationTasks: {
       src: prepushFiles,
-      tasks : [ 'esformatter', 'eslint' ]
+      tasks: [
+        'esformatter',
+        'eslint',
+        'jscs'
+      ]
       //jsbeautifier: prepushFiles,
       //jscs: prepushFiles
       //jshint: prepushFiles,

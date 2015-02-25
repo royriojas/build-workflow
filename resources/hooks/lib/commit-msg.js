@@ -4,7 +4,7 @@ module.exports = function ( commitMessageFile ) {
   var path = require( 'path' );
   var console = require( './console' );
 
-  var process = require( './process' );
+  var nodeProcess = require( './process' );
 
   var showErrorBlock = utils.showErrorBlock;
   var showTitleBlock = utils.showTitleBlock;
@@ -16,7 +16,7 @@ module.exports = function ( commitMessageFile ) {
 
   var content = fs.readFileSync( commitMessageFile, {
     encoding: 'utf8'
-  } );
+  });
 
   var checkMessage = function ( commitMsg ) {
 
@@ -27,13 +27,13 @@ module.exports = function ( commitMessageFile ) {
     var errorFns = [];
 
     if ( !commit.emptyLineAfterSubject ) {
-      errorFns.push(function () {
+      errorFns.push( function () {
         utils.showError( 'Must leave an empty line after the subject' );
       } );
     }
 
-    if ( !/\b(BLD|BUG|FIX|DOC|FEAT|REF|STY|TST|ENH)\b/g.test( commit.tag )) {
-      errorFns.push(function () {
+    if ( !/\b(BLD|BUG|FIX|DOC|FEAT|REF|STY|TST|ENH)\b/g.test( commit.tag ) ) {
+      errorFns.push( function () {
         utils.showError( 'Please provide a valid tag' );
       } );
     }
@@ -41,7 +41,7 @@ module.exports = function ( commitMessageFile ) {
     var subject = commit.subject;
 
     if ( subject.length > commitTitleMaxLength ) {
-      errorFns.push(function () {
+      errorFns.push( function () {
         utils.showError( 'Please make sure the first line of your message is less than ' + commitTitleMaxLength + ' characters long.' );
         utils.showError( '>>> length:', subject.length, subject, '\n' );
       } );
@@ -58,16 +58,16 @@ module.exports = function ( commitMessageFile ) {
   } else {
     var text = fs.readFileSync( path.resolve( __dirname, './commit-msg-error.txt' ), {
       encoding: 'utf8'
-    } );
+    });
 
     console.error( 'Original text:', text + '\n' );
 
-    errors.forEach(function ( fn ) {
+    errors.forEach( function ( fn ) {
       fn();
     } );
 
     showErrorBlock( 'Commit message is not acceptable. See message above' );
 
-    process.exit( 1 );
+    nodeProcess.exit( 1 );
   }
 };

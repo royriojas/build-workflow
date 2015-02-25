@@ -3,3 +3,4 @@ report/
 documentation/
 apidocs/
 coverage/
+.cache/

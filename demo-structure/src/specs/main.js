@@ -22,7 +22,7 @@ describe( 'main', function () {
 
     expect( brewSpy ).to.have.been.called;
 
-    coffee.then(function ( result ) {
+    coffee.then( function ( result ) {
       expect( result.coffee.name ).to.equal( 'good coffee!' );
       done();
     } );

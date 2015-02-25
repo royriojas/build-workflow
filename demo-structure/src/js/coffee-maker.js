@@ -15,14 +15,14 @@ module.exports = {
 
     console.log( 'brewing coffee start!' );
 
-    return new Promise(function ( resolve, reject ) {
-      setTimeout(function () {
+    return new Promise( function ( resolve, reject ) {
+      setTimeout( function () {
         console.log( 'brewing coffee done!' );
-        resolve( {
+        resolve({
           coffee: {
             name: 'good coffee!'
           }
-        } );
+        });
       }, 1000 );
     } );
   },
