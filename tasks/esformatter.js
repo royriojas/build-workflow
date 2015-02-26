@@ -29,7 +29,7 @@ module.exports = function ( grunt, pkg, options ) {
           reportOnly: false
         });
 
-        var flatCache = require('flat-cache');
+        var flatCache = require( 'flat-cache' );
         var cache = flatCache.load( 'esformatter-cache' + (opts.reportOnly ? '_report' : '') );
 
         var filesSrc = filterFiles( me.filesSrc, cache );
@@ -90,17 +90,12 @@ module.exports = function ( grunt, pkg, options ) {
               grunt.verbose.writeln( 'file is ok: ', fIn );
             }
           } else {
+
             if ( sourceRequiredBeautification ) {
               noBeautifiedFiles.push( fIn );
             }
+
           }
-
-          var stat = fs.statSync( fIn );
-          cache.setKey( fIn, {
-            size: stat.size,
-            mtime: stat.mtime.getTime()
-          });
-
         } );
 
         if ( opts.reportOnly ) {
@@ -114,6 +109,15 @@ module.exports = function ( grunt, pkg, options ) {
             grunt.log.ok( 'No files to be beautified. Total processed : ' + filesSrc.length + ' file(s)' );
           }
         }
+
+        filesSrc.forEach( function ( fIn ) {
+          var stat = fs.statSync( fIn );
+          cache.setKey( fIn, {
+            size: stat.size,
+            mtime: stat.mtime.getTime()
+          });
+        } );
+
         cache.save();
       }
     }

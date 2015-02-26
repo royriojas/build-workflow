@@ -151,7 +151,7 @@ describe( 'commit-msg', function () {
   it( 'should fail if a commit message does not contain a separation line', function () {
     var me = this;
     var mockFs = {
-      readFileSync: function ( file /*, opts */ ) {
+      readFileSync: function ( file, opts ) {
         if ( file === 'commitFile' ) {
           return loadFileSync( path.resolve( __dirname, '../../fixtures/commits/bad-commit-no-new-line.txt' ) );
         } else {
