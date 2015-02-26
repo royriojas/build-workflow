@@ -20,15 +20,12 @@ describe( 'commit-msg', function () {
 
   } );
 
-  afterEach( function () {
-    var me = this;
-
-  } );
+  afterEach( function () {} );
 
   it( 'should validate a commit message with a feature', function () {
     var me = this;
     var mockFs = {
-      readFileSync: function ( file, opts ) {
+      readFileSync: function ( file /*, opts */ ) {
         if ( file === 'commitFile' ) {
           return loadFileSync( path.resolve( __dirname, '../../fixtures/commits/good-commit-feature.txt' ) );
         }
@@ -54,7 +51,7 @@ describe( 'commit-msg', function () {
   it( 'should validate a commit message with a feature', function () {
     var me = this;
     var mockFs = {
-      readFileSync: function ( file, opts ) {
+      readFileSync: function ( file /*, opts */ ) {
         if ( file === 'commitFile' ) {
           return loadFileSync( path.resolve( __dirname, '../../fixtures/commits/good-commit-no-feature.txt' ) );
         }
@@ -79,7 +76,7 @@ describe( 'commit-msg', function () {
   it( 'should fail if a commit message does not have a tag', function () {
     var me = this;
     var mockFs = {
-      readFileSync: function ( file, opts ) {
+      readFileSync: function ( file /*, opts */ ) {
         if ( file === 'commitFile' ) {
           return loadFileSync( path.resolve( __dirname, '../../fixtures/commits/bad-commit-no-tag.txt' ) );
         }
@@ -104,7 +101,7 @@ describe( 'commit-msg', function () {
   it( 'should fail if a commit message is too long', function () {
     var me = this;
     var mockFs = {
-      readFileSync: function ( file, opts ) {
+      readFileSync: function ( file /*, opts */ ) {
         if ( file === 'commitFile' ) {
           return loadFileSync( path.resolve( __dirname, '../../fixtures/commits/bad-commit-too-long.txt' ) );
         }
@@ -154,7 +151,7 @@ describe( 'commit-msg', function () {
   it( 'should fail if a commit message does not contain a separation line', function () {
     var me = this;
     var mockFs = {
-      readFileSync: function ( file, opts ) {
+      readFileSync: function ( file /*, opts */ ) {
         if ( file === 'commitFile' ) {
           return loadFileSync( path.resolve( __dirname, '../../fixtures/commits/bad-commit-no-new-line.txt' ) );
         } else {

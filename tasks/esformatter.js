@@ -16,7 +16,7 @@ module.exports = function ( grunt, pkg, options ) {
 
   gruntTaskUtils.registerTasks({
     esformatter: {
-      description: 'automate the generation of a changelog using git',
+      description: 'beautify files with esformatter',
       multiTask: function () {
         var path = require( 'path' );
         var esformatter = require( 'esformatter' );
@@ -29,7 +29,8 @@ module.exports = function ( grunt, pkg, options ) {
           reportOnly: false
         });
 
-        var cache = require( '../utils/cache' ).load( 'esformatter-cache' + (opts.reportOnly ? '_report' : '') );
+        var flatCache = require('flat-cache');
+        var cache = flatCache.load( 'esformatter-cache' + (opts.reportOnly ? '_report' : '') );
 
         var filesSrc = filterFiles( me.filesSrc, cache );
 

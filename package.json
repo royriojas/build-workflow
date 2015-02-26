@@ -25,11 +25,12 @@
   },
   "homepage": "https://github.com/royriojas/build-workflow",
   "dependencies": {
+    "dot": "~1.0.2",
     "es6-promise": "^2.0.0",
     "falafel": "^0.3.1",
+    "flat-cache": "^1.0.1",
     "lodash": "^3.3.1",
-    "minimist": "~1.1.0",
-    "dot": "~1.0.2"
+    "minimist": "~1.1.0"
   },
   "devDependencies": {
     "browserify": "~6.2.0",

@@ -24,7 +24,7 @@ module.exports = function () {
 
       showTitleBlock( 'Validation Hook Started' );
 
-      var cp = exec( 'grunt prepush', function ( err, stdout, stderr ) {
+      var cp = exec( 'grunt prepush', function ( err /*, stdout, stderr*/ ) {
         if ( err ) {
 
           console.error( err );
