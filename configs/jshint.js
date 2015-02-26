@@ -3,7 +3,7 @@ module.exports = function ( /* grunt, pkg, options */ ) {
 
   var path = require( 'path' );
   var tryCatch = require( '../utils/try-catch' );
-  var config = path.resolve( __dirname, '../resources/json-configs/.jshintrc' );
+  var config = path.resolve( __dirname, '../resources/old-configs/.jshintrc' );
 
   var getReporter = function () {
     var reporter;

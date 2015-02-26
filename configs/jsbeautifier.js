@@ -2,7 +2,7 @@ module.exports = function ( /* grunt, pkg, options */ ) {
   'use strict';
 
   var path = require( 'path' );
-  var config = path.resolve( __dirname, '../resources/json-configs/beautify-config.json' );
+  var config = path.resolve( __dirname, '../resources/old-configs/beautify-config.json' );
 
   return {
     options: {
