@@ -7,7 +7,7 @@ var deps = {
     'esformatter',
     'esprima-fb',
     'esformatter-eol-last',
-    'esformatter-jsx-ignore',
+    'esformatter-jsx',
     'esformatter-quote-props',
     'esformatter-quotes',
     'esformatter-shebang-ignore',
