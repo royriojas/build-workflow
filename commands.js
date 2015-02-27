@@ -2,29 +2,41 @@ var Promise = require( 'es6-promise' ).Promise;
 
 var deps = {
   'default': [
-    'time-grunt',
-    'matchdep',
-    'grunt-ez-frontend',
-    'moment',
-    'dot',
-    'marked',
     'es6-promise',
-    'grunt-newer',
-    'grunt-contrib-jshint',
-    'grunt-jscs',
-    'grunt-jsvalidate',
-    'https://github.com/royriojas/grunt-jsbeautifier/tarball/e69f6ef',
-    'jshint-stylish',
-    'grunt-codepainter',
-    'grunt-exec',
-    'grunt-contrib-uglify',
-    'grunt-csso',
+    'grunt',
+    'esformatter',
+    'esprima-fb',
+    'esformatter-eol-last',
+    'esformatter-jsx-ignore',
+    'esformatter-quote-props',
+    'esformatter-quotes',
+    'esformatter-shebang-ignore',
+    'chai@^1.10.0',
+    'chai-as-promised',
+    'chai-fuzzy',
+    'sinon',
+    'sinon-chai',
     'grunt-autoprefixer',
-    'grunt-jscs',
+    'grunt-contrib-uglify',
+    'grunt-contrib-watch',
+    'grunt-contrib-yuidoc',
+    'grunt-csso',
+    'grunt-exec',
+    'grunt-ez-frontend',
+    'marked',
+    'matchdep',
+    'mocha',
+    'moment',
+    'time-grunt',
     'twig',
-    'grunt-jsonlint',
+    'yuidoc-theme-blue',
+    'yuidocjs',
+    'eslint',
+    'grunt-bump',
     'grunt-contrib-clean',
-    'grunt-remove-logging'
+    'grunt-eslint',
+    'grunt-jscs',
+    'grunt-jsonlint'
   ],
 
   browserify: [
@@ -77,8 +89,6 @@ var commands = {
       var dependencies;
 
       var group = args.group;
-
-      console.log( '...here...', args );
 
       if ( group ) {
         dependencies = deps[ group ] || [];

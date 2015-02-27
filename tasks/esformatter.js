@@ -83,9 +83,9 @@ module.exports = function ( grunt, pkg, options ) {
             grunt.verbose.writeln( 'beautifying file: ', fIn );
             var output = esformatter.format( sourceIn, cfg );
           } catch (ex) {
+            grunt.verbose.writeln( 'error: ', ex.message );
             grunt.fail.fatal( 'error trying to format file: ' +
                 fIn );
-            grunt.verbose.writeln( 'error: ', ex.message );
           }
           var sourceRequiredBeautification = sourceIn !== output;
 

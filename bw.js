@@ -7,14 +7,10 @@ var showHelp = function () {
   console.log( 'Usage: bw.js --cmd=[SOME_ACTION]\n\nWhere [SOME_ACTION] could be:\n\n- install-deps:   To install all the npm dependencies\n- init-structure: To create the folder structure required for this module\n\nExample\n\nnode bw.js --cmd=install-deps\n\n\n' );
 };
 
-if ( !argv.cmd ) {
-  showHelp();
-}
-
 var method = commands[ argv.cmd ];
 
-if ( !method ) {
+if ( !argv.cmd || !method ) {
   showHelp();
+} else {
+  method.apply( commands, [ argv ] );
 }
-
-method.apply( commands, [ argv ] );
