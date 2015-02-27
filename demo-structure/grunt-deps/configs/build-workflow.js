@@ -1,4 +1,4 @@
-module.exports = function ( grunt ) {
+module.exports = function () {
 
   // These are the files that are going to be validated by the `check-valid` task
   // if the hooks are installed, these files are going to be validated by the `prepush` task.

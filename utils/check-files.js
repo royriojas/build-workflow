@@ -29,7 +29,7 @@ module.exports = {
           };
         }
 
-        grunt.config.set([ task, key ], tConfig );
+        grunt.config.set( [ task, key ], tConfig );
         tasksToRun.push( task );
       }
     } );

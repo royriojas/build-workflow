@@ -43,7 +43,7 @@ module.exports = function ( grunt, pkg ) {
       renderer: function ( groups ) {
         var me = this;
         var marked = require( 'marked' );
-        return changeLogRenderer.render({
+        return changeLogRenderer.render( {
           hasCommits: function ( group ) {
             var groupCommits = group.commits;
             var keys = Object.keys( groupCommits );
@@ -105,7 +105,7 @@ module.exports = function ( grunt, pkg ) {
           },
           groups: groups,
           format: lib.format.bind( lib )
-        });
+        } );
       }
     }
   };

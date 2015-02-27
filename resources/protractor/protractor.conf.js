@@ -36,10 +36,10 @@ module.exports = function ( cfg ) {
     onPrepare: function () {
       var SpecReporter = require( 'jasmine-spec-reporter' );
       // add jasmine spec reporter
-      jasmine.getEnv().addReporter( new SpecReporter({
+      jasmine.getEnv().addReporter( new SpecReporter( {
         displayStacktrace: true,
         displaySpecDuration: true
-      }) );
+      } ) );
     },
 
     // Options to be passed to Jasmine-node.

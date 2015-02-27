@@ -5,7 +5,7 @@ module.exports = function ( grunt, pkg, options ) {
 
   var path = require( 'path' );
 
-  gruntTaskUtils.registerTasks({
+  gruntTaskUtils.registerTasks( {
     'validate-file': function ( fileGlob ) {
 
       var jsFiles = [];
@@ -33,9 +33,9 @@ module.exports = function ( grunt, pkg, options ) {
       var key = 'modified';
       if ( jsonFiles.length > 0 ) {
         tasksToRun.push( 'jsonlint' );
-        grunt.config.set([ 'jsonlint', key ], {
+        grunt.config.set( [ 'jsonlint', key ], {
           src: jsonFiles
-        });
+        } );
       }
 
       var jsFilesEntry = {
@@ -47,7 +47,7 @@ module.exports = function ( grunt, pkg, options ) {
       jsTasks.forEach( function ( task ) {
         if ( jsFiles.length > 0 ) {
           tasksToRun.push( task );
-          grunt.config.set([ task, key ], jsFilesEntry );
+          grunt.config.set( [ task, key ], jsFilesEntry );
         }
       } );
 
@@ -63,5 +63,5 @@ module.exports = function ( grunt, pkg, options ) {
 
       grunt.log.ok( 'all validated!' );
     }
-  });
+  } );
 };

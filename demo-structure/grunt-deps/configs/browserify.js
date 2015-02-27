@@ -1,4 +1,4 @@
-module.exports = function ( grunt, pkg, opts ) {
+module.exports = function ( grunt /*, pkg, opts */ ) {
   'use strict';
 
   var deps = {
@@ -24,7 +24,7 @@ module.exports = function ( grunt, pkg, opts ) {
         ];
 
         transforms.forEach( function ( dep ) {
-          b.transform({
+          b.transform( {
             global: true
           }, dep );
         } );
@@ -32,9 +32,9 @@ module.exports = function ( grunt, pkg, opts ) {
         var filter = grunt.option( 'console-filter' );
 
         if ( filter ) {
-          b.transform( require( 'build-workflow/utils/console-filter' ).configure({
+          b.transform( require( 'build-workflow/utils/console-filter' ).configure( {
             filter: filter
-          }) );
+          } ) );
         }
 
         return b;

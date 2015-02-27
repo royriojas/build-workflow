@@ -2,7 +2,7 @@ module.exports = function () {
   var exec = require( 'child_process' ).exec;
   var utils = require( './util.js' );
   var cfg = require( './hooks-cfg.json' );
-  var path = require( 'path' );
+
   var nodeProcess = require( './process' );
   var console = require( './console' );
 
@@ -15,7 +15,7 @@ module.exports = function () {
   // directory of the git repo (the one where .git/ lives in)
   nodeProcess.chdir( cfg.pathToSource );
 
-  exec( 'which grunt', function ( err, stdout, stderr ) {
+  exec( 'which grunt', function ( err, stdout /*, stderr */ ) {
     if ( err ) {
       console.log( 'grunt not found. Prepush hook will be ignored', err );
       return;
@@ -24,10 +24,10 @@ module.exports = function () {
 
       showTitleBlock( 'Validation Hook Started' );
 
-      var cp = exec( 'grunt prepush', function ( err /*, stdout, stderr*/ ) {
-        if ( err ) {
+      var cp = exec( 'grunt prepush', function ( _err /*, stdout, stderr*/ ) {
+        if ( _err ) {
 
-          console.error( err );
+          console.error( _err );
 
           showErrorBlock( 'Review your errors and try again', 'VALIDATION FAILED :' );
 

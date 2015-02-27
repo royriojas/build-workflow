@@ -89,16 +89,16 @@ var commands = {
       }
 
       if ( dependencies.length === 0 ) {
-        reject({
+        reject( {
           message: 'no deps found for group ' + group
-        });
+        } );
       }
 
       var spawn = require( 'child_process' ).spawn;
 
       var child = spawn( 'npm', [ 'i', '-D' ].concat( dependencies ), {
         stdio: 'inherit'
-      });
+      } );
 
       child.on( 'close', function ( code ) {
         if ( code !== 0 ) {

@@ -5,7 +5,7 @@ module.exports = function ( grunt, pkg, options ) {
 
   var path = require( 'path' );
 
-  gruntTaskUtils.registerTasks({
+  gruntTaskUtils.registerTasks( {
     'css-font': {
       description: 'creates a css font css from the selection.json info file',
       multiTask: function () {
@@ -17,14 +17,14 @@ module.exports = function ( grunt, pkg, options ) {
         //var src = data.src;
         var files = me.files || [];
 
-        var opts = me.options({
+        var opts = me.options( {
           fontLessTemplate: 'grunt-deps/kwl-font.less.tpl',
           fontCodesTemplate: 'grunt-deps/font-codes.mixins.tpl', // the template for the less for this font
           fontsFolder: 'fonts', // the folder where the fonts are located
           processIconName: function ( name ) {
             return name;
           }
-        });
+        } );
 
         files.forEach( function ( dataEntry ) {
           var src = dataEntry.src;
@@ -83,7 +83,7 @@ module.exports = function ( grunt, pkg, options ) {
             // completely override the defaults, so we need to extend from the default options and override
             // the one we want to change!...
             // again... why dot why?
-            var templateSettings = lib.extend({}, dot.templateSettings, compileOptions );
+            var templateSettings = lib.extend( {}, dot.templateSettings, compileOptions );
             var renderCodeFonts = dot.template( grunt.file.read( opts.fontCodesTemplate ), templateSettings );
             var renderFontsLess = dot.template( grunt.file.read( opts.fontLessTemplate ), templateSettings );
 
@@ -109,5 +109,5 @@ module.exports = function ( grunt, pkg, options ) {
         } );
       }
     }
-  });
+  } );
 };

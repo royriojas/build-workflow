@@ -19,15 +19,15 @@ module.exports = function ( content, file ) {
       var callee = node.callee;
       if ( node.type === 'CallExpression' && callee.type === 'Identifier' && callee.name === 'requireArr' ) {
 
-        var filePath = path.dirname( file );
+        var fPath = path.dirname( file );
 
         var args = node.arguments.map( function ( arg ) {
-          return path.join( filePath, arg.value );
+          return path.join( fPath, arg.value );
         } );
 
         var files = grunt.file.expand( args ).map( function ( f ) {
 
-          f = './' + path.relative( filePath, f );
+          f = './' + path.relative( fPath, f );
           return 'require(' + JSON.stringify( f ) + ')';
         } );
 

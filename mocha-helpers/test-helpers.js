@@ -17,13 +17,13 @@ beforeEach( function ( done ) {
 
   var methods = [ 'stub', 'spy' ];
 
-  var many = function ( type, obj, methods ) {
+  var many = function ( type, obj, _methods ) {
 
     var doubles = {};
-    methods = [].concat( methods );
+    _methods = [].concat( _methods );
 
-    for (var m = 0; m < methods.length; m++) {
-      var method = methods[ m ];
+    for (var m = 0; m < _methods.length; m++) {
+      var method = _methods[ m ];
 
       // Sinon requires doubling target to exist.
       if ( !objUtil.getKeyValue( obj, method ) ) {
@@ -31,10 +31,10 @@ beforeEach( function ( done ) {
       }
 
       if ( /\./.test( method ) ) { // Ex. 'a.b.c'
-        var methodsParts = method.split( '.' );
+        var _methodsParts = method.split( '.' );
         doubles[ method ] = sandbox[ type ](
-          objUtil.getKeyValue( obj, methodsParts.slice( 0, -1 ).join( '.' ) ), // Ex. 'a.b'
-          methodsParts.slice( -1 ) // Ex. 'c'
+          objUtil.getKeyValue( obj, _methodsParts.slice( 0, -1 ).join( '.' ) ), // Ex. 'a.b'
+          _methodsParts.slice( -1 ) // Ex. 'c'
         );
       } else {
         doubles[ method ] = sandbox[ type ]( obj, method );
@@ -45,15 +45,15 @@ beforeEach( function ( done ) {
   };
 
   methods.forEach( function ( type ) {
-    sandbox[ type + 'Many' ] = function ( obj, methods ) {
-      return many( type, obj, methods );
+    sandbox[ type + 'Many' ] = function ( obj, _methods ) {
+      return many( type, obj, _methods );
     };
   } );
 
-  sandbox.createSpyObj = function ( name, methods ) {
+  sandbox.createSpyObj = function ( name, _methods ) {
     var obj = {};
     obj.__name__ = name;
-    sandbox.spyMany( obj, methods );
+    sandbox.spyMany( obj, _methods );
     return obj;
   };
 

@@ -7,7 +7,7 @@ require( '../../../mocha-helpers/test-helpers' );
 var loadFileSync = function ( file ) {
   return fs.readFileSync( file, {
     encoding: 'utf8'
-  });
+  } );
 };
 
 describe( 'commit-msg', function () {
@@ -40,7 +40,7 @@ describe( 'commit-msg', function () {
       './process': me.mockProcess,
       './console': me.mockLog,
       './util': me.mockUtil
-    });
+    } );
 
     commitMessage( 'commitFile' );
 
@@ -65,7 +65,7 @@ describe( 'commit-msg', function () {
       './process': me.mockProcess,
       './console': me.mockLog,
       './util': me.mockUtil
-    });
+    } );
 
     commitMessage( 'commitFile' );
 
@@ -90,7 +90,7 @@ describe( 'commit-msg', function () {
       './process': me.mockProcess,
       './console': me.mockLog,
       './util': me.mockUtil
-    });
+    } );
 
     commitMessage( 'commitFile' );
 
@@ -115,7 +115,7 @@ describe( 'commit-msg', function () {
       './process': me.mockProcess,
       './console': me.mockLog,
       './util': me.mockUtil
-    });
+    } );
 
     commitMessage( 'commitFile' );
 
@@ -126,7 +126,7 @@ describe( 'commit-msg', function () {
   it( 'should fail if a commit message contains an invalid tag', function () {
     var me = this;
     var mockFs = {
-      readFileSync: function ( file, opts ) {
+      readFileSync: function ( file ) {
         if ( file === 'commitFile' ) {
           return loadFileSync( path.resolve( __dirname, '../../fixtures/commits/bad-commit-invalid-tag.txt' ) );
         }
@@ -140,7 +140,7 @@ describe( 'commit-msg', function () {
       './process': me.mockProcess,
       './console': me.mockLog,
       './util': me.mockUtil
-    });
+    } );
 
     commitMessage( 'commitFile' );
 
@@ -167,7 +167,7 @@ describe( 'commit-msg', function () {
       './process': me.mockProcess,
       './console': me.mockLog,
       './util': me.mockUtil
-    });
+    } );
 
     commitMessage( 'commitFile' );
     expect( me.mockProcess.exit ).to.have.been.calledWith( 1 );

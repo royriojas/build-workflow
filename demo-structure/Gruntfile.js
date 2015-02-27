@@ -6,5 +6,5 @@ module.exports = function ( grunt ) {
     // uncomment this line to load the base tasks
     // loadBaseTasksAndConfigs : false
     //replaceVersionWithBuildNumber: false
-  });
+  } );
 };

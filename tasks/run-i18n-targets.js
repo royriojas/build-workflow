@@ -2,7 +2,7 @@ module.exports = function ( grunt, pkg, opts ) {
   'use strict';
   var gruntTaksUtils = opts.gruntTaskUtils;
 
-  gruntTaksUtils.registerTasks({
+  gruntTaksUtils.registerTasks( {
     'run-i18n-targets': function () {
 
       var ezFrontend = grunt.config.get( 'ez-frontend' );
@@ -19,5 +19,5 @@ module.exports = function ( grunt, pkg, opts ) {
         grunt.task.run( tasks );
       }
     }
-  });
+  } );
 };

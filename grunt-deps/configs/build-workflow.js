@@ -1,4 +1,4 @@
-module.exports = function ( grunt, pkg ) {
+module.exports = function ( /*grunt, pkg, options*/ ) {
 
   var prepushFiles = [
     'configs/**/*.js',

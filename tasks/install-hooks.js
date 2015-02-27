@@ -4,7 +4,7 @@ module.exports = function ( grunt, pkg, options ) {
   var gruntTaskUtils = options.gruntTaskUtils;
   var path = require( 'path' );
 
-  gruntTaskUtils.registerTasks({
+  gruntTaskUtils.registerTasks( {
     'install-hooks': {
       description: 'install the hooks into the git subdirectory',
       multiTask: function () {
@@ -30,13 +30,13 @@ module.exports = function ( grunt, pkg, options ) {
           try {
             grunt.file.delete( targetLocation, {
               force: true
-            });
+            } );
           } catch (ex) {}
 
           grunt.file.copy( file, targetLocation, {
             encoding: null,
             noProcess: true
-          });
+          } );
 
           var fs = require( 'fs' );
 
@@ -52,13 +52,13 @@ module.exports = function ( grunt, pkg, options ) {
           try {
             grunt.file.delete( targetLocation, {
               force: true
-            });
+            } );
           } catch (ex) {}
 
           grunt.file.copy( file, targetLocation, {
             encoding: null,
             noProcess: true
-          });
+          } );
 
           grunt.log.ok( 'Copy file from ', file, ' to ', targetLocation );
         } );
@@ -67,5 +67,5 @@ module.exports = function ( grunt, pkg, options ) {
 
       }
     }
-  });
+  } );
 };

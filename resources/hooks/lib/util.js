@@ -3,7 +3,7 @@ var nodeProcess = require( './process' );
 var console = require( './console' );
 
 module.exports = {
-  createStream: function ( cb ) {
+  createStream: function () {
     var stream = new Stream();
     stream.writable = true;
     var first = true;

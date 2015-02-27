@@ -14,10 +14,10 @@ module.exports = function ( grunt, opts, pkg, helperOptions ) {
       baseConfigs[ entryName ] = require( entry )( grunt, pkg, helperOptions );
     }, function ( err ) {
 
-        console.error( 'err loading a base configuration... some of the tasks might not work: ', entryName );
-        console.error( '>>> ', err );
-        throw err;
-      } );
+      console.error( 'err loading a base configuration... some of the tasks might not work: ', entryName );
+      console.error( '>>> ', err );
+      throw err;
+    } );
   } );
 
   return baseConfigs;

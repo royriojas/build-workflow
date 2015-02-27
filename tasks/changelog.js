@@ -5,7 +5,7 @@ module.exports = function ( grunt, pkg, options ) {
 
   var parseLog = require( '../resources/changelog/log-parser' );
 
-  gruntTaskUtils.registerTasks({
+  gruntTaskUtils.registerTasks( {
     changelog: {
       description: 'automate the generation of a changelog using git',
       multiTask: function () {
@@ -16,7 +16,7 @@ module.exports = function ( grunt, pkg, options ) {
 
         var gitHelper = require( '../utils/git-helper' )( grunt );
 
-        var opts = this.options({
+        var opts = this.options( {
           renderer: function ( data ) {
             return JSON.stringify( data, null, 2 );
           },
@@ -27,7 +27,7 @@ module.exports = function ( grunt, pkg, options ) {
             return tags;
           },
           parseLog: parseLog
-        });
+        } );
 
         gitHelper.parseLog = opts.parseLog;
 
@@ -73,5 +73,5 @@ module.exports = function ( grunt, pkg, options ) {
         } );
       }
     }
-  });
+  } );
 };

@@ -1,6 +1,5 @@
-module.exports = function ( grunt, pkg, opts ) {
+module.exports = function ( /*grunt, pkg, opts */ ) {
   'use strict';
-  var gruntTaskUtils = opts.gruntTaskUtils;
 
   return {
     coverage: {

@@ -14,7 +14,7 @@ module.exports = function ( grunt, pkg, options ) {
     } );
   };
 
-  gruntTaskUtils.registerTasks({
+  gruntTaskUtils.registerTasks( {
     esformatter: {
       description: 'beautify files with esformatter',
       multiTask: function () {
@@ -23,11 +23,11 @@ module.exports = function ( grunt, pkg, options ) {
 
         var me = this;
 
-        var opts = me.options({
+        var opts = me.options( {
           esformatterOpts: {},
           beforeStart: null,
           reportOnly: false
-        });
+        } );
 
         var flatCache = require( 'flat-cache' );
         var cache = flatCache.load( 'esformatter-cache' + (opts.reportOnly ? '_report' : '') );
@@ -60,9 +60,9 @@ module.exports = function ( grunt, pkg, options ) {
               esformatter.register( require( plugin ) );
               grunt.log.ok( 'registering plugin', plugin );
             }, function ( ex ) {
-                grunt.verbose.writeln( '\nError: ' + ex.message );
-                grunt.fail.warn( 'Error loading esformatter plugin : ' + plugin );
-              } );
+              grunt.verbose.writeln( '\nError: ' + ex.message );
+              grunt.fail.warn( 'Error loading esformatter plugin : ' + plugin );
+            } );
           } );
           // do not load it inside the module
           cfg.plugins = [];
@@ -78,7 +78,15 @@ module.exports = function ( grunt, pkg, options ) {
 
         filesSrc.forEach( function ( fIn ) {
           var sourceIn = grunt.file.read( fIn );
-          var output = esformatter.format( sourceIn, cfg );
+
+          try {
+            grunt.verbose.writeln( 'beautifying file: ', fIn );
+            var output = esformatter.format( sourceIn, cfg );
+          } catch (ex) {
+            grunt.fail.fatal( 'error trying to format file: ' +
+                fIn );
+            grunt.verbose.writeln( 'error: ', ex.message );
+          }
           var sourceRequiredBeautification = sourceIn !== output;
 
           if ( !opts.reportOnly ) {
@@ -106,7 +114,8 @@ module.exports = function ( grunt, pkg, options ) {
           if ( beautifiedFiles.length > 0 ) {
             grunt.log.ok( 'Files beautified: ' + beautifiedFiles.length );
           } else {
-            grunt.log.ok( 'No files to be beautified. Total processed : ' + filesSrc.length + ' file(s)' );
+            grunt.log.ok( 'No files needed beautification. Total processed : ' + filesSrc.length + ' file(s)' );
+            grunt.verbose.writeln( 'files processed: \n\n - ' + filesSrc.join( '\n - ' ) );
           }
         }
 
@@ -115,11 +124,11 @@ module.exports = function ( grunt, pkg, options ) {
           cache.setKey( fIn, {
             size: stat.size,
             mtime: stat.mtime.getTime()
-          });
+          } );
         } );
 
         cache.save();
       }
     }
-  });
+  } );
 };

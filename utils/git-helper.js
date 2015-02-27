@@ -11,14 +11,14 @@ module.exports = function ( grunt ) {
             var tags = stdout.split( '\n' ).filter( function ( entry ) {
               return !!entry;
             } );
-            resolve({
+            resolve( {
               tags: tags
-            });
+            } );
             return;
           }
-          reject({
+          reject( {
             error: err
-          });
+          } );
         } );
       } );
     },
@@ -45,14 +45,14 @@ module.exports = function ( grunt ) {
         exec( gitCmd, function ( err, stdout ) {
           if ( !err ) {
             var commits = me.parseLog( stdout );
-            resolve({
+            resolve( {
               commits: commits
-            });
+            } );
             return;
           }
-          reject({
+          reject( {
             error: err
-          });
+          } );
         } );
       } );
     },

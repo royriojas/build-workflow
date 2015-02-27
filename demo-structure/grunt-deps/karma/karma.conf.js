@@ -1,15 +1,13 @@
 module.exports = function ( config ) {
 
-  var path = require( 'path' );
-
   var formatPreprocessors = require( 'build-workflow/resources/karma/format-preprocessors' );
-  var commonJSProcessContent = require( 'build-workflow/resources/karma/commonjs-process-content-wrapper' )({
+  var commonJSProcessContent = require( 'build-workflow/resources/karma/commonjs-process-content-wrapper' )( {
     strictify: function ( filePath ) {
       return filePath.indexOf( 'node_modules/' ) === -1; // only strictify modules in the current app
     }
-  });
+  } );
 
-  config.set({
+  config.set( {
     basePath: '../../',
     autoWatch: true,
     frameworks: [ 'mocha', 'chai-sinon', 'commonjs' ],
@@ -34,7 +32,7 @@ module.exports = function ( config ) {
       'junit',
       'osx'
     ],
-    preprocessors: formatPreprocessors([ {
+    preprocessors: formatPreprocessors( [ {
       order: [
         'coverage',
         'commonjs'
@@ -42,14 +40,14 @@ module.exports = function ( config ) {
       files: [
         'src/js/**/*.js'
       ]
-      }, {
+    }, {
       order: [ 'commonjs' ],
       files: [
         'node_modules/es6-promise/dist/es6-promise.js',
         'node_modules/build-workflow/test-helpers/**/*.js',
         'src/specs/**/*.js'
       ]
-      }, {
+    }, {
       order: [
         'react-jsx',
         'coverage',
@@ -64,7 +62,7 @@ module.exports = function ( config ) {
     coverageReporter: {
       reporters: [ {
         type: 'text-summary'
-        }, {
+      }, {
         type: 'html',
         dir: 'report/coverage'
       } ]
@@ -116,5 +114,5 @@ module.exports = function ( config ) {
     // level of logging
     // possible values: config.LOG_DISABLE || config.LOG_ERROR || config.LOG_WARN || config.LOG_INFO || config.LOG_DEBUG
     logLevel: config.LOG_INFO
-  });
+  } );
 };

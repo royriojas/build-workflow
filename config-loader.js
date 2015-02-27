@@ -144,10 +144,10 @@ module.exports = function ( grunt, args ) {
   // base tasks will only be loaded if the flag `opts.loadBaseTasksAndConfigs` is set to true.
   opts.loadBaseTasksAndConfigs && require( './load-base-tasks' )( grunt, opts, pkg, helperOptions );
 
-  grunt.initConfig({
+  grunt.initConfig( {
     // grunt files set the pkg object to be used in the expanded templates.
     pkg: pkg
-  });
+  } );
 
   // base configurations for tasks will be loaded only if the flag `opts.loadBaseTasksAndConfigs` is set to true.
   var baseConfigs = opts.loadBaseTasksAndConfigs ? require( './load-base-tasks-configs' )( grunt, opts, pkg, helperOptions ) : {};

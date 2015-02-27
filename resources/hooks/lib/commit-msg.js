@@ -16,7 +16,7 @@ module.exports = function ( commitMessageFile ) {
 
   var content = fs.readFileSync( commitMessageFile, {
     encoding: 'utf8'
-  });
+  } );
 
   var checkMessage = function ( commitMsg ) {
 
@@ -58,7 +58,7 @@ module.exports = function ( commitMessageFile ) {
   } else {
     var text = fs.readFileSync( path.resolve( __dirname, './commit-msg-error.txt' ), {
       encoding: 'utf8'
-    });
+    } );
 
     console.error( 'Original text:', text + '\n' );
 

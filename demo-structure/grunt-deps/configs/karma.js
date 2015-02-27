@@ -1,4 +1,4 @@
-module.exports = function ( grunt ) {
+module.exports = function ( /*grunt, pkg, options*/ ) {
   'use strict';
 
   var configFile = 'grunt-deps/karma/karma.conf.js';
