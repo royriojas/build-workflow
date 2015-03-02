@@ -4,7 +4,11 @@ module.exports = function ( grunt, pkg, opts ) {
   var gruntTaksUtils = opts.gruntTaskUtils;
 
   var aliases = {
-    'default': [ 'clean', 'check-valid', 'mocha_istanbul' ]
+    'default': [
+      'clean',
+      'check-valid',
+      'mocha_istanbul'
+    ]
   };
 
   gruntTaksUtils.registerTasks( aliases );

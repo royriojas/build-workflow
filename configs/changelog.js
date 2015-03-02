@@ -83,7 +83,6 @@ module.exports = function ( grunt, pkg ) {
             var dateStr = moment.unix( timestamp ).format( 'DD/MM/YYYY HH:mm:ss' );
             return dateStr;
           },
-
           renderFeature: function ( feature ) {
             feature = feature.replace( me.issueIDRegex(), function ( a, b1 ) {
               return lib.format( '<a target="_blank" class="info-link" href="{0}"><span>{1}</span></a>', lib.format( me.urlForBugId, b1 ), a );
@@ -91,7 +90,6 @@ module.exports = function ( grunt, pkg ) {
 
             return marked( capitalize( feature ) ).replace( /<(\/)*p>/g, '' );
           },
-
           renderDescription: function ( log ) {
             var that = this;
             var commit = log.commit;

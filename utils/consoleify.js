@@ -3,7 +3,9 @@ var transformTools = require( 'browserify-transform-tools' );
 var path = require( 'path' );
 
 var options = {
-  excludeExtensions: [ '.json' ]
+  excludeExtensions: [
+    '.json'
+  ]
 };
 var customConsole = '\n/*wrapping console start!*/\n var console = require(\'build-workflow/utils/console-wrapper\').create("{0}");\n/*wrapping console end!*/\n\n';
 

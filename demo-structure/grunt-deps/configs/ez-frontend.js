@@ -3,12 +3,14 @@ module.exports = function ( /*grunt, pkg, options*/ ) {
 
   return {
     options: {
-      replacements: [ {
-        replace: /global\.__TEST_ENV__/g, // this flag will control if the console object is used or not
-        using: function () {
-          return 'false';
+      replacements: [
+        {
+          replace: /global\.__TEST_ENV__/g, // this flag will control if the console object is used or not
+          using: function () {
+            return 'false';
+          }
         }
-      } ]
+      ]
     },
     'js-main': {
       src: [

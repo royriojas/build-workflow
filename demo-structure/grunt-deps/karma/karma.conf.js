@@ -10,7 +10,11 @@ module.exports = function ( config ) {
   config.set( {
     basePath: '../../',
     autoWatch: true,
-    frameworks: [ 'mocha', 'chai-sinon', 'commonjs' ],
+    frameworks: [
+      'mocha',
+      'chai-sinon',
+      'commonjs'
+    ],
     browsers: [
       //'Chrome' //,
       //'Firefox'
@@ -32,52 +36,58 @@ module.exports = function ( config ) {
       'junit',
       'osx'
     ],
-    preprocessors: formatPreprocessors( [ {
-      order: [
-        'coverage',
-        'commonjs'
-      ],
-      files: [
-        'src/js/**/*.js'
-      ]
-    }, {
-      order: [ 'commonjs' ],
-      files: [
-        'node_modules/es6-promise/dist/es6-promise.js',
-        'node_modules/build-workflow/test-helpers/**/*.js',
-        'src/specs/**/*.js'
-      ]
-    }, {
-      order: [
-        'react-jsx',
-        'coverage',
-        'commonjs'
-      ],
-      files: [
-        'src/**/*.jsx'
-      ]
-    } ] ),
+    preprocessors: formatPreprocessors( [
+      {
+        order: [
+          'coverage',
+          'commonjs'
+        ],
+        files: [
+          'src/js/**/*.js'
+        ]
+      },
+      {
+        order: [
+          'commonjs'
+        ],
+        files: [
+          'node_modules/es6-promise/dist/es6-promise.js',
+          'node_modules/build-workflow/test-helpers/**/*.js',
+          'src/specs/**/*.js'
+        ]
+      },
+      {
+        order: [
+          'react-jsx',
+          'coverage',
+          'commonjs'
+        ],
+        files: [
+          'src/**/*.jsx'
+        ]
+      }
+    ] ),
 
     //singleRun: true,
     coverageReporter: {
-      reporters: [ {
-        type: 'text-summary'
-      }, {
-        type: 'html',
-        dir: 'report/coverage'
-      } ]
+      reporters: [
+        {
+          type: 'text-summary'
+        },
+        {
+          type: 'html',
+          dir: 'report/coverage'
+        }
+      ]
     },
-
     junitReporter: {
       outputFile: 'report/junit/test-results.xml'
     },
-
     reactPreprocessor: {
       transformPath: function ( path ) {
         return path;
       }
     },
-
     commonjsPreprocessor: {
       aliases: {
         //moment: path.normalize( __dirname + '../../node_modules/moment/moment.js' )

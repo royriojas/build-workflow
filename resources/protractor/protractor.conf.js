@@ -32,7 +32,6 @@ module.exports = function ( cfg ) {
     suites: {
       hack: path.resolve( __dirname, './reporter-hack.js' ) // hack to remove the dot reporter
     },
-
     onPrepare: function () {
       var SpecReporter = require( 'jasmine-spec-reporter' );
       // add jasmine spec reporter

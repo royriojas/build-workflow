@@ -38,26 +38,22 @@ var deps = {
     'grunt-jscs',
     'grunt-jsonlint'
   ],
-
   browserify: [
     'stringformat',
     'grunt-browserify',
     'browserify-transform-tools'
   ],
-
   'doc-tools': [
     'docco-husky-plus',
     'yuidoc-theme-blue',
     'yuidocjs',
     'grunt-contrib-yuidoc'
   ],
-
   protractor: [
     'protractor',
     'grunt-protractor-runner',
     'jasmine-spec-reporter'
   ],
-
   karma: [
     'karma-chrome-launcher',
     'karma-phantomjs-launcher',
@@ -73,7 +69,6 @@ var deps = {
     'karma-chai-sinon',
     'grunt-karma'
   ],
-
   react: [
     'react',
     'react-tools',
@@ -106,7 +101,10 @@ var commands = {
 
       var spawn = require( 'child_process' ).spawn;
 
-      var child = spawn( 'npm', [ 'i', '-D' ].concat( dependencies ), {
+      var child = spawn( 'npm', [
+        'i',
+        '-D'
+      ].concat( dependencies ), {
         stdio: 'inherit'
       } );
 

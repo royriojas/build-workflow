@@ -2,7 +2,9 @@ var transformTools = require( 'browserify-transform-tools' );
 var path = require( 'path' );
 
 var options = {
-  excludeExtensions: [ '.json' ]
+  excludeExtensions: [
+    '.json'
+  ]
 };
 
 module.exports = transformTools.makeStringTransform( 'strictify', options, function ( content, transformOptions, done ) {

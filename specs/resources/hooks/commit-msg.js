@@ -14,9 +14,20 @@ describe( 'commit-msg', function () {
   beforeEach( function () {
 
     var me = this;
-    me.mockProcess = me.sandbox.createSpyObj( 'process', [ 'exit' ] );
-    me.mockLog = me.sandbox.createSpyObj( 'log', [ 'log', 'error' ] );
-    me.mockUtil = me.sandbox.createSpyObj( 'util', [ 'createStream', 'showTitleBlock', 'showErrorBlock', 'showError', 'showSuccessBlock' ] );
+    me.mockProcess = me.sandbox.createSpyObj( 'process', [
+      'exit'
+    ] );
+    me.mockLog = me.sandbox.createSpyObj( 'log', [
+      'log',
+      'error'
+    ] );
+    me.mockUtil = me.sandbox.createSpyObj( 'util', [
+      'createStream',
+      'showTitleBlock',
+      'showErrorBlock',
+      'showError',
+      'showSuccessBlock'
+    ] );
 
   } );
 

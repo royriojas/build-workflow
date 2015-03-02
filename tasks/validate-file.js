@@ -33,7 +33,10 @@ module.exports = function ( grunt, pkg, options ) {
       var key = 'modified';
       if ( jsonFiles.length > 0 ) {
         tasksToRun.push( 'jsonlint' );
-        grunt.config.set( [ 'jsonlint', key ], {
+        grunt.config.set( [
+          'jsonlint',
+          key
+        ], {
           src: jsonFiles
         } );
       }
@@ -42,12 +45,18 @@ module.exports = function ( grunt, pkg, options ) {
         src: jsFiles
       };
 
-      var jsTasks = [ 'esformatter', 'jscs' ];
+      var jsTasks = [
+        'esformatter',
+        'jscs'
+      ];
 
       jsTasks.forEach( function ( task ) {
         if ( jsFiles.length > 0 ) {
           tasksToRun.push( task );
-          grunt.config.set( [ task, key ], jsFilesEntry );
+          grunt.config.set( [
+            task,
+            key
+          ], jsFilesEntry );
         }
       } );
 

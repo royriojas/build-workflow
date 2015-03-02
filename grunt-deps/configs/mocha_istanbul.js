@@ -7,7 +7,10 @@ module.exports = function ( /*grunt, pkg, opts */ ) {
       options: {
         root: './resources',
         mask: '**/*.js',
-        reportFormats: [ 'html', 'text-summary' ]
+        reportFormats: [
+          'html',
+          'text-summary'
+        ]
       }
     }
   };

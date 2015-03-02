@@ -15,7 +15,10 @@ beforeEach( function ( done ) {
   var me = this;
   var sandbox = me.sandbox = sinon.sandbox.create();
 
-  var methods = [ 'stub', 'spy' ];
+  var methods = [
+    'stub',
+    'spy'
+  ];
 
   var many = function ( type, obj, _methods ) {
 

@@ -3,7 +3,10 @@ module.exports = function ( /* grunt, pkg, options */ ) {
 
   return {
     options: {
-      methods: [ 'log', 'debug' ]
+      methods: [
+        'log',
+        'debug'
+      ]
     }
     //    ,
     //    dist: {

@@ -2,17 +2,6 @@ module.exports = function ( grunt, pkg, options ) {
   'use strict';
 
   var gruntTaskUtils = options.gruntTaskUtils;
-  var fs = require( 'fs' );
-
-  var filterFiles = function ( files, cache ) {
-    files = files || [];
-
-    return files.filter( function ( file ) {
-      var fstatStored = cache.getKey( file );
-      var fstat = fs.statSync( file );
-      return !fstatStored || (fstat.mtime.getTime() !== fstatStored.mtime || fstat.size !== fstatStored.size);
-    } );
-  };
 
   gruntTaskUtils.registerTasks( {
     esformatter: {
@@ -29,10 +18,12 @@ module.exports = function ( grunt, pkg, options ) {
           reportOnly: false
         } );
 
-        var flatCache = require( 'flat-cache' );
-        var cache = flatCache.load( 'esformatter-cache' + (opts.reportOnly ? '_report' : '') );
+        var useCache = grunt.option( 'skip-cache' ) !== true;
+        grunt.log.ok( useCache ? 'using cache' : 'not using the cache' );
 
-        var filesSrc = filterFiles( me.filesSrc, cache );
+        var fileCache = require( 'file-entry-cache' ).create( 'esformatter-cache' + (opts.reportOnly ? '_report' : '') );
+
+        var filesSrc = useCache ? fileCache.getUpdatedFiles( me.filesSrc ) : me.filesSrc;
 
         if ( filesSrc.length === 0 ) {
           grunt.log.ok( 'No files to format' );
@@ -118,16 +109,7 @@ module.exports = function ( grunt, pkg, options ) {
             grunt.verbose.writeln( 'files processed: \n\n - ' + filesSrc.join( '\n - ' ) );
           }
         }
-
-        filesSrc.forEach( function ( fIn ) {
-          var stat = fs.statSync( fIn );
-          cache.setKey( fIn, {
-            size: stat.size,
-            mtime: stat.mtime.getTime()
-          } );
-        } );
-
-        cache.save();
+        useCache && fileCache.reconcile();
       }
     }
   } );

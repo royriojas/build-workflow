@@ -12,5 +12,7 @@ var method = commands[ argv.cmd ];
 if ( !argv.cmd || !method ) {
   showHelp();
 } else {
-  method.apply( commands, [ argv ] );
+  method.apply( commands, [
+    argv
+  ] );
 }

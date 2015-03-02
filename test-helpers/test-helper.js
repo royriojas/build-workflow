@@ -13,7 +13,10 @@
     var sandbox = sinon.sandbox.create();
     me.sandbox = sandbox;
 
-    var methodsToAdd = [ 'stub', 'spy' ];
+    var methodsToAdd = [
+      'stub',
+      'spy'
+    ];
 
     var many = function ( type, obj, methods ) {
 

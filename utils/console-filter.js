@@ -2,7 +2,12 @@ var transformTools = require( 'browserify-transform-tools' );
 var path = require( 'path' );
 
 var options = {
-  excludeExtensions: [ '.json', '.jsx', '.dot', '.tpl' ]
+  excludeExtensions: [
+    '.json',
+    '.jsx',
+    '.dot',
+    '.tpl'
+  ]
 };
 
 /**

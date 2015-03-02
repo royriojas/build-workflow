@@ -30,7 +30,10 @@ module.exports = function ( parameters ) {
 
       var target = 'validation';
 
-      grunt.config.set( [ name, target ], tConfig );
+      grunt.config.set( [
+        name,
+        target
+      ], tConfig );
 
       tasksToRun.push( task + ':' + target );
     }

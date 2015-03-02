@@ -13,7 +13,9 @@ module.exports = function ( /*grunt, pkg, options*/ ) {
     },
     chrome: {
       configFile: configFile,
-      browsers: [ 'Chrome' ]
+      browsers: [
+        'Chrome'
+      ]
     }
   };
 };

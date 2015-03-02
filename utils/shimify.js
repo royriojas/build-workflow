@@ -2,7 +2,9 @@ var sFormat = require( 'stringformat' );
 var transformTools = require( 'browserify-transform-tools' );
 
 var options = {
-  excludeExtensions: [ '.json' ],
+  excludeExtensions: [
+    '.json'
+  ],
   evaluateArguments: true
 };
 

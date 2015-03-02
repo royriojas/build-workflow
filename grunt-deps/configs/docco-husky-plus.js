@@ -9,7 +9,9 @@ module.exports = function ( /*grunt, pkg, opts*/ ) {
         project_name: 'Build Workflow'
         /*eslint-enable*/
       },
-      docFiles: [ 'docs/**/*.md' ],
+      docFiles: [
+        'docs/**/*.md'
+      ],
       src: [
         'Gruntfile.js',
         'tasks/**/*.js',

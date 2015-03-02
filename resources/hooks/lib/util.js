@@ -51,7 +51,6 @@ module.exports = {
       console.error( dividerString + '\x1B[22m\n\x1B[39m' );
     }
   },
-
   showError: function ( message, prefix ) {
     message = message || '';
     prefix = prefix || 'ERROR';
@@ -63,7 +62,6 @@ module.exports = {
       console.error( '\x1B[31m\x1B[1m' + message + '\x1B[22m\n\x1B[39m' );
     }
   },
-
   showSuccessBlock: function ( message, prefix ) {
     message = message || '';
     prefix = prefix || '';

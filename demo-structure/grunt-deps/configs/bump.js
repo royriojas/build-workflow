@@ -1,10 +1,14 @@
 module.exports = function ( /*grunt, pkg, opts */ ) {
   return {
     options: {
-      files: [ 'package.json' ],
+      files: [
+        'package.json'
+      ],
       commit: true,
       commitMessage: 'BLD: Release v%VERSION%',
-      commitFiles: [ 'package.json' ],
+      commitFiles: [
+        'package.json'
+      ],
       createTag: true,
       tagName: 'v%VERSION%',
       tagMessage: 'Version %VERSION%',

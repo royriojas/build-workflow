@@ -40,19 +40,15 @@ var consoleWrapper = {
     } );
     return consoleObj;
   },
-
   restoreConsole: function () {
     global.console = oldConsole;
   },
-
   getOriginalConsoleObject: function () {
     return oldConsole;
   },
-
   overrideConsole: function () {
     global.console = this.create();
   },
-
   enabled: true
 };
 

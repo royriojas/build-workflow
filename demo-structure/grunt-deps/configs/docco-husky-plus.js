@@ -4,7 +4,9 @@ module.exports = function ( /*grunt, pkg, options*/ ) {
 
   return {
     docs: {
-      docFiles: [ 'docs/**/*.md' ],
+      docFiles: [
+        'docs/**/*.md'
+      ],
       src: [
         'src/**/*.js'
       ],

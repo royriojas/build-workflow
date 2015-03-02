@@ -7,7 +7,9 @@ module.exports = function ( /*grunt, pkg, opts */ ) {
         'specs/**/*.js',
         'resources/hooks/lib/**/*.js'
       ],
-      tasks: [ 'mocha_istanbul' ],
+      tasks: [
+        'mocha_istanbul'
+      ],
       options: {
         spawn: false
       }

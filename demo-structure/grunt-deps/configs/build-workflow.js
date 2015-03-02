@@ -11,7 +11,6 @@ module.exports = function () {
     prepushTasks: [
       'karma:one'
     ],
-
     validationTasks: {
       src: prepushFiles,
       tasks: [
