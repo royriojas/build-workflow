@@ -8,9 +8,10 @@
   ],
   "jsx": {
     "formatJSX": true,
-    "attrsOnSameLineAsTag": true,
+    "attrsOnSameLineAsTag": false,
     "maxAttrsOnTag": 3,
-    "firstAttributeOnSameLine": true
+    "firstAttributeOnSameLine": true,
+    "alignWithFirstAttribute": false
   },
   "quotes": {
     "type": "single",
