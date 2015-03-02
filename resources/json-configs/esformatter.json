@@ -6,13 +6,6 @@
     "esformatter-quote-props",
     "esformatter-eol-last"
   ],
-  "jsx": {
-    "formatJSX": true,
-    "attrsOnSameLineAsTag": false,
-    "maxAttrsOnTag": 3,
-    "firstAttributeOnSameLine": true,
-    "alignWithFirstAttribute": false
-  },
   "quotes": {
     "type": "single",
     "avoidEscape": false
