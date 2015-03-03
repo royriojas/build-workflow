@@ -25,7 +25,10 @@ module.exports = function ( grunt, pkg, options ) {
 
         var filesSrc = useCache ? fileCache.getUpdatedFiles( me.filesSrc ) : me.filesSrc;
 
-        useCache && grunt.log.ok( 'updated files ', filesSrc );
+        if ( useCache ) {
+          grunt.verbose.writeln( 'updated files ', filesSrc );
+          grunt.log.ok( 'total files in glob : ', this.filesSrc.length, ', updated: ', filesSrc.length );
+        }
 
         if ( filesSrc.length === 0 ) {
           grunt.log.ok( 'No files to format' );

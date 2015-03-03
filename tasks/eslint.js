@@ -51,7 +51,10 @@ module.exports = function ( grunt ) {
 
     var filesSrc = useCache ? cache.getUpdatedFiles( this.filesSrc ) : this.filesSrc;
 
-    useCache && grunt.log.ok( 'updated files ', filesSrc );
+    if ( useCache ) {
+      grunt.verbose.writeln( 'updated files ', filesSrc );
+      grunt.log.ok( 'total files in glob : ', this.filesSrc.length, ', updated: ', filesSrc.length );
+    }
 
     var engine = new eslint.CLIEngine( opts );
     var report = engine.executeOnFiles( filesSrc );
