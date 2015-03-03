@@ -5,7 +5,7 @@ var deps = {
     'es6-promise',
     'grunt',
     'esformatter',
-    'esprima-fb',
+    'esprima-fb@12001.1.0-dev-harmony-fb', // needed by the jscs plugin
     'esformatter-eol-last',
     'esformatter-jsx',
     'esformatter-quote-props',
