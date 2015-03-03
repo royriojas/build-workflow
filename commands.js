@@ -32,11 +32,12 @@ var deps = {
     'yuidoc-theme-blue',
     'yuidocjs',
     'eslint',
+    'eslint-friendly-formatter',
     'grunt-bump',
     'grunt-contrib-clean',
-    'grunt-eslint',
     'grunt-jscs',
-    'grunt-jsonlint'
+    'grunt-jsonlint',
+    'grunt-contrib-copy'
   ],
   browserify: [
     'stringformat',
