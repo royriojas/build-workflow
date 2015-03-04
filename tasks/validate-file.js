@@ -47,6 +47,7 @@ module.exports = function ( grunt, pkg, options ) {
 
       var jsTasks = [
         'esformatter',
+        'eslint',
         'jscs'
       ];
 
