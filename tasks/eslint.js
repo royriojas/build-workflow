@@ -61,7 +61,7 @@ module.exports = function ( grunt ) {
     var results = report.results || [];
 
     results.forEach( function ( result ) {
-      if ( result.errorCode > 0 || result.warningCount > 0 ) {
+      if ( result.errorCount > 0 || result.warningCount > 0 ) {
         cache.removeEntry( result.filePath );
       }
     } );
