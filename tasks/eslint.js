@@ -25,7 +25,8 @@ module.exports = function ( grunt ) {
   grunt.registerMultiTask( 'eslint', 'Validate files with ESLint', function () {
     var opts = this.options( {
       outputFile: false,
-      quiet: false
+      quiet: false,
+      useCache: true
     } );
 
     var cache = require( 'file-entry-cache' ).create( 'eslint' );
@@ -44,7 +45,7 @@ module.exports = function ( grunt ) {
       return;
     }
 
-    var useCache = grunt.option( 'skip-cache' ) !== true;
+    var useCache = opts.useCache;
     grunt.log.ok( useCache ? 'using cache' : 'not using the cache' );
 
     grunt.verbose.writeln( 'files received ', this.filesSrc );
@@ -53,7 +54,7 @@ module.exports = function ( grunt ) {
 
     if ( useCache ) {
       grunt.verbose.writeln( 'updated files ', filesSrc );
-      grunt.log.ok( 'total files in glob : ', this.filesSrc.length, ', updated: ', filesSrc.length );
+      grunt.log.ok( 'total files in glob :', this.filesSrc.length, ', updated:', filesSrc.length );
     }
 
     var engine = new eslint.CLIEngine( opts );

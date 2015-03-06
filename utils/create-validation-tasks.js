@@ -18,6 +18,7 @@ module.exports = function ( parameters ) {
       name = task;
       src = validationTasks.src || [];
     } else {
+      //console.lo(task.name);
       name = task.name;
       src = task.src || validationTasks.src;
     }
@@ -35,7 +36,7 @@ module.exports = function ( parameters ) {
         target
       ], tConfig );
 
-      tasksToRun.push( task + ':' + target );
+      tasksToRun.push( name + ':' + target );
     }
   } );
 

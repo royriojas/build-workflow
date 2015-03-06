@@ -15,10 +15,11 @@ module.exports = function ( grunt, pkg, options ) {
         var opts = me.options( {
           esformatterOpts: {},
           beforeStart: null,
-          reportOnly: false
+          reportOnly: false,
+          useCache: true
         } );
 
-        var useCache = grunt.option( 'skip-cache' ) !== true;
+        var useCache = opts.useCache;
         grunt.log.ok( useCache ? 'using cache' : 'not using the cache' );
 
         var fileCache = require( 'file-entry-cache' ).create( 'esformatter-cache' + (opts.reportOnly ? '_report' : '') );
@@ -27,7 +28,7 @@ module.exports = function ( grunt, pkg, options ) {
 
         if ( useCache ) {
           grunt.verbose.writeln( 'updated files ', filesSrc );
-          grunt.log.ok( 'total files in glob : ', this.filesSrc.length, ', updated: ', filesSrc.length );
+          grunt.log.ok( 'total files in glob :', this.filesSrc.length, ', updated:', filesSrc.length );
         }
 
         if ( filesSrc.length === 0 ) {

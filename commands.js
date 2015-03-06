@@ -35,7 +35,7 @@ var deps = {
     'eslint-friendly-formatter',
     'grunt-bump',
     'grunt-contrib-clean',
-    'grunt-jscs',
+    'jscs',
     'grunt-jsonlint',
     'grunt-contrib-copy'
   ],
