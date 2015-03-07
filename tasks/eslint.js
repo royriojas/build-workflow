@@ -1,4 +1,3 @@
-var chalk = require( 'chalk' );
 var eslint = require( 'eslint' );
 
 // https://github.com/eslint/eslint/blob/5322a4ab9757eb745030ddcafa076ab5b4317e50/lib/cli.js#L129
@@ -40,17 +39,17 @@ module.exports = function ( grunt ) {
       opts.rulePaths = opts.rulesdir;
     }
 
-    if ( this.filesSrc.length === 0 ) {
-      grunt.log.writeln( chalk.magenta( 'Could not find any files to validate.' ) );
-      return;
-    }
-
     var useCache = opts.useCache;
     grunt.log.ok( useCache ? 'using cache' : 'not using the cache' );
 
     grunt.verbose.writeln( 'files received ', this.filesSrc );
 
     var filesSrc = useCache ? cache.getUpdatedFiles( this.filesSrc ) : this.filesSrc;
+
+    if ( filesSrc.length === 0 ) {
+      grunt.log.ok( 'No files to verify' );
+      return;
+    }
 
     if ( useCache ) {
       grunt.verbose.writeln( 'updated files ', filesSrc );

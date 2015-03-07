@@ -4,6 +4,7 @@ module.exports = function ( grunt, pkg, options ) {
   var gruntTaskUtils = options.gruntTaskUtils;
 
   var gruntFile = grunt.file;
+  var lib = require( 'grunt-ez-frontend/lib/lib' );
   // region ## Grunt Tasks Definitions
   // This object defines the tasks to be registered in grunt.
   var gruntTasks = {
@@ -13,10 +14,10 @@ module.exports = function ( grunt, pkg, options ) {
       multiTask: function () {
         var me = this;
         var data = me.data;
-        var thePackage = {
+        var thePackage = lib.extend( data.pkg || {}, {
           name: data.name,
           version: data.version
-        };
+        } );
 
         data.main && (thePackage.main = data.main);
 
