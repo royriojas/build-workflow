@@ -1,14 +1,16 @@
 module.exports = function ( grunt, pkg, options ) {
   'use strict';
 
+  var chalk = require( 'chalk' );
+  var sFormat = require( 'stringformat' );
   var gruntTaskUtils = options.gruntTaskUtils;
 
   gruntTaskUtils.registerTasks( {
     esformatter: {
-      description: 'beautify files with esformatter',
+      description: 'beautify files with esbeautifier',
       multiTask: function () {
         var path = require( 'path' );
-        var esformatter = require( 'esformatter' );
+        var esbeautifier = Object.create( require( 'esbeautifier' ) );
 
         var me = this;
 
@@ -22,20 +24,6 @@ module.exports = function ( grunt, pkg, options ) {
         var useCache = opts.useCache;
         grunt.log.ok( useCache ? 'using cache' : 'not using the cache' );
 
-        var fileCache = require( 'file-entry-cache' ).create( 'esformatter-cache' + (opts.reportOnly ? '_report' : '') );
-
-        var filesSrc = useCache ? fileCache.getUpdatedFiles( me.filesSrc ) : me.filesSrc;
-
-        if ( useCache ) {
-          grunt.verbose.writeln( 'updated files ', filesSrc );
-          grunt.log.ok( 'total files in glob :', this.filesSrc.length, ', updated:', filesSrc.length );
-        }
-
-        if ( filesSrc.length === 0 ) {
-          grunt.log.ok( 'No files to format' );
-          return;
-        }
-
         var cfg = {};
         if ( opts.configFile ) {
           cfg = grunt.file.readJSON( path.resolve( opts.configFile ) );
@@ -45,77 +33,96 @@ module.exports = function ( grunt, pkg, options ) {
         var extend = require( '../utils/extend' );
         cfg = extend( true, cfg, opts.esformatterOpts );
 
-        var plugins = cfg.plugins;
-
-        if ( plugins && plugins.length > 0 ) {
-          // plugins will be auto register again, during transform,
-          // setting them here will fix this issue in esformatter
-          // https://github.com/millermedeiros/esformatter/issues/245
-          var tryCatch = require( '../utils/try-catch' );
-          plugins.forEach( function ( plugin ) {
-            tryCatch( function () {
-              esformatter.register( require( plugin ) );
-              grunt.log.ok( 'registering plugin', plugin );
-            }, function ( ex ) {
-              grunt.verbose.writeln( '\nError: ' + ex.message );
-              grunt.fail.warn( 'Error loading esformatter plugin : ' + plugin );
-            } );
-          } );
-          // do not load it inside the module
-          cfg.plugins = [];
-        }
-
-        if ( opts.beforeStart ) {
-          // handy to add more plugins programatically if required
-          opts.beforeStart( esformatter );
-        }
-
-        var noBeautifiedFiles = [];
-        var beautifiedFiles = [];
-
-        filesSrc.forEach( function ( fIn ) {
-          var sourceIn = grunt.file.read( fIn );
-
-          try {
-            grunt.verbose.writeln( 'beautifying file: ', fIn );
-            var output = esformatter.format( sourceIn, cfg );
-          } catch (ex) {
-            grunt.verbose.writeln( 'error: ', ex.message );
-            grunt.fail.fatal( 'error trying to format file: ' +
-                fIn );
-          }
-          var sourceRequiredBeautification = sourceIn !== output;
-
-          if ( !opts.reportOnly ) {
-            if ( sourceRequiredBeautification ) {
-              grunt.file.write( fIn, output );
-              beautifiedFiles.push( fIn );
-              grunt.log.ok( 'formatted file ' + fIn );
-            } else {
-              grunt.verbose.writeln( 'file is ok: ', fIn );
-            }
-          } else {
-
-            if ( sourceRequiredBeautification ) {
-              noBeautifiedFiles.push( fIn );
-            }
-
+        esbeautifier.on( 'beautify:start', function ( e, args ) {
+          if ( useCache ) {
+            grunt.verbose.writeln( 'updated files', args.files );
+            grunt.log.ok( 'total files in glob : ' + me.filesSrc.length + ', updated: ' + args.files.length );
           }
         } );
 
-        if ( opts.reportOnly ) {
-          if ( noBeautifiedFiles.length > 0 ) {
-            grunt.fail.warn( 'The following files need beautification: \n\n - ' + noBeautifiedFiles.join( '\n - ' ) + '\n\n' );
-          }
-        } else {
-          if ( beautifiedFiles.length > 0 ) {
-            grunt.log.ok( 'Files beautified: ' + beautifiedFiles.length );
-          } else {
-            grunt.log.ok( 'No files needed beautification. Total processed : ' + filesSrc.length + ' file(s)' );
-            grunt.verbose.writeln( 'files processed: \n\n - ' + filesSrc.join( '\n - ' ) );
-          }
+        if ( opts.beforeStart ) {
+          // handy to add more plugins programatically if required
+          opts.beforeStart( esbeautifier );
         }
-        useCache && fileCache.reconcile();
+
+        var noBeautifiedFiles = [];
+
+        esbeautifier.on( 'need:beautify.cli', function ( e, _args ) {
+          if ( !opts.reportOnly ) {
+            grunt.verbose.writeln( 'beautifiying', _args.file );
+          } else {
+            noBeautifiedFiles.push( _args.file );
+          }
+        } );
+
+        esbeautifier.on( 'done.cli', function ( e, _args ) {
+          if ( !opts.checkOnly ) {
+            var msg = chalk.green( 'No files needed beautification!' );
+
+            if ( _args.count > 0 ) {
+              msg = sFormat( '{0} {1} file(s) beautified', chalk.yellow( 'beautifying done!' ), _args.count );
+            }
+
+            grunt.log.ok( msg );
+          } else {
+            if ( noBeautifiedFiles.length > 0 ) {
+              grunt.log.writeln( chalk.red( 'The following files need beautification: ' ), chalk.yellow( '\n\n   - ' + noBeautifiedFiles.join( '\n   - ' ) ) + '\n' );
+              grunt.warn( sFormat( '{0} files need beautification', noBeautifiedFiles.length ) );
+            } else {
+              grunt.log.ok( 'All files are beautified.' );
+            }
+          }
+
+        } );
+
+        esbeautifier.beautify( me.filesSrc, {
+          useCache: opts.useCache,
+          checkOnly: opts.reportOnly,
+          cfg: cfg
+        } );
+
+        //        filesSrc.forEach( function ( fIn ) {
+        //          var sourceIn = grunt.file.read( fIn );
+        //
+        //          try {
+        //            grunt.verbose.writeln( 'beautifying file: ', fIn );
+        //            var output = esformatter.format( sourceIn, cfg );
+        //          } catch (ex) {
+        //            grunt.verbose.writeln( 'error: ', ex.message );
+        //            grunt.fail.fatal( 'error trying to format file: ' +
+        //                fIn );
+        //          }
+        //          var sourceRequiredBeautification = sourceIn !== output;
+        //
+        //          if ( !opts.reportOnly ) {
+        //            if ( sourceRequiredBeautification ) {
+        //              grunt.file.write( fIn, output );
+        //              beautifiedFiles.push( fIn );
+        //              grunt.log.ok( 'formatted file ' + fIn );
+        //            } else {
+        //              grunt.verbose.writeln( 'file is ok: ', fIn );
+        //            }
+        //          } else {
+        //
+        //            if ( sourceRequiredBeautification ) {
+        //              noBeautifiedFiles.push( fIn );
+        //            }
+        //
+        //          }
+        //        } );
+        //
+        //        if ( opts.reportOnly ) {
+        //          if ( noBeautifiedFiles.length > 0 ) {
+        //            grunt.fail.warn( 'The following files need beautification: \n\n - ' + noBeautifiedFiles.join( '\n - ' ) + '\n\n' );
+        //          }
+        //        } else {
+        //          if ( beautifiedFiles.length > 0 ) {
+        //            grunt.log.ok( 'Files beautified: ' + beautifiedFiles.length );
+        //          } else {
+        //            grunt.log.ok( 'No files needed beautification. Total processed : ' + filesSrc.length + ' file(s)' );
+        //            grunt.verbose.writeln( 'files processed: \n\n - ' + filesSrc.join( '\n - ' ) );
+        //          }
+        //        }
       }
     }
   } );

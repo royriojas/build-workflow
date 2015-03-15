@@ -29,7 +29,7 @@ module.exports = function ( grunt ) {
     } );
 
     var cache = require( 'file-entry-cache' ).create( 'eslint' );
-
+    var chalk = require( 'chalk' );
     // legacy
     // TODO: remove in the future
     if ( opts.config ) {
@@ -46,14 +46,14 @@ module.exports = function ( grunt ) {
 
     var filesSrc = useCache ? cache.getUpdatedFiles( this.filesSrc ) : this.filesSrc;
 
-    if ( filesSrc.length === 0 ) {
-      grunt.log.ok( 'No files to verify' );
-      return;
-    }
-
     if ( useCache ) {
       grunt.verbose.writeln( 'updated files ', filesSrc );
-      grunt.log.ok( 'total files in glob :', this.filesSrc.length, ', updated:', filesSrc.length );
+      grunt.log.ok( 'total files in glob : ' + this.filesSrc.length + ', updated: ' + filesSrc.length );
+    }
+
+    if ( filesSrc.length === 0 ) {
+      grunt.log.ok( chalk.green( 'No files to verify' ) );
+      return;
     }
 
     var engine = new eslint.CLIEngine( opts );
@@ -85,6 +85,9 @@ module.exports = function ( grunt ) {
       grunt.file.write( opts.outputFile, output );
     } else {
       console.log( output );
+    }
+    if ( report.errorCount === 0 ) {
+      grunt.log.ok( chalk.green( 'All files passed validation' ) );
     }
     /*eslint-disable*/
     return report.errorCount === 0;

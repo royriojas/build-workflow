@@ -26,6 +26,8 @@ module.exports = function ( grunt, pkg, options ) {
         var me = this;
         var done = me.async();
 
+        var chalk = require( 'chalk' );
+
         var opts = me.options( {
           jscsOpts: {},
           useCache: true
@@ -41,11 +43,11 @@ module.exports = function ( grunt, pkg, options ) {
 
         if ( useCache ) {
           grunt.verbose.writeln( 'updated files ', filesSrc );
-          grunt.log.ok( 'total files in glob :', this.filesSrc.length, ', updated:', filesSrc.length );
+          grunt.log.ok( 'total files in glob: ' + me.filesSrc.length + ', updated: ' + filesSrc.length );
         }
 
         if ( filesSrc.length === 0 ) {
-          grunt.log.ok( 'No files to verify' );
+          grunt.log.ok( chalk.green( 'No files to verify' ) );
           done( true );
           return;
         }
@@ -93,7 +95,7 @@ module.exports = function ( grunt, pkg, options ) {
           fileCache.reconcile();
 
           if ( count === 0 ) {
-            grunt.log.ok( me.filesSrc.length + ' files total, ' + filesSrc.length + ' updated,  without code style errors.' );
+            grunt.log.ok( chalk.green( 'All files passed validation!' ) );
           } else {
             grunt.log.error( count + ' code style errors found!' );
           }
