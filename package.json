@@ -24,9 +24,6 @@
     "url": "https://github.com/royriojas/build-workflow/issues"
   },
   "homepage": "https://github.com/royriojas/build-workflow",
-  "peerDependencies": {
-    "jscs": "^1.11.3"
-  },
   "dependencies": {
     "chalk": "^1.0.0",
     "dot": "~1.0.2",
@@ -38,7 +35,8 @@
     "file-entry-cache": "^1.0.1",
     "lodash": "^3.3.1",
     "minimist": "^1.1.0",
-    "stringformat": "0.0.5"
+    "stringformat": "0.0.5",
+    "jscs": "^1.11.3"
   },
   "devDependencies": {
     "chai": "^1.10.0",
