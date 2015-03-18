@@ -26,17 +26,20 @@
   "homepage": "https://github.com/royriojas/build-workflow",
   "dependencies": {
     "chalk": "^1.0.0",
+    "docco-husky-plus": "^0.4.5",
     "dot": "~1.0.2",
     "es6-promise": "^2.0.1",
     "esbeautifier": "^1.0.10",
     "eslint": "^0.17.1",
     "eslint-friendly-formatter": "^1.0.5",
+    "esprima-fb": "^12001.1.0-dev-harmony-fb",
     "falafel": "^1.0.1",
     "file-entry-cache": "^1.0.1",
+    "jscs": "^1.11.3",
     "lodash": "^3.3.1",
     "minimist": "^1.1.0",
     "stringformat": "0.0.5",
-    "jscs": "^1.11.3"
+    "twig": "^0.8.1"
   },
   "devDependencies": {
     "chai": "^1.10.0",
