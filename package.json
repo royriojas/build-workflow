@@ -38,7 +38,6 @@
     "file-entry-cache": "^1.0.1",
     "jscs": "^1.11.3",
     "lodash": "^3.3.1",
-    "marked": "^0.3.3",
     "minimist": "^1.1.0",
     "stringformat": "0.0.5",
     "twig": "^0.8.1"
@@ -60,7 +59,6 @@
     "grunt-jsonlint": "^1.0.4",
     "grunt-mocha-istanbul": "^2.3.1",
     "istanbul": "^0.3.6",
-    "marked": "^0.3.3",
     "matchdep": "^0.3.0",
     "mocha": "^2.1.0",
     "moment": "^2.9.0",
