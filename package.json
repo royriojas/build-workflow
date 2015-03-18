@@ -29,7 +29,7 @@
     "docco-husky-plus": "^0.4.5",
     "dot": "~1.0.2",
     "es6-promise": "^2.0.1",
-    "esbeautifier": "^1.0.10",
+    "esbeautifier": "^2.0.3",
     "eslint": "^0.17.1",
     "eslint-friendly-formatter": "^1.0.5",
     "esprima-fb": "^12001.1.0-dev-harmony-fb",
