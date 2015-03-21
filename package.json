@@ -6,6 +6,7 @@
   "scripts": {
     "test": "grunt mocha_istanbul",
     "lint": "grunt check-valid",
+    "changelog": "changelogx -f markdown -o ./changelog.md",
     "install-hooks": "prepush install && changelogx install-hook -m 160"
   },
   "prepush": [
@@ -77,5 +78,12 @@
     "underscore": "^1.8.2",
     "yuidoc-theme-blue": "^0.1.8",
     "yuidocjs": "^0.5.0"
+  },
+  "changelogx": {
+    "issueIDRegExp" : "#(\\d+)",
+    "commitURL": "https://github.com/royriojas/build-workflow/commit/{0}",
+    "authorURL": "https://github.com/{0}",
+    "issueIDURL": "https://github.com/royriojas/build-workflow/issues/{0}",
+    "projectName": "Build Workflow"
   }
 }
