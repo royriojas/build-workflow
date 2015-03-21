@@ -8,6 +8,9 @@
     "lint": "grunt check-valid",
     "install-hooks": "prepush install && changelogx install-hook -m 160"
   },
+  "prepush": [
+    "grunt check-valid"
+  ],
   "repository": {
     "type": "git",
     "url": "git://github.com/royriojas/build-workflow.git"
