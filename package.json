@@ -5,7 +5,8 @@
   "main": "config-loader.js",
   "scripts": {
     "test": "grunt mocha_istanbul",
-    "lint": "grunt check-valid"
+    "lint": "grunt check-valid",
+    "install-hooks": "prepush install && changelogx install-hook -m 160"
   },
   "repository": {
     "type": "git",
