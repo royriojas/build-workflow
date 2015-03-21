@@ -4,7 +4,8 @@
   "description": "Simple gruntfile helper to  define build workflows",
   "main": "config-loader.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "grunt mocha_istanbul",
+    "lint": "grunt check-valid"
   },
   "repository": {
     "type": "git",
@@ -46,6 +47,7 @@
     "chai": "^1.10.0",
     "chai-as-promised": "^4.2.0",
     "chai-fuzzy": "^1.4.0",
+    "changelogx": "^1.0.7",
     "grunt": "^0.4.5",
     "grunt-autoprefixer": "^2.2.0",
     "grunt-bump": "^0.3.0",
@@ -62,6 +64,7 @@
     "matchdep": "^0.3.0",
     "mocha": "^2.1.0",
     "moment": "^2.9.0",
+    "prepush": "^2.0.0",
     "proxyquire": "^1.3.1",
     "sinon": "^1.12.2",
     "sinon-chai": "^2.7.0",

@@ -88,7 +88,12 @@ module.exports = function ( grunt, pkg, options ) {
             fileCache.removeEntry( filename );
             count += result.getErrorCount();
             result.getErrorList().forEach( function ( error ) {
+              result.oldFileName = result.getFilename;
+              result.getFilename = function () {
+                return path.resolve( this.oldFileName() ) + ':' + error.line + ':' + error.column;
+              };
               grunt.log.writeln( result.explainError( error, true ) );
+              result.getFilename = result.oldFileName;
             } );
           } );
 
