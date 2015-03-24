@@ -16,7 +16,6 @@ module.exports = function ( grunt, pkg, options ) {
 
         var opts = me.options( {
           esformatterOpts: {},
-          beforeStart: null,
           reportOnly: false,
           useCache: true
         } );
@@ -39,11 +38,6 @@ module.exports = function ( grunt, pkg, options ) {
             grunt.log.ok( 'total files in glob : ' + me.filesSrc.length + ', updated: ' + args.files.length );
           }
         } );
-
-        if ( opts.beforeStart ) {
-          // handy to add more plugins programatically if required
-          opts.beforeStart( esbeautifier );
-        }
 
         var noBeautifiedFiles = [];
 
@@ -81,48 +75,6 @@ module.exports = function ( grunt, pkg, options ) {
           cfg: cfg
         } );
 
-        //        filesSrc.forEach( function ( fIn ) {
-        //          var sourceIn = grunt.file.read( fIn );
-        //
-        //          try {
-        //            grunt.verbose.writeln( 'beautifying file: ', fIn );
-        //            var output = esformatter.format( sourceIn, cfg );
-        //          } catch (ex) {
-        //            grunt.verbose.writeln( 'error: ', ex.message );
-        //            grunt.fail.fatal( 'error trying to format file: ' +
-        //                fIn );
-        //          }
-        //          var sourceRequiredBeautification = sourceIn !== output;
-        //
-        //          if ( !opts.reportOnly ) {
-        //            if ( sourceRequiredBeautification ) {
-        //              grunt.file.write( fIn, output );
-        //              beautifiedFiles.push( fIn );
-        //              grunt.log.ok( 'formatted file ' + fIn );
-        //            } else {
-        //              grunt.verbose.writeln( 'file is ok: ', fIn );
-        //            }
-        //          } else {
-        //
-        //            if ( sourceRequiredBeautification ) {
-        //              noBeautifiedFiles.push( fIn );
-        //            }
-        //
-        //          }
-        //        } );
-        //
-        //        if ( opts.reportOnly ) {
-        //          if ( noBeautifiedFiles.length > 0 ) {
-        //            grunt.fail.warn( 'The following files need beautification: \n\n - ' + noBeautifiedFiles.join( '\n - ' ) + '\n\n' );
-        //          }
-        //        } else {
-        //          if ( beautifiedFiles.length > 0 ) {
-        //            grunt.log.ok( 'Files beautified: ' + beautifiedFiles.length );
-        //          } else {
-        //            grunt.log.ok( 'No files needed beautification. Total processed : ' + filesSrc.length + ' file(s)' );
-        //            grunt.verbose.writeln( 'files processed: \n\n - ' + filesSrc.join( '\n - ' ) );
-        //          }
-        //        }
       }
     }
   } );

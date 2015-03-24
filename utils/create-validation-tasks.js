@@ -1,5 +1,5 @@
-module.exports = function ( parameters ) {
-  var grunt = require( 'grunt' );
+module.exports = function ( parameters, grunt ) {
+  //var grunt = require( 'grunt' );
 
   var validationTasks = parameters.validationTasks;
   var onSet = parameters.beforeSetConfiguration;

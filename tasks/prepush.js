@@ -2,8 +2,6 @@ module.exports = function ( grunt, pkg, options ) {
   'use strict';
 
   var gruntTaskUtils = options.gruntTaskUtils;
-
-  var checkFiles = require( '../utils/check-files' );
   var createValidationTasks = require( '../utils/create-validation-tasks' );
 
   gruntTaskUtils.registerTasks( {
@@ -27,17 +25,7 @@ module.exports = function ( grunt, pkg, options ) {
               tConfig.options.reportOnly = true;
             }
           }
-        } );
-      } else {
-        var opts = this.options( {
-          useNewer: false,
-          tasksToRun: jsTasks || 'esformatter,jscs,',
-          filesToValidate: buildWorkflowConfig.filesToValidate,
-          forceBeautify: false,
-          prepushTasks: buildWorkflowConfig.prepushTasks || []
-        } );
-
-        tasksToRun = checkFiles.doCheck( grunt, opts );
+        }, grunt );
       }
 
       tasksToRun = tasksToRun || [];

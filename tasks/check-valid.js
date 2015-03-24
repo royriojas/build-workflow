@@ -3,8 +3,6 @@ module.exports = function ( grunt, pkg, options ) {
 
   var gruntTaskUtils = options.gruntTaskUtils;
 
-  var checkFiles = require( '../utils/check-files' );
-
   gruntTaskUtils.registerTasks( {
     'check-valid': function ( jsTasks ) {
 
@@ -20,16 +18,7 @@ module.exports = function ( grunt, pkg, options ) {
         tasksToRun = require( '../utils/create-validation-tasks' )( {
           validationTasks: buildWorkflowConfig.validationTasks,
           filter: jsTasks ? jsTasks.split( ',' ) : null
-        } );
-      } else {
-        var opts = this.options( {
-          useNewer: true,
-          tasksToRun: jsTasks || 'jsbeautifier,jscs,jshint,jsvalidate',
-          filesToValidate: buildWorkflowConfig.filesToValidate,
-          forceBeautify: true
-        } );
-
-        tasksToRun = checkFiles.doCheck( grunt, opts );
+        }, grunt );
       }
 
       tasksToRun = tasksToRun || [];
@@ -37,8 +26,6 @@ module.exports = function ( grunt, pkg, options ) {
       if ( tasksToRun.length > 0 ) {
         grunt.task.run( tasksToRun );
       }
-
-      grunt.log.ok( 'check-valid: tasks to run', tasksToRun );
     }
   } );
 };
