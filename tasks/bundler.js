@@ -16,7 +16,7 @@ module.exports = function ( grunt ) {
       separator: '\n\n'
     } );
 
-    var bundler = require( '../utils/bundler' );
+    var bundler = require( '../utils/bundler' ).create();
 
     bundler.on( 'bundler:done', function ( e, args ) {
       grunt.log.ok( 'File written', me.data.dest, 'time required:', args.duration / 1000 );
