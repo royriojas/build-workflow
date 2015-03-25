@@ -1,5 +1,20 @@
 
 # Build Workflow - Changelog
+## v2.0.7
+- **Build Scripts Changes**
+  - Release v2.0.7 - [2e90b84]( https://github.com/royriojas/build-workflow/commit/2e90b84 ), [royriojas](https://github.com/royriojas), 25/03/2015 02:35:41
+
+    
+#### esbeautifier
+- **Build Scripts Changes**
+  - updated dep to get better error reporting - [1059614]( https://github.com/royriojas/build-workflow/commit/1059614 ), [royriojas](https://github.com/royriojas), 25/03/2015 02:33:06
+
+    
+#### Changelog
+- **Documentation**
+  - generated changelog - [6c91055]( https://github.com/royriojas/build-workflow/commit/6c91055 ), [royriojas](https://github.com/royriojas), 25/03/2015 00:49:02
+
+    
 ## v2.0.6
 - **Build Scripts Changes**
   - Release v2.0.6 - [34f53a8]( https://github.com/royriojas/build-workflow/commit/34f53a8 ), [royriojas](https://github.com/royriojas), 25/03/2015 00:48:36
