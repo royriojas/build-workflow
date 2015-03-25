@@ -150,6 +150,7 @@ module.exports = extend( dispatchy.create(), {
         w.bundle( function ( err ) {
           if ( err ) {
             me.fire( 'error', err );
+            return;
           }
           opts.postBundle && opts.postBundle();
         } ).pipe( concatIfRequired( target, time ) );
