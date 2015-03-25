@@ -1,5 +1,40 @@
 
 # Build Workflow - Changelog
+## v2.0.5
+- **Build Scripts Changes**
+  - Release v2.0.5 - [538ff82]( https://github.com/royriojas/build-workflow/commit/538ff82 ), [royriojas](https://github.com/royriojas), 24/03/2015 18:51:11
+
+    
+#### bundler
+- **Bug Fixes**
+  - Use a new bundler per each task. Related to [#4](https://github.com/royriojas/build-workflow/issues/4) - [57a78e4]( https://github.com/royriojas/build-workflow/commit/57a78e4 ), [royriojas](https://github.com/royriojas), 24/03/2015 18:50:05
+
+    
+## v2.0.4
+- **Build Scripts Changes**
+  - Release v2.0.4 - [c24e0bc]( https://github.com/royriojas/build-workflow/commit/c24e0bc ), [royriojas](https://github.com/royriojas), 24/03/2015 18:40:29
+
+    
+#### bundler
+- **Bug Fixes**
+  - Return after error in bundle. Related to [#4](https://github.com/royriojas/build-workflow/issues/4) - [9994b79]( https://github.com/royriojas/build-workflow/commit/9994b79 ), [royriojas](https://github.com/royriojas), 24/03/2015 18:40:14
+
+    
+## v2.0.3
+- **Build Scripts Changes**
+  - Release v2.0.3 - [8e4621d]( https://github.com/royriojas/build-workflow/commit/8e4621d ), [royriojas](https://github.com/royriojas), 24/03/2015 18:38:33
+
+    
+#### bundler
+- **Bug Fixes**
+  - Call done when the uglify task finishes. Related to [#4](https://github.com/royriojas/build-workflow/issues/4) - [4aa375b]( https://github.com/royriojas/build-workflow/commit/4aa375b ), [royriojas](https://github.com/royriojas), 24/03/2015 18:34:59
+
+    
+#### Changelog
+- **Documentation**
+  - generated changelog - [d031e6f]( https://github.com/royriojas/build-workflow/commit/d031e6f ), [royriojas](https://github.com/royriojas), 24/03/2015 18:13:44
+
+    
 ## v2.0.2
 - **Build Scripts Changes**
   - Release v2.0.2 - [9b1ecff]( https://github.com/royriojas/build-workflow/commit/9b1ecff ), [royriojas](https://github.com/royriojas), 24/03/2015 18:13:03
