@@ -1,5 +1,20 @@
 
 # Build Workflow - Changelog
+## v2.0.2
+- **Build Scripts Changes**
+  - Release v2.0.2 - [9b1ecff]( https://github.com/royriojas/build-workflow/commit/9b1ecff ), [royriojas](https://github.com/royriojas), 24/03/2015 18:13:03
+
+    
+#### bundler
+- **Bug Fixes**
+  - Fixes issue with the generation of the minified version. Fix [#4](https://github.com/royriojas/build-workflow/issues/4) - [ae3c7b0]( https://github.com/royriojas/build-workflow/commit/ae3c7b0 ), [royriojas](https://github.com/royriojas), 24/03/2015 18:12:51
+
+    
+#### Changelog
+- **Documentation**
+  - generated changelog - [e43249d]( https://github.com/royriojas/build-workflow/commit/e43249d ), [royriojas](https://github.com/royriojas), 24/03/2015 17:49:14
+
+    
 ## v2.0.1
 - **Build Scripts Changes**
   - Release v2.0.1 - [84c04a8]( https://github.com/royriojas/build-workflow/commit/84c04a8 ), [royriojas](https://github.com/royriojas), 24/03/2015 17:48:51
