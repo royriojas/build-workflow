@@ -70,12 +70,14 @@ module.exports = {
               text = text + files.join( opts.separator );
             }
 
-            write( receivedTarget.dest, text );
+            if ( receivedTarget.dest ) {
+              write( receivedTarget.dest, text );
+            }
 
             me.fire( 'bundler:done', {
               result: text,
               target: receivedTarget,
-              duration: Date.now() - time
+              startTime: time
             } );
 
             return text;
