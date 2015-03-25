@@ -42,6 +42,7 @@ module.exports = function ( grunt ) {
 
         grunt.file.write( minFile, banner + opts.separator + result.code );
         grunt.log.ok( 'File written', minFile, 'time required:', (Date.now() - tStart) / 1000 );
+        done();
       }
 
     } );
