@@ -1,5 +1,27 @@
 
 # Build Workflow - Changelog
+## v2.0.6
+- **Build Scripts Changes**
+  - Release v2.0.6 - [34f53a8]( https://github.com/royriojas/build-workflow/commit/34f53a8 ), [royriojas](https://github.com/royriojas), 25/03/2015 00:48:36
+
+    
+#### bundler
+- **Enhancements**
+  - add version number to dest file - [ea69fab]( https://github.com/royriojas/build-workflow/commit/ea69fab ), [royriojas](https://github.com/royriojas), 25/03/2015 00:48:26
+
+    - Banner is added to not minified file
+    - Version is added to the files automatically if the option
+    `buildNumber` is set.
+    - The minified version will be generated if the buildNumber is
+    different from dev or if the grunt option `bundle-min` is provided.
+    - a grunt option `console-filter` can be used to remove the
+    `console.log` calls from the modules that not match the provided filter
+    
+#### Changelog
+- **Documentation**
+  - generated changelog - [9c39578]( https://github.com/royriojas/build-workflow/commit/9c39578 ), [royriojas](https://github.com/royriojas), 24/03/2015 18:51:50
+
+    
 ## v2.0.5
 - **Build Scripts Changes**
   - Release v2.0.5 - [538ff82]( https://github.com/royriojas/build-workflow/commit/538ff82 ), [royriojas](https://github.com/royriojas), 24/03/2015 18:51:11
