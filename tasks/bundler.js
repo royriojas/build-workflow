@@ -38,8 +38,10 @@ module.exports = function ( grunt ) {
 
         var banner = grunt.template.process( opts.banner );
 
-        grunt.file.write( makeMinName( me.data.dest ), banner + opts.separator + result );
-        grunt.log.ok( 'File written', me.data.dest, 'time required:', (Date.now() - tStart) / 1000 );
+        var minFile = makeMinName( me.data.dest );
+
+        grunt.file.write( minFile, banner + opts.separator + result.code );
+        grunt.log.ok( 'File written', minFile, 'time required:', (Date.now() - tStart) / 1000 );
       }
 
     } );

@@ -71,7 +71,7 @@ module.exports = extend( dispatchy.create(), {
         write( receivedTarget.dest, text );
 
         me.fire( 'bundler:done', {
-          text: text,
+          result: text,
           target: receivedTarget,
           duration: Date.now() - time
         } );
