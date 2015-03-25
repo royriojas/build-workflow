@@ -1,5 +1,15 @@
 
 # Build Workflow - Changelog
+## v2.0.1
+- **Build Scripts Changes**
+  - Release v2.0.1 - [84c04a8]( https://github.com/royriojas/build-workflow/commit/84c04a8 ), [royriojas](https://github.com/royriojas), 24/03/2015 17:48:51
+
+    
+#### Changelog
+- **Documentation**
+  - generated changelog - [749a234]( https://github.com/royriojas/build-workflow/commit/749a234 ), [royriojas](https://github.com/royriojas), 24/03/2015 17:48:29
+
+    
 ## v2.0.0
 - **Build Scripts Changes**
   - Release v2.0.0 - [3376355]( https://github.com/royriojas/build-workflow/commit/3376355 ), [royriojas](https://github.com/royriojas), 24/03/2015 17:18:18
