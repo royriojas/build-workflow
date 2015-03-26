@@ -11,12 +11,12 @@ module.exports = function ( grunt ) {
     return fileName.replace( rgex, '$1.' + bNumber + '.$2' );
   };
 
-  grunt.registerMultiTask( 'bundler', function () {
+  grunt.registerMultiTask( 'bundler', function ( watch ) {
     var me = this;
 
     var done = me.async();
     var opts = me.options( {
-      watch: grunt.option( 'watch-task' ) === me.target,
+      watch: watch === 'watch',
       banner: '',
       uglify: false,
       separator: '\n\n'
