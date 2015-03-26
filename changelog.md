@@ -1,5 +1,28 @@
 
 # Build Workflow - Changelog
+## v2.1.0
+- **Build Scripts Changes**
+  - Release v2.1.0 - [9d3b442]( https://github.com/royriojas/build-workflow/commit/9d3b442 ), [royriojas](https://github.com/royriojas), 26/03/2015 01:47:51
+
+    
+#### bundler
+- **Refactoring**
+  - Add a watch suffix for bundler tasks targets - [0c9bba3]( https://github.com/royriojas/build-workflow/commit/0c9bba3 ), [royriojas](https://github.com/royriojas), 26/03/2015 01:45:28
+
+    In order to be consistent, and to provide a better api, bundler targets now
+    won't use the `grunt.option('watch-task')` to especify which task to
+    be run in watch mode. Instead now they can be called from the command line
+    like this:
+    
+    ```bash
+    grunt bundler:target:watch # the watch suffix will run this task in watch mode
+    ```
+    
+#### Changelog
+- **Documentation**
+  - generated changelog - [8df8433]( https://github.com/royriojas/build-workflow/commit/8df8433 ), [royriojas](https://github.com/royriojas), 26/03/2015 01:04:49
+
+    
 ## v2.0.8
 - **Build Scripts Changes**
   - Release v2.0.8 - [6f927f2]( https://github.com/royriojas/build-workflow/commit/6f927f2 ), [royriojas](https://github.com/royriojas), 26/03/2015 01:04:07
