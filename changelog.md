@@ -1,5 +1,34 @@
 
 # Build Workflow - Changelog
+## v2.0.8
+- **Build Scripts Changes**
+  - Release v2.0.8 - [6f927f2]( https://github.com/royriojas/build-workflow/commit/6f927f2 ), [royriojas](https://github.com/royriojas), 26/03/2015 01:04:07
+
+    
+#### check-valid tasks
+- **Enhancements**
+  - Honor the `--skip-cache` flag and provide consistent output - [58d33f9]( https://github.com/royriojas/build-workflow/commit/58d33f9 ), [royriojas](https://github.com/royriojas), 26/03/2015 00:59:11
+
+    Running the tasks with
+    
+    ```bash
+    grunt check-valid --skip-cache=true
+    ```
+    
+    Will now delete the cache files. Subsequent calls to this task without that flag will use a new cache file.
+    This is useful when a configuration file has changed and we want to destroy the cache that was created
+    when using the previous configuration, since the files didn't change, the tasks would assume they are OK.
+    
+    TODO: Store the configuration as well as part of the cache, that way if the config change the task will destroy
+    the cache automatically and create a new one for the next executions without actually having to use the `--skip-cache` flag. Fix <a target="_blank" class="info-link" href="https://github.com/royriojas/build-workflow/issues/5"><span>#5</span></a>
+    
+    Also in this commit. Normalized the output of the checkvalid tasks. Fix <a target="_blank" class="info-link" href="https://github.com/royriojas/build-workflow/issues/6"><span>#6</span></a>
+    
+#### Changelog
+- **Documentation**
+  - generated changelog - [235e066]( https://github.com/royriojas/build-workflow/commit/235e066 ), [royriojas](https://github.com/royriojas), 25/03/2015 02:36:15
+
+    
 ## v2.0.7
 - **Build Scripts Changes**
   - Release v2.0.7 - [2e90b84]( https://github.com/royriojas/build-workflow/commit/2e90b84 ), [royriojas](https://github.com/royriojas), 25/03/2015 02:35:41
