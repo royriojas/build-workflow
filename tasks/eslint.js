@@ -40,6 +40,9 @@ module.exports = function ( grunt ) {
     }
 
     var useCache = opts.useCache;
+    if ( !useCache ) {
+      cache.deleteCacheFile();
+    }
     grunt.log.ok( useCache ? 'using cache' : 'not using the cache' );
 
     grunt.verbose.writeln( 'files received ', this.filesSrc );
@@ -52,8 +55,14 @@ module.exports = function ( grunt ) {
     }
 
     if ( filesSrc.length === 0 ) {
+      if ( useCache && this.filesSrc.length > 0 ) {
+        grunt.log.ok( chalk.green( 'No new files to verify' ) );
+        return true;
+      }
+
       grunt.log.ok( chalk.green( 'No files to verify' ) );
-      return;
+
+      return true;
     }
 
     var engine = new eslint.CLIEngine( opts );
@@ -76,21 +85,22 @@ module.exports = function ( grunt ) {
 
     if ( !formatter ) {
       grunt.warn( 'Could not find formatter ' + opts.format + '\'.' );
-      return;
+      return false;
     }
 
     var output = formatter( results );
 
-    if ( opts.outputFile ) {
-      grunt.file.write( opts.outputFile, output );
+    var noErrors = report.errorCount === 0;
+
+    if ( !noErrors ) {
+      if ( opts.outputFile ) {
+        grunt.file.write( opts.outputFile, output );
+      } else {
+        console.log( output );
+      }
     } else {
-      console.log( output );
-    }
-    if ( report.errorCount === 0 ) {
       grunt.log.ok( chalk.green( 'All files passed validation' ) );
     }
-    /*eslint-disable*/
-    return report.errorCount === 0;
-    /*eslint-enable*/
+    return noErrors;
   } );
 };

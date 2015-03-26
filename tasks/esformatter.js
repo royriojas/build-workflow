@@ -51,7 +51,7 @@ module.exports = function ( grunt, pkg, options ) {
 
         esbeautifier.on( 'done.cli', function ( e, _args ) {
           if ( !opts.reportOnly ) {
-            var msg = chalk.green( 'No files needed beautification!' );
+            var msg = chalk.green( 'No files needed beautification' );
 
             if ( _args.count > 0 ) {
               msg = sFormat( '{0} {1} file(s) beautified', chalk.yellow( 'beautifying done!' ), _args.count );

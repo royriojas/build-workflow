@@ -38,6 +38,9 @@ module.exports = function ( grunt, pkg, options ) {
         grunt.log.ok( useCache ? 'using cache' : 'not using the cache' );
 
         var fileCache = require( 'file-entry-cache' ).create( 'jscs-cache' );
+        if ( !useCache ) {
+          fileCache.deleteCacheFile();
+        }
 
         var filesSrc = useCache ? fileCache.getUpdatedFiles( me.filesSrc ) : me.filesSrc;
 
@@ -47,6 +50,12 @@ module.exports = function ( grunt, pkg, options ) {
         }
 
         if ( filesSrc.length === 0 ) {
+
+          if ( useCache && me.filesSrc.length > 0 ) {
+            grunt.log.ok( chalk.green( 'No new files to verify' ) );
+            done( true );
+            return;
+          }
           grunt.log.ok( chalk.green( 'No files to verify' ) );
           done( true );
           return;
