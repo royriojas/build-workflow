@@ -51,7 +51,7 @@ module.exports = function ( content, file, done ) {
     var compiled = output.css;
 
     /*eslint-disable*/
-    compiled = funcStart + 'var css = "' + compiled.replace( /\\/g, '\\\\' ).replace( /'/g, "'" ).replace( /"/g, '"' ) + '";' + funcEnd;
+    compiled = funcStart + 'var css = "' + compiled.replace( /\\/g, '\\\\' ).replace( /'/g, '\\$&' ).replace( /"/g, '\\$&' ) + '";' + funcEnd;
     /*eslint-enable*/
 
     done( null, compiled );
