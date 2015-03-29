@@ -18,7 +18,7 @@ module.exports = function ( grunt, pkg, options ) {
         var files = me.files || [];
 
         var opts = me.options( {
-          fontLessTemplate: 'grunt-deps/kwl-font.less.tpl',
+          fontLessTemplate: 'grunt-deps/font.less.tpl',
           fontCodesTemplate: 'grunt-deps/font-codes.mixins.tpl', // the template for the less for this font
           fontsFolder: 'fonts', // the folder where the fonts are located
           processIconName: function ( name ) {
@@ -36,6 +36,7 @@ module.exports = function ( grunt, pkg, options ) {
           var dest = dataEntry.dest;
           var mixinsDest = dest.replace( /\.less$/g, '.mixins.less' );
           var destDir = path.dirname( mixinsDest );
+          var mixinsFile = path.basename( mixinsDest );
 
           src.forEach( function ( jsonFontDescriptor ) {
 
@@ -88,7 +89,8 @@ module.exports = function ( grunt, pkg, options ) {
             var renderFontsLess = dot.template( grunt.file.read( opts.fontLessTemplate ), templateSettings );
 
             var fData = {
-              fontData: fontData
+              fontData: fontData,
+              mixinsFile: mixinsFile
             };
 
             var mixinText = renderCodeFonts( fData );
@@ -100,9 +102,10 @@ module.exports = function ( grunt, pkg, options ) {
             grunt.file.write( dest, lessText );
             grunt.log.ok( 'Less File created: ' + dest );
 
-            if ( opts.jsonCodesOuput ) {
-              grunt.file.write( opts.jsonCodesOuput, lib.format( 'var fontData = {0}', JSON.stringify( fontData ) ) );
-              grunt.log.ok( 'JSON Metadata File created: ' + opts.jsonCodesOuput );
+            var jsonCodesOutput = opts.jsonCodesOutput;
+            if ( jsonCodesOutput ) {
+              grunt.file.write( jsonCodesOutput, lib.format( 'var fontData = {0}', JSON.stringify( fontData, null, 2 ) ) );
+              grunt.log.ok( 'JSON Metadata File created: ' + jsonCodesOutput );
             }
           } );
 

@@ -5,7 +5,7 @@
     prefix = fontData.prefix;
 }}
 
-.kwl-if-props() {
+.{{=prefix}}props() {
   font-family: '{{= name }}';
   speak: none;
   font-style: normal;
@@ -18,37 +18,37 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-.kwl-icon-code(@content, current) {
+.{{=prefix}}code(@content, current) {
   content:@content;
 }
 
-.kwl-icon-code(@content, before) {
+.{{=prefix}}code(@content, before) {
   &:before {
     content:@content;
   }
 }
 
-.kwl-icon-code(@content, after) {
+.{{=prefix}}code(@content, after) {
   &:after {
     content:@content;
   }
 }
 
-.kwl-icon-code-prop(@content, current) {
- .kwl-if-props();
+.{{=prefix}}code-prop(@content, current) {
+    .{{=prefix}}props();
   content:@content;
 }
 
-.kwl-icon-code-prop(@content, before) {
+.{{=prefix}}code-prop(@content, before) {
   &:before {
- .kwl-if-props();
+    .{{=prefix}}props();
     content:@content;
   }
 }
 
-.kwl-icon-code-prop(@content, after) {
+.{{=prefix}}code-prop(@content, after) {
   &:after {
- .kwl-if-props();
+    .{{=prefix}}props();
     content:@content;
   }
 }
@@ -69,9 +69,9 @@
 
 // mixin for {{=iconName }}
 .mxn-{{=iconName }}(@insert-at:current) when not(@insert-at = props) {
-  .kwl-icon-code({{=iconProp}}, @insert-at);
+  .{{=prefix}}code({{=iconProp}}, @insert-at);
 }
 .mxn-{{=iconName }}(props, @insert-at:current) {
-  .kwl-icon-code-prop({{=iconProp}}, @insert-at);
+  .{{=prefix}}code-prop({{=iconProp}}, @insert-at);
 }
 {{~}}

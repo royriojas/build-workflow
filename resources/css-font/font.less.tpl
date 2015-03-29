@@ -2,8 +2,10 @@
   var
     fontData = it.fontData || {},
     name = fontData.name,
-    prefix = fontData.prefix;
+    prefix = fontData.prefix,
+    mixinsFile = it.mixinsFile;
 }}
+@import '{{=mixinsFile}}';
 
 @font-face {
   font-family: '{{= name }}';
@@ -16,10 +18,10 @@
   font-style: normal;
 }
 
-[class^="{{=prefix}}"], [class*=" {{=prefix}}"], .kwl-if {
+[class^="{{=prefix}}"], [class*=" {{=prefix}}"], .{{=prefix}}font-props {
   &:before,
   &:after {
-    .kwl-if-props();
+    .{{=prefix}}props();
   }
 }
 

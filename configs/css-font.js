@@ -22,7 +22,7 @@ module.exports = function ( /* grunt, pkg, options */ ) {
     //    },
     options: {
       // the template for the file that will generate the kwl-icon-* classes
-      fontLessTemplate: path.resolve( __dirname, '../resources/css-font/kwl-font.less.tpl' ),
+      fontLessTemplate: path.resolve( __dirname, '../resources/css-font/font.less.tpl' ),
 
       // the template for the mixins to use this font
       fontCodesTemplate: path.resolve( __dirname, '../resources/css-font/font-codes.mixins.tpl' ),
