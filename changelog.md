@@ -1,5 +1,20 @@
 
 # Build Workflow - Changelog
+## v2.1.2
+- **Build Scripts Changes**
+  - Release v2.1.2 - [0450c7c]( https://github.com/royriojas/build-workflow/commit/0450c7c ), [royriojas](https://github.com/royriojas), 29/03/2015 03:37:21
+
+    
+#### esformatter
+- **Bug Fixes**
+  - revert back the setting to force quotes - [47c1888]( https://github.com/royriojas/build-workflow/commit/47c1888 ), [royriojas](https://github.com/royriojas), 29/03/2015 03:37:00
+
+    
+#### Changelog
+- **Documentation**
+  - generated changelog - [2dad394]( https://github.com/royriojas/build-workflow/commit/2dad394 ), [royriojas](https://github.com/royriojas), 29/03/2015 03:17:17
+
+    
 ## v2.1.1
 - **Build Scripts Changes**
   - Release v2.1.1 - [3a3dec4]( https://github.com/royriojas/build-workflow/commit/3a3dec4 ), [royriojas](https://github.com/royriojas), 29/03/2015 03:15:48
