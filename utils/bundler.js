@@ -86,31 +86,14 @@ module.exports = {
 
         var commonTransforms = function ( b ) {
 
+          var lessify = require( './lessify' );
+
+          b.transform( {
+            global: true
+          }, lessify );
+
           var shimify = require( 'shimixify' ).configure( opts.shimixify.deps );
           var cFilter = require( 'console-filter' );
-          var lessify = require( 'node-lessify' );
-
-          var LessPluginAutoPrefix = require( 'less-plugin-autoprefix' );
-          var autoprefix = new LessPluginAutoPrefix( {
-            browsers: [
-              'last 2 versions'
-            ]
-          } );
-
-          var LessPluginCleanCSS = require( 'less-plugin-clean-css' );
-          var cleanCSSPlugin = new LessPluginCleanCSS( {
-            advanced: true
-          } );
-
-          var inlineUrlsPlugin = require( 'less-plugin-inline-urls' );
-
-          b.transform( lessify, {
-            plugins: [
-              autoprefix,
-              cleanCSSPlugin,
-              inlineUrlsPlugin
-            ]
-          } );
 
           b.transform( require( 'stricterify' ) );
           b.transform( require( './dotify' ) );
@@ -119,7 +102,9 @@ module.exports = {
             global: true
           }, shimify );
           b.transform( require( 'consoleify' ) );
-          b.transform( require( 'require-arr' ) );
+          b.transform( {
+            global: true
+          }, require( 'require-arr' ) );
 
           var filter = opts.consoleFilter;
 
