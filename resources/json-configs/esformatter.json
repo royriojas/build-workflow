@@ -7,7 +7,7 @@
   ],
   "quotes": {
     "type": "single",
-    "avoidEscape": false
+    "avoidEscape": true
   },
   "preset": "default",
   "indent": {
