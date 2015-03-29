@@ -1,5 +1,39 @@
 
 # Build Workflow - Changelog
+## v2.1.1
+- **Build Scripts Changes**
+  - Release v2.1.1 - [3a3dec4]( https://github.com/royriojas/build-workflow/commit/3a3dec4 ), [royriojas](https://github.com/royriojas), 29/03/2015 03:15:48
+
+    
+#### lessify
+- **Bug Fixes**
+  - Handle escaping chars in less files - [e7d1810]( https://github.com/royriojas/build-workflow/commit/e7d1810 ), [royriojas](https://github.com/royriojas), 29/03/2015 03:15:38
+
+    - files that contain the `\\`  character will be properly handled now.
+    This is quite common when adding font-codes
+    
+#### esformatter
+- **Enhancements**
+  - esformatter quotes avoidEscape - [09051b7]( https://github.com/royriojas/build-workflow/commit/09051b7 ), [royriojas](https://github.com/royriojas), 29/03/2015 03:13:26
+
+    Make sure we don’t accidentally break apps by changing double quotes to
+    single quotes.
+    
+#### css-font
+- **Bug Fixes**
+  - Fix wrong prop for css-font task - [797f04b]( https://github.com/royriojas/build-workflow/commit/797f04b ), [royriojas](https://github.com/royriojas), 29/03/2015 03:11:21
+
+    - Make it generic, so other fonts can be generated
+      using this task
+    - **BREAKING CHANGE**: Fix typo on property
+    `opts.jsonCodesOutput` on the css-font task. (before it
+    was `opts.jsonCodesOuput`
+    
+#### Changelog
+- **Documentation**
+  - generated changelog - [2878b55]( https://github.com/royriojas/build-workflow/commit/2878b55 ), [royriojas](https://github.com/royriojas), 26/03/2015 01:48:44
+
+    
 ## v2.1.0
 - **Build Scripts Changes**
   - Release v2.1.0 - [9d3b442]( https://github.com/royriojas/build-workflow/commit/9d3b442 ), [royriojas](https://github.com/royriojas), 26/03/2015 01:47:51
