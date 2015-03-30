@@ -91,8 +91,9 @@ module.exports = function ( grunt ) {
     var output = formatter( results );
 
     var noErrors = report.errorCount === 0;
+    var noWarnings = report.warningCount === 0;
 
-    if ( !noErrors ) {
+    if ( !noErrors || !noWarnings ) {
       if ( opts.outputFile ) {
         grunt.file.write( opts.outputFile, output );
       } else {
