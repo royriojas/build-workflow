@@ -1,5 +1,20 @@
 
 # Build Workflow - Changelog
+## v3.0.2
+- **Build Scripts Changes**
+  - Release v3.0.2 - [642b155]( https://github.com/royriojas/build-workflow/commit/642b155 ), [royriojas](https://github.com/royriojas), 30/03/2015 01:51:32
+
+    
+#### protractor conf helper
+- **Bug Fixes**
+  - Fix 'missing suistes property' in config - [50edd48]( https://github.com/royriojas/build-workflow/commit/50edd48 ), [royriojas](https://github.com/royriojas), 30/03/2015 01:51:18
+
+    
+#### Changelog
+- **Documentation**
+  - updated changelog - [801c714]( https://github.com/royriojas/build-workflow/commit/801c714 ), [royriojas](https://github.com/royriojas), 30/03/2015 01:47:28
+
+    
 ## v3.0.1
 - **Build Scripts Changes**
   - Release v3.0.1 - [eed4b41]( https://github.com/royriojas/build-workflow/commit/eed4b41 ), [royriojas](https://github.com/royriojas), 30/03/2015 01:46:37
