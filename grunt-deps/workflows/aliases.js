@@ -6,8 +6,7 @@ module.exports = function ( grunt, pkg, opts ) {
   var aliases = {
     'default': [
       'clean',
-      'check-valid',
-      'mocha_istanbul'
+      'check-valid'
     ]
   };
 

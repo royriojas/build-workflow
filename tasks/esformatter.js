@@ -29,7 +29,7 @@ module.exports = function ( grunt, pkg, options ) {
           //grunt.verbose.writeln( 'cfg', cfg );
         }
 
-        var extend = require( '../utils/extend' );
+        var extend = require( 'extend' );
         cfg = extend( true, cfg, opts.esformatterOpts );
 
         esbeautifier.on( 'beautify:start', function ( e, args ) {

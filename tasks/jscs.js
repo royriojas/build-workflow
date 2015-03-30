@@ -67,7 +67,7 @@ module.exports = function ( grunt, pkg, options ) {
           cfg = grunt.file.readJSON( path.resolve( opts.config ) );
         }
 
-        var extend = require( '../utils/extend' );
+        var extend = require( 'extend' );
         cfg = extend( true, cfg, opts.jscsOpts );
 
         var checker = getChecker( cfg );

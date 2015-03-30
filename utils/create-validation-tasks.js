@@ -7,14 +7,13 @@ module.exports = function ( parameters, grunt ) {
 
   var jsTasks = filter || validationTasks.tasks || [];
 
-  var check = require( './check' );
   var tasksToRun = [];
 
   jsTasks.forEach( function ( task ) {
 
     var name, src;
 
-    if ( check.typeOf( task ) === 'string' ) {
+    if ( typeof task === 'string' ) {
       name = task;
       src = validationTasks.src || [];
     } else {

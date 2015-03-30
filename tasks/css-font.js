@@ -2,6 +2,8 @@ module.exports = function ( grunt, pkg, options ) {
   'use strict';
 
   var gruntTaskUtils = options.gruntTaskUtils;
+  var sFormat = require( 'stringformat' );
+  var extend = require( 'extend' );
 
   var path = require( 'path' );
 
@@ -9,8 +11,6 @@ module.exports = function ( grunt, pkg, options ) {
     'css-font': {
       description: 'creates a css font css from the selection.json info file',
       multiTask: function () {
-
-        var lib = require( 'grunt-ez-frontend/lib/lib.js' );
 
         var me = this;
         //var data = me.data || {};
@@ -84,7 +84,7 @@ module.exports = function ( grunt, pkg, options ) {
             // completely override the defaults, so we need to extend from the default options and override
             // the one we want to change!...
             // again... why dot why?
-            var templateSettings = lib.extend( {}, dot.templateSettings, compileOptions );
+            var templateSettings = extend( {}, dot.templateSettings, compileOptions );
             var renderCodeFonts = dot.template( grunt.file.read( opts.fontCodesTemplate ), templateSettings );
             var renderFontsLess = dot.template( grunt.file.read( opts.fontLessTemplate ), templateSettings );
 
@@ -104,7 +104,7 @@ module.exports = function ( grunt, pkg, options ) {
 
             var jsonCodesOutput = opts.jsonCodesOutput;
             if ( jsonCodesOutput ) {
-              grunt.file.write( jsonCodesOutput, lib.format( 'var fontData = {0}', JSON.stringify( fontData, null, 2 ) ) );
+              grunt.file.write( jsonCodesOutput, sFormat( 'var fontData = {0}', JSON.stringify( fontData, null, 2 ) ) );
               grunt.log.ok( 'JSON Metadata File created: ' + jsonCodesOutput );
             }
           } );

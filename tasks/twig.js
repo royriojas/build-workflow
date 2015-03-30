@@ -7,7 +7,9 @@ module.exports = function ( grunt ) {
       description: 'render twig templates',
       multiTask: function () {
 
+        // TODO: Remove the need to include grunt-ez-frontend
         var lib = require( 'grunt-ez-frontend/lib/lib' );
+
         var path = require( 'path' );
         var Twig = require( 'twig' );
         var twig = Twig.twig;

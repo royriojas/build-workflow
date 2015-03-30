@@ -46,7 +46,7 @@ module.exports = function ( pp ) {
     } );
   } );
 
-  console.log( obj );
+  console.log( 'preprocessors config: ', obj );
 
   return obj;
 };

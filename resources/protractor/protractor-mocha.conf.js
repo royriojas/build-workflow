@@ -1,6 +1,5 @@
-
 var path = require( 'path' );
-var expand = require( 'glob-expand' );
+var expand = require( 'expand' );
 var extend = require( 'extend' );
 
 module.exports = function ( cfg ) {
@@ -29,25 +28,21 @@ module.exports = function ( cfg ) {
     capabilities: {
       browserName: 'chrome'
     },
-    suites: {
-      hack: path.resolve( __dirname, './reporter-hack.js' ) // hack to remove the dot reporter
-    },
+    framework: 'mocha',
     onPrepare: function () {
-      try {
-        var SpecReporter = require( 'jasmine-spec-reporter' );
-        // add jasmine spec reporter
-        jasmine.getEnv().addReporter( new SpecReporter( {
-          displayStacktrace: true,
-          displaySpecDuration: true
-        } ) );
-      } catch (ex) {
-        console.error( 'Error on Prepare: ', ex.message );
-      }
+      var chai = require( 'chai' );
+      chai.use( require( 'chai-as-promised' ) );
+      chai.use( require( 'sinon-chai' ) );
+      chai.use( require( 'chai-fuzzy' ) );
+      global.expect = chai.expect;
+      // make it not wait for Angular, since we don't use it
+      global.browser.ignoreSynchronization = true;
     },
-
-    // Options to be passed to Jasmine-node.
-    jasmineNodeOpts: {
-      showColors: true // Use colors in the command line report.
+    mochaOpts: {
+      ui: 'bdd',
+      reporter: 'spec',
+      // important. Mocha has a very low threshold
+      timeout: 10000
     }
   };
 
@@ -55,7 +50,7 @@ module.exports = function ( cfg ) {
 
   var files = expand( specsFiles );
 
-  console.log( 'files', specsFiles, files );
+  console.log( 'suites >>> ', specsFiles, files );
 
   var getDirectoryNameOfFile = function ( file ) {
     var name = path.dirname( file );
