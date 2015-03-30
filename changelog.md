@@ -1,5 +1,42 @@
 
 # Build Workflow - Changelog
+## v3.0.5
+- **Build Scripts Changes**
+  - Release v3.0.5 - [477a7ef]( https://github.com/royriojas/build-workflow/commit/477a7ef ), [royriojas](https://github.com/royriojas), 30/03/2015 15:21:16
+
+    
+#### twig
+- **Enhancements**
+  - add `options.extendTwig` callback to twig grunt task - [f753a12]( https://github.com/royriojas/build-workflow/commit/f753a12 ), [royriojas](https://github.com/royriojas), 30/03/2015 15:16:53
+
+    `extendTwig` allows the consumer to extend twig, adding new filters or tags.
+    
+    For example adding a filter:
+    
+    ```javascript
+    pages: {
+      options: {
+        extendTwig: function ( Twig ) {
+          Twig.extendFilter( 'processResource', function ( value, args ) {
+            args = args || [];
+            // add the version to all the required css or js files
+            var addVersion = clsc( args[ 0 ], true );
+            value = addVersion ? revFile(value, buildNumber) : value;
+            return value;
+          } );
+        },
+        cwd: 'src/pages/'
+      },
+      src: [ 'src/pages/**/*.twig' ],
+      dest: 'dist/pages/'
+    }
+    ```
+    
+#### Changelog
+- **Documentation**
+  - updated the changelog - [46f458c]( https://github.com/royriojas/build-workflow/commit/46f458c ), [royriojas](https://github.com/royriojas), 30/03/2015 02:59:44
+
+    
 ## v3.0.4
 - **Build Scripts Changes**
   - Release v3.0.4 - [7cabb64]( https://github.com/royriojas/build-workflow/commit/7cabb64 ), [royriojas](https://github.com/royriojas), 30/03/2015 02:59:07
