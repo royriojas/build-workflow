@@ -1,5 +1,34 @@
 
 # Build Workflow - Changelog
+## v3.0.1
+- **Build Scripts Changes**
+  - Release v3.0.1 - [eed4b41]( https://github.com/royriojas/build-workflow/commit/eed4b41 ), [royriojas](https://github.com/royriojas), 30/03/2015 01:46:37
+
+    
+#### protractor conf helper
+- **Bug Fixes**
+  - Fix 'cannot find expand module' issue - [d85f14c]( https://github.com/royriojas/build-workflow/commit/d85f14c ), [royriojas](https://github.com/royriojas), 30/03/2015 01:46:21
+
+    
+## v3.0.0
+- **Build Scripts Changes**
+  - Release v3.0.0 - [4c9198b]( https://github.com/royriojas/build-workflow/commit/4c9198b ), [royriojas](https://github.com/royriojas), 30/03/2015 01:33:43
+
+    
+- **Refactoring**
+  - Remove old modules taht are not longer needed - [26d5c23]( https://github.com/royriojas/build-workflow/commit/26d5c23 ), [royriojas](https://github.com/royriojas), 30/03/2015 01:32:32
+
+    
+## v2.1.3
+- **Build Scripts Changes**
+  - Release v2.1.3 - [3fd8f98]( https://github.com/royriojas/build-workflow/commit/3fd8f98 ), [royriojas](https://github.com/royriojas), 29/03/2015 23:48:20
+
+    
+#### Changelog
+- **Documentation**
+  - generated changelog - [8da9d78]( https://github.com/royriojas/build-workflow/commit/8da9d78 ), [royriojas](https://github.com/royriojas), 29/03/2015 03:37:55
+
+    
 ## v2.1.2
 - **Build Scripts Changes**
   - Release v2.1.2 - [0450c7c]( https://github.com/royriojas/build-workflow/commit/0450c7c ), [royriojas](https://github.com/royriojas), 29/03/2015 03:37:21
