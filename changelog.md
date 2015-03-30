@@ -1,5 +1,20 @@
 
 # Build Workflow - Changelog
+## v3.0.4
+- **Build Scripts Changes**
+  - Release v3.0.4 - [7cabb64]( https://github.com/royriojas/build-workflow/commit/7cabb64 ), [royriojas](https://github.com/royriojas), 30/03/2015 02:59:07
+
+    
+#### eslint
+- **Bug Fixes**
+  - Fix issue that hide the warnings when no errors were found - [e5ca52c]( https://github.com/royriojas/build-workflow/commit/e5ca52c ), [royriojas](https://github.com/royriojas), 30/03/2015 02:58:50
+
+    
+#### Changelog
+- **Documentation**
+  - updated changelog - [9aeb2b2]( https://github.com/royriojas/build-workflow/commit/9aeb2b2 ), [royriojas](https://github.com/royriojas), 30/03/2015 01:55:25
+
+    
 ## v3.0.3
 - **Build Scripts Changes**
   - Release v3.0.3 - [3efbc73]( https://github.com/royriojas/build-workflow/commit/3efbc73 ), [royriojas](https://github.com/royriojas), 30/03/2015 01:54:53
