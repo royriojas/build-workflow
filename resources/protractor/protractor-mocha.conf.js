@@ -1,5 +1,5 @@
 var path = require( 'path' );
-var expand = require( 'expand' );
+var expand = require( 'glob-expand' );
 var extend = require( 'extend' );
 
 module.exports = function ( cfg ) {
