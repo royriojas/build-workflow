@@ -1,5 +1,20 @@
 
 # Build Workflow - Changelog
+## v3.0.3
+- **Build Scripts Changes**
+  - Release v3.0.3 - [3efbc73]( https://github.com/royriojas/build-workflow/commit/3efbc73 ), [royriojas](https://github.com/royriojas), 30/03/2015 01:54:53
+
+    
+#### protractor conf helper
+- **Bug Fixes**
+  - Fix 'missing underscore' dep - [eba47e5]( https://github.com/royriojas/build-workflow/commit/eba47e5 ), [royriojas](https://github.com/royriojas), 30/03/2015 01:54:40
+
+    
+#### Changelog
+- **Documentation**
+  - updated changelog - [f20b101]( https://github.com/royriojas/build-workflow/commit/f20b101 ), [royriojas](https://github.com/royriojas), 30/03/2015 01:52:05
+
+    
 ## v3.0.2
 - **Build Scripts Changes**
   - Release v3.0.2 - [642b155]( https://github.com/royriojas/build-workflow/commit/642b155 ), [royriojas](https://github.com/royriojas), 30/03/2015 01:51:32
