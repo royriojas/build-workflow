@@ -22,6 +22,7 @@ module.exports = function ( grunt ) {
 
         var jsonData = {};
         opts.getData && (jsonData = opts.getData());
+        opts.extendTwig && ( opts.extendTwig( Twig ));
 
         var src = me.data.src;
         var dest = me.data.dest;
