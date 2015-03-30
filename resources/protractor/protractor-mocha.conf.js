@@ -43,6 +43,9 @@ module.exports = function ( cfg ) {
       reporter: 'spec',
       // important. Mocha has a very low threshold
       timeout: 10000
+    },
+    suites: {
+
     }
   };
 
