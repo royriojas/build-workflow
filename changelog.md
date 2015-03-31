@@ -1,5 +1,20 @@
 
 # Build Workflow - Changelog
+## v3.0.6
+- **Build Scripts Changes**
+  - Release v3.0.6 - [34817f0]( https://github.com/royriojas/build-workflow/commit/34817f0 ), [royriojas](https://github.com/royriojas), 31/03/2015 02:33:31
+
+    
+#### compile-less
+- **Bug Fixes**
+  - Fix for issue while trying to parse less files. Fixes [#7](https://github.com/royriojas/build-workflow/issues/7) - [442094d]( https://github.com/royriojas/build-workflow/commit/442094d ), [royriojas](https://github.com/royriojas), 31/03/2015 02:32:52
+
+    
+#### Changelog
+- **Documentation**
+  - updated the changelog - [430aa1e]( https://github.com/royriojas/build-workflow/commit/430aa1e ), [royriojas](https://github.com/royriojas), 30/03/2015 15:21:37
+
+    
 ## v3.0.5
 - **Build Scripts Changes**
   - Release v3.0.5 - [477a7ef]( https://github.com/royriojas/build-workflow/commit/477a7ef ), [royriojas](https://github.com/royriojas), 30/03/2015 15:21:16
