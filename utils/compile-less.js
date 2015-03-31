@@ -44,8 +44,9 @@ module.exports = function ( content, file, done ) {
       if ( e.extract ) {
         msg += ': "' + e.extract + '"';
       }
-
+      console.log( msg, file, e.line );
       done( new Error( msg, file, e.line ) );
+      return;
     }
 
     var compiled = output.css;
