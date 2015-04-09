@@ -96,7 +96,9 @@ module.exports = {
           var cFilter = require( 'console-filter' );
 
           b.transform( require( 'stricterify' ) );
-          b.transform( require( './dotify' ) );
+          b.transform( {
+            global: true
+          }, require( './dotify' ) );
           b.transform( require( 'reactify' ) );
           b.transform( {
             global: true
