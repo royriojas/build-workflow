@@ -1,5 +1,35 @@
 
 # Build Workflow - Changelog
+## v3.2.0
+- **Build Scripts Changes**
+  - Release v3.2.0 - [8c044b1]( https://github.com/royriojas/build-workflow/commit/8c044b1 ), [royriojas](https://github.com/royriojas), 09/04/2015 12:26:47
+
+    
+#### bundler
+- **Bug Fixes**
+  - make dotify transform global to be able to parse tpl files in node_modules - [629b046]( https://github.com/royriojas/build-workflow/commit/629b046 ), [royriojas](https://github.com/royriojas), 09/04/2015 12:26:27
+
+    
+## v3.1.0
+- **Build Scripts Changes**
+  - Release v3.1.0 - [1a90eca]( https://github.com/royriojas/build-workflow/commit/1a90eca ), [royriojas](https://github.com/royriojas), 07/04/2015 15:23:50
+
+    
+## v3.0.7
+- **Build Scripts Changes**
+  - Release v3.0.7 - [1bbda40]( https://github.com/royriojas/build-workflow/commit/1bbda40 ), [royriojas](https://github.com/royriojas), 07/04/2015 15:20:43
+
+    
+#### bundler
+- **Bug Fixes**
+  - Lock browserify version to 9.0.3. Latest version introduces a bug that produce no output when executed - [78db8b9]( https://github.com/royriojas/build-workflow/commit/78db8b9 ), [royriojas](https://github.com/royriojas), 07/04/2015 15:19:52
+
+    
+#### Changelog
+- **Documentation**
+  - updated the changelog - [f1ec80c]( https://github.com/royriojas/build-workflow/commit/f1ec80c ), [royriojas](https://github.com/royriojas), 31/03/2015 02:34:09
+
+    
 ## v3.0.6
 - **Build Scripts Changes**
   - Release v3.0.6 - [34817f0]( https://github.com/royriojas/build-workflow/commit/34817f0 ), [royriojas](https://github.com/royriojas), 31/03/2015 02:33:31
