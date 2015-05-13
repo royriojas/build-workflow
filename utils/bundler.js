@@ -25,6 +25,9 @@ module.exports = {
       bundle: function ( target, options ) {
         var me = this;
         var opts = {
+          stricterify: {
+            disabled: false
+          },
           shimixify: {
             deps: {
               window: 'global.window',
