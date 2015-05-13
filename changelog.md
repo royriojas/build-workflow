@@ -1,5 +1,36 @@
 
 # Build Workflow - Changelog
+## v3.2.3
+- **Build Scripts Changes**
+  - Release v3.2.3 - [5bbac98]( https://github.com/royriojas/build-workflow/commit/5bbac98 ), [royriojas](https://github.com/royriojas), 13/05/2015 02:49:14
+
+    
+- **Features**
+  - add `checkIfSkip` callback to stricterify in bundler task - [eb16214]( https://github.com/royriojas/build-workflow/commit/eb16214 ), [royriojas](https://github.com/royriojas), 13/05/2015 02:49:02
+
+    
+## v3.2.2
+- **Build Scripts Changes**
+  - Release v3.2.2 - [7f5f9dd]( https://github.com/royriojas/build-workflow/commit/7f5f9dd ), [royriojas](https://github.com/royriojas), 08/05/2015 17:41:19
+
+    
+- **Bug Fixes**
+  - consoleify transform is not working on ie9 - [37fad9a]( https://github.com/royriojas/build-workflow/commit/37fad9a ), [royriojas](https://github.com/royriojas), 08/05/2015 17:41:03
+
+    
+## v3.2.1
+- **Build Scripts Changes**
+  - Release v3.2.1 - [917c32f]( https://github.com/royriojas/build-workflow/commit/917c32f ), [royriojas](https://github.com/royriojas), 07/05/2015 12:04:22
+
+    
+  - Fix dependency issue introduced by JSONStream in package.json - [293bdff]( https://github.com/royriojas/build-workflow/commit/293bdff ), [royriojas](https://github.com/royriojas), 07/05/2015 12:03:39
+
+    
+#### Changelog
+- **Documentation**
+  - updated the changelog - [ddb6e28]( https://github.com/royriojas/build-workflow/commit/ddb6e28 ), [royriojas](https://github.com/royriojas), 09/04/2015 12:29:00
+
+    
 ## v3.2.0
 - **Build Scripts Changes**
   - Release v3.2.0 - [8c044b1]( https://github.com/royriojas/build-workflow/commit/8c044b1 ), [royriojas](https://github.com/royriojas), 09/04/2015 12:26:47
