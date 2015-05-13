@@ -1,6 +1,6 @@
 {
   "name": "build-workflow",
-  "version": "3.2.1",
+  "version": "3.2.2",
   "dependencies": {
     "browser-pack": {
       "version": "4.0.1",
@@ -3897,8 +3897,8 @@
       "from": "shimixify@1.0.3"
     },
     "stricterify": {
-      "version": "1.0.2",
-      "from": "stricterify@1.0.2"
+      "version": "1.0.3",
+      "from": "stricterify@latest"
     },
     "stringformat": {
       "version": "0.0.5",

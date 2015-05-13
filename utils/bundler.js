@@ -95,7 +95,10 @@ module.exports = {
           var shimify = require( 'shimixify' ).configure( opts.shimixify.deps );
           var cFilter = require( 'console-filter' );
 
-          b.transform( require( 'stricterify' ) );
+          if ( !opts.stricterify.disabled ) {
+            b.transform( require( 'stricterify' ).configure( opts.stricterify ) );
+          }
+
           b.transform( {
             global: true
           }, require( './dotify' ) );
