@@ -68,7 +68,7 @@ module.exports = function ( grunt ) {
     } );
 
     bundler.on( 'error', function ( e, err ) {
-      grunt.fatal( 'error:' + JSON.stringify( err.message ) );
+      grunt.log.writeln( '\n\nerror:' + JSON.stringify( err.message ) + '\n\n' );
     } );
 
     bundler.bundle( {
