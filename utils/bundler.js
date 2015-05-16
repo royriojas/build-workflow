@@ -28,6 +28,9 @@ module.exports = {
           stricterify: {
             disabled: false
           },
+          consoleify: {
+            disabled: false
+          },
           shimixify: {
             deps: {
               window: 'global.window',
@@ -105,11 +108,17 @@ module.exports = {
           b.transform( {
             global: true
           }, require( './dotify' ) );
+
           b.transform( require( 'reactify' ) );
+
           b.transform( {
             global: true
           }, shimify );
-          b.transform( require( 'consoleify' ) );
+
+          if ( !opts.consoleify.disabled ) {
+            b.transform( require( 'consoleify' ) );
+          }
+
           b.transform( {
             global: true
           }, require( 'require-arr' ) );
