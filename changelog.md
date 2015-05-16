@@ -1,5 +1,36 @@
 
 # Build Workflow - Changelog
+## v3.2.5
+- **Build Scripts Changes**
+  - Release v3.2.5 - [27f3701]( https://github.com/royriojas/build-workflow/commit/27f3701 ), [royriojas](https://github.com/royriojas), 16/05/2015 01:07:15
+
+    
+  - Update eslint to latest version - [b57a32a]( https://github.com/royriojas/build-workflow/commit/b57a32a ), [royriojas](https://github.com/royriojas), 16/05/2015 01:06:40
+
+    
+- **Enhancements**
+  - Do not kill the bundler watch if the task fails to compile, just wait for the next set of changes - [bdcd7e6]( https://github.com/royriojas/build-workflow/commit/bdcd7e6 ), [royriojas](https://github.com/royriojas), 16/05/2015 01:06:08
+
+    
+#### only on dev mode
+- **Bug Fixes**
+  - Ensure consoleify transform is active only when buildNumber === 'dev' (only on dev mode) - [65b50ba]( https://github.com/royriojas/build-workflow/commit/65b50ba ), [royriojas](https://github.com/royriojas), 16/05/2015 01:05:36
+
+    
+## v3.2.4
+- **Build Scripts Changes**
+  - Release v3.2.4 - [0a1732c]( https://github.com/royriojas/build-workflow/commit/0a1732c ), [royriojas](https://github.com/royriojas), 13/05/2015 12:30:33
+
+    
+- **Bug Fixes**
+  - prevent bundler from failing if not stricterify section set in the options - [8bde822]( https://github.com/royriojas/build-workflow/commit/8bde822 ), [royriojas](https://github.com/royriojas), 13/05/2015 12:30:20
+
+    
+#### Changelog
+- **Documentation**
+  - updated the changelog - [dfa5300]( https://github.com/royriojas/build-workflow/commit/dfa5300 ), [royriojas](https://github.com/royriojas), 13/05/2015 02:49:42
+
+    
 ## v3.2.3
 - **Build Scripts Changes**
   - Release v3.2.3 - [5bbac98]( https://github.com/royriojas/build-workflow/commit/5bbac98 ), [royriojas](https://github.com/royriojas), 13/05/2015 02:49:14
