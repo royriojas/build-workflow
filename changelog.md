@@ -1,5 +1,18 @@
 
 # Build Workflow - Changelog
+## v3.2.6
+- **Build Scripts Changes**
+  - Release v3.2.6 - [a4ce69b]( https://github.com/royriojas/build-workflow/commit/a4ce69b ), [royriojas](https://github.com/royriojas), 16/05/2015 15:12:44
+
+    
+  - Update consoleify to avoid leak of path of building env - [dd38a1a]( https://github.com/royriojas/build-workflow/commit/dd38a1a ), [royriojas](https://github.com/royriojas), 16/05/2015 15:12:25
+
+    
+#### Changelog
+- **Documentation**
+  - updated the changelog - [cfc8940]( https://github.com/royriojas/build-workflow/commit/cfc8940 ), [royriojas](https://github.com/royriojas), 16/05/2015 01:08:39
+
+    
 ## v3.2.5
 - **Build Scripts Changes**
   - Release v3.2.5 - [27f3701]( https://github.com/royriojas/build-workflow/commit/27f3701 ), [royriojas](https://github.com/royriojas), 16/05/2015 01:07:15
