@@ -1,6 +1,6 @@
 {
   "name": "build-workflow",
-  "version": "3.2.4",
+  "version": "3.2.5",
   "dependencies": {
     "browser-pack": {
       "version": "4.0.1",
@@ -847,7 +847,7 @@
       "from": "console-filter@1.0.0"
     },
     "consoleify": {
-      "version": "1.0.4",
+      "version": "1.0.5",
       "from": "consoleify@latest"
     },
     "deps-sort": {
