@@ -19,11 +19,12 @@ module.exports = function ( grunt ) {
       watch: watch === 'watch',
       banner: '',
       uglify: false,
-      separator: '\n\n'
+      separator: '\n\n',
+      useCache: true
       //noWrite: true
     } );
 
-    var bundler = require( '../utils/bundler' ).create();
+    var bundler = require( '../utils/bundler' ).create( 'bundler-target-' + me.target );
     var banner = grunt.template.process( opts.banner );
 
     var _dest = me.data.dest;
@@ -34,11 +35,12 @@ module.exports = function ( grunt ) {
       grunt.file.write( dest, banner + opts.separator + args.result );
 
       var duration = Date.now() - args.startTime;
-      grunt.log.ok( 'File written', dest, 'time required:', duration / 1000 );
+      grunt.log.writeln( '\n>>> File written', dest, 'Time required:', duration / 1000 );
 
       if ( opts.watch ) {
         // run forever, waiting for the next bundle cycle
-        grunt.log.ok( 'Waiting for changes...' );
+        var moment = require( 'moment' );
+        grunt.log.writeln( '>>> [' + moment().format( 'MM/DD/YYYY HH:mm:ss' ) + ']', '...Waiting for changes...\n\n' );
         return;
       }
       if ( !opts.uglify ) {
@@ -61,6 +63,12 @@ module.exports = function ( grunt ) {
         done();
       }
 
+    } );
+
+    bundler.on( ' bundler:files:updated', function ( e, args ) {
+      var files = args.files || [];
+
+      grunt.log.writeln( '\n>>> updated files \n - ', files.join( '\n - ' ), '\n' );
     } );
 
     bundler.on( 'bundler:read-file', function ( e, args ) {

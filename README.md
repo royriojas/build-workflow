@@ -24,11 +24,9 @@ The main differences are:
 So, This module will 
 
 - help you break your gigantic grunt file into small modules that are easy to reason about.
-- provide some (optional) **base tasks** and **tasks configurations** like: 
-  - **changelog**: Create a changelog from the git log info. For more info check the changelog section.
+- provide some (optional) **base tasks** and **tasks configurations** like:
+  - **bundler:** A wrapper around watchify to provide faster builds using a cache that could be persisted instead of only use the watch mode
   - **check-valid**: Beautify (with `esbeautifier`) and validate the javascript files with `eslint` and `jscs`.
-  - **install-hooks**: Install `commit-msg` and `prepush` hooks for git. To enforce the rules for commit messages
-    and to verify all files configured to be beautified and validated are checked before pushing.
   - **prepush**: the tasks that the prepush hook runs before any push is made.
   - **i18n-from-yml**: Generate `i18n.{lang}.js` files from yml translations files. (this is actually done using grunt-ez-frontend)
   - **i18n-to-ez-frontend**: create an `ez-frontend` task for each `i18n.{lang}.js` file to make each of them be 

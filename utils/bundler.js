@@ -2,6 +2,9 @@ var extend = require( 'extend' );
 var dispatchy = require( 'dispatchy' );
 var read = require( 'read-file' ).readFileSync;
 var write = require( 'write' ).sync;
+var flatCache = require( 'flat-cache' );
+var fileEntryCache = require( 'file-entry-cache' );
+var expand = require( 'glob-expand' );
 
 var stream2Text = function ( cb ) {
   var through = require( 'through2' );
@@ -20,11 +23,14 @@ var stream2Text = function ( cb ) {
 };
 
 module.exports = {
-  create: function () {
+  create: function ( id ) {
+
     return extend( dispatchy.create(), {
+      id: id,
       bundle: function ( target, options ) {
         var me = this;
         var opts = {
+          useCache: true,
           stricterify: {
             disabled: false
           },
@@ -46,6 +52,17 @@ module.exports = {
         };
 
         opts = extend( true, opts, options );
+        var cache;
+        var depsCacheFile;
+
+        var useCache = opts.useCache || opts.watch;
+
+        if ( useCache ) {
+          cache = flatCache.load( id );
+          depsCacheFile = fileEntryCache.create( 'deps-cx-' + id );
+        } else {
+          flatCache.clearCacheById( id );
+        }
 
         var watchify = require( 'watchify' );
         var browserify = require( 'browserify' );
@@ -133,11 +150,36 @@ module.exports = {
         };
 
         function bundle() {
-
-          var watchifyArgs = {
+          var wArgs = {
             cache: {},
             packageCache: {}
           };
+
+          if ( useCache ) {
+            wArgs = cache.getKey( 'watchifyArgs' ) || wArgs;
+
+            if ( !wArgs ) {
+
+              wArgs = {
+                cache: {},
+                packageCache: {}
+              };
+
+              cache.setKey( 'watchifyArgs', wArgs );
+            }
+
+            var changedFiles = depsCacheFile.getUpdatedFiles( expand.apply( null, Object.keys( wArgs.cache ) ) );
+            if ( changedFiles.length > 0 ) {
+              me.fire( 'bundler:files:updated', {
+                files: changedFiles
+              } );
+            }
+            changedFiles.forEach( function ( file ) {
+              delete wArgs.cache[ file ];
+            } );
+          }
+
+          var watchifyArgs = wArgs;
 
           var b = browserify( watchifyArgs );
 
@@ -149,16 +191,36 @@ module.exports = {
 
           opts.preBundleCB && opts.preBundleCB( b );
 
-          var w = opts.watch ? watchify( b ) : b;
+          var w = (opts.watch || opts.useCache) ? watchify( b ) : b;
 
-          var doBundle = function () {
+          var doBundle = function ( _changedFiles ) {
+            _changedFiles = _changedFiles || [];
+            if ( _changedFiles.length > 0 ) {
+              me.fire( 'bundler:files:updated', {
+                files: _changedFiles
+              } );
+            }
+
             var time = Date.now();
+
             w.bundle( function ( err ) {
+
               if ( err ) {
                 me.fire( 'error', err );
                 return;
               }
+
               opts.postBundle && opts.postBundle();
+
+              if ( useCache ) {
+                setTimeout( function () {
+                  cache.setKey( 'watchifyArgs', watchifyArgs );
+                  cache.save();
+                  depsCacheFile.getUpdatedFiles( expand.apply( null, Object.keys( watchifyArgs.cache ) ) );
+                  depsCacheFile.reconcile();
+                }, 0 );
+              }
+
             } ).pipe( concatIfRequired( target, time ) );
           };
 
