@@ -30,6 +30,15 @@ module.exports = function ( grunt ) {
     var _dest = me.data.dest;
     var dest = opts.buildVersion ? addVersion( _dest, opts.buildVersion ) : _dest;
 
+    bundler.on( 'bundler:skip-write-dest', function ( e, args ) {
+
+      var duration = Date.now() - args.startTime;
+      grunt.log.writeln( '>>> Neither the sources nor the destination have changed. \n\n>>> Skipping writing the file:', dest, '\n>>> Time required:', duration / 1000 );
+      if ( !opts.watch ) {
+        done();
+      }
+    } );
+
     bundler.on( 'bundler:done', function ( e, args ) {
 
       grunt.file.write( dest, banner + opts.separator + args.result );
@@ -80,7 +89,9 @@ module.exports = function ( grunt ) {
     } );
 
     bundler.bundle( {
-      src: me.data.src
+      src: me.data.src,
+      noWrite: true,
+      dest: dest
     }, opts );
 
   } );

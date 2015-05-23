@@ -52,16 +52,23 @@ module.exports = {
         };
 
         opts = extend( true, opts, options );
+
         var cache;
         var depsCacheFile;
+        var destCacheFile;
+        var foundCache = true;
 
         var useCache = opts.useCache || opts.watch;
 
         if ( useCache ) {
           cache = flatCache.load( id );
           depsCacheFile = fileEntryCache.create( 'deps-cx-' + id );
+          destCacheFile = fileEntryCache.create( 'dest-cx-' + id );
+
         } else {
           flatCache.clearCacheById( id );
+          //depsCacheFile.deleteCacheFile();
+          //destCacheFile.deleteCacheFile();
         }
 
         var watchify = require( 'watchify' );
@@ -92,9 +99,26 @@ module.exports = {
               } );
               text = text + files.join( opts.separator );
             }
+            var shouldWrite = true;
 
-            if ( receivedTarget.dest ) {
-              write( receivedTarget.dest, text );
+            if ( useCache ) {
+              var destFileChanged = destCacheFile.getUpdatedFiles( expand( receivedTarget.dest ) );
+              console.log( '>>>>', destFileChanged );
+              var destinationHasChanged = destFileChanged.length > 0;
+              shouldWrite = foundCache && depsCacheFile.length > 0 || destinationHasChanged;
+
+              if ( !shouldWrite ) {
+                me.fire( 'bundler:skip-write-dest', {
+                  result: text,
+                  target: receivedTarget,
+                  startTime: time
+                } );
+                return text;
+              }
+            }
+
+            if ( receivedTarget.dest && !receivedTarget.noWrite ) {
+              shouldWrite && write( receivedTarget.dest, text );
             }
 
             me.fire( 'bundler:done', {
@@ -102,6 +126,8 @@ module.exports = {
               target: receivedTarget,
               startTime: time
             } );
+
+            opts.useCache && destCacheFile.reconcile();
 
             return text;
           } );
@@ -154,11 +180,11 @@ module.exports = {
             cache: {},
             packageCache: {}
           };
-
           if ( useCache ) {
-            wArgs = cache.getKey( 'watchifyArgs' ) || wArgs;
-
+            wArgs = cache.getKey( 'watchifyArgs' );
             if ( !wArgs ) {
+
+              foundCache = false;
 
               wArgs = {
                 cache: {},
@@ -169,14 +195,17 @@ module.exports = {
             }
 
             var changedFiles = depsCacheFile.getUpdatedFiles( expand.apply( null, Object.keys( wArgs.cache ) ) );
+
             if ( changedFiles.length > 0 ) {
               me.fire( 'bundler:files:updated', {
                 files: changedFiles
               } );
             }
+
             changedFiles.forEach( function ( file ) {
               delete wArgs.cache[ file ];
             } );
+
           }
 
           var watchifyArgs = wArgs;
