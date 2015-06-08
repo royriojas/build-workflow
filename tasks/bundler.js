@@ -76,7 +76,7 @@ module.exports = function ( grunt ) {
     } );
 
     bundler.on( 'error', function ( e, err ) {
-      grunt.log.writeln( '\n\nerror:' + JSON.stringify( err.message ) + '\n\n' );
+      grunt.log.writeln( '\n\nerror:' + JSON.stringify( err.message, null, 2 ) + '\n\n' );
     } );
 
     bundler.bundle( {
