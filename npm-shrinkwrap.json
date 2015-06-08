@@ -1,6 +1,6 @@
 {
   "name": "build-workflow",
-  "version": "3.2.7",
+  "version": "3.2.8",
   "dependencies": {
     "browser-pack": {
       "version": "4.0.1",
@@ -4177,8 +4177,8 @@
       "from": "shimixify@1.0.3"
     },
     "simpless": {
-      "version": "1.0.2",
-      "from": "simpless@*",
+      "version": "1.0.7",
+      "from": "simpless@latest",
       "dependencies": {
         "autoprefixer-core": {
           "version": "5.2.0",
@@ -4388,7 +4388,7 @@
               "dependencies": {
                 "glob": {
                   "version": "4.5.3",
-                  "from": "glob@>=4.4.2 <5.0.0",
+                  "from": "glob@>=4.4.0 <5.0.0",
                   "resolved": "https://registry.npmjs.org/glob/-/glob-4.5.3.tgz",
                   "dependencies": {
                     "inflight": {
@@ -4800,7 +4800,7 @@
                 },
                 "glob": {
                   "version": "4.5.3",
-                  "from": "glob@>=4.4.2 <5.0.0",
+                  "from": "glob@>=4.4.0 <5.0.0",
                   "resolved": "https://registry.npmjs.org/glob/-/glob-4.5.3.tgz",
                   "dependencies": {
                     "inflight": {
