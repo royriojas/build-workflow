@@ -1,5 +1,10 @@
 
 # Build Workflow - Changelog
+## v3.2.8
+- **Features**
+  - Add grunt-simpless task - [07f77fe]( https://github.com/royriojas/build-workflow/commit/07f77fe ), [royriojas](https://github.com/royriojas), 08/06/2015 02:16:15
+
+    
 ## v3.2.7
 - **Features**
   - bundler now uses a cache to improve building speed - [48f8aa0]( https://github.com/royriojas/build-workflow/commit/48f8aa0 ), [royriojas](https://github.com/royriojas), 22/05/2015 16:55:38
