@@ -1,5 +1,10 @@
 
 # Build Workflow - Changelog
+## v3.2.9
+- **Build Scripts Changes**
+  - Lock dependencies - [5857c44]( https://github.com/royriojas/build-workflow/commit/5857c44 ), [royriojas](https://github.com/royriojas), 08/06/2015 02:21:06
+
+    
 ## v3.2.8
 - **Features**
   - Add grunt-simpless task - [07f77fe]( https://github.com/royriojas/build-workflow/commit/07f77fe ), [royriojas](https://github.com/royriojas), 08/06/2015 02:16:15
