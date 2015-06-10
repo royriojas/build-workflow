@@ -1,5 +1,10 @@
 
 # Build Workflow - Changelog
+## v4.0.1
+- **Build Scripts Changes**
+  - Lock deps - [2cf00b0]( https://github.com/royriojas/build-workflow/commit/2cf00b0 ), [royriojas](https://github.com/royriojas), 10/06/2015 05:01:27
+
+    
 ## v4.0.0
 - **Refactoring**
   - Some serious refactoring in order to make this module easier to use - [aa7428c]( https://github.com/royriojas/build-workflow/commit/aa7428c ), [royriojas](https://github.com/royriojas), 10/06/2015 04:48:41
