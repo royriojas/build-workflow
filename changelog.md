@@ -1,5 +1,10 @@
 
 # Build Workflow - Changelog
+## v3.2.10
+- **Enhancements**
+  - Better error reporting on auto-prefix failure. - [06c5b32]( https://github.com/royriojas/build-workflow/commit/06c5b32 ), [royriojas](https://github.com/royriojas), 09/06/2015 22:31:13
+
+    
 ## v3.2.9
 - **Build Scripts Changes**
   - Lock dependencies - [5857c44]( https://github.com/royriojas/build-workflow/commit/5857c44 ), [royriojas](https://github.com/royriojas), 08/06/2015 02:21:06
