@@ -6,22 +6,6 @@ var flatCache = require( 'flat-cache' );
 var fileEntryCache = require( 'file-entry-cache' );
 var expand = require( 'glob-expand' );
 
-var stream2Text = function ( cb ) {
-  var through = require( 'through2' );
-  var data = '';
-
-  return through.obj( function ( chunk, encoding, done ) {
-    data += chunk.toString();
-    done( null );
-  }, function ( _cb ) {
-    var result = cb( data );
-    if ( result ) {
-      this.push( result );
-    }
-    _cb();
-  } );
-};
-
 module.exports = {
   create: function ( id ) {
 
@@ -67,44 +51,42 @@ module.exports = {
         var watchify = require( 'watchify' );
         var browserify = require( 'browserify' );
 
-        var concatIfRequired = function ( receivedTarget, time ) {
-          return stream2Text( function ( text ) {
-            var files = [];
+        var concatIfRequired = function ( receivedTarget, time, text ) {
+          var files = [];
 
-            if ( opts.concatBefore ) {
-              files = opts.concatBefore.map( function ( file ) {
-                //console.log( 'reading file', file );
-                me.fire( 'bundler:read-file', {
-                  file: file
-                } );
-                return read( file );
+          if ( opts.concatBefore ) {
+            files = opts.concatBefore.map( function ( file ) {
+              //console.log( 'reading file', file );
+              me.fire( 'bundler:read-file', {
+                file: file
               } );
-              text = files.join( opts.separator ) + text;
-            }
-
-            if ( opts.concatAfter ) {
-              files = opts.concatAfter.map( function ( file ) {
-                me.fire( 'bundler:read-file', {
-                  file: file
-                } );
-
-                return read( file );
-              } );
-              text = text + files.join( opts.separator );
-            }
-
-            if ( receivedTarget.dest ) {
-              write( receivedTarget.dest, text );
-            }
-
-            me.fire( 'bundler:done', {
-              result: text,
-              target: receivedTarget,
-              startTime: time
+              return read( file );
             } );
+            text = files.join( opts.separator ) + text;
+          }
 
-            return text;
+          if ( opts.concatAfter ) {
+            files = opts.concatAfter.map( function ( file ) {
+              me.fire( 'bundler:read-file', {
+                file: file
+              } );
+
+              return read( file );
+            } );
+            text = text + files.join( opts.separator );
+          }
+
+          if ( receivedTarget.dest ) {
+            write( receivedTarget.dest, text );
+          }
+
+          me.fire( 'bundler:done', {
+            result: text,
+            target: receivedTarget,
+            startTime: time
           } );
+
+          return text;
         };
 
         var commonTransforms = function ( b ) {
@@ -203,7 +185,7 @@ module.exports = {
 
             var time = Date.now();
 
-            w.bundle( function ( err ) {
+            w.bundle( function ( err, buff ) {
 
               if ( err ) {
                 me.fire( 'error', err );
@@ -221,7 +203,10 @@ module.exports = {
                 }, 0 );
               }
 
-            } ).pipe( concatIfRequired( target, time ) );
+              var outp = buff.toString();
+              concatIfRequired( target, time, outp );
+
+            } );
           };
 
           opts.watch && w.on( 'update', doBundle );

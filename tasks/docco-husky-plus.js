@@ -1,8 +1,8 @@
-module.exports = function ( grunt, pkg, opts ) {
+module.exports = function ( grunt /*, pkg, opts */ ) {
   'use strict';
-  var gruntTaksUtils = opts.gruntTaskUtils;
+  var gruntTaskUtils = require( '../utils/grunt-helper' )( grunt );
 
-  gruntTaksUtils.registerTasks( {
+  gruntTaskUtils.registerTasks( {
     'docco-husky-plus': {
       description: '',
       multiTask: function () {

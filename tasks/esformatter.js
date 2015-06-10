@@ -1,9 +1,9 @@
-module.exports = function ( grunt, pkg, options ) {
+module.exports = function ( grunt /*, pkg, opts */ ) {
   'use strict';
 
   var chalk = require( 'chalk' );
   var sFormat = require( 'stringformat' );
-  var gruntTaskUtils = options.gruntTaskUtils;
+  var gruntTaskUtils = require( '../utils/grunt-helper' )( grunt );
 
   gruntTaskUtils.registerTasks( {
     esformatter: {

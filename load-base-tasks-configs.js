@@ -1,5 +1,6 @@
-module.exports = function ( grunt, opts, pkg, helperOptions ) {
+module.exports = function ( grunt, opts, pkg ) {
 
+  var chalk = require( 'chalk' );
   var path = require( 'path' );
 
   var baseConfigs = {};
@@ -11,11 +12,11 @@ module.exports = function ( grunt, opts, pkg, helperOptions ) {
     var entryName = path.basename( entry, '.js' );
 
     tryCatch( function () {
-      baseConfigs[ entryName ] = require( entry )( grunt, pkg, helperOptions );
+      baseConfigs[ entryName ] = require( entry )( grunt, pkg );
     }, function ( err ) {
 
-      console.error( 'err loading a base configuration... some of the tasks might not work: ', entryName );
-      console.error( '>>> ', err );
+      console.error( chalk.red( 'err loading a base configuration... some of the tasks might not work: ' ) + entryName );
+      console.error( chalk.red( '>>> ' + err.message ) );
       throw err;
     } );
   } );

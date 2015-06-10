@@ -1,14 +1,13 @@
-module.exports = function ( grunt, pkg, opts ) {
+module.exports = function ( grunt /*, pkg, opts */ ) {
   'use strict';
 
-  var gruntTaksUtils = opts.gruntTaskUtils;
+  var gruntTaskUtils = require( '../../utils/grunt-helper' )( grunt );
 
   var aliases = {
     'default': [
-      'clean',
       'check-valid'
     ]
   };
 
-  gruntTaksUtils.registerTasks( aliases );
+  gruntTaskUtils.registerTasks( aliases );
 };

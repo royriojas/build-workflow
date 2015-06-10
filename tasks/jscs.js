@@ -1,7 +1,7 @@
-module.exports = function ( grunt, pkg, options ) {
+module.exports = function ( grunt /*, pkg, opts */ ) {
   'use strict';
 
-  var gruntTaskUtils = options.gruntTaskUtils;
+  var gruntTaskUtils = require( '../utils/grunt-helper' )( grunt );
 
   var JSCS = require( 'jscs' );
   var ES6Promise = require( 'es6-promise' ).Promise;
@@ -75,8 +75,8 @@ module.exports = function ( grunt, pkg, options ) {
         var promises = filesSrc.map( function ( file ) {
           var p = checker.check( file );
           p.catch( function ( err ) {
-            grunt.verbose.writeln( 'jscs error: ', err.message );
-            grunt.fail.warn( 'jscs error on file', file );
+            grunt.log.writeln( 'jscs error: ', err.message, err.stack );
+            grunt.fail.warn( 'jscs error on file' + file );
           } );
           return p;
         } );

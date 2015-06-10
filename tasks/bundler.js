@@ -1,5 +1,16 @@
 module.exports = function ( grunt ) {
   var extend = require( 'extend' );
+  var path = require( 'path' );
+  var ES6Promise = require( 'es6-promise' ).Promise;
+  var crypto = require( 'crypto' );
+
+  var md5 = function ( str, encoding ) {
+
+    return crypto
+      .createHash( 'md5' )
+      .update( str + '' )
+      .digest( encoding || 'hex' );
+  };
 
   var makeMinName = function ( fileName ) {
     var rgex = /(.+)\.(\w+)$/gi;
@@ -14,6 +25,8 @@ module.exports = function ( grunt ) {
   grunt.registerMultiTask( 'bundler', function ( watch ) {
     var me = this;
 
+    var logger = require( '../utils/log' )( grunt );
+
     var done = me.async();
     var opts = me.options( {
       watch: watch === 'watch',
@@ -24,64 +37,90 @@ module.exports = function ( grunt ) {
       //noWrite: true
     } );
 
-    var bundler = require( '../utils/bundler' ).create( 'bundler-target-' + me.target );
+    var fileEntries = me.files || [];
     var banner = grunt.template.process( opts.banner );
 
-    var _dest = me.data.dest;
-    var dest = opts.buildVersion ? addVersion( _dest, opts.buildVersion ) : _dest;
+    var p = fileEntries.reduce( function ( seq, data ) {
+      return seq.then( function () {
 
-    bundler.on( 'bundler:done', function ( e, args ) {
+        var hash = md5( data.src );
 
-      grunt.file.write( dest, banner + opts.separator + args.result );
+        return new ES6Promise( function ( resolve ) {
 
-      var duration = Date.now() - args.startTime;
-      grunt.log.writeln( '\n>>> File written', dest, 'Time required:', duration / 1000 );
+          var bundler = require( '../utils/bundler' ).create( 'b-t-' + me.target + '-' + hash );
 
-      if ( opts.watch ) {
-        // run forever, waiting for the next bundle cycle
-        var moment = require( 'moment' );
-        grunt.log.writeln( '>>> [' + moment().format( 'MM/DD/YYYY HH:mm:ss' ) + ']', '...Waiting for changes...\n\n' );
-        return;
-      }
-      if ( !opts.uglify ) {
+          var _dest = data.dest;
+          var dest = opts.buildVersion ? addVersion( _dest, opts.buildVersion ) : _dest;
+
+          bundler.on( 'bundler:done', function ( e, args ) {
+
+            grunt.file.write( dest, banner + opts.separator + args.result );
+
+            var duration = Date.now() - args.startTime;
+            logger.ok( 'File written', path.resolve( dest ), 'Time required:', duration / 1000 );
+
+            if ( opts.watch ) {
+              // run forever, waiting for the next bundle cycle
+              var moment = require( 'moment' );
+              logger.subtle( '[' + moment().format( 'MM/DD/YYYY HH:mm:ss' ) + ']', '...Waiting for changes...\n\n' );
+              resolve();
+              return;
+            }
+            if ( !opts.uglify ) {
+              resolve();
+            } else {
+              var tStart = Date.now();
+
+              var uglify = require( 'uglify-js' );
+
+              var result = uglify.minify( args.result, extend( true, {
+                mangle: true
+              }, opts.uglify, {
+                fromString: true
+              } ) );
+
+              var minFile = makeMinName( dest );
+
+              grunt.file.write( minFile, banner + opts.separator + result.code );
+              logger.ok( 'File written', path.resolve( minFile ), 'time required:', (Date.now() - tStart) / 1000 );
+              resolve();
+            }
+
+          } );
+
+          bundler.on( ' bundler:files:updated', function ( e, args ) {
+            var files = args.files || [];
+
+            logger.subtle( [
+              '\n updated files \n -',
+              files.join( '\n - ' ),
+              '\n'
+            ].join( ' ' ) );
+          } );
+
+          bundler.on( 'bundler:read-file', function ( e, args ) {
+            logger.log( 'Reading file ', args.file );
+          } );
+
+          bundler.on( 'error', function ( e, err ) {
+            if ( opts.watch ) {
+              logger.important( '\n\nerror:' + JSON.stringify( err.message, null, 2 ) + '\n\n' );
+            } else {
+              logger.error( '\n\nerror:' + JSON.stringify( err.message, null, 2 ) + '\n\n' );
+            }
+          } );
+
+          bundler.bundle( {
+            src: data.src
+          }, opts );
+        } );
+      } );
+    }, Promise.resolve() );
+
+    p.then( function () {
+      if ( !opts.watch ) {
         done();
-      } else {
-        var tStart = Date.now();
-
-        var uglify = require( 'uglify-js' );
-
-        var result = uglify.minify( args.result, extend( true, {
-          mangle: true
-        }, opts.uglify, {
-          fromString: true
-        } ) );
-
-        var minFile = makeMinName( dest );
-
-        grunt.file.write( minFile, banner + opts.separator + result.code );
-        grunt.log.ok( 'File written', minFile, 'time required:', (Date.now() - tStart) / 1000 );
-        done();
       }
-
     } );
-
-    bundler.on( ' bundler:files:updated', function ( e, args ) {
-      var files = args.files || [];
-
-      grunt.log.writeln( '\n>>> updated files \n - ', files.join( '\n - ' ), '\n' );
-    } );
-
-    bundler.on( 'bundler:read-file', function ( e, args ) {
-      grunt.verbose.writeln( 'Reading file ', args.file );
-    } );
-
-    bundler.on( 'error', function ( e, err ) {
-      grunt.log.writeln( '\n\nerror:' + JSON.stringify( err.message, null, 2 ) + '\n\n' );
-    } );
-
-    bundler.bundle( {
-      src: me.data.src
-    }, opts );
-
   } );
 };

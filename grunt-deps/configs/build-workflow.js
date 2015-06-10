@@ -15,7 +15,7 @@ module.exports = function ( /*grunt, pkg, options*/ ) {
 
   return {
     prepushTasks: [
-      'jsonlint'
+    //'jsonlint'
     ],
     validationTasks: {
       src: prepushFiles,

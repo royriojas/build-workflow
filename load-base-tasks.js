@@ -1,4 +1,4 @@
-module.exports = function ( grunt, opts, pkg, helperOptions ) {
+module.exports = function ( grunt, opts, pkg ) {
 
   var path = require( 'path' );
 
@@ -9,7 +9,7 @@ module.exports = function ( grunt, opts, pkg, helperOptions ) {
   // Load the common Tasks definitions
   commonTasks.forEach( function ( entry ) {
     //console.log('loading common tasks', entry );
-    require( entry )( grunt, pkg, helperOptions );
+    require( entry )( grunt, pkg );
   } );
 
 };

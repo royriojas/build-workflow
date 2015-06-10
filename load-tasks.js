@@ -1,4 +1,4 @@
-module.exports = function ( grunt, opts, pkg, helperOptions ) {
+module.exports = function ( grunt, opts, pkg ) {
 
   var path = require( 'path' );
 
@@ -10,7 +10,7 @@ module.exports = function ( grunt, opts, pkg, helperOptions ) {
   // iterate over them and execute them
   customTasks.forEach( function ( entry ) {
     //console.log('loading custom tasks', entry );
-    require( path.join( basePath, entry ) )( grunt, pkg, helperOptions );
+    require( path.join( basePath, entry ) )( grunt, pkg );
   } );
 
 };

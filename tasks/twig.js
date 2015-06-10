@@ -1,6 +1,6 @@
 module.exports = function ( grunt ) {
   'use strict';
-  var gruntTaskUtils = require( 'grunt-ez-frontend/lib/grunt-task-utils' )( grunt );
+  var gruntTaskUtils = require( '../utils/grunt-helper' )( grunt );
 
   gruntTaskUtils.registerTasks( {
     twig: {

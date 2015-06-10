@@ -1,10 +1,11 @@
 module.exports = function ( grunt ) {
   var path = require( 'path' );
   var extend = require( 'extend' );
+  var moment = require( 'moment' );
 
   grunt.registerMultiTask( 'simpless', function () {
     var me = this;
-
+    var logger = require( '../utils/log' )( grunt );
     var done = me.async();
 
     var opts = me.options( {
@@ -23,31 +24,34 @@ module.exports = function ( grunt ) {
     var simpless = require( 'simpless' ).create();
     var util = require( 'util' );
 
+    var start = moment();
     var banner = grunt.template.process( opts.banner );
 
     simpless.on( 'error', function ( e, err ) {
-      grunt.log.error( 'Error parsing less file\n\n', err.message );
+      logger.error( 'Error parsing less file\n\n', err.message );
     } );
 
     simpless.on( 'resource:copied', function ( e, args ) {
-      grunt.verbose.writeln( 'resource copied from:', args.from, 'to:', args.to );
+      logger.log( 'resource copied from:', args.from, 'to:', args.to );
     } );
 
     simpless.on( 'url:replaced', function ( e, args ) {
-      grunt.verbose.writeln( 'url replaced from:', args.from, 'to:', args.to );
+      logger.log( 'url replaced from:', args.from, 'to:', args.to );
     } );
 
     simpless.on( 'write:file write:minimized', function ( e, args ) {
-      grunt.log.ok( 'File written:', args.dest );
+      var now = moment();
+      logger.ok( 'File written:', args.dest, 'Time required:', now.diff( start ) / 1000 );
       if ( !opts.minimize && e.type === 'write:file' ) {
         done();
+        return;
       }
       if ( opts.minimize && e.type === 'write:minimized' ) {
         done();
       }
     } );
 
-    grunt.verbose.writeln( 'options', util.inspect( opts ) );
+    logger.log( 'options', util.inspect( opts ) );
 
     simpless.process( {
       src: me.filesSrc,

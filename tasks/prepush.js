@@ -1,7 +1,7 @@
-module.exports = function ( grunt, pkg, options ) {
+module.exports = function ( grunt /*, pkg, opts */ ) {
   'use strict';
 
-  var gruntTaskUtils = options.gruntTaskUtils;
+  var gruntTaskUtils = require( '../utils/grunt-helper' )( grunt );
   var createValidationTasks = require( '../utils/create-validation-tasks' );
 
   gruntTaskUtils.registerTasks( {

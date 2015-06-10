@@ -1,8 +1,8 @@
-module.exports = function ( grunt, pkg, opts ) {
+module.exports = function ( grunt /*, pkg, opts */ ) {
   'use strict';
-  var gruntTaksUtils = opts.gruntTaskUtils;
+  var gruntTaskUtils = require( 'build-workflow/utils/grunt-helper' )( grunt );
 
-  gruntTaksUtils.registerTasks( {
+  gruntTaskUtils.registerTasks( {
     dev: [
       'install-hooks',
       'clean',

@@ -73,9 +73,6 @@ module.exports = function ( grunt, args ) {
     defaultVersionWhenNoBuildNumber: 'dev'
   };
 
-  var lib = require( 'grunt-ez-frontend/lib/lib.js' );
-  var gruntTaskUtils = require( 'grunt-ez-frontend/lib/grunt-task-utils.js' )( grunt );
-
   // only enable the reporting option if the flag `report-time` is passed when called
   // grunt. Example: `grunt --report-time`.
   //
@@ -92,7 +89,8 @@ module.exports = function ( grunt, args ) {
     require( 'time-grunt' )( grunt );
   }
 
-  lib.extend( opts, args );
+  var extend = require( 'extend' );
+  extend( opts, args );
 
   var filterMethod = opts.filterDevOnly ? 'filterDev' : 'filterAll';
 
@@ -136,13 +134,8 @@ module.exports = function ( grunt, args ) {
     pkg.version = optionBuildNumber || pkg.version;
   }
 
-  // helper options are a set of arguments that are going to be passed to all the `base tasks` and `local tasks` definitions
-  var helperOptions = {
-    gruntTaskUtils: gruntTaskUtils
-  };
-
   // base tasks will only be loaded if the flag `opts.loadBaseTasksAndConfigs` is set to true.
-  opts.loadBaseTasksAndConfigs && require( './load-base-tasks' )( grunt, opts, pkg, helperOptions );
+  opts.loadBaseTasksAndConfigs && require( './load-base-tasks' )( grunt, opts, pkg );
 
   grunt.initConfig( {
     // grunt files set the pkg object to be used in the expanded templates.
@@ -150,17 +143,17 @@ module.exports = function ( grunt, args ) {
   } );
 
   // base configurations for tasks will be loaded only if the flag `opts.loadBaseTasksAndConfigs` is set to true.
-  var baseConfigs = opts.loadBaseTasksAndConfigs ? require( './load-base-tasks-configs' )( grunt, opts, pkg, helperOptions ) : {};
+  var baseConfigs = opts.loadBaseTasksAndConfigs ? require( './load-base-tasks-configs' )( grunt, opts, pkg ) : {};
 
   // load custom tasks in the `opts.customTasks` path
-  require( './load-tasks' )( grunt, opts, pkg, helperOptions );
+  require( './load-tasks' )( grunt, opts, pkg );
 
   // load the tasks configs from `opts.taskConfigs` path
-  require( './load-tasks-configs' )( grunt, opts, pkg, helperOptions, baseConfigs );
+  require( './load-tasks-configs' )( grunt, opts, pkg, baseConfigs );
 
   // load the workflows (aliases) from the `opts.workflows` path
   var workflows = grunt.file.expand( path.join( basePath, opts.workflows ) );
   workflows.forEach( function ( entry ) {
-    require( entry )( grunt, pkg, helperOptions );
+    require( entry )( grunt, pkg );
   } );
 };
