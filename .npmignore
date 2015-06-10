@@ -1,3 +1,5 @@
 apidocs/
 docs/
 coverage/
+.idea/
+demo-structure/

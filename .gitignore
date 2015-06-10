@@ -3,5 +3,6 @@ report/
 documentation/
 apidocs/
 coverage/
-.cache/i
+.cache/
 .eslintrc
+.idea/

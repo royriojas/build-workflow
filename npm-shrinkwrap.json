@@ -1,6 +1,6 @@
 {
   "name": "build-workflow",
-  "version": "3.2.8",
+  "version": "3.2.9",
   "dependencies": {
     "browser-pack": {
       "version": "4.0.1",
@@ -4177,8 +4177,8 @@
       "from": "shimixify@1.0.3"
     },
     "simpless": {
-      "version": "1.0.7",
-      "from": "simpless@latest",
+      "version": "1.0.9",
+      "from": "simpless@>=1.0.8 <2.0.0",
       "dependencies": {
         "autoprefixer-core": {
           "version": "5.2.0",
@@ -4196,9 +4196,9 @@
               "resolved": "https://registry.npmjs.org/num2fraction/-/num2fraction-1.1.0.tgz"
             },
             "caniuse-db": {
-              "version": "1.0.30000203",
+              "version": "1.0.30000208",
               "from": "caniuse-db@>=1.0.30000181 <2.0.0",
-              "resolved": "https://registry.npmjs.org/caniuse-db/-/caniuse-db-1.0.30000203.tgz"
+              "resolved": "https://registry.npmjs.org/caniuse-db/-/caniuse-db-1.0.30000208.tgz"
             }
           }
         },
@@ -4763,9 +4763,9 @@
               "resolved": "https://registry.npmjs.org/source-map/-/source-map-0.4.2.tgz",
               "dependencies": {
                 "amdefine": {
-                  "version": "0.1.0",
+                  "version": "0.1.1",
                   "from": "amdefine@>=0.0.4",
-                  "resolved": "https://registry.npmjs.org/amdefine/-/amdefine-0.1.0.tgz"
+                  "resolved": "https://registry.npmjs.org/amdefine/-/amdefine-0.1.1.tgz"
                 }
               }
             }
@@ -4909,9 +4909,9 @@
               "resolved": "https://registry.npmjs.org/source-map/-/source-map-0.4.2.tgz",
               "dependencies": {
                 "amdefine": {
-                  "version": "0.1.0",
+                  "version": "0.1.1",
                   "from": "amdefine@>=0.0.4",
-                  "resolved": "https://registry.npmjs.org/amdefine/-/amdefine-0.1.0.tgz"
+                  "resolved": "https://registry.npmjs.org/amdefine/-/amdefine-0.1.1.tgz"
                 }
               }
             },

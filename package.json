@@ -67,7 +67,7 @@
     "read-file": "0.1.2",
     "require-arr": "1.0.2",
     "shimixify": "1.0.3",
-    "simpless": "^1.0.7",
+    "simpless": "^1.0.9",
     "stricterify": "^1.0.3",
     "stringformat": "0.0.5",
     "through2": "0.6.3",
