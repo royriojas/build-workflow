@@ -71,7 +71,7 @@
   },
   "devDependencies": {
     "chai": "^2.2.0",
-    "chai-as-promised": "^4.3.0",
+    "chai-as-promised": "5.1.0",
     "chai-fuzzy": "^1.5.0",
     "changelogx": "^1.0.12",
     "grunt": "^0.4.5",
