@@ -1,5 +1,13 @@
 
 # Build Workflow - Changelog
+## v4.0.5
+- **Build Scripts Changes**
+  - add changelog helper task - [e876056]( https://github.com/royriojas/build-workflow/commit/e876056 ), [royriojas](https://github.com/royriojas), 10/06/2015 23:28:37
+
+    
+  - Lock deps - [3f5a22b]( https://github.com/royriojas/build-workflow/commit/3f5a22b ), [royriojas](https://github.com/royriojas), 10/06/2015 23:21:52
+
+    
 ## v4.0.4
 - **Enhancements**
   - Enable file expansion on simpless - [1498e68]( https://github.com/royriojas/build-workflow/commit/1498e68 ), [royriojas](https://github.com/royriojas), 10/06/2015 23:17:16
