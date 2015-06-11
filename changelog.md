@@ -1,5 +1,25 @@
 
 # Build Workflow - Changelog
+## v4.0.4
+- **Enhancements**
+  - Enable file expansion on simpless - [1498e68]( https://github.com/royriojas/build-workflow/commit/1498e68 ), [royriojas](https://github.com/royriojas), 10/06/2015 23:17:16
+
+    
+  - twig multitask now support dynamic file expanding - [efdcf0c]( https://github.com/royriojas/build-workflow/commit/efdcf0c ), [royriojas](https://github.com/royriojas), 10/06/2015 22:43:47
+
+    
+- **Bug Fixes**
+  - Use ES6Promise instead of Promise - [ae476f5]( https://github.com/royriojas/build-workflow/commit/ae476f5 ), [royriojas](https://github.com/royriojas), 10/06/2015 23:06:23
+
+    
+- **Refactoring**
+  - Make sure we access src as text - [927a185]( https://github.com/royriojas/build-workflow/commit/927a185 ), [royriojas](https://github.com/royriojas), 10/06/2015 22:43:20
+
+    
+- **Build Scripts Changes**
+  - Remove not used reps - [24fb349]( https://github.com/royriojas/build-workflow/commit/24fb349 ), [royriojas](https://github.com/royriojas), 10/06/2015 22:42:58
+
+    
 ## v4.0.3
 - **Build Scripts Changes**
   - exclude dev dependencies from shrinkwrap.json - [9c00957]( https://github.com/royriojas/build-workflow/commit/9c00957 ), [royriojas](https://github.com/royriojas), 10/06/2015 18:07:29
