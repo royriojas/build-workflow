@@ -38,12 +38,16 @@ module.exports = function ( grunt ) {
     } );
 
     var fileEntries = me.files || [];
+
+    //console.log('files', fileEntries);
     var banner = grunt.template.process( opts.banner );
 
     var p = fileEntries.reduce( function ( seq, data ) {
       return seq.then( function () {
 
-        var hash = md5( data.src );
+        var src = Array.isArray( data.src ) ? data.src[ 0 ] : data.src;
+
+        var hash = md5( src );
 
         return new ES6Promise( function ( resolve ) {
 
@@ -111,7 +115,7 @@ module.exports = function ( grunt ) {
           } );
 
           bundler.bundle( {
-            src: data.src
+            src: src
           }, opts );
         } );
       } );
