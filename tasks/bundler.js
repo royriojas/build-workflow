@@ -119,7 +119,7 @@ module.exports = function ( grunt ) {
           }, opts );
         } );
       } );
-    }, Promise.resolve() );
+    }, ES6Promise.resolve() );
 
     p.then( function () {
       if ( !opts.watch ) {
