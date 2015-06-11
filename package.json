@@ -5,7 +5,7 @@
   "main": "config-loader.js",
   "scripts": {
     "lint": "grunt check-valid",
-    "changelog": "changelogx -f markdown -o ./changelog.md",
+    "changelog": "changelogx -f markdown -o ./changelog.md && git add ./changelog.md && git commit -m 'DOC: Generate Changelog'",
     "install-hooks": "prepush install && changelogx install-hook -m 160"
   },
   "prepush": [
