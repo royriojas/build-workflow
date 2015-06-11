@@ -1,52 +1,52 @@
 module.exports = function ( grunt ) {
   'use strict';
   var gruntTaskUtils = require( '../utils/grunt-helper' )( grunt );
+  var logger = require( '../utils/log' )( grunt );
+  var path = require( 'path' );
 
   gruntTaskUtils.registerTasks( {
     twig: {
       description: 'render twig templates',
       multiTask: function () {
 
-        // TODO: Remove the need to include grunt-ez-frontend
-        var lib = require( 'grunt-ez-frontend/lib/lib' );
+        var twiggy = require( '../utils/twiggy' );
 
-        var path = require( 'path' );
-        var Twig = require( 'twig' );
-        var twig = Twig.twig;
+        var Twig = twiggy.Twig;
 
         var me = this;
+
         var opts = me.options( {
-          extRegex: /\.twig$/,
-          replaceExt: '.html'
+          useMin: false,
+          rev: ''
         } );
 
         var jsonData = {};
+
         opts.getData && (jsonData = opts.getData());
+
         opts.extendTwig && ( opts.extendTwig( Twig ));
 
-        var src = me.data.src;
-        var dest = me.data.dest;
+        var files = me.files;
 
-        var files = grunt.file.expand( src );
+        var renderer = twiggy.create( opts );
 
-        var noCWD = lib.trim( opts.cwd ) === '';
+        files.forEach( function ( fileEntry ) {
 
-        files.forEach( function ( file ) {
-          var fileName = path.basename( file );
-          var outputDest = noCWD ? path.join( dest, fileName ) : path.join( dest, path.relative( opts.cwd, file ) );
+          var src = fileEntry.src;
+          src = Array.isArray( src ) ? src[ 0 ] : src;
 
-          outputDest = outputDest.replace( opts.extRegex, opts.replaceExt );
-          var page = twig( {
-            path: file,
-            async: false
-          } ).render( {
+          var outputDest = fileEntry.dest;
+
+          var page = renderer.render( src, {
             data: jsonData
           } );
 
           grunt.file.write( outputDest, page );
-          grunt.log.ok( 'file created', outputDest );
+          logger.subtle( 'File created', path.resolve( outputDest ) );
 
         } );
+
+        logger.ok( '"' + me.name + ':' + me.target + '"', 'done! Templates processed:', files.length );
       }
     }
   } );
