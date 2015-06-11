@@ -2,6 +2,7 @@ module.exports = function ( grunt ) {
   var path = require( 'path' );
   var extend = require( 'extend' );
   var moment = require( 'moment' );
+  var ES6Promise = require( 'es6-promise' ).Promise;
 
   grunt.registerMultiTask( 'simpless', function () {
     var me = this;
@@ -21,54 +22,67 @@ module.exports = function ( grunt ) {
 
     opts.userFns = extend( true, require( 'simpless/lib/default-user-fns' ), opts.userFns );
 
-    var simpless = require( 'simpless' ).create();
-    var util = require( 'util' );
+    var fileEntries = me.files || [];
 
-    var start = moment();
-    var banner = grunt.template.process( opts.banner );
+    var p = fileEntries.reduce( function ( seq, data ) {
+      return seq.then( function () {
 
-    simpless.on( 'error', function ( e, err ) {
-      logger.error( 'Error parsing less file\n\n', err.message );
-    } );
+        return new ES6Promise( function ( resolve ) {
+          var simpless = require( 'simpless' ).create();
+          var util = require( 'util' );
 
-    simpless.on( 'resource:copied', function ( e, args ) {
-      logger.log( 'resource copied from:', args.from, 'to:', args.to );
-    } );
+          var start = moment();
+          var banner = grunt.template.process( opts.banner );
 
-    simpless.on( 'url:replaced', function ( e, args ) {
-      logger.log( 'url replaced from:', args.from, 'to:', args.to );
-    } );
+          simpless.on( 'error', function ( e, err ) {
+            logger.error( 'Error parsing less file\n\n', err.message );
+          } );
 
-    simpless.on( 'write:file write:minimized', function ( e, args ) {
-      var now = moment();
-      logger.ok( 'File written:', args.dest, 'Time required:', now.diff( start ) / 1000 );
-      if ( !opts.minimize && e.type === 'write:file' ) {
-        done();
-        return;
-      }
-      if ( opts.minimize && e.type === 'write:minimized' ) {
-        done();
-      }
-    } );
+          simpless.on( 'resource:copied', function ( e, args ) {
+            logger.log( 'resource copied from:', args.from, 'to:', args.to );
+          } );
 
-    logger.log( 'options', util.inspect( opts ) );
+          simpless.on( 'url:replaced', function ( e, args ) {
+            logger.log( 'url replaced from:', args.from, 'to:', args.to );
+          } );
 
-    simpless.process( {
-      src: me.filesSrc,
-      dest: path.resolve( me.data.dest )
-    }, {
-      banner: banner,
-      minimize: opts.minimize,
-      revision: opts.revision,
-      assetsPathFormat: opts.assetsPathFormat,
-      copyAssetsToDestFolder: opts.copyAssetsToDestFolder,
-      autoprefixer: {
-        browsers: opts.browsers
-      },
-      cssoOptions: {
-        structureModifications: opts.advanceMin
-      },
-      userFns: opts.userFns
+          simpless.on( 'write:file write:minimized', function ( e, args ) {
+            var now = moment();
+            logger.ok( 'File written:', args.dest, 'Time required:', now.diff( start ) / 1000 );
+            if ( !opts.minimize && e.type === 'write:file' ) {
+              resolve();
+              return;
+            }
+            if ( opts.minimize && e.type === 'write:minimized' ) {
+              resolve();
+            }
+          } );
+
+          logger.log( 'options', util.inspect( opts ) );
+
+          simpless.process( {
+            src: data.src,
+            dest: path.resolve( data.dest )
+          }, {
+            banner: banner,
+            minimize: opts.minimize,
+            revision: opts.revision,
+            assetsPathFormat: opts.assetsPathFormat,
+            copyAssetsToDestFolder: opts.copyAssetsToDestFolder,
+            autoprefixer: {
+              browsers: opts.browsers
+            },
+            cssoOptions: {
+              structureModifications: opts.advanceMin
+            },
+            userFns: opts.userFns
+          } );
+        } );
+      } );
+    }, ES6Promise.resolve() );
+
+    p.then( function () {
+      done();
     } );
 
   } );
