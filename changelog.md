@@ -1,5 +1,10 @@
 
 # Build Workflow - Changelog
+## v4.0.2
+- **Build Scripts Changes**
+  - downgrade watchify to 2.6.0 for reliability. Newer version does not fire change events - [e9f6b50]( https://github.com/royriojas/build-workflow/commit/e9f6b50 ), [royriojas](https://github.com/royriojas), 10/06/2015 17:52:19
+
+    
 ## v4.0.1
 - **Build Scripts Changes**
   - Lock deps - [2cf00b0]( https://github.com/royriojas/build-workflow/commit/2cf00b0 ), [royriojas](https://github.com/royriojas), 10/06/2015 05:01:27
