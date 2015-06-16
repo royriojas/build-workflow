@@ -1,5 +1,10 @@
 
 # Build Workflow - Changelog
+## v4.1.2
+- **Bug Fixes**
+  - remove multiline option for jsx files - [ba0e081]( https://github.com/royriojas/build-workflow/commit/ba0e081 ), [royriojas](https://github.com/royriojas), 16/06/2015 05:29:53
+
+    
 ## v4.1.1
 - **Build Scripts Changes**
   - fix changelog command - [a33313d]( https://github.com/royriojas/build-workflow/commit/a33313d ), [royriojas](https://github.com/royriojas), 16/06/2015 05:22:11
