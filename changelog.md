@@ -1,5 +1,10 @@
 
 # Build Workflow - Changelog
+## v4.1.1
+- **Build Scripts Changes**
+  - fix changelog command - [a33313d]( https://github.com/royriojas/build-workflow/commit/a33313d ), [royriojas](https://github.com/royriojas), 16/06/2015 05:22:11
+
+    
 ## v4.0.6
 - **Enhancements**
   - Update esformatter-jsx - [904ac54]( https://github.com/royriojas/build-workflow/commit/904ac54 ), [royriojas](https://github.com/royriojas), 16/06/2015 05:19:38
