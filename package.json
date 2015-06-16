@@ -1,6 +1,6 @@
 {
   "name": "build-workflow",
-  "version": "4.0.5",
+  "version": "4.0.6",
   "description": "Simple gruntfile helper to  define build workflows",
   "main": "config-loader.js",
   "scripts": {
