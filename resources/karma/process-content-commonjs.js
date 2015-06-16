@@ -5,13 +5,19 @@ module.exports = function ( options ) {
 
   var opts = {
     lessify: true,
+    babelify: {
+      disabled: false,
+      skipBabel: function () {
+        return false;
+      }
+    },
     strictify: function ( filePath ) {
       // do not apply strictify to modules in the node_modules folder during testing
       return filePath.indexOf( 'node_modules/' ) === -1;
     }
   };
 
-  extend( opts, options );
+  extend( true, opts, options );
 
   return function ( content, file, done ) {
     var filePath = file.path;
@@ -28,7 +34,15 @@ module.exports = function ( options ) {
         content = '\'use strict\';\n' + content;
       }
 
+      if ( !opts.babelify.disabled && !opts.babelify.skipBabel( file.path ) ) {
+        var babelCore = require( 'babel-core' );
+        content = babelCore.transform( content, extend( opts.babelify.options, {
+          filename: file.path
+        } ) ).code;
+      }
+
       var falafel = require( 'falafel' );
+
       content = falafel( content, function ( node ) {
         var callee = node.callee;
         if ( node.type === 'CallExpression' && callee.type === 'Identifier' && callee.name === 'requireArr' ) {
