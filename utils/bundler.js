@@ -23,7 +23,14 @@ module.exports = {
           },
           babelify: {
             disabled: false,
-            options: {}
+            extensions: {
+              '.js': true,
+              '.jsx': true
+            },
+            options: {},
+            checkIfSkip: function () {
+              return false;
+            }
           },
           shimixify: {
             deps: {
@@ -115,7 +122,7 @@ module.exports = {
           var babelify = opts.babelify || {};
 
           if ( !babelify.disabled ) {
-            b.transform( require( 'babelify' ).configure( babelify.options ) );
+            b.transform( require( './babelify' ).configure( babelify ) );
           }
 
           b.transform( {
