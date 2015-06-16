@@ -21,6 +21,10 @@ module.exports = {
           consoleify: {
             disabled: false
           },
+          babelify: {
+            disabled: false,
+            options: {}
+          },
           shimixify: {
             deps: {
               window: 'global.window',
@@ -108,7 +112,11 @@ module.exports = {
             global: true
           }, require( './dotify' ) );
 
-          b.transform( require( 'babelify' ) );
+          var babelify = opts.babelify || {};
+
+          if ( !babelify.disabled ) {
+            b.transform( require( 'babelify' ).configure( babelify.options ) );
+          }
 
           b.transform( {
             global: true

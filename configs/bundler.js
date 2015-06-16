@@ -11,6 +11,7 @@ module.exports = function ( grunt ) {
       consoleify: {
         disabled: buildNumber !== 'dev'
       },
+      useCache: !grunt.option( 'skip-cache' ),
       //the dev option is for development
       uglify: buildNumber !== 'dev' || grunt.option( 'bundle-min' ),
       buildVersion: buildNumber
