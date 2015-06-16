@@ -21,8 +21,8 @@ module.exports = function ( /*grunt, pkg, options*/ ) {
       src: prepushFiles,
       tasks: [
         'esformatter',
-        'eslint',
-        'jscs'
+        'eslint'
+        // 'jscs'
       ]
       //jsbeautifier: prepushFiles,
       //jscs: prepushFiles
