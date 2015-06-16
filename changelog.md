@@ -1,5 +1,10 @@
 
 # Build Workflow - Changelog
+## v4.1.3
+- **Features**
+  - Add the ability to pass options to configure babelify - [3cd81c1]( https://github.com/royriojas/build-workflow/commit/3cd81c1 ), [royriojas](https://github.com/royriojas), 16/06/2015 11:02:05
+
+    
 ## v4.1.2
 - **Bug Fixes**
   - remove multiline option for jsx files - [ba0e081]( https://github.com/royriojas/build-workflow/commit/ba0e081 ), [royriojas](https://github.com/royriojas), 16/06/2015 05:29:53
