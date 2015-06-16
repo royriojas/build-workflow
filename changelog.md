@@ -1,5 +1,23 @@
 
 # Build Workflow - Changelog
+## v4.0.6
+- **Enhancements**
+  - Update esformatter-jsx - [904ac54]( https://github.com/royriojas/build-workflow/commit/904ac54 ), [royriojas](https://github.com/royriojas), 16/06/2015 05:19:38
+
+    
+- **Features**
+  - Enabling babelify. Removed jscs - [9a1c0f1]( https://github.com/royriojas/build-workflow/commit/9a1c0f1 ), [royriojas](https://github.com/royriojas), 16/06/2015 01:27:21
+
+    **Breaking change**
+    
+    jscs is removed, make sure to remove it from your configuration `build-workflow.js config` file
+    
+  - Enable es6 for eslint - [88709b9]( https://github.com/royriojas/build-workflow/commit/88709b9 ), [royriojas](https://github.com/royriojas), 16/06/2015 01:03:04
+
+    
+  - Enable eslint-react - [d11af8b]( https://github.com/royriojas/build-workflow/commit/d11af8b ), [royriojas](https://github.com/royriojas), 16/06/2015 00:59:54
+
+    
 ## v4.0.5
 - **Build Scripts Changes**
   - add changelog helper task - [e876056]( https://github.com/royriojas/build-workflow/commit/e876056 ), [royriojas](https://github.com/royriojas), 10/06/2015 23:28:37
