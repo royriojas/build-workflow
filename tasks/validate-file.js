@@ -4,6 +4,7 @@ module.exports = function ( grunt /*, pkg, opts */ ) {
   var gruntTaskUtils = require( '../utils/grunt-helper' )( grunt );
 
   var path = require( 'path' );
+  var logger = require( '../utils/log' )( grunt );
 
   gruntTaskUtils.registerTasks( {
     'validate-file': function ( fileGlob ) {
@@ -27,7 +28,7 @@ module.exports = function ( grunt /*, pkg, opts */ ) {
         }
       } );
 
-      grunt.log.ok( 'files to process ', jsonFiles.concat( jsFiles ) );
+      logger.subtle( 'files to process ', jsonFiles.concat( jsFiles ) );
 
       var tasksToRun = [];
       var key = 'modified';
@@ -69,9 +70,9 @@ module.exports = function ( grunt /*, pkg, opts */ ) {
         grunt.task.run( tasksToRun );
       }
 
-      grunt.log.ok( 'tasks to run', tasksToRun );
+      logger.subtle( 'tasks to run', tasksToRun );
 
-      grunt.log.ok( 'all validated!' );
+      logger.ok( 'all validated!' );
     }
   } );
 };

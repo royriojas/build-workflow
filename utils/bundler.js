@@ -108,7 +108,7 @@ module.exports = {
             global: true
           }, require( './dotify' ) );
 
-          b.transform( require( 'reactify' ) );
+          b.transform( require( 'babelify' ) );
 
           b.transform( {
             global: true
