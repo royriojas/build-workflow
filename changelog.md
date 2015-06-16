@@ -1,5 +1,10 @@
 
 # Build Workflow - Changelog
+## v4.1.4
+- **Features**
+  - Add babelify for karma too - [ba6eb15]( https://github.com/royriojas/build-workflow/commit/ba6eb15 ), [royriojas](https://github.com/royriojas), 16/06/2015 16:05:14
+
+    
 ## v4.1.3
 - **Features**
   - Add the ability to pass options to configure babelify - [3cd81c1]( https://github.com/royriojas/build-workflow/commit/3cd81c1 ), [royriojas](https://github.com/royriojas), 16/06/2015 11:02:05
