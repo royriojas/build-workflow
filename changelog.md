@@ -1,5 +1,10 @@
 
 # Build Workflow - Changelog
+## v4.1.5
+- **Features**
+  - Add the ability to skip certain files from the babelify transform - [7d90610]( https://github.com/royriojas/build-workflow/commit/7d90610 ), [royriojas](https://github.com/royriojas), 16/06/2015 16:49:50
+
+    
 ## v4.1.4
 - **Features**
   - Add babelify for karma too - [ba6eb15]( https://github.com/royriojas/build-workflow/commit/ba6eb15 ), [royriojas](https://github.com/royriojas), 16/06/2015 16:05:14
