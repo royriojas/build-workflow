@@ -5,12 +5,6 @@
     "esformatter-quotes",
     "esformatter-eol-last"
   ],
-  "jsx": {
-    "attrsOnSameLineAsTag": false,
-    "maxAttrsOnTag": 3,
-    "firstAttributeOnSameLine": true,
-    "alignWithFirstAttribute": true
-  },
   "quotes": {
     "type": "single",
     "avoidEscape": false
