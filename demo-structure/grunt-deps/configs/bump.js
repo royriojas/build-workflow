@@ -1,4 +1,4 @@
-module.exports = function ( /*grunt, pkg, opts */ ) {
+module.exports = function (/*grunt, pkg, opts */ ) {
   return {
     options: {
       files: [

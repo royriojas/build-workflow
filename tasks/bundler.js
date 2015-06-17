@@ -34,7 +34,7 @@ module.exports = function ( grunt ) {
       uglify: false,
       separator: '\n\n',
       useCache: true
-      //noWrite: true
+    //noWrite: true
     } );
 
     var fileEntries = me.files || [];

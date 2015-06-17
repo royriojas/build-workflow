@@ -31,11 +31,11 @@
           objUtil.setKeyValue( obj, method, Function.prototype );
         }
 
-        if ( /\./.test( method ) ) { // Ex. 'a.b.c'
+        if ( /\./.test( method ) ) {// Ex. 'a.b.c'
           var methodsParts = method.split( '.' );
           doubles[ method ] = sandbox[ type ](
-            objUtil.getKeyValue( obj, methodsParts.slice( 0, -1 ).join( '.' ) ), // Ex. 'a.b'
-            methodsParts.slice( -1 ) // Ex. 'c'
+            objUtil.getKeyValue( obj, methodsParts.slice( 0, -1 ).join( '.' ) ),// Ex. 'a.b'
+            methodsParts.slice( -1 )// Ex. 'c'
           );
         } else {
           doubles[ method ] = sandbox[ type ]( obj, method );

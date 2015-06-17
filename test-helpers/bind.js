@@ -23,5 +23,5 @@ if ( !Function.prototype.bind ) {
 
   /*eslint-disable*/
   Function.prototype.bind = bind;
-  /*eslint-enable*/
+/*eslint-enable*/
 }

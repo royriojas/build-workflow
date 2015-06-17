@@ -1,4 +1,4 @@
-module.exports = function ( /*grunt, pkg, options*/ ) {
+module.exports = function (/*grunt, pkg, options*/ ) {
 
   var prepushFiles = [
     'configs/**/*.js',
@@ -15,20 +15,20 @@ module.exports = function ( /*grunt, pkg, options*/ ) {
 
   return {
     prepushTasks: [
-    //'jsonlint'
+      //'jsonlint'
     ],
     validationTasks: {
       src: prepushFiles,
       tasks: [
         'esformatter',
         'eslint'
-        // 'jscs'
+      // 'jscs'
       ]
-      //jsbeautifier: prepushFiles,
-      //jscs: prepushFiles
-      //jshint: prepushFiles,
-      //jsvalidate: prepushFiles,
-      //codepainter: prepushFiles
+    //jsbeautifier: prepushFiles,
+    //jscs: prepushFiles
+    //jshint: prepushFiles,
+    //jsvalidate: prepushFiles,
+    //codepainter: prepushFiles
     },
 
     // deprecated

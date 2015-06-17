@@ -15,7 +15,7 @@ module.exports = {
 
     console.log( 'brewing coffee start!' );
 
-    return new Promise( function ( resolve /*, reject*/ ) {
+    return new Promise( function ( resolve/*, reject*/ ) {
       setTimeout( function () {
         console.log( 'brewing coffee done!' );
         resolve( {

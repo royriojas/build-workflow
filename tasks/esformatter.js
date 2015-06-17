@@ -1,4 +1,4 @@
-module.exports = function ( grunt /*, pkg, opts */ ) {
+module.exports = function ( grunt/*, pkg, opts */ ) {
   'use strict';
 
   var chalk = require( 'chalk' );
@@ -26,7 +26,7 @@ module.exports = function ( grunt /*, pkg, opts */ ) {
         var cfg = {};
         if ( opts.configFile ) {
           cfg = grunt.file.readJSON( path.resolve( opts.configFile ) );
-          //grunt.verbose.writeln( 'cfg', cfg );
+        //grunt.verbose.writeln( 'cfg', cfg );
         }
 
         var extend = require( 'extend' );

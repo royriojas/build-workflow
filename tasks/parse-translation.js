@@ -36,7 +36,7 @@ module.exports = function ( grunt ) {
 
     files.map( function ( filepath ) {
       var fileName = path.basename( filepath, '.yml' ),
-        messages = gruntFile.readYAML( filepath ); //YAML.load(filepath);
+        messages = gruntFile.readYAML( filepath );//YAML.load(filepath);
 
       //messages = messages.main;
       var ignoredKeys = {};

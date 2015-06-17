@@ -1,10 +1,16 @@
 {
   "plugins": [
-    "esformatter-shebang-ignore",
     "esformatter-jsx",
     "esformatter-quotes",
     "esformatter-eol-last"
   ],
+  "jsx": {
+    "formatJSX": true,
+    "attrsOnSameLineAsTag": false,
+    "maxAttrsOnTag": 2,
+    "firstAttributeOnSameLine": true,
+    "alignWithFirstAttribute": true
+  },
   "quotes": {
     "type": "single",
     "avoidEscape": false

@@ -1,4 +1,4 @@
-module.exports = function ( /*grunt, pkg, opts*/ ) {
+module.exports = function (/*grunt, pkg, opts*/ ) {
   'use strict';
   //var gruntTaksUtils = opts.gruntTaskUtils;
 
@@ -7,7 +7,7 @@ module.exports = function ( /*grunt, pkg, opts*/ ) {
       options: {
         /*eslint-disable*/
         project_name: 'Build Workflow'
-        /*eslint-enable*/
+      /*eslint-enable*/
       },
       docFiles: [
         'docs/**/*.md'
