@@ -2,7 +2,7 @@ var inherit = require( '../lib/inherit' );
 var electricPart = require( './electric-part' );
 
 module.exports = inherit( electricPart, {
-  name: 'pump',// added only for demo purposes
+  name: 'pump', // added only for demo purposes
   pump: function () {
     var me = this;
     me.electricity.connect( this );

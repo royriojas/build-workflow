@@ -33,7 +33,7 @@ var registerExtensions = function ( options ) {
       regex: /^markdown$/,
       next: [
         'endmarkdown'
-      ],// match the type of the end tag
+      ], // match the type of the end tag
       open: true,
       compile: function ( token ) {
         return token;

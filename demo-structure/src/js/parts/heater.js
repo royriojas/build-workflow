@@ -3,7 +3,7 @@ var electricPart = require( './electric-part' );
 var regulator = require( './regulator' );
 
 module.exports = inherit( electricPart, {
-  name: 'heater',// added only for demo purposes
+  name: 'heater', // added only for demo purposes
   init: function () {
     var me = this;
     electricPart.init.call( me );

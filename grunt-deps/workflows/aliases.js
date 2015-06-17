@@ -1,4 +1,4 @@
-module.exports = function ( grunt/*, pkg, opts */ ) {
+module.exports = function ( grunt /*, pkg, opts */ ) {
   'use strict';
 
   var gruntTaskUtils = require( '../../utils/grunt-helper' )( grunt );

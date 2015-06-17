@@ -1,5 +1,5 @@
 module.exports = {
-  name: 'regulator',// added for demo purposes
+  name: 'regulator', // added for demo purposes
   init: function ( electricity ) {
     var me = this;
     me.electricity = electricity;

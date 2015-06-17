@@ -1,4 +1,4 @@
-module.exports = function ( grunt/*, pkg, options */ ) {
+module.exports = function ( grunt /*, pkg, options */ ) {
   'use strict';
 
   var gruntTaskUtils = require( '../utils/grunt-helper' )( grunt );
@@ -19,8 +19,8 @@ module.exports = function ( grunt/*, pkg, options */ ) {
 
         var opts = me.options( {
           fontLessTemplate: 'grunt-deps/font.less.tpl',
-          fontCodesTemplate: 'grunt-deps/font-codes.mixins.tpl',// the template for the less for this font
-          fontsFolder: 'fonts',// the folder where the fonts are located
+          fontCodesTemplate: 'grunt-deps/font-codes.mixins.tpl', // the template for the less for this font
+          fontsFolder: 'fonts', // the folder where the fonts are located
           processIconName: function ( name ) {
             return name;
           }
