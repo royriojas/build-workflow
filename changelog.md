@@ -1,5 +1,15 @@
 
 # Build Workflow - Changelog
+## v4.2.1
+- **Refactoring**
+  - beautificated code - [97d1a8f]( https://github.com/royriojas/build-workflow/commit/97d1a8f ), [royriojas](https://github.com/royriojas), 17/06/2015 04:08:23
+
+    
+## v4.2.0
+- **Build Scripts Changes**
+  - Update to the latest esformatter - [8cbd1f0]( https://github.com/royriojas/build-workflow/commit/8cbd1f0 ), [royriojas](https://github.com/royriojas), 17/06/2015 04:05:33
+
+    
 ## v4.1.5
 - **Features**
   - Add the ability to skip certain files from the babelify transform - [7d90610]( https://github.com/royriojas/build-workflow/commit/7d90610 ), [royriojas](https://github.com/royriojas), 16/06/2015 16:49:50
