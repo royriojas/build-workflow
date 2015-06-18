@@ -22,6 +22,7 @@ module.exports = {
             disabled: false
           },
           babelify: {
+            globalTransform: true,
             disabled: false,
             extensions: {
               '.js': true,
@@ -122,7 +123,9 @@ module.exports = {
           var babelify = opts.babelify || {};
 
           if ( !babelify.disabled ) {
-            b.transform( require( './babelify' ).configure( babelify ) );
+            b.transform( {
+              global: babelify.globalTransform
+            }, require( './babelify' ).configure( babelify ) );
           }
 
           b.transform( {
