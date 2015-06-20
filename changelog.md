@@ -1,5 +1,14 @@
 
 # Build Workflow - Changelog
+## v4.2.2
+- **Features**
+  - new karma helper and logger helper - [e06146e]( https://github.com/royriojas/build-workflow/commit/e06146e ), [royriojas](https://github.com/royriojas), 19/06/2015 18:00:30
+
+    
+- **Enhancements**
+  - Make babelify a global transform by default - [4ea2d33]( https://github.com/royriojas/build-workflow/commit/4ea2d33 ), [royriojas](https://github.com/royriojas), 17/06/2015 19:18:13
+
+    
 ## v4.2.1
 - **Refactoring**
   - beautificated code - [97d1a8f]( https://github.com/royriojas/build-workflow/commit/97d1a8f ), [royriojas](https://github.com/royriojas), 17/06/2015 04:08:23
