@@ -6,6 +6,7 @@
   "scripts": {
     "lint": "grunt check-valid",
     "changelog": "changelogx -f markdown -o ./changelog.md",
+    "do-changelog": "npm run changelog && git add ./changelog.md && git commit -m 'DOC: Generate changelog'",
     "install-hooks": "prepush install && changelogx install-hook -m 160"
   },
   "prepush": [
