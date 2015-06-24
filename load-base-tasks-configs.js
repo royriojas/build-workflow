@@ -3,7 +3,7 @@ module.exports = function ( grunt, opts, pkg ) {
   var chalk = require( 'chalk' );
   var path = require( 'path' );
 
-  var baseConfigs = {};
+  var baseConfigs = { };
 
   var baseTasksConfigs = grunt.file.expand( path.join( __dirname, './configs/**/*.js' ) );
   var tryCatch = require( './utils/try-catch' );

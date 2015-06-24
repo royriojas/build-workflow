@@ -22,7 +22,7 @@ module.exports = function ( grunt ) {
 
     opts.userFns = extend( true, require( 'simpless/lib/default-user-fns' ), opts.userFns );
 
-    var fileEntries = me.files || [];
+    var fileEntries = me.files || [ ];
 
     var p = fileEntries.reduce( function ( seq, data ) {
       return seq.then( function () {

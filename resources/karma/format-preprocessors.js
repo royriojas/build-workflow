@@ -33,13 +33,13 @@
  * @returns {Object} and object in the format Karma expects it
  */
 module.exports = function ( pp ) {
-  var obj = {};
-  pp = pp || [];
+  var obj = { };
+  pp = pp || [ ];
 
   pp.forEach( function ( preprocessor ) {
-    var files = preprocessor.files || [];
+    var files = preprocessor.files || [ ];
     files.forEach( function ( file ) {
-      obj[ file ] = obj[ file ] || [];
+      obj[ file ] = obj[ file ] || [ ];
 
       obj[ file ] = obj[ file ].concat( preprocessor.order );
 

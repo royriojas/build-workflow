@@ -16,7 +16,7 @@ var registerExtensions = function ( options ) {
   };
 
   Twig.extendFilter( 'processResource', function ( value, args ) {
-    args = args || [];
+    args = args || [ ];
 
     var addVersion = clsc( args[ 0 ], true );
     value = addVersion ? revFile( value, options.rev ) : value;
@@ -42,10 +42,7 @@ var registerExtensions = function ( options ) {
         var marked = require( 'marked' );
         var output = marked( token.output[ 0 ].value );
 
-        return {
-          chain: chain,
-          output: output
-        };
+        return { chain: chain, output: output };
       }
     } );
 
@@ -62,10 +59,7 @@ var twiggy = {
   Twig: Twig,
   create: function ( options ) {
 
-    var opts = {
-      useMin: false,
-      rev: ''
-    };
+    var opts = { useMin: false, rev: '' };
 
     extend( opts, options );
 
@@ -73,10 +67,7 @@ var twiggy = {
 
     return {
       render: function ( file, args ) {
-        return twig( {
-          path: file,
-          async: false
-        } ).render( args );
+        return twig( { path: file, async: false } ).render( args );
       }
     };
   }

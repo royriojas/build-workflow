@@ -14,7 +14,7 @@ var isPlainObject = check.isPlainObject.bind( check );
  */
 module.exports = function extend() {
   var options, name, src, copy, copyIsArray, clone,
-    target = arguments[ 0 ] || {},
+    target = arguments[ 0 ] || { },
     i = 1,
     length = arguments.length,
     deep = false;
@@ -22,14 +22,14 @@ module.exports = function extend() {
   // Handle a deep copy situation
   if ( typeof target === 'boolean' ) {
     deep = target;
-    target = arguments[ 1 ] || {};
+    target = arguments[ 1 ] || { };
     // skip the boolean and the target
     i = 2;
   }
 
   // Handle case when target is a string or something (possible in deep copy)
   if ( typeof target !== 'object' && type( target ) !== 'function' ) {
-    target = {};
+    target = { };
   }
 
   // extend jQuery itself if only one argument is passed
@@ -55,10 +55,10 @@ module.exports = function extend() {
         if ( deep && copy && (isPlainObject( copy ) || (copyIsArray = type( copy ) === 'array')) ) {
           if ( copyIsArray ) {
             copyIsArray = false;
-            clone = src && type( src ) === 'array' ? src : [];
+            clone = src && type( src ) === 'array' ? src : [ ];
 
           } else {
-            clone = src && isPlainObject( src ) ? src : {};
+            clone = src && isPlainObject( src ) ? src : { };
           }
 
           // Never move original objects, clone them

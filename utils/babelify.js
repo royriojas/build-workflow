@@ -12,8 +12,8 @@ module.exports = transformTools.makeStringTransform( 'babelify', options, functi
   var file = transformOptions.file;
   var ext = path.extname( file );
 
-  var configData = transformOptions.configData || {};
-  var config = configData.config || {};
+  var configData = transformOptions.configData || { };
+  var config = configData.config || { };
 
   if ( !config.extensions[ ext ] || (config.checkIfSkip && config.checkIfSkip( file )) ) {
     done( null, content );

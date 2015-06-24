@@ -23,10 +23,9 @@ module.exports = function ( grunt /*, pkg, opts */ ) {
         var useCache = opts.useCache;
         grunt.log.ok( useCache ? 'using cache' : 'not using the cache' );
 
-        var cfg = {};
+        var cfg = { };
         if ( opts.configFile ) {
           cfg = grunt.file.readJSON( path.resolve( opts.configFile ) );
-        //grunt.verbose.writeln( 'cfg', cfg );
         }
 
         var extend = require( 'extend' );
@@ -39,7 +38,7 @@ module.exports = function ( grunt /*, pkg, opts */ ) {
           }
         } );
 
-        var noBeautifiedFiles = [];
+        var noBeautifiedFiles = [ ];
 
         esbeautifier.on( 'need:beautify.cli', function ( e, _args ) {
           if ( !opts.reportOnly ) {

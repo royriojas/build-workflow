@@ -1,5 +1,5 @@
 module.exports = function flattenObject( ob ) {
-  var toReturn = {};
+  var toReturn = { };
   var keys = Object.keys( ob );
 
   keys.forEach( function ( key ) {

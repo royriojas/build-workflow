@@ -9,8 +9,8 @@ module.exports = function ( grunt /*, pkg, opts */ ) {
   gruntTaskUtils.registerTasks( {
     'validate-file': function ( fileGlob ) {
 
-      var jsFiles = [];
-      var jsonFiles = [];
+      var jsFiles = [ ];
+      var jsonFiles = [ ];
 
       fileGlob = fileGlob.split( ',' );
 
@@ -30,35 +30,21 @@ module.exports = function ( grunt /*, pkg, opts */ ) {
 
       logger.subtle( 'files to process ', jsonFiles.concat( jsFiles ) );
 
-      var tasksToRun = [];
+      var tasksToRun = [ ];
       var key = 'modified';
       if ( jsonFiles.length > 0 ) {
         tasksToRun.push( 'jsonlint' );
-        grunt.config.set( [
-          'jsonlint',
-          key
-        ], {
-          src: jsonFiles
-        } );
+        grunt.config.set( [ 'jsonlint', key ], { src: jsonFiles } );
       }
 
-      var jsFilesEntry = {
-        src: jsFiles
-      };
+      var jsFilesEntry = { src: jsFiles };
 
-      var jsTasks = [
-        'esformatter',
-        'eslint',
-        'jscs'
-      ];
+      var jsTasks = [ 'esformatter', 'eslint', 'jscs' ];
 
       jsTasks.forEach( function ( task ) {
         if ( jsFiles.length > 0 ) {
           tasksToRun.push( task );
-          grunt.config.set( [
-            task,
-            key
-          ], jsFilesEntry );
+          grunt.config.set( [ task, key ], jsFilesEntry );
         }
       } );
 

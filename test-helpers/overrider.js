@@ -9,7 +9,7 @@ module.exports = {
    * @returns {Object} and overrider object
    */
   create: function ( obj ) {
-    var originals = {};
+    var originals = { };
     return {
       /**
        * Stub all the methods on the current object instance
@@ -37,7 +37,7 @@ module.exports = {
        */
       stubFns: function ( methods, callThrough ) {
         var me = this;
-        methods = methods || [];
+        methods = methods || [ ];
         methods.forEach( function ( method ) {
           if ( $.type( obj[ method ] ) === 'function' ) {
             var oMethod = me.override( method );
@@ -82,7 +82,7 @@ module.exports = {
        */
       overrideProp: function ( prop, newProp ) {
         if ( typeof newProp === 'undefined' ) {
-          newProp = {};
+          newProp = { };
         }
 
         var objProp = obj[ prop ];

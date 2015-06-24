@@ -24,9 +24,7 @@ module.exports = function ( grunt /*, pkg, opts */ ) {
         ];
 
         transforms.forEach( function ( dep ) {
-          b.transform( {
-            global: true
-          }, dep );
+          b.transform( { global: true }, dep );
         } );
 
         var filter = grunt.option( 'console-filter' );

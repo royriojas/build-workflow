@@ -14,7 +14,7 @@ module.exports = function ( grunt /*, pkg, options */ ) {
       multiTask: function () {
         var me = this;
         var data = me.data;
-        var thePackage = extend( data.pkg || {}, {
+        var thePackage = extend( data.pkg || { }, {
           name: data.name,
           version: data.version
         } );

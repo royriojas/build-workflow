@@ -64,14 +64,12 @@ module.exports = {
         var browserify = require( 'browserify' );
 
         var concatIfRequired = function ( receivedTarget, time, text ) {
-          var files = [];
+          var files = [ ];
 
           if ( opts.concatBefore ) {
             files = opts.concatBefore.map( function ( file ) {
               //console.log( 'reading file', file );
-              me.fire( 'bundler:read-file', {
-                file: file
-              } );
+              me.fire( 'bundler:read-file', { file: file } );
               return read( file );
             } );
             text = files.join( opts.separator ) + text;
@@ -79,9 +77,7 @@ module.exports = {
 
           if ( opts.concatAfter ) {
             files = opts.concatAfter.map( function ( file ) {
-              me.fire( 'bundler:read-file', {
-                file: file
-              } );
+              me.fire( 'bundler:read-file', { file: file } );
 
               return read( file );
             } );
@@ -105,9 +101,7 @@ module.exports = {
 
           var lessify = require( './lessify' );
 
-          b.transform( {
-            global: true
-          }, lessify );
+          b.transform( { global: true }, lessify );
 
           var shimify = require( 'shimixify' ).configure( opts.shimixify.deps );
           var cFilter = require( 'console-filter' );
@@ -116,36 +110,26 @@ module.exports = {
             b.transform( require( 'stricterify' ).configure( opts.stricterify ) );
           }
 
-          b.transform( {
-            global: true
-          }, require( './dotify' ) );
+          b.transform( { global: true }, require( './dotify' ) );
 
-          var babelify = opts.babelify || {};
+          var babelify = opts.babelify || { };
 
           if ( !babelify.disabled ) {
-            b.transform( {
-              global: babelify.globalTransform
-            }, require( './babelify' ).configure( babelify ) );
+            b.transform( { global: babelify.globalTransform }, require( './babelify' ).configure( babelify ) );
           }
 
-          b.transform( {
-            global: true
-          }, shimify );
+          b.transform( { global: true }, shimify );
 
           if ( !opts.consoleify.disabled ) {
             b.transform( require( 'consoleify' ) );
           }
 
-          b.transform( {
-            global: true
-          }, require( 'require-arr' ) );
+          b.transform( { global: true }, require( 'require-arr' ) );
 
           var filter = opts.consoleFilter;
 
           if ( filter ) {
-            b.transform( cFilter.configure( {
-              filter: filter
-            } ) );
+            b.transform( cFilter.configure( { filter: filter } ) );
           }
         };
 
@@ -170,9 +154,7 @@ module.exports = {
 
             var changedFiles = depsCacheFile.getUpdatedFiles( expand.apply( null, Object.keys( wArgs.cache ) ) );
             if ( changedFiles.length > 0 ) {
-              me.fire( 'bundler:files:updated', {
-                files: changedFiles
-              } );
+              me.fire( 'bundler:files:updated', { files: changedFiles } );
             }
             changedFiles.forEach( function ( file ) {
               delete wArgs.cache[ file ];
@@ -194,11 +176,9 @@ module.exports = {
           var w = (opts.watch || opts.useCache) ? watchify( b ) : b;
 
           var doBundle = function ( _changedFiles ) {
-            _changedFiles = _changedFiles || [];
+            _changedFiles = _changedFiles || [ ];
             if ( _changedFiles.length > 0 ) {
-              me.fire( 'bundler:files:updated', {
-                files: _changedFiles
-              } );
+              me.fire( 'bundler:files:updated', { files: _changedFiles } );
             }
 
             var time = Date.now();

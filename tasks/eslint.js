@@ -2,7 +2,7 @@ var eslint = require( 'eslint' );
 
 // https://github.com/eslint/eslint/blob/5322a4ab9757eb745030ddcafa076ab5b4317e50/lib/cli.js#L129
 function getErrorResults( results ) {
-  var filtered = [];
+  var filtered = [ ];
 
   results.forEach( function ( result ) {
     var filteredMessages = result.messages.filter( function ( message ) {
@@ -67,7 +67,7 @@ module.exports = function ( grunt ) {
 
     var engine = new eslint.CLIEngine( opts );
     var report = engine.executeOnFiles( filesSrc );
-    var results = report.results || [];
+    var results = report.results || [ ];
 
     results.forEach( function ( result ) {
       if ( result.errorCount > 0 || result.warningCount > 0 ) {

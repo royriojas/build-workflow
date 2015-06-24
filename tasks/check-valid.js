@@ -21,7 +21,7 @@ module.exports = function ( grunt /*, pkg, options */ ) {
         }, grunt );
       }
 
-      tasksToRun = tasksToRun || [];
+      tasksToRun = tasksToRun || [ ];
 
       if ( tasksToRun.length > 0 ) {
         grunt.task.run( tasksToRun );

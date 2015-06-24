@@ -7,7 +7,7 @@ module.exports = function ( grunt, opts, pkg, baseConfigs ) {
   // tasks configs
   var localConfig = grunt.file.expand( opts.taskConfigs );
 
-  var config = {};
+  var config = { };
 
   // iterate over them and register them in the config
   localConfig.forEach( function ( entry ) {

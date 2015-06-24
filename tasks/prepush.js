@@ -21,14 +21,14 @@ module.exports = function ( grunt /*, pkg, opts */ ) {
           beforeSetConfiguration: function ( name, tConfig ) {
 
             if ( name === 'esformatter' ) {
-              tConfig.options = tConfig.options || {};
+              tConfig.options = tConfig.options || { };
               tConfig.options.reportOnly = true;
             }
           }
         }, grunt );
       }
 
-      tasksToRun = tasksToRun || [];
+      tasksToRun = tasksToRun || [ ];
 
       if ( !filter && buildWorkflowConfig.prepushTasks ) {
         tasksToRun = tasksToRun.concat( buildWorkflowConfig.prepushTasks );

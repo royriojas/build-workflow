@@ -37,9 +37,7 @@ module.exports = {
         sourceFiles.forEach( function ( ele ) {
           var fileName = path.basename( ele, opts.ext );
           //log.writeln( 'compiling template : ' + fileName );
-          me.fire( 'before:compile', {
-            templateFile: fileName
-          } );
+          me.fire( 'before:compile', { templateFile: fileName } );
 
           var content = read( ele );
 
@@ -56,9 +54,7 @@ module.exports = {
           } catch (ex) {
 
             var message = format( '{0} failed : {1}', ele, ex.message );
-            me.fire( 'compile:error', {
-              message: message
-            } );
+            me.fire( 'compile:error', { message: message } );
           }
         } );
 

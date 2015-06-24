@@ -15,7 +15,7 @@ module.exports = function ( grunt /*, pkg, options */ ) {
         var me = this;
         //var data = me.data || {};
         //var src = data.src;
-        var files = me.files || [];
+        var files = me.files || [ ];
 
         var opts = me.options( {
           fontLessTemplate: 'grunt-deps/font.less.tpl',
@@ -76,22 +76,17 @@ module.exports = function ( grunt /*, pkg, options */ ) {
             var dot = require( 'dot' );
 
             // make dot do not remove the line breaks
-            var compileOptions = {
-              strip: false
-            };
+            var compileOptions = { strip: false };
 
             // why dot why!!!!: dot don't use defaults, if a template setting is passed here it will
             // completely override the defaults, so we need to extend from the default options and override
             // the one we want to change!...
             // again... why dot why?
-            var templateSettings = extend( {}, dot.templateSettings, compileOptions );
+            var templateSettings = extend( { }, dot.templateSettings, compileOptions );
             var renderCodeFonts = dot.template( grunt.file.read( opts.fontCodesTemplate ), templateSettings );
             var renderFontsLess = dot.template( grunt.file.read( opts.fontLessTemplate ), templateSettings );
 
-            var fData = {
-              fontData: fontData,
-              mixinsFile: mixinsFile
-            };
+            var fData = { fontData: fontData, mixinsFile: mixinsFile };
 
             var mixinText = renderCodeFonts( fData );
             var lessText = renderFontsLess( fData );

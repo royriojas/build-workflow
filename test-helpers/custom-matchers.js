@@ -3,17 +3,12 @@ module.exports = {
     var $ = require( 'jQuery' );
 
     if ( scope ) {
-      scope.overriders = [];
+      scope.overriders = [ ];
       scope.$fixture = $( '<div id="qunit-fixture"></div>' ).appendTo( 'body' );
       scope.stubFn = require( './stub-fn' );
       var overrider = require( './overrider' );
 
-      var qunitMethods = [
-        'equal',
-        'strictEqual',
-        'deepEqual',
-        'ok'
-      ];
+      var qunitMethods = [ 'equal', 'strictEqual', 'deepEqual', 'ok' ];
 
       qunitMethods.forEach( function ( method ) {
         scope[ method ] = function () {
@@ -48,7 +43,7 @@ module.exports = {
       };
 
       scope.toHaveProperties = function ( instance, args ) {
-        var notFoundProps = [];
+        var notFoundProps = [ ];
 
         args.forEach( function ( key ) {
           if ( !(key in instance) ) {
@@ -71,7 +66,7 @@ module.exports = {
           throw new Error( 'You need to pass some methods to check if they are in the object' );
         }
 
-        var notFoundMethods = [];
+        var notFoundMethods = [ ];
         methods.forEach( function ( fn ) {
           if ( typeof obj[ fn ] !== 'function' ) {
             notFoundMethods.push( fn );
@@ -84,7 +79,7 @@ module.exports = {
 
       scope.toHaveJQueryProps = function ( instance, args ) {
 
-        var notFoundProps = [];
+        var notFoundProps = [ ];
 
         args.forEach( function ( key ) {
           if ( !(key in instance) ) {

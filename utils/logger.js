@@ -21,13 +21,13 @@ var logMethods = [
   }
 ];
 
-var customConsole = {};
+var customConsole = { };
 
 var chalk = require( 'chalk' );
 
 logMethods.forEach( function ( item ) {
   customConsole[ item.method ] = function () {
-    var text = [].slice.call( arguments ).join( ' ' );
+    var text = [ ].slice.call( arguments ).join( ' ' );
     text = chalk.gray( text );
 
     if ( item.method === 'error' ) {

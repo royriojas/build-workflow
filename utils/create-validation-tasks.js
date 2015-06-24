@@ -5,9 +5,9 @@ module.exports = function ( parameters, grunt ) {
   var onSet = parameters.beforeSetConfiguration;
   var filter = parameters.filter;
 
-  var jsTasks = filter || validationTasks.tasks || [];
+  var jsTasks = filter || validationTasks.tasks || [ ];
 
-  var tasksToRun = [];
+  var tasksToRun = [ ];
 
   jsTasks.forEach( function ( task ) {
 
@@ -15,7 +15,7 @@ module.exports = function ( parameters, grunt ) {
 
     if ( typeof task === 'string' ) {
       name = task;
-      src = validationTasks.src || [];
+      src = validationTasks.src || [ ];
     } else {
       //console.lo(task.name);
       name = task.name;
@@ -23,17 +23,12 @@ module.exports = function ( parameters, grunt ) {
     }
 
     if ( src.length > 0 ) {
-      var tConfig = {
-        src: src
-      };
+      var tConfig = { src: src };
       onSet && onSet( name, tConfig );
 
       var target = 'validation';
 
-      grunt.config.set( [
-        name,
-        target
-      ], tConfig );
+      grunt.config.set( [ name, target ], tConfig );
 
       tasksToRun.push( name + ':' + target );
     }

@@ -39,8 +39,8 @@ module.exports = function ( grunt ) {
         messages = gruntFile.readYAML( filepath ); //YAML.load(filepath);
 
       //messages = messages.main;
-      var ignoredKeys = {};
-      var defaultObject = {};
+      var ignoredKeys = { };
+      var defaultObject = { };
       var hasDefaultKeys = false;
 
       var oFile = options.generateFileName( fileName );

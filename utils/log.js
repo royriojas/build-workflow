@@ -3,7 +3,7 @@ module.exports = function ( grunt ) {
 
   return {
     ok: function () {
-      var args = [].slice.call( arguments );
+      var args = [ ].slice.call( arguments );
 
       args = args.map( function ( arg ) {
         return chalk.green( arg );
@@ -11,9 +11,8 @@ module.exports = function ( grunt ) {
 
       grunt.log.ok( args.join( ' ' ) );
     },
-
     important: function () {
-      var args = [].slice.call( arguments );
+      var args = [ ].slice.call( arguments );
       args.unshift( '>>' );
 
       args = args.map( function ( arg ) {
@@ -22,9 +21,8 @@ module.exports = function ( grunt ) {
 
       grunt.log.writeln( args.join( ' ' ) );
     },
-
     warn: function () {
-      var args = [].slice.call( arguments );
+      var args = [ ].slice.call( arguments );
       args.unshift( '>>' );
 
       args = args.map( function ( arg ) {
@@ -34,7 +32,7 @@ module.exports = function ( grunt ) {
       grunt.warn( args.join( ' ' ) );
     },
     error: function () {
-      var args = [].slice.call( arguments );
+      var args = [ ].slice.call( arguments );
       args.unshift( '>>' );
 
       args = args.map( function ( arg ) {
@@ -45,13 +43,13 @@ module.exports = function ( grunt ) {
     },
     log: function () {
 
-      var args = [].slice.call( arguments );
+      var args = [ ].slice.call( arguments );
       args.unshift( chalk.white( '>>' ) );
 
       grunt.verbose.writeln( args.join( ' ' ) );
     },
     subtle: function () {
-      var args = [].slice.call( arguments );
+      var args = [ ].slice.call( arguments );
       args.unshift( '>>' );
 
       args = args.map( function ( arg ) {

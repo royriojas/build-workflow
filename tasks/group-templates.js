@@ -4,11 +4,11 @@ module.exports = function ( grunt ) {
 
   grunt.registerMultiTask( 'group-templates', function () {
     var me = this,
-      data = me.data || {},
-      src = data.src || [],
+      data = me.data || { },
+      src = data.src || [ ],
       templateFiles = grunt.file.expand( src ),
       outputFile = data.dest,
-      options = me.options( {} );
+      options = me.options( { } );
 
     var logger = require( '../utils/log' )( grunt );
 

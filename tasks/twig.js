@@ -15,12 +15,9 @@ module.exports = function ( grunt ) {
 
         var me = this;
 
-        var opts = me.options( {
-          useMin: false,
-          rev: ''
-        } );
+        var opts = me.options( { useMin: false, rev: '' } );
 
-        var jsonData = {};
+        var jsonData = { };
 
         opts.getData && (jsonData = opts.getData());
 
@@ -37,9 +34,7 @@ module.exports = function ( grunt ) {
 
           var outputDest = fileEntry.dest;
 
-          var page = renderer.render( src, {
-            data: jsonData
-          } );
+          var page = renderer.render( src, { data: jsonData } );
 
           grunt.file.write( outputDest, page );
           logger.subtle( 'File created', path.resolve( outputDest ) );

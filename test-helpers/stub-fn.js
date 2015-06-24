@@ -10,7 +10,7 @@ var stubFn = function ( returnValue, exec ) {
     var retValue = returnValue;
 
     var cCall = {
-      args: [].slice.call( arguments ),
+      args: [ ].slice.call( arguments ),
       thisObj: this
     };
 
@@ -38,7 +38,7 @@ var stubFn = function ( returnValue, exec ) {
   };
 
   fn.called = false;
-  fn.fnCalls = [];
+  fn.fnCalls = [ ];
   fn.callCount = 0;
 
   return fn;

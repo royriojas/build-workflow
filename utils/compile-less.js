@@ -7,9 +7,7 @@ module.exports = function ( content, file, done ) {
   var funcStart = '(function() { var head = document.getElementsByTagName("head")[0]; var style = document.createElement("style"); style.type = "text/css";';
   var funcEnd = 'if (style.styleSheet){ style.styleSheet.cssText = css; } else { style.appendChild(document.createTextNode(css)); } head.appendChild(style);}())';
 
-  compileLess( file, {
-    compress: true
-  } ).then( function ( result ) {
+  compileLess( file, { compress: true } ).then( function ( result ) {
     return autoPrefix( result, {
       file: file,
       dest: '',

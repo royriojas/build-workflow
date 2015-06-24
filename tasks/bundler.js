@@ -37,7 +37,7 @@ module.exports = function ( grunt ) {
     //noWrite: true
     } );
 
-    var fileEntries = me.files || [];
+    var fileEntries = me.files || [ ];
 
     //console.log('files', fileEntries);
     var banner = grunt.template.process( opts.banner );
@@ -79,9 +79,7 @@ module.exports = function ( grunt ) {
 
               var result = uglify.minify( args.result, extend( true, {
                 mangle: true
-              }, opts.uglify, {
-                fromString: true
-              } ) );
+              }, opts.uglify, { fromString: true } ) );
 
               var minFile = makeMinName( dest );
 
@@ -93,7 +91,7 @@ module.exports = function ( grunt ) {
           } );
 
           bundler.on( ' bundler:files:updated', function ( e, args ) {
-            var files = args.files || [];
+            var files = args.files || [ ];
 
             logger.subtle( [
               '\n updated files \n -',
@@ -114,9 +112,7 @@ module.exports = function ( grunt ) {
             }
           } );
 
-          bundler.bundle( {
-            src: src
-          }, opts );
+          bundler.bundle( { src: src }, opts );
         } );
       } );
     }, ES6Promise.resolve() );

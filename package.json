@@ -41,7 +41,7 @@
     "docco-husky-plus": "0.4.5",
     "dot": "1.0.2",
     "es6-promise": "^2.3.0",
-    "esbeautifier": "^3.0.0",
+    "esbeautifier": "^3.1.2",
     "eslint": "^0.23.0",
     "eslint-friendly-formatter": "1.0.5",
     "eslint-plugin-react": "^2.5.2",

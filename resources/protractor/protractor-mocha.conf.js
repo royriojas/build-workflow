@@ -3,10 +3,7 @@ var expand = require( 'glob-expand' );
 var extend = require( 'extend' );
 
 module.exports = function ( cfg ) {
-  var opts = {
-    suitesFolder: './e2e/suites/',
-    specGlobs: '**/*spec.js'
-  };
+  var opts = { suitesFolder: './e2e/suites/', specGlobs: '**/*spec.js' };
 
   extend( opts, cfg );
 

@@ -13,15 +13,12 @@
     var sandbox = sinon.sandbox.create();
     me.sandbox = sandbox;
 
-    var methodsToAdd = [
-      'stub',
-      'spy'
-    ];
+    var methodsToAdd = [ 'stub', 'spy' ];
 
     var many = function ( type, obj, methods ) {
 
-      var doubles = {};
-      methods = [].concat( methods );
+      var doubles = { };
+      methods = [ ].concat( methods );
 
       for (var m = 0; m < methods.length; m++) {
         var method = methods[ m ];
@@ -52,7 +49,7 @@
     } );
 
     sandbox.createSpyObj = function ( name, methods ) {
-      var obj = {};
+      var obj = { };
       obj.__name__ = name;
       sandbox.spyMany( obj, methods );
       return obj;

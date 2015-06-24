@@ -82,7 +82,7 @@ var objUtil = {
       if ( typeof t === 'undefined' || t === null ) {
         var isPrevLast = (ix < len - 1);
 
-        temp[ theKey ] = isPrevLast ? {} : val;
+        temp[ theKey ] = isPrevLast ? { } : val;
 
         if ( isPrevLast ) {
           temp = temp[ theKey ];

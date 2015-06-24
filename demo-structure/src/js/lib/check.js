@@ -8,7 +8,7 @@
 
 // code for `typeOf` and `isPlainObject` borrowed from `jQuery.type`
 // to avoid including jquery only to have this
-var class2type = {};
+var class2type = { };
 
 var types = [
   'Boolean',
