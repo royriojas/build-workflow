@@ -1,5 +1,10 @@
 
 # Build Workflow - Changelog
+## v4.3.0
+- **Build Scripts Changes**
+  - Update esbeautifier dep to better handle beautification of small arrays - [3277300]( https://github.com/royriojas/build-workflow/commit/3277300 ), [royriojas](https://github.com/royriojas), 24/06/2015 16:41:21
+
+    
 ## v4.2.2
 - **Features**
   - new karma helper and logger helper - [e06146e]( https://github.com/royriojas/build-workflow/commit/e06146e ), [royriojas](https://github.com/royriojas), 19/06/2015 18:00:30
