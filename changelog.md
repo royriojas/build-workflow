@@ -1,5 +1,10 @@
 
 # Build Workflow - Changelog
+## v4.3.1
+- **Build Scripts Changes**
+  - Automate generation of changelog and commit message for it - [0e879ed]( https://github.com/royriojas/build-workflow/commit/0e879ed ), [royriojas](https://github.com/royriojas), 24/06/2015 16:42:38
+
+    
 ## v4.3.0
 - **Build Scripts Changes**
   - Update esbeautifier dep to better handle beautification of small arrays - [3277300]( https://github.com/royriojas/build-workflow/commit/3277300 ), [royriojas](https://github.com/royriojas), 24/06/2015 16:41:21
