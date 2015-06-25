@@ -1,5 +1,11 @@
 
 # Build Workflow - Changelog
+## v4.3.2
+#### Esbeautifier
+- **Refactoring**
+  - Allow line breaks between object properties - [22b2f28]( https://github.com/royriojas/build-workflow/commit/22b2f28 ), [royriojas](https://github.com/royriojas), 25/06/2015 02:23:40
+
+    
 ## v4.3.1
 - **Build Scripts Changes**
   - Automate generation of changelog and commit message for it - [0e879ed]( https://github.com/royriojas/build-workflow/commit/0e879ed ), [royriojas](https://github.com/royriojas), 24/06/2015 16:42:38
