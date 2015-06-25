@@ -37,7 +37,7 @@
     "chalk": "1.0.0",
     "coalescy": "^1.0.0",
     "console-filter": "1.0.0",
-    "consoleify": "^1.0.5",
+    "consoleify": "^1.1.0",
     "dispatchy": "1.0.2",
     "docco-husky-plus": "0.4.5",
     "dot": "1.0.2",
