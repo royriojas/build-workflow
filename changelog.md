@@ -1,5 +1,10 @@
 
 # Build Workflow - Changelog
+## v4.4.0
+- **Bug Fixes**
+  - fix consoleify issues preventing code from running in IE browsers - [6e332bf]( https://github.com/royriojas/build-workflow/commit/6e332bf ), [royriojas](https://github.com/royriojas), 25/06/2015 17:04:27
+
+    
 ## v4.3.2
 #### Esbeautifier
 - **Refactoring**
