@@ -1,5 +1,13 @@
 
 # Build Workflow - Changelog
+## v4.5.0
+- **Build Scripts Changes**
+  - Try to update to latest `watchify` to avoid having 2 different versions of `browserify` - [95fbf26]( https://github.com/royriojas/build-workflow/commit/95fbf26 ), [royriojas](https://github.com/royriojas), 03/07/2015 01:20:48
+
+    
+  - attempt to use latest watchify - [6df5590]( https://github.com/royriojas/build-workflow/commit/6df5590 ), [royriojas](https://github.com/royriojas), 01/07/2015 22:28:10
+
+    
 ## v4.4.0
 - **Bug Fixes**
   - fix consoleify issues preventing code from running in IE browsers - [6e332bf]( https://github.com/royriojas/build-workflow/commit/6e332bf ), [royriojas](https://github.com/royriojas), 25/06/2015 17:04:27
