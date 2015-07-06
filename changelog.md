@@ -1,5 +1,14 @@
 
 # Build Workflow - Changelog
+## v4.6.0
+- **Build Scripts Changes**
+  - Lock dependencies - [9821da2]( https://github.com/royriojas/build-workflow/commit/9821da2 ), [royriojas](https://github.com/royriojas), 06/07/2015 03:38:41
+
+    
+- **Refactoring**
+  - Factorized bundly into its own module - [3c7c60d]( https://github.com/royriojas/build-workflow/commit/3c7c60d ), [royriojas](https://github.com/royriojas), 06/07/2015 03:12:44
+
+    
 ## v4.5.0
 - **Build Scripts Changes**
   - Try to update to latest `watchify` to avoid having 2 different versions of `browserify` - [95fbf26]( https://github.com/royriojas/build-workflow/commit/95fbf26 ), [royriojas](https://github.com/royriojas), 03/07/2015 01:20:48
