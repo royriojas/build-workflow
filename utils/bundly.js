@@ -31,7 +31,7 @@ var bundlyProto = extend( dispatchy.create(), {
     var src = Array.isArray( data.src ) ? data.src[ 0 ] : data.src;
     var hash = md5( src );
 
-    me.bundler = require( '../utils/bundler' ).create( 'b-t-' + hash );
+    me.bundler = require( './bundler' ).create( 'b-t-' + hash );
   },
   bundle: function () {
     var me = this;
