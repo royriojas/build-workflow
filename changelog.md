@@ -1,5 +1,10 @@
 
 # Build Workflow - Changelog
+## v4.6.4
+- **Build Scripts Changes**
+  - Update shimixify to fix the issue while loading the shimmed/mocked deps - [52b38c6]( https://github.com/royriojas/build-workflow/commit/52b38c6 ), [royriojas](https://github.com/royriojas), 08/07/2015 00:46:36
+
+    
 ## v4.6.3
 - **Build Scripts Changes**
   - Lock dependencies - [9a2a671]( https://github.com/royriojas/build-workflow/commit/9a2a671 ), [royriojas](https://github.com/royriojas), 08/07/2015 00:27:09
