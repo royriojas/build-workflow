@@ -56,7 +56,7 @@
     "moment": "^2.10.3",
     "read-file": "0.1.2",
     "require-arr": "1.0.2",
-    "shimixify": "1.0.3",
+    "shimixify": "^1.1.2",
     "simpless": "^1.0.9",
     "stricterify": "^1.0.3",
     "stringformat": "0.0.5",
