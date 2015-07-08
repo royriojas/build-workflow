@@ -1,5 +1,19 @@
 
 # Build Workflow - Changelog
+## v4.6.2
+- **Bug Fixes**
+  - wrong property name to set the shims for shimixify - [5731f6c]( https://github.com/royriojas/build-workflow/commit/5731f6c ), [royriojas](https://github.com/royriojas), 08/07/2015 00:24:33
+
+    
+## v4.6.1
+- **Bug Fixes**
+  - Revert to watchify@2.6.0 since listeners are not set for all files - [0df4a5f]( https://github.com/royriojas/build-workflow/commit/0df4a5f ), [royriojas](https://github.com/royriojas), 07/07/2015 14:32:39
+
+    
+- **Refactoring**
+  - Fix typo attempting to include bundler - [850c4a0]( https://github.com/royriojas/build-workflow/commit/850c4a0 ), [royriojas](https://github.com/royriojas), 07/07/2015 10:56:13
+
+    
 ## v4.6.0
 - **Build Scripts Changes**
   - Lock dependencies - [9821da2]( https://github.com/royriojas/build-workflow/commit/9821da2 ), [royriojas](https://github.com/royriojas), 06/07/2015 03:38:41
