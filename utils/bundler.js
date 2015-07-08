@@ -34,7 +34,7 @@ module.exports = {
             }
           },
           shimixify: {
-            deps: {
+            shims: {
               window: 'global.window',
               jQuery: 'global.jQuery',
               chrome: 'global.chrome',
@@ -103,7 +103,7 @@ module.exports = {
 
           b.transform( { global: true }, lessify );
 
-          var shimify = require( 'shimixify' ).configure( opts.shimixify.deps );
+          var shimify = require( 'shimixify' ).configure( opts.shimixify );
           var cFilter = require( 'console-filter' );
 
           if ( !opts.stricterify.disabled ) {
