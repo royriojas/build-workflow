@@ -23,7 +23,7 @@ module.exports = function ( options ) {
     var filePath = file.path;
 
     if ( filePath.match( /\.dot$/ ) || filePath.match( /\.tpl$/ ) ) {
-      var dotCompiler = require( '../../utils/dot-compiler' );
+      var dotCompiler = require( 'bundly/lib/dot-compiler' );
       content = dotCompiler.compile( content );
       done( content );
       return;
@@ -35,7 +35,7 @@ module.exports = function ( options ) {
       }
 
       if ( !opts.babelify.disabled && !opts.babelify.skipBabel( file.path ) ) {
-        var babelCore = require( 'babel-core' );
+        var babelCore = require( 'bundly/node_modules/babel-core' );
         content = babelCore.transform( content, extend( opts.babelify.options, {
           filename: file.path
         } ) ).code;
@@ -70,7 +70,7 @@ module.exports = function ( options ) {
     }
     if ( filePath.match( /\.css$/ ) || filePath.match( /\.less$/ ) ) {
       if ( opts.lessify ) {
-        var compileLess = require( '../../utils/compile-less' );
+        var compileLess = require( 'bundly/lib/compile-less' );
         compileLess( content, filePath, function ( result ) {
           done( result );
         } );
