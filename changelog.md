@@ -1,5 +1,17 @@
 
 # Build Workflow - Changelog
+## v4.7.0
+- **Bug Fixes**
+  - update karma helper - [5c07e51]( https://github.com/royriojas/build-workflow/commit/5c07e51 ), [royriojas](https://github.com/royriojas), 09/07/2015 02:18:44
+
+    
+- **Refactoring**
+  - use bundly instead of the local modules - [1aba160]( https://github.com/royriojas/build-workflow/commit/1aba160 ), [royriojas](https://github.com/royriojas), 09/07/2015 02:11:25
+
+    
+  - Remove need of jQuery for the generated i18n files - [7ac03d6]( https://github.com/royriojas/build-workflow/commit/7ac03d6 ), [royriojas](https://github.com/royriojas), 09/07/2015 00:13:10
+
+    
 ## v4.6.4
 - **Build Scripts Changes**
   - Update shimixify to fix the issue while loading the shimmed/mocked deps - [52b38c6]( https://github.com/royriojas/build-workflow/commit/52b38c6 ), [royriojas](https://github.com/royriojas), 08/07/2015 00:46:36
