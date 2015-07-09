@@ -13,6 +13,7 @@ module.exports = function ( grunt /*, pkg, opts */ ) {
         var esbeautifier = Object.create( require( 'esbeautifier' ) );
 
         var me = this;
+        var logger = require( '../utils/log' )( grunt );
 
         var opts = me.options( {
           esformatterOpts: {},
@@ -21,7 +22,7 @@ module.exports = function ( grunt /*, pkg, opts */ ) {
         } );
 
         var useCache = opts.useCache;
-        grunt.log.ok( useCache ? 'using cache' : 'not using the cache' );
+        logger.subtle( useCache ? 'using cache' : 'not using the cache' );
 
         var cfg = { };
         if ( opts.configFile ) {
@@ -34,7 +35,7 @@ module.exports = function ( grunt /*, pkg, opts */ ) {
         esbeautifier.on( 'beautify:start', function ( e, args ) {
           if ( useCache ) {
             grunt.verbose.writeln( 'updated files', args.files );
-            grunt.log.ok( 'total files in glob : ' + me.filesSrc.length + ', updated: ' + args.files.length );
+            logger.subtle( 'total files: ' + me.filesSrc.length + ', updated: ' + args.files.length );
           }
         } );
 
@@ -56,16 +57,15 @@ module.exports = function ( grunt /*, pkg, opts */ ) {
               msg = sFormat( '{0} {1} file(s) beautified', chalk.yellow( 'beautifying done!' ), _args.count );
             }
 
-            grunt.log.ok( msg );
+            logger.ok( msg );
           } else {
             if ( noBeautifiedFiles.length > 0 ) {
-              grunt.log.writeln( chalk.red( 'The following files need beautification: ' ), chalk.yellow( '\n\n   - ' + noBeautifiedFiles.join( '\n   - ' ) ) + '\n' );
+              logger.subtle( 'The following files need beautification:', '\n\n   - ' + noBeautifiedFiles.join( '\n   - ' ) + '\n\n' );
               grunt.warn( sFormat( '{0} files need beautification', noBeautifiedFiles.length ) );
             } else {
-              grunt.log.ok( 'All files are beautified.' );
+              logger.ok( 'All files are beautified.' );
             }
           }
-
         } );
 
         esbeautifier.beautify( me.filesSrc, {
@@ -73,7 +73,6 @@ module.exports = function ( grunt /*, pkg, opts */ ) {
           checkOnly: opts.reportOnly,
           cfg: cfg
         } );
-
       }
     }
   } );
