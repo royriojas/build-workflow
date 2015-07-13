@@ -4,13 +4,15 @@ module.exports = function ( grunt ) {
   var moment = require( 'moment' );
   var ES6Promise = require( 'es6-promise' ).Promise;
 
-  grunt.registerMultiTask( 'simpless', function () {
+  grunt.registerMultiTask( 'simpless', function ( watch ) {
     var me = this;
     var logger = require( '../utils/log' )( grunt );
     var done = me.async();
 
     var opts = me.options( {
       banner: null,
+      watch: watch === 'watch',
+      watchDelay: false,
       revision: null,
       assetsPathFormat: 'assets/{REVISION}_{GUID}_{FNAME}',
       copyAssetsToDestFolder: true,
@@ -27,44 +29,17 @@ module.exports = function ( grunt ) {
     var p = fileEntries.reduce( function ( seq, data ) {
       return seq.then( function () {
 
+        var banner = grunt.template.process( opts.banner );
         return new ES6Promise( function ( resolve ) {
-          var simpless = require( 'simpless' ).create();
           var util = require( 'util' );
 
-          var start = moment();
-          var banner = grunt.template.process( opts.banner );
-
-          simpless.on( 'error', function ( e, err ) {
-            logger.error( 'Error parsing less file\n\n', err.message );
-          } );
-
-          simpless.on( 'resource:copied', function ( e, args ) {
-            logger.log( 'resource copied from:', args.from, 'to:', args.to );
-          } );
-
-          simpless.on( 'url:replaced', function ( e, args ) {
-            logger.log( 'url replaced from:', args.from, 'to:', args.to );
-          } );
-
-          simpless.on( 'write:file write:minimized', function ( e, args ) {
-            var now = moment();
-            logger.ok( 'File written:', args.dest, 'Time required:', now.diff( start ) / 1000 );
-            if ( !opts.minimize && e.type === 'write:file' ) {
-              resolve();
-              return;
-            }
-            if ( opts.minimize && e.type === 'write:minimized' ) {
-              resolve();
-            }
-          } );
-
-          logger.log( 'options', util.inspect( opts ) );
-
-          simpless.process( {
+          var simpless = require( 'simpless/lib/watcher' ).create( {
             src: data.src,
             dest: path.resolve( data.dest )
           }, {
             banner: banner,
+            watch: opts.watch,
+            watchDelay: opts.watchDelay || 600,
             minimize: opts.minimize,
             revision: opts.revision,
             assetsPathFormat: opts.assetsPathFormat,
@@ -77,11 +52,64 @@ module.exports = function ( grunt ) {
             },
             userFns: opts.userFns
           } );
+
+          simpless.on( 'error', function ( e, err ) {
+            if ( opts.watch ) {
+              logger.log( 'Error parsing less file\n\n', err.message );
+              return;
+            }
+            logger.error( 'Error parsing less file\n\n', err.message );
+
+          } );
+
+          simpless.on( 'resource:copied', function ( e, args ) {
+            logger.log( '\nresource copied\n- from:  ' + args.from + '\n- to:  ' + args.to + '\n' );
+          } );
+
+          simpless.on( 'url:replaced', function ( e, args ) {
+            logger.log( '\rurl replaced\n- from:  ' + args.from + '\n- to:  ' + args.to );
+          } );
+
+          simpless.on( 'write:file write:minimized', function ( e, args ) {
+            var now = moment();
+            logger.ok( 'File written:', args.dest, 'Time required:', now.diff( start ) + 'ms' );
+            start = now;
+            if ( !opts.minimize && e.type === 'write:file' ) {
+              resolve();
+              return;
+            }
+            if ( opts.minimize && e.type === 'write:minimized' ) {
+              resolve();
+            }
+          } );
+
+          var startProcess = function () {
+            start = moment();
+            simpless.process();
+          };
+
+          simpless.on( 'deps:changed', function ( e, args ) {
+            logger.subtle( 'files changed', '\n   - ' + args.files.join( '\n   - ' ) );
+            startProcess();
+          } );
+
+          simpless.one( 'watch:start', function ( e, args ) {
+            logger.subtle( '\n\nWatching the following files\n   - ' + args.files.join( '\n   - ' ), '\n\n' );
+          } );
+
+          logger.log( 'options', util.inspect( opts ) );
+
+          startProcess();
         } );
       } );
     }, ES6Promise.resolve() );
 
     p.then( function () {
+      if ( opts.watch ) {
+        //var moment = require( 'moment' );
+        logger.subtle( '\n\n[' + moment().format( 'MM/DD/YYYY HH:mm:ss' ) + ']', '...Waiting for changes...\n\n' );
+        return;
+      }
       done();
     } );
 
