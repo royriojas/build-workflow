@@ -1,5 +1,10 @@
 
 # Build Workflow - Changelog
+## v4.8.0
+- **Build Scripts Changes**
+  - Update simpless and bundly deps - [daada82]( https://github.com/royriojas/build-workflow/commit/daada82 ), [royriojas](https://github.com/royriojas), 13/07/2015 01:47:59
+
+    
 ## v4.7.0
 - **Bug Fixes**
   - update karma helper - [5c07e51]( https://github.com/royriojas/build-workflow/commit/5c07e51 ), [royriojas](https://github.com/royriojas), 09/07/2015 02:18:44
@@ -589,8 +594,8 @@
 
     
 ## v1.0.6
-- **undefined**
-  - maxBuffer exceeded fixed. - [b17a55e]( https://github.com/royriojas/build-workflow/commit/b17a55e ), [royriojas](https://github.com/royriojas), 03/03/2015 10:46:54
+- **Bug Fixes**
+  - prepush issue: Error: maxBuffer exceeded fixed. - [b17a55e]( https://github.com/royriojas/build-workflow/commit/b17a55e ), [royriojas](https://github.com/royriojas), 03/03/2015 10:46:54
 
     
 ## v1.0.5
