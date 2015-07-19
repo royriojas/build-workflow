@@ -10,15 +10,23 @@ module.exports = function ( grunt ) {
     var opts = me.options( {
       watch: watch === 'watch',
       banner: '',
-      uglify: false,
+      minimize: false,
       separator: '\n\n',
-      useCache: true
+      useCache: true,
+      preBundleCB: function () {}
     //noWrite: true
     } );
 
     var fileEntries = me.files || [ ];
 
-    //console.log('files', fileEntries);
+    if ( opts.consoleifyEnabled ) {
+      var oldCallback = opts.preBundleCB;
+      opts.preBundleCB = function ( b ) {
+        b.transform( require( 'consoleify' ) );
+        oldCallback.apply( null, arguments );
+      };
+    }
+
     opts.banner = grunt.template.process( opts.banner );
 
     var filesPromise = fileEntries.reduce( function ( seq, data ) {

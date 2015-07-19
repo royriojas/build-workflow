@@ -6,7 +6,7 @@ module.exports = function ( grunt /*, pkg, opts */ ) {
   var gruntTaskUtils = require( '../utils/grunt-helper' )( grunt );
 
   gruntTaskUtils.registerTasks( {
-    esformatter: {
+    esbeautifier: {
       description: 'beautify files with esbeautifier',
       multiTask: function () {
         var path = require( 'path' );

@@ -7,14 +7,16 @@ module.exports = function ( grunt ) {
   return {
     options: {
       banner: grunt.file.read( path.resolve( __dirname, '../resources/license/license.txt' ) ),
-      consoleFilter: grunt.option( 'console-filter' ),
-      consoleify: {
-        disabled: buildNumber !== 'dev'
+      transforms: {
+        consoleFilter: {
+          keep: grunt.option( 'console-filter' ) || grunt.option( 'console-filter-keep' )
+        }
       },
+      consoleifyEnabled: buildNumber !== 'dev',
       useCache: !grunt.option( 'skip-cache' ),
       //the dev option is for development
-      uglify: buildNumber !== 'dev' || grunt.option( 'bundle-min' ),
-      buildVersion: buildNumber
+      minimize: buildNumber !== 'dev' || grunt.option( 'bundle-min' ),
+      revision: buildNumber
     }
   };
 };

@@ -1,5 +1,5 @@
 module.exports = function ( grunt ) {
-  grunt.registerMultiTask( 'eslint', 'Validate files with eslinter', function () {
+  grunt.registerMultiTask( 'eslinter', 'Validate files with eslinter', function () {
     var opts = this.options( {
       useCache: true,
       format: 'eslinter/node_modules/eslint-friendly-formatter'

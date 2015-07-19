@@ -20,8 +20,8 @@ module.exports = function ( /*grunt, pkg, options*/ ) {
     validationTasks: {
       src: prepushFiles,
       tasks: [
-        'esformatter',
-        'eslint'
+        'esbeautifier',
+        'eslinter'
       // 'jscs'
       ]
     //jsbeautifier: prepushFiles,
