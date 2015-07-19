@@ -12,7 +12,7 @@ module.exports = function ( grunt ) {
           keep: grunt.option( 'console-filter' ) || grunt.option( 'console-filter-keep' )
         }
       },
-      consoleifyEnabled: buildNumber !== 'dev',
+      consoleifyEnabled: buildNumber === 'dev',
       useCache: !grunt.option( 'skip-cache' ),
       //the dev option is for development
       minimize: buildNumber !== 'dev' || grunt.option( 'bundle-min' ),
