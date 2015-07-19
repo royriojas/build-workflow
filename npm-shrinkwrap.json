@@ -1,6 +1,6 @@
 {
   "name": "build-workflow",
-  "version": "5.0.0",
+  "version": "5.0.2",
   "dependencies": {
     "bluebird": {
       "version": "2.9.34",
@@ -2911,8 +2911,8 @@
       "resolved": "https://registry.npmjs.org/coalescy/-/coalescy-1.0.0.tgz"
     },
     "consoleify": {
-      "version": "1.1.0",
-      "from": "consoleify@>=1.1.0 <2.0.0"
+      "version": "1.1.2",
+      "from": "consoleify@latest"
     },
     "dispatchy": {
       "version": "1.0.2",
