@@ -1,5 +1,10 @@
 
 # Build Workflow - Changelog
+## v5.0.1
+- **Refactoring**
+  - use latest bundly - [a421a57]( https://github.com/royriojas/build-workflow/commit/a421a57 ), [royriojas](https://github.com/royriojas), 19/07/2015 07:33:12
+
+    
 ## v4.8.1
 - **Build Scripts Changes**
   - lock dependencies with a shrinkwrap.json file - [fc9d0fe]( https://github.com/royriojas/build-workflow/commit/fc9d0fe ), [royriojas](https://github.com/royriojas), 13/07/2015 01:49:27
