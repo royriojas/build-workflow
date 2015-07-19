@@ -1,5 +1,10 @@
 
 # Build Workflow - Changelog
+## v5.0.2
+- **Bug Fixes**
+  - enable consoleify only in dev mode - [53980df]( https://github.com/royriojas/build-workflow/commit/53980df ), [royriojas](https://github.com/royriojas), 19/07/2015 07:38:46
+
+    
 ## v5.0.1
 - **Refactoring**
   - use latest bundly - [a421a57]( https://github.com/royriojas/build-workflow/commit/a421a57 ), [royriojas](https://github.com/royriojas), 19/07/2015 07:33:12
