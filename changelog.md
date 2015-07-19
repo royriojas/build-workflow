@@ -1,5 +1,10 @@
 
 # Build Workflow - Changelog
+## v5.0.3
+- **Build Scripts Changes**
+  - Include latest consoleify - [3d871c8]( https://github.com/royriojas/build-workflow/commit/3d871c8 ), [royriojas](https://github.com/royriojas), 19/07/2015 07:49:10
+
+    
 ## v5.0.2
 - **Bug Fixes**
   - enable consoleify only in dev mode - [53980df]( https://github.com/royriojas/build-workflow/commit/53980df ), [royriojas](https://github.com/royriojas), 19/07/2015 07:38:46
