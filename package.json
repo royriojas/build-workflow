@@ -1,6 +1,6 @@
 {
   "name": "build-workflow",
-  "version": "4.8.1",
+  "version": "5.0.0",
   "description": "Simple gruntfile helper to  define build workflows",
   "main": "config-loader.js",
   "scripts": {
@@ -31,10 +31,11 @@
   },
   "homepage": "https://github.com/royriojas/build-workflow",
   "dependencies": {
-    "bundly": "^1.1.6",
+    "bundly": "^2.0.6",
     "chalk": "1.0.0",
     "changelogx": "^1.0.15",
     "coalescy": "^1.0.0",
+    "consoleify": "^1.1.0",
     "dispatchy": "1.0.2",
     "docco-husky-plus": "0.4.5",
     "dot": "1.0.2",
@@ -48,7 +49,7 @@
     "matchdep": "0.3.0",
     "moment": "^2.10.3",
     "read-file": "0.1.2",
-    "simpless": "^2.0.4",
+    "simpless": "^2.0.5",
     "stringformat": "0.0.5",
     "time-grunt": "1.1.0",
     "twig": "0.8.1",
