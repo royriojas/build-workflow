@@ -31,7 +31,7 @@
   },
   "homepage": "https://github.com/royriojas/build-workflow",
   "dependencies": {
-    "bundly": "^2.0.6",
+    "bundly": "^2.0.8",
     "chalk": "1.0.0",
     "changelogx": "^1.0.15",
     "coalescy": "^1.0.0",

@@ -1,6 +1,6 @@
 {
   "name": "build-workflow",
-  "version": "5.0.2",
+  "version": "5.0.3",
   "dependencies": {
     "bluebird": {
       "version": "2.9.34",
@@ -13,7 +13,7 @@
       "resolved": "https://registry.npmjs.org/browserify-transform-tools/-/browserify-transform-tools-1.4.2.tgz"
     },
     "bundly": {
-      "version": "2.0.6",
+      "version": "2.0.8",
       "from": "bundly@latest",
       "dependencies": {
         "babel-core": {
@@ -410,6 +410,23 @@
                   "version": "13001.1.0-dev-harmony-fb",
                   "from": "esprima-fb@>=13001.1.0-dev-harmony-fb <13001.2.0",
                   "resolved": "https://registry.npmjs.org/esprima-fb/-/esprima-fb-13001.1.0-dev-harmony-fb.tgz"
+                },
+                "recast": {
+                  "version": "0.10.18",
+                  "from": "recast@0.10.18",
+                  "resolved": "https://registry.npmjs.org/recast/-/recast-0.10.18.tgz",
+                  "dependencies": {
+                    "esprima-fb": {
+                      "version": "14001.1.0-dev-harmony-fb",
+                      "from": "esprima-fb@>=14001.1.0-dev-harmony-fb <14001.2.0",
+                      "resolved": "https://registry.npmjs.org/esprima-fb/-/esprima-fb-14001.1.0-dev-harmony-fb.tgz"
+                    },
+                    "ast-types": {
+                      "version": "0.8.2",
+                      "from": "ast-types@0.8.2",
+                      "resolved": "https://registry.npmjs.org/ast-types/-/ast-types-0.8.2.tgz"
+                    }
+                  }
                 }
               }
             },
@@ -418,6 +435,23 @@
               "from": "regexpu@>=1.1.2 <2.0.0",
               "resolved": "https://registry.npmjs.org/regexpu/-/regexpu-1.2.0.tgz",
               "dependencies": {
+                "recast": {
+                  "version": "0.10.21",
+                  "from": "recast@>=0.10.6 <0.11.0",
+                  "resolved": "https://registry.npmjs.org/recast/-/recast-0.10.21.tgz",
+                  "dependencies": {
+                    "esprima-fb": {
+                      "version": "15001.1.0-dev-harmony-fb",
+                      "from": "esprima-fb@>=15001.1.0-dev-harmony-fb <15001.2.0",
+                      "resolved": "https://registry.npmjs.org/esprima-fb/-/esprima-fb-15001.1.0-dev-harmony-fb.tgz"
+                    },
+                    "ast-types": {
+                      "version": "0.8.3",
+                      "from": "ast-types@0.8.3",
+                      "resolved": "https://registry.npmjs.org/ast-types/-/ast-types-0.8.3.tgz"
+                    }
+                  }
+                },
                 "regenerate": {
                   "version": "1.2.1",
                   "from": "regenerate@>=1.2.1 <2.0.0",
@@ -502,23 +536,6 @@
               "version": "1.0.1",
               "from": "trim-right@>=1.0.0 <2.0.0",
               "resolved": "https://registry.npmjs.org/trim-right/-/trim-right-1.0.1.tgz"
-            },
-            "recast": {
-              "version": "0.10.18",
-              "from": "recast@0.10.18",
-              "resolved": "https://registry.npmjs.org/recast/-/recast-0.10.18.tgz",
-              "dependencies": {
-                "esprima-fb": {
-                  "version": "14001.1.0-dev-harmony-fb",
-                  "from": "esprima-fb@>=14001.1.0-dev-harmony-fb <14001.2.0",
-                  "resolved": "https://registry.npmjs.org/esprima-fb/-/esprima-fb-14001.1.0-dev-harmony-fb.tgz"
-                },
-                "ast-types": {
-                  "version": "0.8.2",
-                  "from": "ast-types@0.8.2",
-                  "resolved": "https://registry.npmjs.org/ast-types/-/ast-types-0.8.2.tgz"
-                }
-              }
             }
           }
         },
@@ -1234,7 +1251,7 @@
             },
             "resolve": {
               "version": "1.1.6",
-              "from": "resolve@>=1.1.4 <2.0.0",
+              "from": "resolve@>=1.1.6 <2.0.0",
               "resolved": "https://registry.npmjs.org/resolve/-/resolve-1.1.6.tgz"
             },
             "shasum": {
@@ -2299,7 +2316,7 @@
                 },
                 "resolve": {
                   "version": "1.1.6",
-                  "from": "resolve@>=1.1.4 <2.0.0",
+                  "from": "resolve@>=1.1.6 <2.0.0",
                   "resolved": "https://registry.npmjs.org/resolve/-/resolve-1.1.6.tgz"
                 },
                 "shallow-copy": {
@@ -2515,7 +2532,7 @@
               "dependencies": {
                 "readable-stream": {
                   "version": "1.0.33",
-                  "from": "readable-stream@>=1.0.26-2 <1.1.0",
+                  "from": "readable-stream@>=1.0.17 <1.1.0",
                   "resolved": "https://registry.npmjs.org/readable-stream/-/readable-stream-1.0.33.tgz",
                   "dependencies": {
                     "core-util-is": {
