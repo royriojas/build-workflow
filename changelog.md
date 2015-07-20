@@ -1,5 +1,10 @@
 
 # Build Workflow - Changelog
+## v5.0.4
+- **Build Scripts Changes**
+  - update bundly to get before/after transform callbacks - [22e91f1]( https://github.com/royriojas/build-workflow/commit/22e91f1 ), [royriojas](https://github.com/royriojas), 20/07/2015 01:36:02
+
+    
 ## v5.0.3
 - **Build Scripts Changes**
   - Include latest consoleify - [3d871c8]( https://github.com/royriojas/build-workflow/commit/3d871c8 ), [royriojas](https://github.com/royriojas), 19/07/2015 07:49:10
