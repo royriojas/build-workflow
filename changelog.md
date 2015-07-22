@@ -1,5 +1,10 @@
 
 # Build Workflow - Changelog
+## v5.0.6
+- **Build Scripts Changes**
+  - Add support for the `mockquire` token - [a0e6259]( https://github.com/royriojas/build-workflow/commit/a0e6259 ), [royriojas](https://github.com/royriojas), 21/07/2015 19:56:20
+
+    
 ## v5.0.4
 - **Build Scripts Changes**
   - update bundly to get before/after transform callbacks - [22e91f1]( https://github.com/royriojas/build-workflow/commit/22e91f1 ), [royriojas](https://github.com/royriojas), 20/07/2015 01:36:02
