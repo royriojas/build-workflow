@@ -1,6 +1,6 @@
 {
   "name": "build-workflow",
-  "version": "5.0.6",
+  "version": "5.0.7",
   "dependencies": {
     "bluebird": {
       "version": "2.9.34",
