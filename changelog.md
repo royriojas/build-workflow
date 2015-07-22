@@ -1,5 +1,13 @@
 
 # Build Workflow - Changelog
+## v5.0.7
+- **Build Scripts Changes**
+  - version 5.0.7 - [c04b742]( https://github.com/royriojas/build-workflow/commit/c04b742 ), [royriojas](https://github.com/royriojas), 22/07/2015 14:31:18
+
+    
+  - Use new simpless to get faster building times - [5e61132]( https://github.com/royriojas/build-workflow/commit/5e61132 ), [royriojas](https://github.com/royriojas), 22/07/2015 14:30:09
+
+    
 ## v5.0.6
 - **Build Scripts Changes**
   - Add support for the `mockquire` token - [a0e6259]( https://github.com/royriojas/build-workflow/commit/a0e6259 ), [royriojas](https://github.com/royriojas), 21/07/2015 19:56:20
