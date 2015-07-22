@@ -1,6 +1,6 @@
 {
   "name": "build-workflow",
-  "version": "5.0.3",
+  "version": "5.0.5",
   "dependencies": {
     "bluebird": {
       "version": "2.9.34",
@@ -3544,12 +3544,12 @@
       }
     },
     "eslinter": {
-      "version": "2.0.5",
+      "version": "2.0.6",
       "from": "eslinter@>=2.0.5 <3.0.0",
       "dependencies": {
         "dispatchy": {
           "version": "1.0.3",
-          "from": "dispatchy@1.0.3",
+          "from": "dispatchy@>=1.0.3 <2.0.0",
           "dependencies": {
             "is-null-like": {
               "version": "1.0.2",
@@ -3586,11 +3586,6 @@
                       "version": "1.0.1",
                       "from": "core-util-is@>=1.0.0 <1.1.0",
                       "resolved": "https://registry.npmjs.org/core-util-is/-/core-util-is-1.0.1.tgz"
-                    },
-                    "isarray": {
-                      "version": "0.0.1",
-                      "from": "isarray@0.0.1",
-                      "resolved": "https://registry.npmjs.org/isarray/-/isarray-0.0.1.tgz"
                     },
                     "process-nextick-args": {
                       "version": "1.0.2",
@@ -3650,6 +3645,35 @@
                   "from": "es6-map@>=0.1.1 <0.2.0",
                   "resolved": "https://registry.npmjs.org/es6-map/-/es6-map-0.1.1.tgz",
                   "dependencies": {
+                    "d": {
+                      "version": "0.1.1",
+                      "from": "d@>=0.1.1 <0.2.0",
+                      "resolved": "https://registry.npmjs.org/d/-/d-0.1.1.tgz"
+                    },
+                    "es5-ext": {
+                      "version": "0.10.7",
+                      "from": "es5-ext@>=0.10.4 <0.11.0",
+                      "resolved": "https://registry.npmjs.org/es5-ext/-/es5-ext-0.10.7.tgz",
+                      "dependencies": {
+                        "es6-symbol": {
+                          "version": "2.0.1",
+                          "from": "es6-symbol@>=2.0.1 <2.1.0",
+                          "resolved": "https://registry.npmjs.org/es6-symbol/-/es6-symbol-2.0.1.tgz"
+                        }
+                      }
+                    },
+                    "es6-iterator": {
+                      "version": "0.1.3",
+                      "from": "es6-iterator@>=0.1.3 <0.2.0",
+                      "resolved": "https://registry.npmjs.org/es6-iterator/-/es6-iterator-0.1.3.tgz",
+                      "dependencies": {
+                        "es6-symbol": {
+                          "version": "2.0.1",
+                          "from": "es6-symbol@>=2.0.1 <2.1.0",
+                          "resolved": "https://registry.npmjs.org/es6-symbol/-/es6-symbol-2.0.1.tgz"
+                        }
+                      }
+                    },
                     "es6-set": {
                       "version": "0.1.1",
                       "from": "es6-set@>=0.1.1 <0.2.0",
@@ -3672,6 +3696,21 @@
                   "from": "es6-weak-map@>=0.1.2 <0.2.0",
                   "resolved": "https://registry.npmjs.org/es6-weak-map/-/es6-weak-map-0.1.4.tgz",
                   "dependencies": {
+                    "d": {
+                      "version": "0.1.1",
+                      "from": "d@>=0.1.1 <0.2.0",
+                      "resolved": "https://registry.npmjs.org/d/-/d-0.1.1.tgz"
+                    },
+                    "es5-ext": {
+                      "version": "0.10.7",
+                      "from": "es5-ext@>=0.10.4 <0.11.0",
+                      "resolved": "https://registry.npmjs.org/es5-ext/-/es5-ext-0.10.7.tgz"
+                    },
+                    "es6-iterator": {
+                      "version": "0.1.3",
+                      "from": "es6-iterator@>=0.1.3 <0.2.0",
+                      "resolved": "https://registry.npmjs.org/es6-iterator/-/es6-iterator-0.1.3.tgz"
+                    },
                     "es6-symbol": {
                       "version": "2.0.1",
                       "from": "es6-symbol@>=2.0.1 <2.1.0",
@@ -3688,83 +3727,6 @@
                   "version": "3.1.0",
                   "from": "estraverse@>=3.1.0 <4.0.0",
                   "resolved": "https://registry.npmjs.org/estraverse/-/estraverse-3.1.0.tgz"
-                },
-                "es6-iterator": {
-                  "version": "0.1.3",
-                  "from": "es6-iterator@0.1.3",
-                  "resolved": "https://registry.npmjs.org/es6-iterator/-/es6-iterator-0.1.3.tgz",
-                  "dependencies": {
-                    "d": {
-                      "version": "0.1.1",
-                      "from": "d@>=0.1.1 <0.2.0",
-                      "resolved": "https://registry.npmjs.org/d/-/d-0.1.1.tgz"
-                    },
-                    "es5-ext": {
-                      "version": "0.10.7",
-                      "from": "es5-ext@>=0.10.5 <0.11.0",
-                      "resolved": "https://registry.npmjs.org/es5-ext/-/es5-ext-0.10.7.tgz"
-                    },
-                    "es6-symbol": {
-                      "version": "2.0.1",
-                      "from": "es6-symbol@>=2.0.1 <2.1.0",
-                      "resolved": "https://registry.npmjs.org/es6-symbol/-/es6-symbol-2.0.1.tgz"
-                    }
-                  }
-                },
-                "d": {
-                  "version": "0.1.1",
-                  "from": "d@0.1.1",
-                  "resolved": "https://registry.npmjs.org/d/-/d-0.1.1.tgz",
-                  "dependencies": {
-                    "es5-ext": {
-                      "version": "0.10.7",
-                      "from": "es5-ext@>=0.10.2 <0.11.0",
-                      "resolved": "https://registry.npmjs.org/es5-ext/-/es5-ext-0.10.7.tgz",
-                      "dependencies": {
-                        "es6-iterator": {
-                          "version": "0.1.3",
-                          "from": "es6-iterator@>=0.1.3 <0.2.0",
-                          "resolved": "https://registry.npmjs.org/es6-iterator/-/es6-iterator-0.1.3.tgz"
-                        },
-                        "es6-symbol": {
-                          "version": "2.0.1",
-                          "from": "es6-symbol@>=2.0.1 <2.1.0",
-                          "resolved": "https://registry.npmjs.org/es6-symbol/-/es6-symbol-2.0.1.tgz"
-                        }
-                      }
-                    }
-                  }
-                },
-                "es5-ext": {
-                  "version": "0.10.7",
-                  "from": "es5-ext@0.10.7",
-                  "resolved": "https://registry.npmjs.org/es5-ext/-/es5-ext-0.10.7.tgz",
-                  "dependencies": {
-                    "es6-iterator": {
-                      "version": "0.1.3",
-                      "from": "es6-iterator@>=0.1.3 <0.2.0",
-                      "resolved": "https://registry.npmjs.org/es6-iterator/-/es6-iterator-0.1.3.tgz",
-                      "dependencies": {
-                        "d": {
-                          "version": "0.1.1",
-                          "from": "d@>=0.1.1 <0.2.0",
-                          "resolved": "https://registry.npmjs.org/d/-/d-0.1.1.tgz"
-                        }
-                      }
-                    },
-                    "es6-symbol": {
-                      "version": "2.0.1",
-                      "from": "es6-symbol@>=2.0.1 <2.1.0",
-                      "resolved": "https://registry.npmjs.org/es6-symbol/-/es6-symbol-2.0.1.tgz",
-                      "dependencies": {
-                        "d": {
-                          "version": "0.1.1",
-                          "from": "d@>=0.1.1 <0.2.0",
-                          "resolved": "https://registry.npmjs.org/d/-/d-0.1.1.tgz"
-                        }
-                      }
-                    }
-                  }
                 }
               }
             },
@@ -3844,7 +3806,7 @@
                   "dependencies": {
                     "lodash": {
                       "version": "3.10.0",
-                      "from": "lodash@>=3.2.0 <4.0.0",
+                      "from": "lodash@>=3.3.1 <4.0.0",
                       "resolved": "https://registry.npmjs.org/lodash/-/lodash-3.10.0.tgz"
                     },
                     "sprintf-js": {
