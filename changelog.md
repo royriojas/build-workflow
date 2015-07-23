@@ -1,5 +1,13 @@
 
 # Build Workflow - Changelog
+## v5.0.8
+- **Build Scripts Changes**
+  - version 5.0.8 - [efe98ac]( https://github.com/royriojas/build-workflow/commit/efe98ac ), [royriojas](https://github.com/royriojas), 23/07/2015 09:37:13
+
+    
+  - fix broken prepush task - [3960f4c]( https://github.com/royriojas/build-workflow/commit/3960f4c ), [royriojas](https://github.com/royriojas), 23/07/2015 09:36:53
+
+    
 ## v5.0.7
 - **Build Scripts Changes**
   - version 5.0.7 - [c04b742]( https://github.com/royriojas/build-workflow/commit/c04b742 ), [royriojas](https://github.com/royriojas), 22/07/2015 14:31:18
