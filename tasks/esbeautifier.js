@@ -17,7 +17,7 @@ module.exports = function ( grunt /*, pkg, opts */ ) {
 
         var opts = me.options( {
           esformatterOpts: {},
-          reportOnly: false,
+          reportOnly: grunt.option( 'esbeautifier-check' ),
           useCache: true
         } );
 

@@ -19,8 +19,8 @@ module.exports = function ( grunt /*, pkg, opts */ ) {
           validationTasks: buildWorkflowConfig.validationTasks,
           filter: filter,
           beforeSetConfiguration: function ( name, tConfig ) {
-
-            if ( name === 'esformatter' ) {
+            // TODO: delete this task
+            if ( name === 'esbeautifier' ) {
               tConfig.options = tConfig.options || { };
               tConfig.options.reportOnly = true;
             }
