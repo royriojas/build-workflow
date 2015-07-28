@@ -1,5 +1,22 @@
 
 # Build Workflow - Changelog
+## v6.0.0
+- **Build Scripts Changes**
+  - Update npm scripts to automate publishing - [68dccde]( https://github.com/royriojas/build-workflow/commit/68dccde ), [royriojas](https://github.com/royriojas), 28/07/2015 15:57:06
+
+    
+  - Lock dependencies - [dc9f8e0]( https://github.com/royriojas/build-workflow/commit/dc9f8e0 ), [royriojas](https://github.com/royriojas), 28/07/2015 15:56:01
+
+    
+  - Udpate changelogx and prepush deps - [099134d]( https://github.com/royriojas/build-workflow/commit/099134d ), [royriojas](https://github.com/royriojas), 28/07/2015 15:48:16
+
+    
+  - Update eslinter to handle eqeqeq as error - [1deb246]( https://github.com/royriojas/build-workflow/commit/1deb246 ), [royriojas](https://github.com/royriojas), 28/07/2015 14:33:55
+
+    
+  - Update esbeautifier dep to handle JSX in a more predictable way - [1b4167b]( https://github.com/royriojas/build-workflow/commit/1b4167b ), [royriojas](https://github.com/royriojas), 28/07/2015 14:33:41
+
+    
 ## v5.0.8
 - **Build Scripts Changes**
   - version 5.0.8 - [efe98ac]( https://github.com/royriojas/build-workflow/commit/efe98ac ), [royriojas](https://github.com/royriojas), 23/07/2015 09:37:13
