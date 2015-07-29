@@ -1,5 +1,10 @@
 
 # Build Workflow - Changelog
+## v6.0.1
+- **Bug Fixes**
+  - Include the fix for https://github.com/royriojas/esformatter-jsx/issues/10 to fix selfclosing tags formatting - [0e4f47d]( https://github.com/royriojas/build-workflow/commit/0e4f47d ), [royriojas](https://github.com/royriojas), 28/07/2015 17:42:16
+
+    
 ## v6.0.0
 - **Build Scripts Changes**
   - Update npm scripts to automate publishing - [68dccde]( https://github.com/royriojas/build-workflow/commit/68dccde ), [royriojas](https://github.com/royriojas), 28/07/2015 15:57:06
