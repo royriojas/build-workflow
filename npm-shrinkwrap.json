@@ -3229,8 +3229,9 @@
       "resolved": "https://registry.npmjs.org/es6-promise/-/es6-promise-2.3.0.tgz"
     },
     "esbeautifier": {
-      "version": "4.0.0",
-      "from": "esbeautifier@>=4.0.0 <5.0.0",
+      "version": "4.0.1",
+      "from": "esbeautifier@4.0.1",
+      "resolved": "https://registry.npmjs.org/esbeautifier/-/esbeautifier-4.0.1.tgz",
       "dependencies": {
         "dispatchy": {
           "version": "1.0.3",
@@ -3326,11 +3327,6 @@
                       "resolved": "https://registry.npmjs.org/wrappy/-/wrappy-1.0.1.tgz"
                     }
                   }
-                },
-                "path-is-absolute": {
-                  "version": "1.0.0",
-                  "from": "https://registry.npmjs.org/path-is-absolute/-/path-is-absolute-1.0.0.tgz",
-                  "resolved": "https://registry.npmjs.org/path-is-absolute/-/path-is-absolute-1.0.0.tgz"
                 }
               }
             },
@@ -3532,9 +3528,8 @@
           }
         },
         "esformatter-jsx": {
-          "version": "2.0.3",
-          "from": "https://registry.npmjs.org/esformatter-jsx/-/esformatter-jsx-2.0.3.tgz",
-          "resolved": "https://registry.npmjs.org/esformatter-jsx/-/esformatter-jsx-2.0.3.tgz",
+          "version": "2.0.4",
+          "from": "esformatter-jsx@2.0.4",
           "dependencies": {
             "falafel-espree": {
               "version": "1.1.0",
@@ -3631,21 +3626,7 @@
         "write": {
           "version": "0.2.0",
           "from": "https://registry.npmjs.org/write/-/write-0.2.0.tgz",
-          "resolved": "https://registry.npmjs.org/write/-/write-0.2.0.tgz",
-          "dependencies": {
-            "mkdirp": {
-              "version": "0.5.1",
-              "from": "https://registry.npmjs.org/mkdirp/-/mkdirp-0.5.1.tgz",
-              "resolved": "https://registry.npmjs.org/mkdirp/-/mkdirp-0.5.1.tgz",
-              "dependencies": {
-                "minimist": {
-                  "version": "0.0.8",
-                  "from": "https://registry.npmjs.org/minimist/-/minimist-0.0.8.tgz",
-                  "resolved": "https://registry.npmjs.org/minimist/-/minimist-0.0.8.tgz"
-                }
-              }
-            }
-          }
+          "resolved": "https://registry.npmjs.org/write/-/write-0.2.0.tgz"
         },
         "ansi-styles": {
           "version": "2.1.0",
