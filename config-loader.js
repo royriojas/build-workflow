@@ -28,7 +28,7 @@ module.exports = function ( grunt, args ) {
     // - prepush task
     // - run-i18n-targets
     // - validate-file
-    loadBaseTasksAndConfigs: true,
+    loadBaseTasksAndConfigs: false,
 
     // ### appPkgJSONPath
     // the path to the package.json file
