@@ -1,5 +1,11 @@
 
 # Build Workflow - Changelog
+## v7.0.0
+- **Refactoring**
+  - Big refactoring this module not longer bundle any tasks - [1b97c71]( https://github.com/royriojas/build-workflow/commit/1b97c71 ), [royriojas](https://github.com/royriojas), 11/08/2015 18:16:59
+
+    **BREAKING CHANGE**: this means that this module will only take care of break your gigantic grunt-file and auto load modules.
+    
 ## v6.0.1
 - **Bug Fixes**
   - Include the fix for https://github.com/royriojas/esformatter-jsx/issues/10 to fix selfclosing tags formatting - [0e4f47d]( https://github.com/royriojas/build-workflow/commit/0e4f47d ), [royriojas](https://github.com/royriojas), 28/07/2015 17:42:16
@@ -304,7 +310,6 @@
   - Do not kill the bundler watch if the task fails to compile, just wait for the next set of changes - [bdcd7e6]( https://github.com/royriojas/build-workflow/commit/bdcd7e6 ), [royriojas](https://github.com/royriojas), 16/05/2015 01:06:08
 
     
-#### only on dev mode
 - **Bug Fixes**
   - Ensure consoleify transform is active only when buildNumber === 'dev' (only on dev mode) - [65b50ba]( https://github.com/royriojas/build-workflow/commit/65b50ba ), [royriojas](https://github.com/royriojas), 16/05/2015 01:05:36
 
