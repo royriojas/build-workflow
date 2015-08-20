@@ -1,5 +1,10 @@
 
 # Build Workflow - Changelog
+## v7.0.1
+- **Documentation**
+  - Add more documentation about build-workflow - [8803e3a]( https://github.com/royriojas/build-workflow/commit/8803e3a ), [royriojas](https://github.com/royriojas), 20/08/2015 11:41:43
+
+    
 ## v7.0.0
 - **Refactoring**
   - Big refactoring this module not longer bundle any tasks - [1b97c71]( https://github.com/royriojas/build-workflow/commit/1b97c71 ), [royriojas](https://github.com/royriojas), 11/08/2015 18:16:59
