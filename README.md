@@ -35,25 +35,28 @@ The main differences are:
 ## Usage
 
 Create the following folder structure
+
 ```bash
-
-- grunt-deps
-  - configs           # this will be directory where configs should live
-    - task-name.js    # should correspond to the name of the task and should return an object.
-                      # The object will be set in the cfg as cfg[task-name].
-  - tasks
-    - custom-task.js  # place here custom tasks. These can be either multitasks or single tasks
-                      # that for whatever reason are only needed in the current project
-  - workflows
-    - aliases.js      # use this file to define the sequence of your tasks.
-
-- Gruntfile.js        # the grunt
-- package.json        # your package.json
+your-project
+|--grunt-deps/
+|  |--configs/             # this will be directory where configs should live
+|  |  |--task-name.js      # should correspond to the name of the task and should return an object.
+|  |                       # The object will be set in the cfg as cfg[task-name].
+|  |
+|  |--tasks/               # place here custom tasks. These can be either multitasks or single tasks
+|  |  |--custom-task.js    # that for whatever reason are only needed in the current project
+|  |
+|  |--workflows/
+|     |--aliases.js        # use this file to define the sequence of your tasks.
+|
+|--Gruntfile.js            # the grunt
+|--package.json            # your package.json
 ```
 
 ### Gruntfile
 
-This is all the code required for your grunt file
+This is all the code required for your grunt file, because all the configuration sections have been moved to
+the their own file.
 
 ```javascript
 module.exports = function ( grunt ) {
@@ -62,8 +65,75 @@ module.exports = function ( grunt ) {
 };
 ```
 
-Since each config block will be defined inside the `config` folder the Gruntfile is effectively broken into several
-pieces which are easier to manage that a gigantic configuration file.
+One of the benefits of this, is that navigating to a given task is super simple. Since each file has the name
+of the task, navigating to it, using sublime or other IDE is super simple. In `Sublime Text` you only need to
+type the name of the task to navigate directly to the file.
+
+## Example: Using grunt babel with build-workflow
+
+1.  Create the following folder structure:
+
+    ```bash
+    your-project
+    |--grunt-deps
+    |  |--configs
+    |  |  |--babel.js // this will have your configuration for babel
+    |  |--workflows
+    |     |--aliases.js // this will have your alias definitions
+    |--Gruntfile.js
+    ```
+
+2.  install `build-workflow` as a dev dependency
+
+    ```bash
+    npm i -D build-workflow
+    ```
+
+3.  the content of your `Gruntfile.js`
+
+    ```javascript
+    module.exports = function ( grunt ) {
+      'use strict';
+      require( 'build-workflow' )( grunt );
+    };
+    ```
+
+4.  the content of your `aliases.js`
+
+    ```javascript
+    module.exports = function ( grunt ) {
+      grunt.task.registerTask('default', ['babel']);
+    };
+    ```
+
+5.  The content of your `babel.js` file
+
+    ```javascript
+    module.exports = function ( grunt ) {
+      return {
+        'target': {
+          options: {
+            sourceMap: true
+          },
+          files: [{
+            src: 'src/**/*.js', // your files to transform
+            expand: true,
+            dest: 'dest/'       // the destination to move the tanspiled code
+          }]
+        }
+      };
+    };
+    ```
+
+6.  Now just run
+
+    ```bash
+    grunt babel
+    ```
+
+    If everythig went ok you should be able to see an output similar to this:
+
+
 
 ## Changelog
 
