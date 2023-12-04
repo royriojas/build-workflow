@@ -40,14 +40,14 @@
   },
   "homepage": "https://github.com/royriojas/build-workflow",
   "dependencies": {
-    "clix-logger": "^0.1.1",
+    "clix-logger": "^2.0.0",
     "extend": "^3.0.0",
-    "matchdep": "^0.3.0",
+    "matchdep": "^1.0.0",
     "time-grunt": "^1.2.1"
   },
   "devDependencies": {
     "changelogx": "^1.0.16",
-    "clix-logger": "^0.1.1",
+    "clix-logger": "^2.0.0",
     "esbeautifier": "^4.2.4",
     "eslinter": "^2.3.0",
     "precommit": "^1.1.3",
